@@ -357,7 +357,7 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.content-yTz4x3, .threadSidebar-1o3BTy{
+.content-yTz4x3, .threadSidebar-1o3BTy, .tabBody-3YRQ8W{
 	background-color: var(--background-text);
 	border-left: 1px solid #343746;
 }
@@ -376,7 +376,7 @@
 	-webkit-box-shadow: none;
 	box-shadow: none;
 }
-.title-3qD0b-.container-1r6BKw.themed-ANHk51, .header-2V-4Sw, .searchBar-6Kv8R2{
+.title-3qD0b-.container-1r6BKw.themed-ANHk51, .header-2V-4Sw, .searchBar-6Kv8R2,  .container-1r6BKw.themed-ANHk51 {
 	background-color: var(--background-tertiary);
 }
 .searchBar-6Kv8R2 .searchBarComponent-32dTOx {

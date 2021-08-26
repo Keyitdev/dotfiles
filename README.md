@@ -10,14 +10,17 @@
 |**Bar**|[polybar](https://github.com/polybar/polybar)|
 |**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
-|**Image viewer and "wallpaper setter"**|[feh](https://github.com/derf/feh)|
+|**X11 walpaper**|[feh](https://github.com/derf/feh)|
 |**Brightness control**|[light](https://github.com/haikarainen/light)|
-|**Music**|Server: [mpd](https://github.com/MusicPlayerDaemon/MPD), client: [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp). Optional control for polybar: [playerctl](https://github.com/altdesktop/playerctl).|
+|**Music**|Server: [mpd](https://github.com/MusicPlayerDaemon/MPD), client: [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp), [spotify](https://www.spotify.com). Optional control for polybar : [playerctl](https://github.com/altdesktop/playerctl).|
+|**Spotify theme**|
 |**Screenshots**|[xclip](https://github.com/astrand/xclip), [scrot](https://github.com/dreamer/scrot)|
-|**Text editor**|[VSCode]() (works with [VSCodium]()), [neovim]()|
-|**Fonts**|[3270 Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/3270.zip), [Agave Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Agave.zip), [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)|
-|**GTK Theme**|Yaru-dark [GTK3]|
-|**Discord Theme**|[Better discord](https://github.com/BetterDiscord/BetterDiscord), [betterdiscordctl](https://github.com/bb010g/betterdiscordctl), [ClearVision](https://betterdiscord.app/theme/ClearVision)|
+|**Text editor**|[VSCode](https://github.com/Microsoft/vscode) (works with [VSCodium](https://vscodium.com/)), [neovim](https://github.com/neovim/neovim)|
+|**VSC theme**|
+|**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
+|**Fonts**|[Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf), [Isovaka Nerd Font](https://www.nerdfonts.com/), [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)|
+|**GTK icons**|[Papirus](shttps://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
+|**Discord Theme**|[Better discord](https://github.com/BetterDiscord/BetterDiscord), [betterdiscordctl](https://github.com/bb010g/betterdiscordctl), [Nord-Glasscord](https://github.com/YottaGitHub/Nord-Glasscord)|
 
 ## Installation
 
@@ -31,7 +34,8 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install rofi polybar dunst i3 kitty feh light playerctl xclip scrot mpd ncmpcpp zsh -y
+sudo apt install i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot papirus-icon-theme -y
+sudo apt-get install neovim -y
 ```
 Make light executable.
 ```sh
@@ -46,9 +50,9 @@ Set zsh as default shell
 chsh -s /bin/zsh
 sudo chsh -s /bin/zsh
 ```
-Run install.sh and select option install.
+Install NvChad
 ```sh
-./install.sh
+git clone git@github.com:NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 ```
 Install bettter discord
 ```sh
@@ -57,9 +61,6 @@ chmod +x betterdiscordctl
 mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
 ```
-Other way of better dicord installation
-Install neovim theme
-Install fonts
 </details>
 <details>
 <summary>Other Linux distributions</summary>
@@ -112,3 +113,7 @@ Uninstall  packages then run install.sh and select option uninstall.
 </details>
 
 #### Example
+
+spotify theme isntall
+vsc plugins
+Install fonts
