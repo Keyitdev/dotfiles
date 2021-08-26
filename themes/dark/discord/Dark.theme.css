@@ -1,5 +1,5 @@
 /**
- * @name Blue theme
+ * @name Dark theme
  * @description This is a Glasscord theme that's been modified.
  * @author Key
  * @version 1.0
@@ -81,8 +81,8 @@
 
 	--font: 'Baloo2';
 
-	--accentcolor: 94,129,172;		/* blurple - default: 114,137,218 */
-	--linkcolor: 136,192,208;		/* link - default: 0,176,244 */
+	--accentcolor: 75,75,75;		/* blurple - default: 114,137,218 */
+	--linkcolor: 153,153,153;		/* link - default: 0,176,244 */
 
 	--server-icon-size: 40px; /* Size of the server icons | DEFAULT: 35px */
   	--server-icon-spacing: 8px; /* Spacing between server icons. Negative values are allowed | DEFAULT: 8px */
@@ -98,25 +98,25 @@
 
 .theme-dark{
 	--background-primary: transparent;
-	--background-primary-alt: #21222c;
-	--background-secondary: #21222c;
-	--background-secondary-chat: #21222c;
-	--background-secondary-alt: #21222c;
-	--background-tertiary: #343746;
-	--background-logo: #21222c;
-	--deprecated-card-bg: #21222c;
-	--deprecated-store-bg: #21222c;
-	--background-attachments: #21222c;
-	--background-search-bar: #21222c;
-	--background-switcher: #21222c;
-	--background-chatbox: #343746;
+	--background-primary-alt: #111;
+	--background-secondary: #111;
+	--background-secondary-chat: #111;
+	--background-secondary-alt: #111;
+	--background-tertiary: #19171a;
+	--background-logo: #111;
+	--deprecated-card-bg: #111;
+	--deprecated-store-bg: #111;
+	--background-attachments: #111;
+	--background-search-bar: #111;
+	--background-switcher: #111;
+	--background-chatbox: #19171a;
 	--background-lights-out: #000;
-	--background-pinned: #21222c;
-	--background-profile-expand: #21222c;
+	--background-pinned: #111;
+	--background-profile-expand: #111;
 	--background-emoji: rgb(19, 81, 204);
 	--text-lights-out: #eceff4;
-	--background-titlebar: #21222c;
-	--background-text:#21222c;
+	--background-titlebar: #111;
+	--background-text:#111;
 }
 
 .theme-dark .scrollerThemed-2oenus.themedWithTrack-q8E3vB .scroller-2FKFPG::-webkit-scrollbar-track-piece {
@@ -359,7 +359,7 @@
 }
 .content-yTz4x3, .threadSidebar-1o3BTy, .tabBody-3YRQ8W{
 	background-color: var(--background-text);
-	border-left: 1px solid #343746;
+	border-left: 1px solid #19171a;
 }
 
 .tabBody-3YRQ8W:before {

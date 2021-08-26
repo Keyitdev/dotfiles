@@ -2,6 +2,7 @@
 dark(){
   cp -f ./themes/dark/polybar/colors.ini ./polybar/
   cp -f ./themes/dark/kitty/kitty.conf ./kitty/
+  cp -f ./themes/dark/rofi/* ./rofi/
   #restart i3
   i3-msg restart
   #send notify
@@ -11,6 +12,7 @@ dark(){
 blue(){
   cp -f ./themes/blue/polybar/colors.ini ./polybar/
   cp -f ./themes/blue/kitty/kitty.conf ./kitty/
+  cp -f ./themes/blue/rofi/* ./rofi/
   #restart i3
   i3-msg restart
   #send notify
@@ -20,6 +22,7 @@ blue(){
 blue_high_contrast(){
   cp -f ./themes/blue_high_contrast/polybar/colors.ini ./polybar/
   cp -f ./themes/blue_high_contrast/kitty/kitty.conf ./kitty/
+  cp -f ./themes/blue_high_contrast/rofi/* ./rofi/
   #restart i3
   i3-msg restart
   #send notify

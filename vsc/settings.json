@@ -1,29 +1,29 @@
 {
-    "workbench.colorTheme": "One Monokai",
+    "workbench.colorTheme": "One Dark Pro",
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.tabs.enabled": true,
     "workbench.colorCustomizations": {
-        "[One Monokai]": {
+        "[One Dark Pro]": {
             "sideBar.background": "#21222c",
-            "focusBorder": "#88C0D0",
+            "focusBorder": "#7aacbb",
             "activityBar.background": "#343746",
             "editor.background": "#21222c",
-            "button.background": "#88C0D0",
+            "button.background": "#7aacbb",
             "widget.shadow": "#343746",
-            "selection.background": "#88C0D0",
-            "descriptionForeground": "#88C0D0",
-            "errorForeground": "#88C0D0",
+            "selection.background": "#7aacbb",
+            "descriptionForeground": "#7aacbb",
+            "errorForeground": "#7aacbb",
             "icon.foreground": "#ddd",
-            "window.activeBorder": "#88C0D0",
-            "window.inactiveBorder": "#88C0D0",
+            "window.activeBorder": "#7aacbb",
+            "window.inactiveBorder": "#7aacbb",
             "editorGroup.border": "#302e31",
             "editorGroup.dropBackground": "#343746",
-            "editorGroupHeader.noTabsBackground": "#88C0D0",
+            "editorGroupHeader.noTabsBackground": "#7aacbb",
             "editorGroupHeader.tabsBackground": "#343746",
             "editorGroupHeader.tabsBorder": "#343746",
             "editorGroupHeader.border": "#21222c",
             "editorGroup.emptyBackground": "#21222c",
-            "editorGroup.focusedEmptyBorder": "#88C0D0",
+            "editorGroup.focusedEmptyBorder": "#7aacbb",
             "tab.activeBackground": "#21222c",
             "tab.unfocusedActiveBackground": "#21222c",
             "tab.activeForeground": "#fff",
@@ -38,18 +38,17 @@
             "editorSuggestWidget.background": "#343746",
             "editorWidget.foreground": "#ddd",
             "sideBar.foreground": "#ddd",
-            "list.activeSelectionBackground": "#88C0D0",
+            "list.activeSelectionBackground": "#7aacbb",
             "list.activeSelectionForeground": "#fff",
             "list.inactiveSelectionBackground": "#343746",
             "list.inactiveSelectionForeground": "#ddd",
-            "textLink.foreground": "#88C0D0",
+            "textLink.foreground": "#7aacbb",
             "statusBar.background": "#343746",
             "statusBar.noFolderBackground": "#343746",
             "statusBar.debuggingBackground": "#343746",
-            "statusBarItem.remoteBackground": "#88C0D0",
+            "statusBarItem.remoteBackground": "#7aacbb",
             "statusBarItem.remoteForeground": "#fff"
             
         }
     }
 }
-
