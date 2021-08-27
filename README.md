@@ -36,7 +36,7 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot papirus-icon-theme -y
+sudo apt install i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot papirus-icon-theme picom -y
 sudo apt-get install neovim -y
 ```
 Make light executable.
@@ -62,6 +62,18 @@ curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterd
 chmod +x betterdiscordctl
 mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
+```
+Install rofi bookmarks
+
+Put rofi-bookmarks.py somewhere in $PATH for example: 
+
+```sh
+sudo mv ./scripts/rofi/rofi-bookmarks.py /usr/local/bin 
+```
+
+Copy dotfiles
+```sh
+cp -fr .config/* $HOME/.config
 ```
 </details>
 <details>
@@ -115,10 +127,9 @@ Uninstall  packages then run install.sh and select option uninstall.
 </details>
 
 ## To do
-* config folder
+* 
 * screenshots script
 * battery low
-* rofi bookmarks
 * vol and other notifigations
 * Install fonts
 * wallpapers
