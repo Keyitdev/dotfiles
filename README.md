@@ -4,6 +4,7 @@
 |Program|Name|
 |-|-|
 |**Window Manager**|[i3](https://github.com/i3/i3), (if you want gaps also [i3-gaps](https://github.com/Airblader/i3))|
+|**Compositor**|[picom](https://github.com/yshui/picom)
 |**Terminal emullator**|[kitty](https://github.com/kovidgoyal/kitty)|
 |**Shell**|zsh (5.8)|
 |**Shell theme**|[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)|
@@ -12,7 +13,8 @@
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
 |**X11 walpaper**|[feh](https://github.com/derf/feh)|
 |**Brightness control**|[light](https://github.com/haikarainen/light)|
-|**Music**|Server: [mpd](https://github.com/MusicPlayerDaemon/MPD), client: [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp), [spotify](https://www.spotify.com). Optional control for polybar : [playerctl](https://github.com/altdesktop/playerctl).|
+|**Music offline**|Server: [mpd](https://github.com/MusicPlayerDaemon/MPD), client: [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
+|**Music online**|[spotify](https://www.spotify.com), optional control for polybar : [playerctl](https://github.com/altdesktop/playerctl).|
 |**Spotify theme**|
 |**Screenshots**|[xclip](https://github.com/astrand/xclip), [scrot](https://github.com/dreamer/scrot)|
 |**Text editor**|[VSCode](https://github.com/Microsoft/vscode) (works with [VSCodium](https://vscodium.com/)), [neovim](https://github.com/neovim/neovim)|
@@ -112,21 +114,33 @@ Uninstall  packages then run install.sh and select option uninstall.
 ```
 </details>
 
-#### Example
+## To do
+* config folder
+* screenshots script
+* battery low
+* rofi bookmarks
+* vol and other notifigations
+* Install fonts
+* wallpapers
+* 
+* spotify theme isntall
+* sddm
+* grub2 theme
+* 
+* firefox
 
-spotify theme isntall
-config folder
-big thanks
-screenshots script
-battery low
-vol and other notifigations
-Install fonts
-wallpapers
-firefox
 
 
-polybar toroto
-adi
-wallpaper
 
-https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config
+## Big thanks to
+These dotfiles includes some files from others rices. Original sources:
+* [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
+* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
+* [Quethu](https://www.deviantart.com/quethu) for [wallpaper](https://www.deviantart.com/quethu/art/Sci-Fi-Landscape-879969633),
+* [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
+* [AryToNeX](https://github.com/AryToNeX) & [YottaGithub](https://github.com/YottaGitHub) for [discord theme](https://github.com/YottaGitHub/Nord-Glasscord),
+* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
+* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot),
+* [Ant-arctica](https://github.com/ant-arctica) for [rofi bookmarks script](https://github.com/ant-arctica/rofi-bookmarks),
+* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes).
+
