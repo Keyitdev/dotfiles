@@ -115,5 +115,18 @@ Uninstall  packages then run install.sh and select option uninstall.
 #### Example
 
 spotify theme isntall
-vsc plugins
+config folder
+big thanks
+screenshots script
+battery low
+vol and other notifigations
 Install fonts
+wallpapers
+firefox
+
+
+polybar toroto
+adi
+wallpaper
+
+https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config

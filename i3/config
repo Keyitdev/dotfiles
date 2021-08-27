@@ -28,29 +28,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-#Touchpad 
-bindsym F9 exec xinput set-prop 15 "Device Enabled" 0
-bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
-
-#Set birghtness with light
-exec_always --no-startup-id light -I
-bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-#Turn off screen
-bindsym XF86ScreenSaver  exec xset dpms force off
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+### DEFAULT SHORTCUTS ###
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -188,29 +169,50 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+### CUSTOM SHORTCUTS ###
+
 #Rofi launcher
 bindsym $mod+z exec "rofi -show drun -config ~/.config/rofi/sidebar.rasi"
 bindsym $mod+x exec "rofi -show drun -config ~/.config/rofi/center.rasi"
 bindsym $mod+q exec "rofi -show drun -config ~/.config/rofi/compact.rasi"
 
-new_window pixel 1
-
 #Screenshots
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
 
-#Wallpaper
-exec_always feh --bg-scale /home/key/Pictures/Wallpapers/8.jpg
+#Touchpad  toggle
+bindsym F9 exec xinput set-prop 15 "Device Enabled" 0
+bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
 
-#Polybar launcher
-exec_always --no-startup-id killall -q
-#Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+#Brightness control
+exec_always --no-startup-id light -I
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+
+#Audio control
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+#Turn off screen
+bindsym XF86ScreenSaver  exec xset dpms force off
+
+### BODERS ###
+#border width
+new_window pixel 1
+
+#border colors
 #<colorclass> <border> <background> <text> <indicator> <child_border>
 client.focused #302e31 #302e31 #dfdfdf #19171a #4C4A4D
 client.focused_inactive #302e31 #302e31 #dfdfdf #19171a #4C4A4D
 
-
-exec_always --no-startup-id picom &
+### SETTINGS FOR i3 BAR ###
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -221,7 +223,7 @@ bar {
 	tray_output none
 }
 
-# SETTINGS FOR i3-gaps
+### SETTINGS FOR i3-gaps ###
 
 # Set inner/outer gaps
 gaps inner 4
@@ -275,3 +277,17 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+### Runnig apps in background ###
+
+#Run picom
+exec_always --no-startup-id picom &
+
+#Wallpaper
+exec_always feh --bg-scale /home/key/Pictures/Wallpapers/8.jpg
+
+#Polybar launcher
+exec_always --no-startup-id killall -q
+
+#Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
