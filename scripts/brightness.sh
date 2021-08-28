@@ -19,4 +19,3 @@ CUR_BRI=$(cat /sys/class/backlight/amdgpu_bl0/brightness)
                 -r 100 \
                 -i $DIR/moon.svg
         fi
-    ;;

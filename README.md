@@ -139,7 +139,9 @@ Uninstall  packages then run install.sh and select option uninstall.
 * grub2 theme
 * 
 * firefox
-
+* dark and light theme
+* nvim theme
+* ncmpcpp theme col width
 
 
 
