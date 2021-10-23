@@ -11,13 +11,13 @@ if (($CUR_VOL > -1 && $CUR_VOL < 33)); then
     "Current volume is $CUR_VOL%" \
     -r 100 \
     -i $DIR/volume.svg
-elif (($CUR_VOL > 33 && $CUR_VOL < 66)); then
+elif (($CUR_VOL > 32 && $CUR_VOL < 66)); then
     dunstify -a "Volume" \
     "Volume" \
     "Current volume is $CUR_VOL%" \
     -r 100 \
     -i $DIR/volume-1.svg
-elif (($CUR_VOL > 66 && $CUR_VOL < 101)); then
+elif (($CUR_VOL > 65 && $CUR_VOL < 101)); then
     dunstify -a "Volume" \
     "Volume" \
     "Current volume is $CUR_VOL%" \

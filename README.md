@@ -63,6 +63,16 @@ chmod +x betterdiscordctl
 mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
 ```
+Install gtk3 theme
+```
+git clone git@github.com:EliverLara/Nordic.git
+sudo mv ./Nordic /usr/share/themes
+```
+Install GRUB2 theme
+```
+git clone git@github.com:vinceliuice/grub2-themes.git
+sudo ./grub2-themes-master/install.sh -b -t tela -s 1080p
+```
 Install rofi bookmarks
 
 Put rofi-bookmarks.py somewhere in $PATH for example: 
@@ -142,7 +152,9 @@ Uninstall  packages then run install.sh and select option uninstall.
 * dark and light theme
 * nvim theme
 * ncmpcpp theme col width
-
+https://github.com/EliverLara/Nordic
+copy gtk 3 config
+sudo /home/key/Downloads/grub2-themes-master/install.sh -b -t tela -s 1080p
 
 
 ## Big thanks to
