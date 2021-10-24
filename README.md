@@ -32,8 +32,10 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot papirus-icon-theme picom -y
+sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh -y
+#i3-gaps imagemagick papirus-icon-theme
 sudo apt-get install neovim -y
+sudo snap install discord -y
 ```
 Make light executable.
 ```sh
@@ -50,23 +52,23 @@ sudo chsh -s /bin/zsh
 ```
 Install NvChad
 ```sh
-git clone git@github.com:NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
+git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 ```
 Install bettter discord
 ```sh
 curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
 chmod +x betterdiscordctl
-mv betterdiscordctl /usr/local/bin
+sudo mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
 ```
 Install gtk3 theme
 ```
-git clone git@github.com:EliverLara/Nordic.git
+git clone https://github.com/EliverLara/Nordic.git
 sudo mv ./Nordic /usr/share/themes
 ```
 Install GRUB2 theme
 ```
-git clone git@github.com:vinceliuice/grub2-themes.git
+git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes-master/install.sh -b -t tela -s 1080p
 ```
 Install rofi bookmarks
@@ -80,6 +82,11 @@ sudo mv ./scripts/rofi/rofi-bookmarks.py /usr/local/bin
 Copy dotfiles
 ```sh
 cp -fr .config/* $HOME/.config
+```
+Copy fonts
+```
+cp -fr .fonts/* ~/.local/share/fonts/
+
 ```
 
 ### Other Linux distributions
@@ -128,16 +135,17 @@ Uninstall  packages then run install.sh and select option uninstall.
 * 
 * spotify theme isntall
 * sddm
-* grub2 theme
 * 
 * firefox
 * dark and light theme
 * nvim theme
 * ncmpcpp theme col width
-https://github.com/EliverLara/Nordic
-copy gtk 3 config
-sudo /home/key/Downloads/grub2-themes-master/install.sh -b -t tela -s 1080p
-
+discord first 
+patch
+change to https
+convert program
+problem with i3 gaps, papirus icons
+curl
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
