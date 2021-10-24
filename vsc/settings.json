@@ -1,9 +1,9 @@
 {
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "Atom One Dark",
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.tabs.enabled": true,
     "workbench.colorCustomizations": {
-        "[One Dark Pro]": {
+        "[Atom One Dark]": {
             "sideBar.background": "#21222c",
             "focusBorder": "#7aacbb",
             "activityBar.background": "#343746",

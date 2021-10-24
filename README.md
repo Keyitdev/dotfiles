@@ -26,12 +26,8 @@
 
 ## Installation
 
-
-<details>
-<summary>Debian & Ubuntu (and all based distributions)</summary>
-</br>
-
 ### Debian & Ubuntu (and all based distributions)
+
 Install required packages.
 ```sh
 sudo apt update -y
@@ -85,26 +81,18 @@ Copy dotfiles
 ```sh
 cp -fr .config/* $HOME/.config
 ```
-</details>
-<details>
-<summary>Other Linux distributions</summary>
-</br>
 
 ### Other Linux distributions
+
 Install required packages then run install.sh and select option install.
 ```sh
 ./install.sh
 ```
-</details>
 
 ## Uninstallation
 
-</details>
-<details>
-<summary>Debian & Ubuntu (and all based distributions)</summary>
-</br>
-
 ### Debian & Ubuntu (and all based distributions)
+
 Uninstall packages.
 ```sh
 sudo apt remove rofi polybar dunst kitty feh light playerctl xclip scrot mpd ncmpcpp zsh -y
@@ -122,19 +110,13 @@ Run install.sh and select option uninstall.
 ```sh
 ./install.sh
 ```
-</details>
-
-</details>
-<details>
-<summary>Other Linux distributions</summary>
-</br>
 
 ### Other Linux distributions
+
 Uninstall  packages then run install.sh and select option uninstall.
 ```sh
 ./install.sh
 ```
-</details>
 
 ## To do
 * 
@@ -156,8 +138,8 @@ https://github.com/EliverLara/Nordic
 copy gtk 3 config
 sudo /home/key/Downloads/grub2-themes-master/install.sh -b -t tela -s 1080p
 
-
 ## Big thanks to
+
 These dotfiles includes some files from others rices. Original sources:
 * [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
 * [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
