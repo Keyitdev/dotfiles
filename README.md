@@ -43,9 +43,7 @@ sudo apt install i3-gaps
 ```
 Install papirus icon theme
 ```sh
-sudo add-apt-repository ppa:varlesh-l/papirus-pack
-sudo apt-get update
-sudo apt-get install papirus-gtk-icon-theme
+wget -qO- https://git.io/papirus-icon-theme-install | sh
 ```
 Make light executable.
 ```sh
@@ -91,11 +89,14 @@ sudo mv ./scripts/rofi/rofi-bookmarks.py /usr/local/bin
 
 Copy dotfiles
 ```sh
-cp -fr .config/* $HOME/.config
+cd dotfiles2
+cp -fr ./.config/* $HOME/.config
 ```
 Copy fonts
 ```sh
-cp -f .fonts/* ~/.local/share/fonts/
+cd dotfiles2
+mkdir ~/.local/share/fonts/
+cp -f ./fonts/* ~/.local/share/fonts/
 ```
 
 ### Other Linux distributions
@@ -151,6 +152,7 @@ Uninstall  packages then run install.sh and select option uninstall.
 * ncmpcpp theme col width
 discord first 
 patch
+wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
 
 
 problem with i3 gaps, papirus icons
