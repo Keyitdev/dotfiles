@@ -32,9 +32,20 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh imagemagick curl -y
-sudo apt-get install neovim -y
+sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh imagemagick curl neovim -y
 sudo snap install discord
+```
+Install neovim v0.6+ (You must have installed gcc or other compiler)
+```sh
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+```
+Install rofi v1.6.0+
+```sh
+sudo add-apt-repository ppa:cppiber/ppa
+sudo apt-get update
+sudo apt-get install rofi
 ```
 Install i3-gaps
 ```sh
@@ -79,24 +90,13 @@ Install GRUB2 theme
 git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes/install.sh -b -t tela -s 1080p
 ```
-Install rofi bookmarks
 
-Put rofi-bookmarks.py somewhere in $PATH for example: 
-
-```sh
-sudo mv ./scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-```
-
-Copy dotfiles
+Copy dotfiles, fonts and scripts
 ```sh
 cd dotfiles2
 cp -fr ./.config/* $HOME/.config
-```
-Copy fonts
-```sh
-cd dotfiles2
-mkdir ~/.local/share/fonts/
 cp -f ./fonts/* ~/.local/share/fonts/
+sudo cp ./scripts/rofi/rofi-bookmarks.py /usr/local/bin 
 ```
 
 ### Other Linux distributions
@@ -153,7 +153,8 @@ Uninstall  packages then run install.sh and select option uninstall.
 discord first 
 patch
 wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-
+nvim newest ver ppa
+rofi nvim ver
 
 problem with i3 gaps, papirus icons
 curl
