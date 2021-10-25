@@ -1,4 +1,4 @@
-# Deerrorer dotfiles
+# Deerrorer dotfiles (not finished yet)
  My personal build of dotfiles.
 ## Required packages and system informations:
 |Program|Name|
@@ -32,10 +32,20 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh -y
-#i3-gaps imagemagick papirus-icon-theme
+sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh imagemagick curl -y
 sudo apt-get install neovim -y
-sudo snap install discord -y
+sudo snap install discord
+```
+Install i3-gaps
+```sh
+sudo add-apt-repository -y ppa:regolith-linux/stable
+sudo apt install i3-gaps
+```
+Install papirus icon theme
+```sh
+sudo add-apt-repository ppa:varlesh-l/papirus-pack
+sudo apt-get update
+sudo apt-get install papirus-gtk-icon-theme
 ```
 Make light executable.
 ```sh
@@ -54,7 +64,7 @@ Install NvChad
 ```sh
 git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 ```
-Install bettter discord
+Install bettter discord (Warning: You must run discord at least once before installing betterdiscord)
 ```sh
 curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
 chmod +x betterdiscordctl
@@ -62,14 +72,14 @@ sudo mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
 ```
 Install gtk3 theme
-```
+```sh
 git clone https://github.com/EliverLara/Nordic.git
 sudo mv ./Nordic /usr/share/themes
 ```
 Install GRUB2 theme
-```
+```sh
 git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes-master/install.sh -b -t tela -s 1080p
+sudo ./grub2-themes/install.sh -b -t tela -s 1080p
 ```
 Install rofi bookmarks
 
@@ -84,9 +94,8 @@ Copy dotfiles
 cp -fr .config/* $HOME/.config
 ```
 Copy fonts
-```
-cp -fr .fonts/* ~/.local/share/fonts/
-
+```sh
+cp -f .fonts/* ~/.local/share/fonts/
 ```
 
 ### Other Linux distributions
@@ -142,8 +151,8 @@ Uninstall  packages then run install.sh and select option uninstall.
 * ncmpcpp theme col width
 discord first 
 patch
-change to https
-convert program
+
+
 problem with i3 gaps, papirus icons
 curl
 ## Big thanks to
