@@ -1,0 +1,37 @@
+
+#!/bin/sh
+
+switcher() {
+  rofi_command="rofi -theme $HOME/.config/rofi/center.rasi"
+  options="blue\ndark"
+  chosen="$(echo "$options" | $rofi_command -dmenu -selected-row 2)"
+  case $chosen in
+    blue) thm -blue;;
+    dark) thm -dark;;
+  esac
+}
+
+thm() {
+  if ! [ "$1" = "" ]; then 
+    killall -q conky tint2 dunst xsettingsd
+  fi
+  case $1 in
+    *blue) theme="blue";;
+    *dark) theme="dark";;
+  esac
+  killall -KILL polybar
+  cp -f $HOME/dotfiles/themes/$theme/polybar/colors.ini ~/.config/polybar/
+  cp -f $HOME/dotfiles/themes/$theme/kitty/kitty.conf ~/.config/kitty/
+  cp -f $HOME/dotfiles/themes/$theme/rofi/* ~/.config/rofi/
+  cp -f $HOME/dotfiles/themes/$theme/vsc/* ~/.config/VSCodium/User/
+  cp -f $HOME/dotfiles/themes/$theme/vsc/* ~/.config/Code/User/
+  cp -f $HOME/dotfiles/themes/$theme/dunst/* ~/.config/dunst/
+  i3-msg restart
+  notify-send "Theme" "Theme changed to '$theme'"
+
+}
+switcher
+case $1 in
+  *rofi) switcher;;
+  *) thm $1;;
+esac

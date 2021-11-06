@@ -97,6 +97,7 @@ cd dotfiles2
 cp -fr ./.config/* $HOME/.config
 cp -f ./fonts/* ~/.local/share/fonts/
 sudo cp ./scripts/rofi/rofi-bookmarks.py /usr/local/bin 
+sudo cp ./scripts/theme.sh /usr/local/bin 
 ```
 
 ### Other Linux distributions
@@ -138,6 +139,7 @@ Uninstall  packages then run install.sh and select option uninstall.
 ## To do
 * 
 * screenshots script
+* theme script
 * battery low
 * vol and other notifigations
 * Install fonts
@@ -150,11 +152,10 @@ Uninstall  packages then run install.sh and select option uninstall.
 * dark and light theme
 * nvim theme
 * ncmpcpp theme col width
-discord first 
-patch
-wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-nvim newest ver ppa
-rofi nvim ver
+* discord first 
+* patch
+* wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
+* rofi nvim ver
 
 problem with i3 gaps, papirus icons
 curl
