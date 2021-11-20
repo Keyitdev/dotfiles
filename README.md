@@ -32,7 +32,7 @@ Install required packages.
 ```sh
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom zsh imagemagick curl neovim -y
+sudo apt install i3 kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim -y
 sudo snap install discord
 ```
 Install neovim v0.6+ (You must have installed gcc or other compiler)
@@ -73,12 +73,61 @@ Install NvChad
 ```sh
 git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 ```
+Install gtk3 theme
+```sh
+git clone https://github.com/EliverLara/Nordic.git
+sudo mv ./Nordic /usr/share/themes
+```
+Install GRUB2 theme
+```sh
+git clone https://github.com/vinceliuice/grub2-themes.git
+sudo ./grub2-themes/install.sh -b -t tela -s 1080p
+```
 Install bettter discord (Warning: You must run discord at least once before installing betterdiscord)
 ```sh
 curl -O https://raw.githubusercontent.com/bb010g/betterdiscordctl/master/betterdiscordctl
 chmod +x betterdiscordctl
 sudo mv betterdiscordctl /usr/local/bin
 betterdiscordctl --d-install snap install
+```
+Copy dotfiles, fonts and scripts
+```sh
+cd $HOME
+git clone https://github.com/Deerrorer/Dotfiles2
+cp -fr $HOME/dotfiles/.config/* $HOME/.config
+cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
+sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
+sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
+```
+
+### Arch
+
+Install required packages.
+```sh
+sudo pacman -Ssy
+sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
+```
+Make light executable.
+```sh
+sudo chmod +s /usr/bin/light
+```
+Install papirus icon theme
+
+```sh
+wget -qO- https://git.io/papirus-icon-theme-install | sh
+```
+Install oh my zsh
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
+```
+Set zsh as default shell
+```sh
+chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
+```
+Install NvChad
+```sh
+git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 ```
 Install gtk3 theme
 ```sh
@@ -90,23 +139,15 @@ Install GRUB2 theme
 git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes/install.sh -b -t tela -s 1080p
 ```
-
 Copy dotfiles, fonts and scripts
 ```sh
-cd dotfiles2
-cp -fr ./.config/* $HOME/.config
-cp -f ./fonts/* ~/.local/share/fonts/
-sudo cp ./scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp ./scripts/theme.sh /usr/local/bin 
+cd $HOME
+git clone https://github.com/Deerrorer/Dotfiles2
+cp -fr $HOME/dotfiles/.config/* $HOME/.config
+cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
+sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
+sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
 ```
-
-### Other Linux distributions
-
-Install required packages then run install.sh and select option install.
-```sh
-./install.sh
-```
-
 ## Uninstallation
 
 ### Debian & Ubuntu (and all based distributions)

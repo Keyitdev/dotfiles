@@ -3,11 +3,13 @@
 
 switcher() {
   rofi_command="rofi -theme $HOME/.config/rofi/center.rasi"
-  options="blue\ndark"
-  chosen="$(echo "$options" | $rofi_command -dmenu -selected-row 2)"
+  options="Blue\nBlue high contrast\nDark"
+  chosen="$(echo "$options" | $rofi_command -dmenu -selected-row 2 -p "Choose theme")"
   case $chosen in
-    blue) thm -blue;;
-    dark) thm -dark;;
+    Blue) thm -Blue;;
+    "Blue high contrast") thm -blue_high_contrast;;
+    Dark) thm -Dark;;
+
   esac
 }
 
@@ -16,8 +18,10 @@ thm() {
     killall -q conky tint2 dunst xsettingsd
   fi
   case $1 in
-    *blue) theme="blue";;
-    *dark) theme="dark";;
+    *Blue) theme="blue";;
+    *blue_high_contrast) theme="blue_high_contrast";;
+    *Dark) theme="dark";;
+
   esac
   killall -KILL polybar
   cp -f $HOME/dotfiles/themes/$theme/polybar/colors.ini ~/.config/polybar/
@@ -27,7 +31,7 @@ thm() {
   cp -f $HOME/dotfiles/themes/$theme/vsc/* ~/.config/Code/User/
   cp -f $HOME/dotfiles/themes/$theme/dunst/* ~/.config/dunst/
   i3-msg restart
-  notify-send "Theme" "Theme changed to '$theme'"
+
 
 }
 switcher
@@ -35,3 +39,5 @@ case $1 in
   *rofi) switcher;;
   *) thm $1;;
 esac
+
+notify-send "Theme" "Theme changed to $chosen"
