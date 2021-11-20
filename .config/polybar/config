@@ -28,6 +28,7 @@ include-file = ~/.config/polybar/modules/temperature.ini
 include-file = ~/.config/polybar/modules/network.ini
 include-file = ~/.config/polybar/modules/mpd.ini
 include-file = ~/.config/polybar/modules/playerctl.ini
+include-file = ~/.config/polybar/modules/uptime.ini
 include-file = ~/.config/polybar/modules/keyboard.ini
 
 fixed-center = true
@@ -140,8 +141,8 @@ font-2 = "feather:size=13;5"
 ; modules-center = right1 date left1 sep right1 filesystem left1 
 ; modules-right =  right1 temperature left1 sep  right1 cpu  left1 sep right1 memory left1 sep right1 backlight left1 sep right1 alsa left1 sep right1 battery left1 sep right1 
 
-modules-left = sep2 i3 left1 sep right1 network left1 sep right1 mpd left1
-modules-center = right1 date left1 
+modules-left = sep2 i3 left1 sep right1 network left1 sep right1 mpd left1 sep right1 uptime left1
+modules-center = right1 date left1  
 modules-right =  right1 temperature left1 sep  right1 cpu  left1 sep right1 memory left1 sep right1 filesystem left1 sep right1 backlight left1 sep right1 alsa left1 sep right1 battery left1 sep right1 
 
 ; The separator will be inserted between the output of each module
