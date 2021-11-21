@@ -282,6 +282,9 @@ mode "$mode_gaps_outer" {
 #Run picom
 exec_always --no-startup-id picom &
 
+#Run mpd
+exec_always --no-startup-id mpd &
+
 #Wallpaper
 exec_always feh --bg-scale $HOME/Pictures/Wallpapers/8.jpg
 
@@ -292,6 +295,3 @@ exec_always --no-startup-id killall -q
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec_always --no-startup-id  $HOME/Documents/Dotfiles/scripts/battery_low.sh
-
-
-

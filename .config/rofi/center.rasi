@@ -25,10 +25,10 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-	border:							0px;
+	border:							2px;
 	border-color:					@ac;
     border-radius:                  12px;
-	width:							40%;
+	width:							50%;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -68,8 +68,8 @@ inputbar {
 listview {
     background-color:               @al;
     padding:                        10px;
-    columns:                        5;
-    lines:                          3;
+    columns:                        6;
+    lines:                          4;
     spacing:                        0%;
     cycle:                          false;
     dynamic:                        true;
@@ -95,11 +95,15 @@ element {
 }
 
 element-icon {
+    horizontal-align: 0.5;
     size:                           49px;
     border:                         0px;
+    background-color:               @bg;
 }
 
 element-text {
+    background-color:               @bg;
+    text-color:                     @fg;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
@@ -112,4 +116,17 @@ element selected {
 	border:							0% 0% 0% 0%;
     border-radius:                  12px;
     border-color:                  	@bg;
+}
+element-icon selected {
+    size:                           49px;
+    border:                         0px;
+    background-color:               @se;
+}
+element-text selected {
+    background-color:               @se;
+    text-color:                     @fg;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
 }

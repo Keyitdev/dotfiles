@@ -197,9 +197,9 @@ Uninstall  packages then run install.sh and select option uninstall.
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
 * rofi nvim ver
-
-problem with i3 gaps, papirus icons
-curl
+* https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf
+* problem with i3 gaps, papirus icons
+* curl
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:

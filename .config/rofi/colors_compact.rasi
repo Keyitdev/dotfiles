@@ -1,31 +1,9 @@
-//----------------------
-// Colors
-//----------------------
+/* colors */
 
 * {
-    selected-normal-foreground:  #fff;
-    foreground:                  rgba(216, 222, 233, 100%);
-    normal-foreground:           @foreground;
-    alternate-normal-background: #201e21;
-    selected-urgent-foreground:  rgba(216, 222, 233, 100%);
-    urgent-foreground:           @foreground;
-    alternate-urgent-background: rgba(46, 52, 64, 100%);
-    active-foreground:           @foreground;
-    selected-active-foreground:  @foreground;
-    alternate-active-background: rgba(46, 52, 64, 100%);
-    bordercolor:                 #201e21;
-    background:                  #19171a;
-    alternate-normal-foreground: @foreground;
-    normal-background:           @background;
-    selected-normal-background:  #ee774f;
-    border-color:                #302e31;
-    spacing:                     2;
-    separatorcolor:              @blue;
-    urgent-background:           @background;
-    selected-urgent-background:  rgba(76, 86, 106, 100%);
-    alternate-urgent-foreground: @urgent-foreground;
-    background-color:            @background;
-    alternate-active-foreground: @active-foreground;
-    active-background:           @background;
-    selected-active-background:  rgba(76, 86, 106, 100%);
+  al:  #00000000;
+  bg:  #21222c;
+  se:  #343746;
+  fg:  #FFFFFFff;
+  ac:  #343746;
 }

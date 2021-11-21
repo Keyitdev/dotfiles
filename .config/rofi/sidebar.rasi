@@ -25,7 +25,7 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-	border:			            	0px;
+	border:			            	0px 2px 0px 0px;
 	border-color:			       	@ac;
     border-radius:                  0px;
     height:                         100%;
@@ -96,11 +96,15 @@ element {
 }
 
 element-icon {
+    horizontal-align: 0.5;
     size:                           49px;
     border:                         0px;
+    background-color:               @bg;
 }
 
 element-text {
+    background-color:               @bg;
+    text-color:                     @fg;
     expand:                         true;
     horizontal-align:               0.5;
     vertical-align:                 0.5;
@@ -113,4 +117,17 @@ element selected {
 	border:							0% 0% 0% 0%;
     border-radius:                  12px;
     border-color:                  	@bg;
+}
+element-icon selected {
+    size:                           49px;
+    border:                         0px;
+    background-color:               @se;
+}
+element-text selected {
+    background-color:               @se;
+    text-color:                     @fg;
+    expand:                         true;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         0.5% 0.5% -0.5% 0.5%;
 }

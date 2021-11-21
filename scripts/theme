@@ -2,7 +2,7 @@
 #!/bin/sh
 
 switcher() {
-  rofi_command="rofi -theme $HOME/.config/rofi/center.rasi"
+  rofi_command="rofi -theme $HOME/.config/rofi/compact.rasi"
   options="Blue\nBlue high contrast\nDark"
   chosen="$(echo "$options" | $rofi_command -dmenu -selected-row 2 -p "Choose theme")"
   case $chosen in
@@ -14,7 +14,7 @@ switcher() {
 }
 
 thm() {
-  if ! [ "$1" = "" ]; then 
+  if ! [ "$1" = "" ]; then
     killall -q conky tint2 dunst xsettingsd
   fi
   case $1 in
