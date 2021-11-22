@@ -172,7 +172,7 @@ bindsym $mod+r mode "resize"
 #Rofi launcher
 bindsym $mod+z exec "rofi -show drun -config ~/.config/rofi/sidebar.rasi"
 bindsym $mod+x exec "rofi -show drun -config ~/.config/rofi/center.rasi"
-bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -config ~/.config/rofi/center.rasi"
+bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -config ~/.config/rofi/compact.rasi"
 bindsym $mod+t exec "theme"
 #Screenshots
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
@@ -294,4 +294,4 @@ exec_always --no-startup-id killall -q
 #Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id  $HOME/Documents/Dotfiles/scripts/battery_low.sh
+exec_always --no-startup-id $HOME/dotfiles/scripts/battery_low.sh&

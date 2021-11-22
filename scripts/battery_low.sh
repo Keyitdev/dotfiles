@@ -1,36 +1,35 @@
-# #!/bin/bash
+#!/bin/bash
 
-# DIR="$HOME/Documents/Dotfiles/scripts/icons"
-# ADAPTER=$(cat /sys/class/power_supply/ACAD/online)
-# BATTERY=$(cat /sys/class/power_supply/BAT1/capacity)
+for pid in $(pidof -x battery_low.sh); do
+    if [ $pid != $$ ]; then
+        kill -9 $pid
+    fi
+done
 
+DIR="$HOME/dotfiles/scripts/icons"
 
+# Notify when below this percentage
+warning_level=15
 
-# # while [ 1 ]
-# # do
-# #   if [ $(cat /sys/class/power_supply/ACAD/online) = "0" ] && \
-# #    [ $(cat /sys/class/power_supply/BAT1/capacity) \< "20" ]; then
-# #        # Display Notification
-# #        if [ $DISPLAY ]; then notify-send -t 8000 "Battery is low ($(cat /sys/class/power_supply/BAT1/capacity)%)" "Plug in to AC or Suspend immediately"; fi
-# # fi
-# #   sleep 120s
-# # done
-# while [ 1 ]
-# do
-# if (($BATTERY < 95 && $ADAPTER < 1)); then
-#         dunstify -a "Battery" \
-#         "Battery" \
-#         "Low" \
-#         -r 100 \
-#         -i $DIR/sun.svg
-# else
-#         dunstify -a "Battery" \
-#         "Battery" \
-#         "Not low" \
-#         -r 100 \
-#         -i $DIR/moon.svg
-# fi
-# done
+# How often to check battery status, in minutes
+check_interval=1
 
-# echo $ADAPTER
-# echo $BATTERY
+while true; do
+  battery_level=$(acpi -b \
+    | cut -d, -f2 | cut --characters=2,3,4 \
+    | sed 's/%//g')
+  charging=$(acpi -b | grep -c "Charging")
+
+  # When battery is low, and not already charging
+  if [ $battery_level -lt $warning_level ] &&
+     [ $charging -eq 0 ]
+  then
+    dunstify -a "Battery" \
+        "Low battery: ${battery_level}%" \
+        "Battery is running low" \
+        -r 100 \
+        -i $DIR/battery.svg
+  fi
+
+  sleep ${check_interval}m
+done

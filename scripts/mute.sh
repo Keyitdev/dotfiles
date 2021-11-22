@@ -12,26 +12,26 @@ negative="no"
 if [[ $MUTE = $affirmative ]]; then
         dunstify -a "Mute" \
         "Mute" \
-        "yes" \
+        "Muted" \
         -r 100 \
         -i $DIR/volume-x.svg
 elif [[ $MUTE = $negative ]]; then
         if (($CUR_VOL > -1 && $CUR_VOL < 33)); then
             dunstify -a "Mute" \
             "Mute" \
-            "no" \
+            "Unmuted" \
             -r 100 \
             -i $DIR/volume.svg
         elif (($CUR_VOL > 32 && $CUR_VOL < 66)); then
             dunstify -a "Mute" \
             "Mute" \
-            "no" \
+            "Unmuted" \
             -r 100 \
             -i $DIR/volume-1.svg
         elif (($CUR_VOL > 65 && $CUR_VOL < 101)); then
             dunstify -a "Mute" \
             "Mute" \
-            "no" \
+            "Unmuted" \
             -r 100 \
             -i $DIR/volume-2.svg
         fi

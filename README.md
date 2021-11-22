@@ -3,21 +3,19 @@
 ## Required packages and system informations:
 |Program|Name|
 |-|-|
-|**Window Manager**|[i3](https://github.com/i3/i3), (if you want gaps also [i3-gaps](https://github.com/Airblader/i3))|
+|**Window Manager**|[i3-gaps](https://github.com/Airblader/i3)|
 |**Compositor**|[picom](https://github.com/yshui/picom)
 |**Terminal emullator**|[kitty](https://github.com/kovidgoyal/kitty)|
 |**Shell**|zsh (5.8)|
-|**Shell theme**|[ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)|
+|**Shell theme**|[oh my zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Bar**|[polybar](https://github.com/polybar/polybar)|
 |**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
 |**X11 walpaper**|[feh](https://github.com/derf/feh)|
 |**Brightness control**|[light](https://github.com/haikarainen/light)|
 |**Music offline**|Server: [mpd](https://github.com/MusicPlayerDaemon/MPD), client: [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
-|**Music online**|[spotify](https://www.spotify.com), optional control for polybar : [playerctl](https://github.com/altdesktop/playerctl).|
-|**Spotify theme**|
 |**Screenshots**|[xclip](https://github.com/astrand/xclip), [scrot](https://github.com/dreamer/scrot)|
-|**Text editor**|[VSCode](https://github.com/Microsoft/vscode) (works with [VSCodium](https://vscodium.com/)), [neovim](https://github.com/neovim/neovim)|
+|**Text editor**|[VSCode](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
 |**VSC theme**|
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
 |**Fonts**|[Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf), [Isovaka Nerd Font](https://www.nerdfonts.com/), [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)|
@@ -179,27 +177,21 @@ Uninstall  packages then run install.sh and select option uninstall.
 
 ## To do
 * 
-* screenshots script
 * theme script
 * battery low
 * vol and other notifigations
 * Install fonts
 * wallpapers
-* 
-* spotify theme isntall
+* polybar themes
 * sddm
-* 
+* rofi themes
 * firefox
 * dark and light theme
-* nvim theme
-* ncmpcpp theme col width
 * discord first 
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-* rofi nvim ver
 * https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf
-* problem with i3 gaps, papirus icons
-* curl
+* problem with papirus icons
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
