@@ -178,8 +178,6 @@ Uninstall  packages then run install.sh and select option uninstall.
 ## To do
 * 
 * theme script
-* battery low
-* vol and other notifigations
 * Install fonts
 * wallpapers
 * polybar themes
@@ -187,7 +185,6 @@ Uninstall  packages then run install.sh and select option uninstall.
 * rofi themes
 * firefox
 * dark and light theme
-* discord first 
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
 * https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf

@@ -8,6 +8,8 @@ MUTE=$(pactl list sinks | grep Mute | sed 's/.*Mute: //g')
 affirmative="yes"
 negative="no"
 
+VOL_QUIET=33
+VOL_LOUD=66
 
 if [[ $MUTE = $affirmative ]]; then
         dunstify -a "Mute" \
@@ -16,19 +18,21 @@ if [[ $MUTE = $affirmative ]]; then
         -r 100 \
         -i $DIR/volume-x.svg
 elif [[ $MUTE = $negative ]]; then
-        if (($CUR_VOL > -1 && $CUR_VOL < 33)); then
+        if [ $CUR_VOL -le $VOL_QUIET ]; then
             dunstify -a "Mute" \
             "Mute" \
             "Unmuted" \
             -r 100 \
             -i $DIR/volume.svg
-        elif (($CUR_VOL > 32 && $CUR_VOL < 66)); then
+        fi
+        if [ $CUR_VOL -gt $VOL_QUIET ] && [ $CUR_VOL -le $VOL_LOUD ]; then
             dunstify -a "Mute" \
             "Mute" \
             "Unmuted" \
             -r 100 \
             -i $DIR/volume-1.svg
-        elif (($CUR_VOL > 65 && $CUR_VOL < 101)); then
+        fi
+        if [ $CUR_VOL -gt $VOL_LOUD ]; then
             dunstify -a "Mute" \
             "Mute" \
             "Unmuted" \
@@ -36,5 +40,5 @@ elif [[ $MUTE = $negative ]]; then
             -i $DIR/volume-2.svg
         fi
 
-fi
+    fi
 echo $MUTE

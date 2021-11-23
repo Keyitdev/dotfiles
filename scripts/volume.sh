@@ -5,23 +5,27 @@ DIR="$HOME/dotfiles/scripts/icons"
 CUR_VOL=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
     head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
-if (($CUR_VOL > -1 && $CUR_VOL < 33)); then
+VOL_QUIET=33
+VOL_LOUD=66
+
+if [ $CUR_VOL -le $VOL_QUIET ]; then
     dunstify -a "Volume" \
     "Volume" \
     "Current volume is $CUR_VOL%" \
     -r 100 \
     -i $DIR/volume.svg
-elif (($CUR_VOL > 32 && $CUR_VOL < 66)); then
+    fi
+if [ $CUR_VOL -gt $VOL_QUIET ] && [ $CUR_VOL -le $VOL_LOUD ]; then
     dunstify -a "Volume" \
     "Volume" \
     "Current volume is $CUR_VOL%" \
     -r 100 \
     -i $DIR/volume-1.svg
-elif (($CUR_VOL > 65 && $CUR_VOL < 101)); then
+    fi
+if [ $CUR_VOL -gt $VOL_LOUD ]; then
     dunstify -a "Volume" \
     "Volume" \
     "Current volume is $CUR_VOL%" \
     -r 100 \
     -i $DIR/volume-2.svg
-
 fi
