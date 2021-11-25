@@ -48,7 +48,7 @@ case $vid in
 esac
 
 # install xorg if not installed
-sudo pacman -S --noconfirm --needed i3 kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim $DRI
+sudo pacman -S --noconfirm --needed kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim $DRI
 
 # Make light executable
 sudo chmod +s /usr/bin/light
@@ -86,53 +86,6 @@ $HELPER -S picom-jonaburg-git\
 #install custom picom config file 
 mkdir -p ~/.config/
 # cd .config/
-# git clone https://gist.github.com/f70dea1449cfae856d42b771912985f9.git ./picom 
-    if [ -d ~/.config/rofi ]; then
-        echo "Rofi configs detected, backing up..."
-        mkdir ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
-        cp -r ./config/rofi/* ~/.config/rofi;
-    else
-        echo "Installing rofi configs..."
-        mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
-    fi
-    sleep 5
-    # echo "1)1366 x 768       2)1920 x 1080"
-    # read -r -p "Choose your screen resolution: " res
-    # case $res in 
-    # [1])
-	# EWW_DIR='config/eww-1366'
-	# ;;
-    # [2])
-	# EWW_DIR='config/eww-1920'
-	# ;;
-    # [*])
-	# EWW_DIR='config/eww-1366'
-	# ;;
-    # esac
-    # if [ -d ~/.config/eww ]; then
-    #     echo "Eww configs detected, backing up..."
-    #     mkdir ~/.config/eww.old && mv ~/.config/eww/* ~/.config/eww.old/
-    #     cp -r ./$EWW_DIR/* ~/.config/eww;
-    # else
-    #     echo "Installing eww configs..."
-    #     mkdir ~/.config/eww && cp -r ./$EWW_DIR/* ~/.config/eww;
-    # fi
-    if [ -f ~/.config/picom.conf ]; then
-        echo "Picom configs detected, backing up..."
-        cp ~/.config/picom.conf ~/.config/picom.conf.old;
-        cp ./config/picom.conf ~/.config/picom.conf;
-    else
-        echo "Installing picom configs..."
-         cp ./config/picom.conf ~/.config/picom.conf;
-    fi
-    if [ -f ~/.config/kitty.conf ]; then
-        echo "kitty configs detected, backing up..."
-        cp ~/.config/kitty.conf ~/.config/kitty.conf.old;
-        cp ./config/kitty.conf ~/.config/kitty.conf;
-    else
-        echo "Installing kitty configs..."
-         cp ./config/kitty.conf ~/.config/kitty.conf;
-    fi
     if [ -d ~/.config/dunst ]; then
         echo "Dunst configs detected, backing up..."
         mkdir ~/.config/dunst.old && mv ~/.config/dunst/* ~/.config/dunst.old/
@@ -141,20 +94,77 @@ mkdir -p ~/.config/
         echo "Installing dunst configs..."
         mkdir ~/.config/dunst && cp -r ./config/dunst/* ~/.config/dunst;
     fi
-    if [ -d ~/wallpapers ]; then
-        echo "Adding wallpaper to ~/wallpapers..."
-        cp ./wallpapers/yosemite-lowpoly.jpg ~/wallpapers/;
+    if [ -d ~/.config/gtk-3.0 ]; then
+        echo "Gtk-3.0 configs detected, backing up..."
+        mkdir ~/.config/gtk-3.0.old && mv ~/.config/gtk-3.0/* ~/.config/gtk-3.0.old/
+        cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
     else
-        echo "Installing wallpaper..."
-        mkdir ~/wallpapers && cp -r ./wallpapers/* ~/wallpapers/;
+        echo "Installing gtk-3.0 configs..."
+        mkdir ~/.config/gtk-3.0 && cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
     fi
-    if [ -d ~/.i3 ]; then
-        echo "XMonad configs detected, backing up..."
-        mkdir ~/.i3.old && mv ~/.i3/* ~/.i3.old/
-        cp -r ./i3/* ~/.i3/;
+    if [ -d ~/.config/i3 ]; then
+        echo "I3 configs detected, backing up..."
+        mkdir ~/.config/i3.old && mv ~/.config/i3/* ~/.config/i3.old/
+        cp -r ./config/i3/* ~/.config/i3;
     else
         echo "Installing i3 configs..."
-        mkdir ~/.xmonad && cp -r ./xmonad/* ~/.xmonad;
+        mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
+    fi
+    if [ -d ~/.config/kitty ]; then
+        echo "Kitty configs detected, backing up..."
+        mkdir ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
+        cp -r ./config/kitty/* ~/.config/kitty;
+    else
+        echo "Installing kitty configs..."
+        mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
+    fi
+    if [ -d ~/.config/mpd ]; then
+        echo "MPD configs detected, backing up..."
+        mkdir ~/.config/mpd.old && mv ~/.config/mpd/* ~/.config/mpd.old/
+        cp -r ./config/mpd/* ~/.config/mpd;
+    else
+        echo "Installing mpd configs..."
+        mkdir ~/.config/mpd && cp -r ./config/mpd/* ~/.config/mpd;
+    fi
+        if [ -d ~/.config/ncmpcpp ]; then
+        echo "Ncmpcpp configs detected, backing up..."
+        mkdir ~/.config/ncmpcpp.old && mv ~/.config/ncmpcpp/* ~/.config/ncmpcpp.old/
+        cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
+    else
+        echo "Installing ncmpcpp configs..."
+        mkdir ~/.config/ncmpcpp && cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
+    fi
+        if [ -d ~/.config/picom ]; then
+        echo "Picom configs detected, backing up..."
+        mkdir ~/.config/picom.old && mv ~/.config/picom/* ~/.config/picom.old/
+        cp -r ./config/picom/* ~/.config/picom;
+    else
+        echo "Installing picom configs..."
+        mkdir ~/.config/picom && cp -r ./config/picom/* ~/.config/picom;
+    fi
+        if [ -d ~/.config/polybar ]; then
+        echo "Polybar configs detected, backing up..."
+        mkdir ~/.config/polybar.old && mv ~/.config/polybar/* ~/.config/polybar.old/
+        cp -r ./config/polybar/* ~/.config/polybar;
+    else
+        echo "Installing polybar configs..."
+        mkdir ~/.config/polybar && cp -r ./config/polybar/* ~/.config/polybar;
+    fi
+        if [ -d ~/.config/ranger ]; then
+        echo "Ranger configs detected, backing up..."
+        mkdir ~/.config/ranger.old && mv ~/.config/ranger/* ~/.config/ranger.old/
+        cp -r ./config/ranger/* ~/.config/ranger;
+    else
+        echo "Installing ranger configs..."
+        mkdir ~/.config/ranger && cp -r ./config/ranger/* ~/.config/ranger;
+    fi
+        if [ -d ~/.config/rofi ]; then
+        echo "Rofi configs detected, backing up..."
+        mkdir ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
+        cp -r ./config/rofi/* ~/.config/rofi;
+    else
+        echo "Installing rofi configs..."
+        mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
     fi
     if [ -d ~/bin ]; then
         echo "~/bin detected, backing up..."
