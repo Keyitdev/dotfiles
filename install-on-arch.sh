@@ -61,6 +61,9 @@ cp -r ./fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear 
 
+mkdir -p /usr/local/bin
+cp -r ./scripts/* /usr/local/bin
+
 echo "We need an AUR helper. It is essential. 1) paru       2) yay"
 read -r -p "What is the AUR helper of your choice? (Default is paru): " num
 
@@ -88,7 +91,7 @@ mkdir -p ~/.config/
     if [ -d ~/.config/dunst ]; then
         echo "Dunst configs detected, backing up..."
         mkdir ~/.config/dunst.old && mv ~/.config/dunst/* ~/.config/dunst.old/
-        cp -r ./config/dunst/* ~/.config/dunst;
+        cp -r ./config/dunst/ ~/.config/old;
     else
         echo "Installing dunst configs..."
         mkdir ~/.config/dunst && cp -r ./config/dunst/* ~/.config/dunst;
@@ -96,7 +99,7 @@ mkdir -p ~/.config/
     if [ -d ~/.config/gtk-3.0 ]; then
         echo "Gtk-3.0 configs detected, backing up..."
         mkdir ~/.config/gtk-3.0.old && mv ~/.config/gtk-3.0/* ~/.config/gtk-3.0.old/
-        cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
+        cp -r ./config/gtk-3.0/ ~/.config/old;
     else
         echo "Installing gtk-3.0 configs..."
         mkdir ~/.config/gtk-3.0 && cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
@@ -104,7 +107,7 @@ mkdir -p ~/.config/
     if [ -d ~/.config/i3 ]; then
         echo "I3 configs detected, backing up..."
         mkdir ~/.config/i3.old && mv ~/.config/i3/* ~/.config/i3.old/
-        cp -r ./config/i3/* ~/.config/i3;
+        cp -r ./config/i3/ ~/.config/old;
     else
         echo "Installing i3 configs..."
         mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
@@ -112,7 +115,7 @@ mkdir -p ~/.config/
     if [ -d ~/.config/kitty ]; then
         echo "Kitty configs detected, backing up..."
         mkdir ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
-        cp -r ./config/kitty/* ~/.config/kitty;
+        cp -r ./config/kitty/ ~/.config/old;
     else
         echo "Installing kitty configs..."
         mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
@@ -120,7 +123,7 @@ mkdir -p ~/.config/
     if [ -d ~/.config/mpd ]; then
         echo "MPD configs detected, backing up..."
         mkdir ~/.config/mpd.old && mv ~/.config/mpd/* ~/.config/mpd.old/
-        cp -r ./config/mpd/* ~/.config/mpd;
+        cp -r ./config/mpd/ ~/.config/old;
     else
         echo "Installing mpd configs..."
         mkdir ~/.config/mpd && cp -r ./config/mpd/* ~/.config/mpd;
@@ -128,7 +131,7 @@ mkdir -p ~/.config/
         if [ -d ~/.config/ncmpcpp ]; then
         echo "Ncmpcpp configs detected, backing up..."
         mkdir ~/.config/ncmpcpp.old && mv ~/.config/ncmpcpp/* ~/.config/ncmpcpp.old/
-        cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
+        cp -r ./config/ncmpcpp/ ~/.config/old;
     else
         echo "Installing ncmpcpp configs..."
         mkdir ~/.config/ncmpcpp && cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
@@ -136,7 +139,7 @@ mkdir -p ~/.config/
         if [ -d ~/.config/picom ]; then
         echo "Picom configs detected, backing up..."
         mkdir ~/.config/picom.old && mv ~/.config/picom/* ~/.config/picom.old/
-        cp -r ./config/picom/* ~/.config/picom;
+        cp -r ./config/picom/ ~/.config/old;
     else
         echo "Installing picom configs..."
         mkdir ~/.config/picom && cp -r ./config/picom/* ~/.config/picom;
@@ -144,7 +147,7 @@ mkdir -p ~/.config/
         if [ -d ~/.config/polybar ]; then
         echo "Polybar configs detected, backing up..."
         mkdir ~/.config/polybar.old && mv ~/.config/polybar/* ~/.config/polybar.old/
-        cp -r ./config/polybar/* ~/.config/polybar;
+        cp -r ./config/polybar/ ~/.config/old;
     else
         echo "Installing polybar configs..."
         mkdir ~/.config/polybar && cp -r ./config/polybar/* ~/.config/polybar;
@@ -152,7 +155,7 @@ mkdir -p ~/.config/
         if [ -d ~/.config/ranger ]; then
         echo "Ranger configs detected, backing up..."
         mkdir ~/.config/ranger.old && mv ~/.config/ranger/* ~/.config/ranger.old/
-        cp -r ./config/ranger/* ~/.config/ranger;
+        cp -r ./config/ranger/ ~/.config/old;
     else
         echo "Installing ranger configs..."
         mkdir ~/.config/ranger && cp -r ./config/ranger/* ~/.config/ranger;
@@ -160,7 +163,7 @@ mkdir -p ~/.config/
         if [ -d ~/.config/rofi ]; then
         echo "Rofi configs detected, backing up..."
         mkdir ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
-        cp -r ./config/rofi/* ~/.config/rofi;
+        cp -r ./config/rofi/ ~/.config/old;
     else
         echo "Installing rofi configs..."
         mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
