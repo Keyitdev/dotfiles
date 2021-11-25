@@ -22,12 +22,15 @@
   </p>
 </div>
 
+<div align="center">
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
+</div>
 
 ## Showcase
 
@@ -272,6 +275,32 @@ sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin
 </details>
 
 ## Keybinds
+
+These are the basic keybinds. Read through the `xmonad/xmonad.hs` file for more keybinds like increasing gaps and restoring gaps.
+
+|        Keybind         |                 Function                 |
+| ---------------------- | ---------------------------------------- |
+| `Win + Shift + Enter`  | Launch terminal (alacritty)              |
+| `Win + Shift + C`      | Close window                             |
+| `Win + O`              | Open rofi menu                           |
+| `Win + Shift + Q`      | Open rofi powermenu                      |
+| `Win + S`              | Open sidebar                             |
+| `Win + Shift + S`      | Close sidebar                            |
+| `Win + P`              | Open dashboard                           |
+| `Win + Shift + P`      | Close dashboard                          |
+| `Win + B`              | Toggle the main bars                     |
+| `Win + Z`              | Activate inhibitor (Stops autolocking)   |
+| `Win + Shift + Z`      | Dectivate inhibitor (Enables autolocking)|
+| `Win + Ctrl + G`       | Toggle gaps (toggle to get screen space) |
+| `Win + J`              | Navigate through windows                 |
+| `Win + K`              | Navigate through windows                 |
+| `Win + Space`          | Switch through layouts                   |
+| `Win + T`              | Make a floating window tiled             |
+
+Note: `Toggling` means to enable if inactive or to disable if active.
+
+
+Note: `Win` refers to the `Super` key.
 
 ## Big thanks to
 
