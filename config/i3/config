@@ -173,7 +173,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+z exec "rofi -show drun -config ~/.config/rofi/sidebar.rasi"
 bindsym $mod+x exec "rofi -show drun -config ~/.config/rofi/center.rasi"
 bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -config ~/.config/rofi/compact.rasi"
-bindsym $mod+t exec "theme"
+bindsym $mod+t exec "theme.sh"
 #Screenshots
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
 
@@ -183,8 +183,8 @@ bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
 
 #Brightness control
 exec_always --no-startup-id light -I
-bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && $HOME/dotfiles/scripts/brightness.sh &
-bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && $HOME/dotfiles/scripts/brightness.sh &
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness.sh &
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness.sh &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -193,9 +193,9 @@ set $refresh_i3status killall -SIGUSR1 i3status
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && $refresh_i3status && $HOME/dotfiles/scripts/volume.sh &
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && $refresh_i3status && $HOME/dotfiles/scripts/volume.sh &
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && $HOME/dotfiles/scripts/mute.sh &
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && $refresh_i3status && volume.sh &
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && $refresh_i3status && volume.sh &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status && mute.sh &
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #Turn off screen
@@ -294,4 +294,4 @@ exec_always --no-startup-id killall -q
 #Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id $HOME/dotfiles/scripts/battery_low.sh&
+exec_always --no-startup-id battery.sh&
