@@ -62,7 +62,7 @@ fc-cache -f
 clear 
 
 mkdir -p /usr/local/bin
-cp -r ./scripts/* /usr/local/bin
+sudo cp -r ./scripts/* /usr/local/bin
 
 echo "We need an AUR helper. It is essential. 1) paru       2) yay"
 read -r -p "What is the AUR helper of your choice? (Default is paru): " num
