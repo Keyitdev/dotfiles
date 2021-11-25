@@ -48,7 +48,7 @@ case $vid in
 esac
 
 # install xorg if not installed
-sudo pacman -S --noconfirm --needed i3 i3-gaps kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim $DRI
+sudo pacman -S --noconfirm --needed i3 kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim $DRI
 
 # Make light executable
 sudo chmod +s /usr/bin/light
