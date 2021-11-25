@@ -76,8 +76,7 @@ then
 	(cd ~/.srcs/$HELPER/ && makepkg -si )
 fi
 
-$HELPER -S picom-jonaburg-git\
-	   acpi              \
+$HELPER -S acpi          \
 	   polybar           \
 	   playerctl         \
 	   scrot             \
@@ -116,7 +115,7 @@ mkdir -p ~/.config/
         cp -r ./config/kitty/* ~/.config/kitty;
     else
         echo "Installing kitty configs..."
-        mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
+        mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
     fi
     if [ -d ~/.config/mpd ]; then
         echo "MPD configs detected, backing up..."
@@ -166,45 +165,45 @@ mkdir -p ~/.config/
         echo "Installing rofi configs..."
         mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
     fi
-    if [ -d ~/bin ]; then
-        echo "~/bin detected, backing up..."
-        mkdir ~/bin.old && mv ~/bin/* ~/bin.old/
-        cp -r ./bin/* ~/bin;
-	clear
-    else
-        echo "Installing bin scripts..."
-        mkdir ~/bin && cp -r ./bin/* ~/bin/;
-	clear
-        SHELLNAME=$(echo $SHELL | grep -o '[^/]*$')
-        case $SHELLNAME in
-            bash)
-                if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
-                    echo "Looks like $HOME/bin is not on your PATH, adding it now."
-                    echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.bashrc
-                else
-                    echo "$HOME/bin is already in your PATH. Proceeding."
-                fi
-                ;;
+    # if [ -d ~/bin ]; then
+    #     echo "~/bin detected, backing up..."
+    #     mkdir ~/bin.old && mv ~/bin/* ~/bin.old/
+    #     cp -r ./bin/* ~/bin;
+	# clear
+    # else
+    #     echo "Installing bin scripts..."
+    #     mkdir ~/bin && cp -r ./bin/* ~/bin/;
+	# clear
+    #     SHELLNAME=$(echo $SHELL | grep -o '[^/]*$')
+    #     case $SHELLNAME in
+    #         bash)
+    #             if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
+    #                 echo "Looks like $HOME/bin is not on your PATH, adding it now."
+    #                 echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.bashrc
+    #             else
+    #                 echo "$HOME/bin is already in your PATH. Proceeding."
+    #             fi
+    #             ;;
 
-            zsh)
-                if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
-                    echo "Looks like $HOME/bin is not on your PATH, adding it now."
-                    echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.zshrc
-                else
-                    echo "$HOME/bin is already in your PATH. Proceeding."
-                fi
-                ;;
+    #         zsh)
+    #             if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
+    #                 echo "Looks like $HOME/bin is not on your PATH, adding it now."
+    #                 echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.zshrc
+    #             else
+    #                 echo "$HOME/bin is already in your PATH. Proceeding."
+    #             fi
+    #             ;;
 
-            fish)
-                echo "I see you use fish. shahab96 likes your choice."
-                fish -c fish_add_path -P $HOME/bin
-                ;;
+    #         fish)
+    #             echo "I see you use fish. shahab96 likes your choice."
+    #             fish -c fish_add_path -P $HOME/bin
+    #             ;;
 
-            *)
-                echo "Please add: export PATH='\$PATH:$HOME/bin' to your .bashrc or whatever shell you use."
-                echo "If you know how to add stuff to shells other than bash, zsh and fish please help out here!"
-        esac
-    fi
+    #         *)
+    #             echo "Please add: export PATH='\$PATH:$HOME/bin' to your .bashrc or whatever shell you use."
+    #             echo "If you know how to add stuff to shells other than bash, zsh and fish please help out here!"
+    #     esac
+    # fi
     
 
 # # done 

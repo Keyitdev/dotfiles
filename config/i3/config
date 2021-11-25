@@ -170,9 +170,9 @@ bindsym $mod+r mode "resize"
 ### CUSTOM SHORTCUTS ###
 
 #Rofi launcher
-bindsym $mod+z exec "rofi -show drun -config ~/.config/rofi/sidebar.rasi"
-bindsym $mod+x exec "rofi -show drun -config ~/.config/rofi/center.rasi"
-bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -config ~/.config/rofi/compact.rasi"
+bindsym $mod+z exec "rofi -show drun -no-default-config -config ~/.config/rofi/sidebar.rasi"
+bindsym $mod+x exec "rofi -show drun -no-default-config -config ~/.config/rofi/center.rasi"
+bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+t exec "theme.sh"
 #Screenshots
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
