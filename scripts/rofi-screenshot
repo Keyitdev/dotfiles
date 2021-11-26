@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+# rofi theme
+THEME="$HOME/.config/rofi/compact.rasi"
+
+get_options() {
+  # echo "  Capture Region  Clip"
+  # echo "  Capture Region  File"
+  # echo "  Capture Screen  Clip"
+  # echo "  Capture Screen  File"
+  echo "  Record Region (GIF)"
+  echo "  Record Screen (GIF)"
+  echo "  Record Region (MP4)"
+  echo "  Record Screen (MP4)"
+  echo "  Record Region (MP4+audio_virt)"
+  echo "  Record Region (MP4+audio_mic)"
+  echo "  Record Audio virt"
+  echo "  Record Audio mic"
+  echo "  Stop Recording"
+}
+
+main() {
+
+  # Get choice from rofi
+  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$THEME")
+
+  # If user has not picked anything, exit
+  if [[ -z "${choice// /}" ]]; then
+    exit 1
+  fi
+
+  # run the selected command
+  case $choice in
+  '  Capture Region  Clip')
+    screenshot -crtc
+    ;;
+  '  Capture Region  File')
+    screenshot -crtf
+    ;;
+  '  Capture Screen  Clip')
+    screenshot -cstc
+    ;;
+  '  Capture Screen  File')
+    screenshot -cstf
+    ;;
+  '  Record Region (GIF)')
+    screenshot -rrg
+    ;;
+  '  Record Screen (GIF)')
+    screenshot -rsg
+    ;;
+  '  Record Region (MP4)')
+    screenshot -rrv
+    ;;
+  '  Record Screen (MP4)')
+    screenshot -rsv
+    ;;
+  '  Record Region (MP4+audio_virt)')
+    screenshot -rrav
+    ;;
+  '  Record Region (MP4+audio_mic)')
+    screenshot -rrmv
+    ;;
+  '  Record Audio virt')
+    screenshot -rav
+    ;;
+  '  Record Audio mic')
+    screenshot -ram
+    ;;
+  '  Stop Recording')
+    screenshot -s
+    ;;
+  esac
+
+  # done
+  set -e
+}
+
+main &
+
+exit 0

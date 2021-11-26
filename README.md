@@ -505,3 +505,4 @@ Uninstall  packages then run install.sh and select option uninstall.
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
 * https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf
 * problem with papirus icons
+* better theme (ala ghost)

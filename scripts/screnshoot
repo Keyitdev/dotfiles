@@ -1,0 +1,251 @@
+#!/usr/bin/env bash
+
+# Screenshot directory
+screenshot_directory="$HOME/Pictures/Screenshots"
+videos_directory="$HOME/Videos"
+audio_directory="$HOME/Music/record"
+
+# set ffmpeg defaults
+ffmpeg() {
+    command ffmpeg -hide_banner -loglevel error -nostdin "$@"
+}
+
+video_to_gif() {
+    ffmpeg -i "$1" -vf palettegen -f image2 -c:v png - |
+        ffmpeg -i "$1" -i - -filter_complex paletteuse "$2"
+}
+
+countdown() {
+    notify-send "Screenshot" "Recording in 3 seconds" -t 1000 -i record
+    sleep 1
+    notify-send "Screenshot" "Recording in 2 seconds" -t 1000 -i record
+    sleep 1
+    notify-send "Screenshot" "Recording in 1 seconds" -t 1000 -i record
+    sleep 1
+}
+
+# capture region to clipboard
+crtc() {
+    notify-send "Screenshot" "Select a region to capture"
+    ffcast -q $(slop -n -f '-g %g ') png /tmp/screenshot_clip.png
+    xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
+    rm /tmp/screenshot_clip.png
+    notify-send "Screenshot" "Region copied to Clipboard"
+}
+
+# capture region to file
+crtf() {
+    notify-send "Screenshot" "Select a region to capture"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q $(slop -n -f '-g %g ') png "$screenshot_directory/$dt.png"
+    notify-send "Screenshot" "Region saved to $screenshot_directory"
+}
+
+# capture screenshot to clipboard
+cstc() {
+    ffcast -q png /tmp/screenshot_clip.png
+    xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
+    rm /tmp/screenshot_clip.png
+    notify-send "Screenshot" "Screenshot copied to Clipboard"
+}
+
+# capture screenshot to file
+cstf() {
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q png "$screenshot_directory/$dt.png"
+    notify-send "Screenshot" "Screenshot saved to $screenshot_directory"
+}
+
+# record region (GIF)
+rrg() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q $(slop -n -f '-g %g ' && countdown) rec /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Converting to gif... (this can take a while)"
+    video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
+    rm /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Recording saved to $screenshot_directory"
+}
+
+# record screen (GIF)
+rsg() {
+    countdown
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q rec /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Converting to gif... (this can take a while)"
+    video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
+    rm /tmp/screenshot_gif.mp4
+    notify-send "Screenshot" "Recording saved to $screenshot_directory"
+}
+
+# record region (mp4)
+rrv() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q $(slop -n -f '-g %g ' && countdown) rec "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
+}
+
+# record screen (mp4)
+rsv() {
+    countdown
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q rec "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
+}
+
+# record screen (mp4) with audio virt
+rrav() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q $(slop -n -f '-g %g ' && countdown) ffmpeg \
+        -hide_banner \
+        -loglevel error \
+        -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
+}
+
+# record screen (mp4) with mic audio
+rrmv() {
+    notify-send "Screenshot" "Select a region to record"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q $(slop -n -f '-g %g ' && countdown) ffmpeg \
+        -hide_banner \
+        -loglevel error \
+        -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
+}
+
+# record audio virt
+rav() {
+    notify-send "Screenshot" "Starting audio recording." -i sound-recorder
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    'ffmpeg' \
+        -loglevel error \
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$audio_directory/$dt.mp3"
+    notify-send "Screenshot" "Audio saved to $audio_directory" -i sound-recorder
+}
+
+# record audio mic
+ram() {
+    notify-send "Screenshot" "Starting audio recording." -i sound-recorder
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    'ffmpeg' \
+        -loglevel error \
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$audio_directory/$dt.mp3"
+    notify-send "Screenshot" "Audio saved to $audio_directory" -i sound-recorder
+}
+
+check_deps() {
+    if ! hash $1 2>/dev/null; then
+        echo "Error: This script requires $1"
+        exit 1
+    fi
+}
+
+usage() {
+    echo USAGE: screenshot [OPTION]
+    echo -s, --stop
+    echo "    stop recording"
+    echo -h, --help
+    echo "    show help"
+    echo -crtc
+    echo "    Capture region to clipboard."
+    echo -crtf
+    echo "    Capture screen to file"
+    echo -cstc
+    echo "    Capture screen to clipboard."
+    echo -cstf
+    echo "    Capture screen to file"
+    echo -rrg
+    echo "    Record (GIF) region."
+    echo -rsg
+    echo "    Record (GIF) screen."
+    echo -rrv
+    echo "    Record (mp4/video) region."
+    echo -rsv
+    echo "    Record (mp4/video) screen."
+    echo -rrav
+    echo "    Record (mp4/video+audio(virt)) region."
+    echo -rrmv
+    echo "    Record (mp4/video+audio(mic)) region."
+    echo -rav
+    echo "    Record audio virt."
+    echo -ram
+    echo "    Record audio mic."
+    exit 1
+}
+
+main() {
+    # check dependencies
+    check_deps slop
+    check_deps ffcast
+    check_deps ffmpeg
+    check_deps xclip
+    check_deps rofi
+
+    while [ "$1" != "" ]; do
+        PARAM="$1"
+        case $PARAM in
+        -h | --help)
+            usage
+            exit
+            ;;
+        -s | --stop)
+            pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
+            pkill -fxn '(/\S+)*ffmpeg\s.*\spulse\s.*'
+            exit 1
+            ;;
+        -crtc)
+            crtc
+            ;;
+        -crtf)
+            crtf
+            ;;
+        -cstc)
+            cstc
+            ;;
+        -cstf)
+            cstf
+            ;;
+        -rrg)
+            rrg
+            ;;
+        -rsg)
+            rsg
+            ;;
+        -rrv)
+            rrv
+            ;;
+        -rsv)
+            rsv
+            ;;
+        -rrav)
+            rrav
+            ;;
+        -rrmv)
+            rrmv
+            ;;
+        -rav)
+            rav
+            ;;
+        -ram)
+            ram
+            ;;
+        *)
+            echo "ERROR: unknown parameter \"$PARAM\""
+            usage
+            exit 1
+            ;;
+        esac
+        shift
+    done
+    # done
+    set -e
+}
+
+# running the program
+main $1 &
+exit 0
