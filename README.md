@@ -34,7 +34,7 @@
 
 ## Showcase
 
-![](https://raw.githubusercontent.com/totoro-ghost/dotfiles/master/screenshots/1.png)
+![](./1.gif)
 
 ## Info
 
