@@ -71,19 +71,12 @@ curl light
 <details>
 <summary>Installation </summary>
 
-Install required packages.
-```sh
-sudo pacman -Ssy
-sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
+Clone dotfiles
 ```
-Make light executable.
-```sh
-sudo chmod +s /usr/bin/light
-```
-Install papirus icon theme
-
-```sh
-wget -qO- https://git.io/papirus-icon-theme-install | sh
+git clone https://www.github.com/derrorer/dotfiles3
+cd dotfiles3
+chmod +x install-on-arch.sh
+./install-on-arch.sh
 ```
 Install oh my zsh
 ```sh
@@ -107,171 +100,21 @@ Install GRUB2 theme
 ```sh
 git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes/install.sh -b -t tela -s 1080p
-```
-Copy dotfiles, fonts and scripts
-```sh
-cd $HOME
-git clone https://github.com/Deerrorer/Dotfiles2
-cp -fr $HOME/dotfiles/.config/* $HOME/.config
-cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
-sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
 ```
 </details>
 
 <details>
 <summary>Uninstallation</summary>
-
-Install required packages.
-```sh
-sudo pacman -Ssy
-sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
-```
-Make light executable.
-```sh
-sudo chmod +s /usr/bin/light
-```
-Install papirus icon theme
-
-```sh
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-```
-Install oh my zsh
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
-```
-Set zsh as default shell
-```sh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-```
-Install NvChad
-```sh
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-```
-Install gtk3 theme
-```sh
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
-```
-Install GRUB2 theme
-```sh
-git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes/install.sh -b -t tela -s 1080p
-```
-Copy dotfiles, fonts and scripts
-```sh
-cd $HOME
-git clone https://github.com/Deerrorer/Dotfiles2
-cp -fr $HOME/dotfiles/.config/* $HOME/.config
-cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
-sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
-```
 </details>
 
 ### Ubuntu
 
 <details>
 <summary>Installation</summary>
-
-Install required packages.
-```sh
-sudo pacman -Ssy
-sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
-```
-Make light executable.
-```sh
-sudo chmod +s /usr/bin/light
-```
-Install papirus icon theme
-
-```sh
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-```
-Install oh my zsh
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
-```
-Set zsh as default shell
-```sh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-```
-Install NvChad
-```sh
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-```
-Install gtk3 theme
-```sh
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
-```
-Install GRUB2 theme
-```sh
-git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes/install.sh -b -t tela -s 1080p
-```
-Copy dotfiles, fonts and scripts
-```sh
-cd $HOME
-git clone https://github.com/Deerrorer/Dotfiles2
-cp -fr $HOME/dotfiles/.config/* $HOME/.config
-cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
-sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
-```
 </details>
 
 <details>
 <summary>Uninstallation</summary>
-
-Install required packages.
-```sh
-sudo pacman -Ssy
-sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
-```
-Make light executable.
-```sh
-sudo chmod +s /usr/bin/light
-```
-Install papirus icon theme
-
-```sh
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-```
-Install oh my zsh
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
-```
-Set zsh as default shell
-```sh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-```
-Install NvChad
-```sh
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-```
-Install gtk3 theme
-```sh
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
-```
-Install GRUB2 theme
-```sh
-git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes/install.sh -b -t tela -s 1080p
-```
-Copy dotfiles, fonts and scripts
-```sh
-cd $HOME
-git clone https://github.com/Deerrorer/Dotfiles2
-cp -fr $HOME/dotfiles/.config/* $HOME/.config
-cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
-sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
-```
 </details>
 
 ## Keybinds
@@ -414,54 +257,6 @@ sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin
 sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
 ```
 
-### Arch
-
-Install required packages.
-```sh
-sudo pacman -Ssy
-sudo pacman -S i3 i3-gaps kitty zsh polybar rofi dunst feh mpd ncmpcpp light playerctl xclip scrot picom imagemagick curl neovim
-```
-Make light executable.
-```sh
-sudo chmod +s /usr/bin/light
-```
-Install papirus icon theme
-
-```sh
-wget -qO- https://git.io/papirus-icon-theme-install | sh
-```
-Install oh my zsh
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
-```
-Set zsh as default shell
-```sh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-```
-Install NvChad
-```sh
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-```
-Install gtk3 theme
-```sh
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
-```
-Install GRUB2 theme
-```sh
-git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes/install.sh -b -t tela -s 1080p
-```
-Copy dotfiles, fonts and scripts
-```sh
-cd $HOME
-git clone https://github.com/Deerrorer/Dotfiles2
-cp -fr $HOME/dotfiles/.config/* $HOME/.config
-cp -f $HOME/dotfiles/fonts/* ~/.local/share/fonts/
-sudo cp $HOME/dotfiles/scripts/rofi/rofi-bookmarks.py /usr/local/bin 
-sudo cp $HOME/dotfiles/scripts/theme /usr/local/bin 
-```
 ## Uninstallation
 
 ### Debian & Ubuntu (and all based distributions)
@@ -484,12 +279,6 @@ Run install.sh and select option uninstall.
 ./install.sh
 ```
 
-### Other Linux distributions
-
-Uninstall  packages then run install.sh and select option uninstall.
-```sh
-./install.sh
-```
 
 ## To do
 * 
@@ -504,5 +293,4 @@ Uninstall  packages then run install.sh and select option uninstall.
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
 * https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf
-* problem with papirus icons
 * better theme (ala ghost)

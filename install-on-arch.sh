@@ -166,75 +166,23 @@ mkdir -p ~/.config/
         echo "Installing rofi configs..."
         mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
     fi
-    # if [ -d ~/bin ]; then
-    #     echo "~/bin detected, backing up..."
-    #     mkdir ~/bin.old && mv ~/bin/* ~/bin.old/
-    #     cp -r ./bin/* ~/bin;
-	# clear
-    # else
-    #     echo "Installing bin scripts..."
-    #     mkdir ~/bin && cp -r ./bin/* ~/bin/;
-	# clear
-    #     SHELLNAME=$(echo $SHELL | grep -o '[^/]*$')
-    #     case $SHELLNAME in
-    #         bash)
-    #             if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
-    #                 echo "Looks like $HOME/bin is not on your PATH, adding it now."
-    #                 echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.bashrc
-    #             else
-    #                 echo "$HOME/bin is already in your PATH. Proceeding."
-    #             fi
-    #             ;;
 
-    #         zsh)
-    #             if [[ ":$PATH:" == *":$HOME/bin:"* ]]; then
-    #                 echo "Looks like $HOME/bin is not on your PATH, adding it now."
-    #                 echo "export PATH=\$PATH:\$HOME/bin" >> $HOME/.zshrc
-    #             else
-    #                 echo "$HOME/bin is already in your PATH. Proceeding."
-    #             fi
-    #             ;;
+#MANUAL INSTALATION
 
-    #         fish)
-    #             echo "I see you use fish. shahab96 likes your choice."
-    #             fish -c fish_add_path -P $HOME/bin
-    #             ;;
+# #Install NvChad
+# git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 
-    #         *)
-    #             echo "Please add: export PATH='\$PATH:$HOME/bin' to your .bashrc or whatever shell you use."
-    #             echo "If you know how to add stuff to shells other than bash, zsh and fish please help out here!"
-    #     esac
-    # fi
-    
+# #Install gtk3 theme
+# git clone https://github.com/EliverLara/Nordic.git
+# sudo mv ./Nordic /usr/share/themes
 
-# # done 
-# echo "PLEASE MAKE .xinitrc TO LAUNCH, or just use your Display Manager (ie. lightdm or sddm, etc.)" | tee ~/Note.txt
-# printf "\n" >> ~/Note.txt
-# echo "For startpage, copy the startpage directory into wherever you want, and set it as new tab in firefox settings." | tee -a ~/Note.txt
-# echo "For more info on startpage (Which is a fork of Prismatic Night), visit https://github.com/dbuxy218/Prismatic-Night#Firefoxtheme" | tee -a ~/Note.txt
-# echo "ALL DONE! Reboot for all changes to take place!" | tee -a ~/Note.txt
-# echo "Open issues on github or ask me on discord or whatever if you face issues." | tee -a ~/Note.txt
-# echo "Install Museo Sans as well. Frome Adobe I believe." | tee -a ~/Note.txt
-# echo "If the bar doesn't work, use tint2conf and set stuff up, if you're hopelessly lost, open an issue." | tee -a ~/Note.txt
-# echo "These instructions have been saved to ~/Note.txt. Make sure to go through them."
-# echo "For instructions regarding usage on VirtualMachines, please refer to the VM folder of the repo." | tee -a ~/Note.txt
-# sleep 5
-# xmonad --recompile
+# if [ -d ~/.oh-my-zsh ]; then
+#     echo "Oh my zsh configs detected, backing up..."
+#     mkdir -p ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/ ~/.oh-my-zsh.old
+# fi
+# # Install oh my zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
 
-#Install NvChad
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-
-#Install gtk3 theme
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
-
-if [ -d ~/.oh-my-zsh ]; then
-    echo "Oh my zsh configs detected, backing up..."
-    mkdir -p ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/ ~/.oh-my-zsh.old
-fi
-# Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
-
-# Set zsh as default shell
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
+# # Set zsh as default shell
+# chsh -s /bin/zsh
+# sudo chsh -s /bin/zsh
