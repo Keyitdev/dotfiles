@@ -221,6 +221,11 @@ mkdir -p ~/.config/
 # sleep 5
 # xmonad --recompile
 
+
+if [ -d ~/.oh-my-zsh ]; then
+    echo "Oh my zsh configs detected, backing up..."
+    mkdir -p ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/* ~/.oh-my-zsh.old/
+fi
 # Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
 
