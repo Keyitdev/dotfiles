@@ -88,7 +88,7 @@ $HELPER -S acpi          \
 mkdir -p ~/.config/
     if [ -d ~/.config/dunst ]; then
         echo "Dunst configs detected, backing up..."
-        mkdir -p ~/.config/dunst.old && mv ~/.config/dunst ~/.config/dunst.old
+        mkdir -p ~/.config/dunst.old && mv ~/.config/dunst/* ~/.config/dunst.old/
         cp -r ./config/dunst/* ~/.config/dunst;
     else
         echo "Installing dunst configs..."
@@ -96,7 +96,7 @@ mkdir -p ~/.config/
     fi
     if [ -d ~/.config/gtk-3.0 ]; then
         echo "Gtk-3.0 configs detected, backing up..."
-        mkdir -p ~/.config/gtk-3.0.old && mv ~/.config/gtk-3.0 ~/.config/gtk-3.0.old
+        mkdir -p ~/.config/gtk-3.0.old && mv ~/.config/gtk-3.0/* ~/.config/gtk-3.0.old/
         cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
     else
         echo "Installing gtk-3.0 configs..."
@@ -104,7 +104,7 @@ mkdir -p ~/.config/
     fi
     if [ -d ~/.config/i3 ]; then
         echo "I3 configs detected, backing up..."
-        mkdir -p ~/.config/i3.old && mv ~/.config/i3 ~/.config/i3.old
+        mkdir -p ~/.config/i3.old && mv ~/.config/i3/* ~/.config/i3.old/
         cp -r ./config/i3/* ~/.config/i3;
     else
         echo "Installing i3 configs..."
@@ -112,7 +112,7 @@ mkdir -p ~/.config/
     fi
     if [ -d ~/.config/kitty ]; then
         echo "Kitty configs detected, backing up..."
-        mkdir -p ~/.config/kitty.old && mv ~/.config/kitty ~/.config/kitty.old
+        mkdir -p ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
         cp -r ./config/kitty/* ~/.config/kitty;
     else
         echo "Installing kitty configs..."
@@ -120,7 +120,7 @@ mkdir -p ~/.config/
     fi
     if [ -d ~/.config/mpd ]; then
         echo "MPD configs detected, backing up..."
-        mkdir -p ~/.config/mpd.old && mv ~/.config/mpd ~/.config/mpd.old
+        mkdir -p ~/.config/mpd.old && mv ~/.config/mpd/* ~/.config/mpd.old/
         cp -r ./config/mpd/* ~/.config/mpd;
     else
         echo "Installing mpd configs..."
@@ -128,7 +128,7 @@ mkdir -p ~/.config/
     fi
         if [ -d ~/.config/ncmpcpp ]; then
         echo "Ncmpcpp configs detected, backing up..."
-        mkdir -p ~/.config/ncmpcpp.old && mv ~/.config/ncmpcpp ~/.config/ncmpcpp.old
+        mkdir -p ~/.config/ncmpcpp.old && mv ~/.config/ncmpcpp/* ~/.config/ncmpcpp.old/
         cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
     else
         echo "Installing ncmpcpp configs..."
@@ -136,7 +136,7 @@ mkdir -p ~/.config/
     fi
         if [ -d ~/.config/picom ]; then
         echo "Picom configs detected, backing up..."
-        mkdir -p ~/.config/picom.old && mv ~/.config/picom ~/.config/picom.old
+        mkdir -p ~/.config/picom.old && mv ~/.config/picom/* ~/.config/picom.old/
         cp -r ./config/picom/* ~/.config/picom;
     else
         echo "Installing picom configs..."
@@ -144,7 +144,7 @@ mkdir -p ~/.config/
     fi
         if [ -d ~/.config/polybar ]; then
         echo "Polybar configs detected, backing up..."
-        mkdir -p ~/.config/polybar.old && mv ~/.config/polybar ~/.config/polybar.old
+        mkdir -p ~/.config/polybar.old && mv ~/.config/polybar/* ~/.config/polybar.old/
         cp -r ./config/polybar/* ~/.config/polybar;
     else
         echo "Installing polybar configs..."
@@ -152,7 +152,7 @@ mkdir -p ~/.config/
     fi
         if [ -d ~/.config/ranger ]; then
         echo "Ranger configs detected, backing up..."
-        mkdir -p ~/.config/ranger.old && mv ~/.config/ranger ~/.config/ranger.old
+        mkdir -p ~/.config/ranger.old && mv ~/.config/ranger/* ~/.config/ranger.old/
         cp -r ./config/ranger/* ~/.config/ranger;
     else
         echo "Installing ranger configs..."
@@ -160,7 +160,7 @@ mkdir -p ~/.config/
     fi
         if [ -d ~/.config/rofi ]; then
         echo "Rofi configs detected, backing up..."
-        mkdir -p ~/.config/rofi.old && mv ~/.config/rofi ~/.config/rofi.old
+        mkdir -p ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
         cp -r ./config/rofi/* ~/.config/rofi;
     else
         echo "Installing rofi configs..."
@@ -221,13 +221,12 @@ mkdir -p ~/.config/
 # sleep 5
 # xmonad --recompile
 
-# Install NvChad
+#Install NvChad
 git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 
-# Install gtk3 theme
+#Install gtk3 theme
 git clone https://github.com/EliverLara/Nordic.git
 sudo mv ./Nordic /usr/share/themes
-
 
 if [ -d ~/.oh-my-zsh ]; then
     echo "Oh my zsh configs detected, backing up..."
