@@ -48,7 +48,7 @@ case $vid in
 esac
 
 # install xorg if not installed
-sudo pacman -S --noconfirm --needed kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger nautilus $DRI
+sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger nautilus papirus-icon-theme $DRI
 
 # Make light executable
 sudo chmod +s /usr/bin/light
@@ -220,12 +220,20 @@ mkdir -p ~/.config/
 # echo "For instructions regarding usage on VirtualMachines, please refer to the VM folder of the repo." | tee -a ~/Note.txt
 # sleep 5
 # xmonad --recompile
+
+# Install oh my zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
 
+# Set zsh as default shell
 chsh -s /bin/zsh
 sudo chsh -s /bin/zsh
 
+#Install NvChad
 git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
 
+#Install gtk3 theme
 git clone https://github.com/EliverLara/Nordic.git
 sudo mv ./Nordic /usr/share/themes
+
+#Install papirus icon theme
+# wget -qO- https://git.io/papirus-icon-theme-install | sh
