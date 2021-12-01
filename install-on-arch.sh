@@ -65,9 +65,9 @@ clear
 sudo mkdir -p /usr/local/bin
 sudo cp -r ./scripts/* /usr/local/bin
 
-# copy wallapapers
-mkdir -p ~/Pictures/wallapapers
-cp -r ./wallapapers/* ~/Pictures/wallapapers
+# copy wallpapers
+mkdir -p ~/Pictures/wallpapers
+cp -r ./wallpapers/* ~/Pictures/wallpapers
 
 echo "We need an AUR helper. It is essential. 1) paru       2) yay"
 read -r -p "What is the AUR helper of your choice? (Default is paru): " num
@@ -186,7 +186,7 @@ mkdir -p ~/.config/
 #     mkdir -p ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/ ~/.oh-my-zsh.old
 # fi
 # # Install oh my zsh
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # # Set zsh as default shell
 # chsh -s /bin/zsh

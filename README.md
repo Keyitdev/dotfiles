@@ -80,7 +80,7 @@ chmod +x install-on-arch.sh
 ```
 Install oh my zsh
 ```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"uninstall_oh_my_zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 Set zsh as default shell
 ```sh
