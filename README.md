@@ -283,14 +283,11 @@ Run install.sh and select option uninstall.
 ## To do
 * 
 * theme script
-* Install fonts
-* wallpapers
 * polybar themes
-* sddm
 * rofi themes
 * firefox
 * dark and light theme
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-* https://github.com/Axarva/dotfiles-2.0/blob/main/config/picom.conf
 * better theme (ala ghost)
+* dunst and screenshots packages

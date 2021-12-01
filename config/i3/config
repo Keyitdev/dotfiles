@@ -287,7 +287,7 @@ exec_always --no-startup-id picom &
 exec_always --no-startup-id mpd &
 
 #Wallpaper
-exec_always feh --bg-scale $HOME/Pictures/Wallpapers/8.jpg
+exec_always feh --bg-scale $HOME/Pictures/Wallpapers/current.jpg
 
 #Polybar launcher
 exec_always --no-startup-id killall -q
