@@ -6,7 +6,7 @@ for pid in $(pidof -x battery.sh); do
     fi
 done
 
-DIR="$HOME/dotfiles/scripts/icons"
+DIR="/usr/local/bin/icons"
 
 # Notify when below this percentage
 warning_level=15

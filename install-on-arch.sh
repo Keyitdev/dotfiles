@@ -47,7 +47,7 @@ case $vid in
 	;;
 esac
 
-# install basisc packages
+# install basics packages
 sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify $DRI
 
 # choose video driver
@@ -96,8 +96,7 @@ fi
 $HELPER -S acpi          \
 	   polybar           \
 	   playerctl         \
-	   scrot             \
-	   xclip             
+       ffcast
 
 mkdir -p ~/.config/
     if [ -d ~/.config/dunst ]; then

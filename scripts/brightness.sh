@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="$HOME/dotfiles/scripts/icons"
+DIR="/usr/local/bin/icons"
 
 MAX_BRI=$(cat /sys/class/backlight/amdgpu_bl0/max_brightness)
 CUR_BRI=$(cat /sys/class/backlight/amdgpu_bl0/brightness)
