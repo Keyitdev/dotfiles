@@ -47,8 +47,17 @@ case $vid in
 	;;
 esac
 
-# install xorg if not installed
-sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger nautilus papirus-icon-theme $DRI
+# install basisc packages
+sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify $DRI
+
+# choose video driver
+echo "Install no required but usefull programs? (Code, iwd, libreoffice, firefox etc."
+read -r -p "1) Yes 2) Nope" upro
+
+if [ $upro -eq 1 ]
+then
+   sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
+fi
 
 # Make light executable
 sudo chmod +s /usr/bin/light
