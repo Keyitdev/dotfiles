@@ -165,11 +165,9 @@ Distributed under the *link* License.
 
 ## To do
 * 
-* theme script
 * polybar themes
-* rofi themes
+* dunst themes
 * firefox
 * dark and light theme
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-* better theme (ala ghost)

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# rofi theme
+DIR="$HOME/.config/rofi/compact.rasi"
+
+get_options() {
+  echo "dark"
+  echo "blue"
+  echo "white"
+}
+
+main() {
+
+  # Get THEME from rofi
+  THEME=$( (get_options) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$DIR")
+
+  # If user has not picked anything, exit
+  if [[ -z "${THEME// /}" ]]; then
+    exit 1
+  fi
+
+  cp -f $HOME/dotfiles3/themes/$THEME/kitty/kitty.conf ~/.config/kitty/
+  cp -f $HOME/dotfiles3/themes/$THEME/rofi/* ~/.config/rofi/
+  cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
+  cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code/User
+
+  # done
+  set -e
+}
+
+main &
+
+exit 0
