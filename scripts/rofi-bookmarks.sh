@@ -1,0 +1,74 @@
+#!/bin/bash
+CACHEDIR="~/.cache/rofi-bookmarks"
+
+places_sqlite="$(find ~/.mozilla/firefox/*.default*/ -name "places.sqlite" -print -quit)"
+
+places_rofi_sqlite="$(dirname "${places_sqlite}")/places.rofi.sqlite"
+
+favicons_sqlite="$(find ~/.mozilla/firefox/*.default*/ -name "favicons.sqlite" -print -quit)"
+
+favicons_rofi_sqlite="$(dirname "${favicons_sqlite}")/favicons.rofi.sqlite"
+
+# path to the sqlite3 binary
+sqlite_path="$(which sqlite3)"
+
+# sqlite3 parameters (define separator character)
+sqlite_params="-separator ^"
+
+# browser path
+browser_path="$(which firefox)"
+
+# functions
+
+# create a backup file
+create_backup() {
+  if [ "$#" -eq 2 ] && [ -n "$1" ] && [ -n "$2" ]; then
+    if [ ! -f "$2" ] || [ "$1" -nt "$2" ]; then
+      cp "$1" "$2"
+    fi
+  fi
+}
+
+# process bookmarks
+process_bookmarks() {
+  query="select b.title, p.url, b.id, SUBSTR(SUBSTR(p.url, INSTR(url, '//') + 2), 0, INSTR(SUBSTR(p.url, INSTR(p.url, '//') + 2), '/')) as domain from moz_bookmarks as b left outer join moz_places as p on b.fk=p.id where b.type = 1 and p.hidden=0 and b.title not null" #  and parent=$1
+  $sqlite_path $sqlite_params "$places_rofi_sqlite" "$query" | while IFS=^ read title url id domain; do
+    if [ -z "$title" ]; then
+      title="$url"
+    fi
+    page_id=$($sqlite_path $favicons_rofi_sqlite 'SELECT Id FROM 'moz_pages_w_icons' WHERE page_url="'$url'"')
+    icon_id=$($sqlite_path $favicons_rofi_sqlite 'SELECT max(icon_id) FROM 'moz_icons_to_pages' WHERE page_id='$page_id'')
+    icon_link=$($sqlite_path $favicons_rofi_sqlite 'SELECT icon_url FROM 'moz_icons' WHERE id='$icon_id'')
+    wget -nc -O ~/.cache/rofi-bookmarks/$icon_id.png $icon_link &
+    if [ $icon_id -eq $icon_id ]; then
+    echo -en " $title \0icon\x1f$CACHEDIR/$icon_id.png\n"
+    fi
+  done
+}
+
+# process bookmark
+process_bookmark() {
+  if [ "$#" = 1 ] && [ -n "$1" ]; then
+    title="$(echo $1 | sed "s|.*{id:\(.*\)}$|\1|")"
+    id=$($sqlite_path $places_rofi_sqlite 'SELECT id FROM 'moz_bookmarks' WHERE title="'"$title"'"')
+    query="select p.url from moz_bookmarks as b left outer join moz_places as p on b.fk=p.id where b.type = 1 and p.hidden=0 and b.title not null and b.id=$id"
+    url="$($sqlite_path $sqlite_params "$places_rofi_sqlite" "$query")"
+    nohup $browser_path "$url" >/dev/null 2>&1 &
+  fi
+}
+
+# application
+
+parameter="$1"
+
+# create a backup, as we cannot operate on a places.sqlite file directly due to exclusive lock
+create_backup "$places_sqlite" "$places_rofi_sqlite"
+create_backup "$favicons_sqlite" "$favicons_rofi_sqlite"
+# open a bookmark when there is a param sety
+if [ -n "$parameter" ]; then
+  process_bookmark "$parameter"
+  exit
+fi
+
+# process bookmarks
+process_bookmarks
