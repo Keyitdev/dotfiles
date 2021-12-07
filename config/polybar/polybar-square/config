@@ -14,20 +14,19 @@ margin-top = 0
 
 include-file = ~/.config/polybar/colors.ini
 
-include-file = ~/.config/polybar/modules/battery.ini
-include-file = ~/.config/polybar/modules/backlight.ini
-include-file = ~/.config/polybar/modules/cpu.ini
-include-file = ~/.config/polybar/modules/date.ini
-include-file = ~/.config/polybar/modules/filesystem.ini
-include-file = ~/.config/polybar/modules/i3.ini
-include-file = ~/.config/polybar/modules/memory.ini
-include-file = ~/.config/polybar/modules/alsa.ini
-include-file = ~/.config/polybar/modules/temperature.ini
-include-file = ~/.config/polybar/modules/network.ini
-include-file = ~/.config/polybar/modules/mpd.ini
-include-file = ~/.config/polybar/modules/playerctl.ini
-include-file = ~/.config/polybar/modules/uptime.ini
-include-file = ~/.config/polybar/modules/keyboard.ini
+include-file = ~/.config/polybar/polybar-square/modules/battery.ini
+include-file = ~/.config/polybar/polybar-square/modules/backlight.ini
+include-file = ~/.config/polybar/polybar-square/modules/cpu.ini
+include-file = ~/.config/polybar/polybar-square/modules/date.ini
+include-file = ~/.config/polybar/polybar-square/modules/filesystem.ini
+include-file = ~/.config/polybar/polybar-square/modules/i3.ini
+include-file = ~/.config/polybar/polybar-square/modules/memory.ini
+include-file = ~/.config/polybar/polybar-square/modules/alsa.ini
+include-file = ~/.config/polybar/polybar-square/modules/temperature.ini
+include-file = ~/.config/polybar/polybar-square/modules/network.ini
+include-file = ~/.config/polybar/polybar-square/modules/mpd.ini
+include-file = ~/.config/polybar/polybar-square/modules/uptime.ini
+include-file = ~/.config/polybar/polybar-square/modules/keyboard.ini
 
 fixed-center = true
 ;; Bar Settings

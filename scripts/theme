@@ -3,16 +3,20 @@
 # rofi theme
 DIR="$HOME/.config/rofi/compact.rasi"
 
-get_options() {
+get_options_theme() {
   echo "dark"
   echo "blue"
-  echo "white"
+}
+
+get_options_theme_polybar() {
+  echo "polybar-rounded"
+  echo "polybar-square"
 }
 
 main() {
 
   # Get THEME from rofi
-  THEME=$( (get_options) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$DIR")
+  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$DIR")
 
   # If user has not picked anything, exit
   if [[ -z "${THEME// /}" ]]; then
@@ -24,8 +28,18 @@ main() {
   cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
   cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code/User
 
+  THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "Choose polybar theme" -theme "$DIR")
+
+    # If user has not picked anything, exit
+  if [[ -z "${THEME_POLYBAR// /}" ]]; then
+    exit 1
+  fi
+  cp -f $HOME/dotfiles3/themes/$THEME_POLYBAR/launch.sh ~/.config/polybar
+
   # done
   set -e
+
+  i3-msg restart
 }
 
 main &

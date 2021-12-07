@@ -50,10 +50,10 @@
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
 |**Music**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 |**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
-|**VSC theme**|
+|**Vsc theme**|
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
 |**GTK icons**|[Papirus](shttps://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
-|**Discord Theme**|[Better discord](https://github.com/BetterDiscord/BetterDiscord), [Nord-Glasscord](https://github.com/YottaGitHub/Nord-Glasscord)|
+|**Discord Theme**||
 
 ## Dependecies
 
@@ -63,7 +63,7 @@ curl light
 * [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
 * [Isovaka Nerd Font](https://www.nerdfonts.com/)
 * [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-
+* Source Code Pro
 ## Instalation
 
 ### Arch
