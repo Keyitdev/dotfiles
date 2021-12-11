@@ -6,6 +6,7 @@ DIR="$HOME/.config/rofi/compact.rasi"
 get_options_theme() {
   echo "dark"
   echo "blue"
+  echo "one_dark"
 }
 
 get_options_theme_polybar() {
@@ -27,6 +28,7 @@ main() {
   cp -f $HOME/dotfiles3/themes/$THEME/rofi/* ~/.config/rofi/
   cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
   cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code/User
+  cp -f $HOME/dotfiles3/themes/$THEME/polybar/* ~/.config/polybar
 
   THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "Choose polybar theme" -theme "$DIR")
 

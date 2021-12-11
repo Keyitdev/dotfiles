@@ -164,7 +164,8 @@ Distributed under the *link* License.
 [product-screenshot]: images/screenshot.png
 
 ## To do
-* 
+* markdown vsc 
+* dark theme to darker
 * polybar themes
 * dunst themes
 * firefox
