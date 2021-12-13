@@ -34,7 +34,7 @@
 
 ## Showcase
 
-![](./1.gif)
+![](./showcase.png)
 
 ## Info
 

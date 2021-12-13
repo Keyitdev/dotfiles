@@ -26,6 +26,7 @@ include-file = ~/.config/polybar/polybar-rounded/modules/alsa.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/sep.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/temperature.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/network.ini
+include-file = ~/.config/polybar/polybar-rounded/modules/network_mini.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/mpd.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/uptime.ini
 include-file = ~/.config/polybar/polybar-rounded/modules/keyboard.ini
@@ -135,12 +136,11 @@ font-0 = "Iosevka Nerd Font:size=12;4"
 font-1 = "Iosevka Nerd Font:style=Medium:size=18;4"
 font-2 = "feather:size=13;5"
 
-; Modules are added to one of the available blocks
-; modules-left = sep2 i3 left1 sep right1 network left1 sep right1 mpd left1  sep right1 keyboard left1 sep right1  playerctl left1
-; modules-center = right1 date left1 sep right1 filesystem left1 
-; modules-right =  right1 temperature left1 sep  right1 cpu  left1 sep right1 memory left1 sep right1 backlight left1 sep right1 alsa left1 sep right1 battery left1 sep right1 
+#modules-left = sep2 i3 left1 sep right1 network_mini left1 sep right1 mpd left1 sep right1 uptime left1
+#modules-center = right1 date left1  
+#modules-right =  right1 temperature left1 sep  right1 cpu  left1 sep right1 memory left1 sep right1 filesystem left1 sep right1 backlight left1 sep right1 alsa left1 sep right1 battery left1 sep right1 
 
-modules-left = sep2 i3 left1 sep right1 network left1 sep right1 mpd left1 sep right1 uptime left1
+modules-left = sep2 i3 left1 sep right1 network_mini left1
 modules-center = right1 date left1  
 modules-right =  right1 temperature left1 sep  right1 cpu  left1 sep right1 memory left1 sep right1 filesystem left1 sep right1 backlight left1 sep right1 alsa left1 sep right1 battery left1 sep right1 
 
