@@ -3,7 +3,6 @@
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
-
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
     #   keyboard: follow window with keyboard focus
@@ -30,7 +29,7 @@
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
     geometry = "300x5-8+47"
-
+    corner_radius = 8
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
 
@@ -291,21 +290,21 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#282A36"
+    background = "#1e1e29"
     foreground = "#F8F8F2"
     timeout = 5
     # Icon for notifications with low urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_normal]
-    background = "#282A36"
+    background = "#1B1923"
     foreground = "#F8F8F2"
     timeout = 5
     # Icon for notifications with normal urgency, uncomment to enable
     #icon = /path/to/icon
 
 [urgency_critical]
-    background = "#282A36"
+    background = "#1e1e29"
     foreground = "#F8F8F2"
     frame_color = "#e06c75"
     timeout = 0
