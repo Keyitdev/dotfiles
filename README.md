@@ -181,7 +181,7 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * patch
 * readme
 
-* discord wallpaper
+* discord ncmcpp dark line rofi icons theme
 * unistall oh my zsh script wallpaper credits
 
 * [color]

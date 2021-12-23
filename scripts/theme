@@ -4,13 +4,13 @@
 DIR="$HOME/.config/rofi/compact_without_icons.rasi"
 
 get_options_theme() {
-  echo "dark"
   echo "blue"
+  echo "dark"
 }
 
 get_options_theme_polybar() {
-  echo "polybar-rounded"
   echo "polybar-square"
+  echo "polybar-rounded"
 }
 
 main() {

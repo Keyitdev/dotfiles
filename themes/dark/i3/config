@@ -19,7 +19,7 @@ exec_always --no-startup-id mpd &
 exec_always --no-startup-id dunst &
 
 # set wallpaper with fed
-exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_dark.jpg
+exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_dark.png
 
 # launch polybar
 exec_always --no-startup-id killall -q
