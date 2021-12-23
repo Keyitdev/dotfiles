@@ -22,7 +22,7 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-	border:			            	0px 2px 0px 0px;
+	border:			            	0px 4px 0px 0px;
 	border-color:			       	@ac;
     border-radius:                  0px;
     height:                         100%;
@@ -57,9 +57,9 @@ inputbar {
     text-color:                     @bg;
     expand:                         false;
 	border:							0% 0% 0% 0%;
-    border-radius:                  15px;
+    border-radius:                  0;
 	border-color:					@ac;
-    margin:                         3% 2% 2% 2%;
+    margin:                         3% 1% 1% 1%;
     padding:                        1.5%;
 }
 
@@ -112,7 +112,7 @@ element selected {
     background-color:               @se;
     text-color:                     @fg;
 	border:							0% 0% 0% 0%;
-    border-radius:                  12px;
+    border-radius:                  0;
     border-color:                  	@bg;
 }
 element-icon selected {

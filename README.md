@@ -72,7 +72,7 @@ I recommend manually installing packages and coping files, but if you are lazy o
 
 Clone dotfiles
 ```
-git clone https://www.github.com/derrorer/dotfiles3
+git clone https://www.github.com/derrorer/dotfiles3.git
 cd dotfiles3
 chmod +x install-on-arch.sh
 ./install-on-arch.sh
