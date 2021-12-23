@@ -19,7 +19,7 @@ exec_always --no-startup-id mpd &
 exec_always --no-startup-id dunst &
 
 # set wallpaper with fed
-exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_blue.jpg
+exec_always feh --bg-scale $HOME/Pictures/wallpapers/current_dark.jpg
 
 # launch polybar
 exec_always --no-startup-id killall -q
@@ -205,9 +205,9 @@ bindsym $mod+r mode "resize"
 default_border pixel 4
 
 #border colors
-client.focused #343746 #343746 #F8F8F2 #343746 #343746
-client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
-client.unfocused #343746 #343746 #F8F8F2 #21222C #21222C
+client.focused #202328 #202328 #F8F8F2 #202328 #202328
+client.focused_inactive #202328 #202328 #F8F8F2 #181a20 #181a20
+client.unfocused #202328 #202328 #F8F8F2 #181a20 #181a20
 
 ### SETTINGS FOR i3 BAR ###
 

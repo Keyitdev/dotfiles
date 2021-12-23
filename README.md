@@ -50,7 +50,7 @@
 |**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
 |**Vsc theme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
-|**GTK theme**|[Nordic](https://github.com/EliverLara/Nordic)|
+|**GTK theme**|[Dracula (ant)](https://github.com/EliverLara/ant)|
 |**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**|[My custom theme]()|
 
@@ -109,6 +109,8 @@ Install Firefox theme
 
 [Blue theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 
+[Dark theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr23naIF864DqTISy5J31tQmo4zYnr3qoWRXy18FfYHv0j5dsS5Zn4VeZYHfEg0Mi5I09a8clJZYaw94hQkl9eHLzgyuQy8ueCQKoDVgn8FysNxflK_fFfPOiEydooCdnAI4SZrvjHrAWV7ap2g7rU6EQBz6eQkSheZ-OoKev4KWY32SFk0iVvqA1gBTGcvWGjotz54fr6yr3LnUk8Ls6XJUzalDr-NSsM0KYnKBBC6WZomzweHJrAhSH-jpflKZMY)
+
 ## Uninstallation
 
 1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies)),
@@ -158,7 +160,7 @@ These dotfiles includes some files from others rices. Original sources:
 
 Not modified by me but used in these dotfiles
 * [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad),
-* [EliverLara](https://github.com/EliverLara) for [gtk Nordic theme](https://github.com/EliverLara/Nordic),
+* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt),
 * [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes),
 * [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
 [Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut).
@@ -176,48 +178,47 @@ Not modified by me but used in these dotfiles
 Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
 
 ## To do
-* themes
 * patch
 * readme
 
-* vsc rofi dunst kitty polybar firefox gtk wallpaper
+* discord wallpaper
 * unistall oh my zsh script wallpaper credits
 
-[color]
-
-background = #21222C
-background2 = #282A36
-background3 = #343746
-foreground = #F8F8F2
-sep = #F8F8F2
-
-white = #FFFFFF
-black = #15121C
-red = #f07178
-green = #c3e88d
-yellow = #ffcb6b
-blue = #82aaff
-purple = #c792ea
-cyan = #89ddff
-pink = #ffa8c5
-orange = #dd864a
-
-
-[color]
-
-background = #181a20
-background2 = #1d2025
-background3 = #202328
-foreground = #F8F8F2
-sep = #F8F8F2
-
-white = #FFFFFF
-black = #15121C
-red = #f07178
-green = #c3e88d
-yellow = #ffcb6b
-blue = #82aaff
-purple = #c792ea
-cyan = #89ddff
-pink = #ffa8c5
-orange = #dd864a
+* [color]
+* 
+* background = #21222C
+* background2 = #282A36
+* background3 = #343746
+* foreground = #F8F8F2
+* sep = #F8F8F2
+* 
+* white = #FFFFFF
+* black = #15121C
+* red = #f07178
+* green = #c3e88d
+* yellow = #ffcb6b
+* blue = #82aaff
+* purple = #c792ea
+* cyan = #89ddff
+* pink = #ffa8c5
+* orange = #dd864a
+* 
+* 
+* [color]
+* 
+* background = #181a20
+* background2 = #1d2025
+* background3 = #202328
+* foreground = #F8F8F2
+* sep = #F8F8F2
+* 
+* white = #FFFFFF
+* black = #15121C
+* red = #f07178
+* green = #c3e88d
+* yellow = #ffcb6b
+* blue = #82aaff
+* purple = #c792ea
+* cyan = #89ddff
+* pink = #ffa8c5
+* orange = #dd864a

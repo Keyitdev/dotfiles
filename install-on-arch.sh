@@ -224,21 +224,3 @@ mkdir -p ~/.config/
         cp ./.zshrc ~/;
     fi
 #MANUAL INSTALATION
-
-# #Install NvChad
-# git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
-
-# #Install gtk3 theme
-# git clone https://github.com/EliverLara/Nordic.git
-# sudo mv ./Nordic /usr/share/themes
-
-# if [ -d ~/.oh-my-zsh ]; then
-#     echo "Oh my zsh configs detected, backing up..."
-#     mkdir -p ~/.oh-my-zsh.old && mv ~/.oh-my-zsh/ ~/.oh-my-zsh.old
-# fi
-# # Install oh my zsh
-# sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# # Set zsh as default shell
-# chsh -s /bin/zsh
-# sudo chsh -s /bin/zsh
