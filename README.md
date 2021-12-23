@@ -1,34 +1,34 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/keyitdev/dotfiles">
+  <!-- <a href="https://github.com/keyitdev/dotfiles">
     <img src="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
+  </a> -->
   <h1 align="center">Key dotfiles</h1>
 
   <p align="center">
     My personal build of dotfiles.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">Showcase</a>
+    <a href="https://github.com/deerrorer/dotfiles3#Showcase">Showcase</a>
     ·
-    <a href="">Info</a>
+    <a href="https://github.com/deerrorer/dotfiles3#Info">Info</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Dependecies</a>
+    <a href="https://github.com/deerrorer/dotfiles3#Dependecies">Dependecies</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template">Installation</a>
+    <a href="https://github.com/deerrorer/dotfiles3#Installation">Installation</a>
     ·
-    <a href="">Keybinds</a>
+    <a href="https://github.com/deerrorer/dotfiles3#Keybinds">Keybinds</a>
+    .
+    <a href="https://github.com/deerrorer/dotfiles3#Troubleshooting">Troubleshooting</a>
   </p>
 </div>
 
 <div align="center">
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+<img src="https://img.shields.io/github/stars/deerrorer/dotfiles3?color=dd864a&labelColor=555555&style=for-the-badge">
+<img src="https://img.shields.io/github/forks/deerrorer/dotfiles3?color=82aaff&labelColor=555555&style=for-the-badge">
+<img src="https://img.shields.io/github/issues/deerrorer/dotfiles3?color=bf616a&labelColor=555555&style=for-the-badge">
+<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=c792ea&labelColor=555555&style=for-the-badge">
 
 </div>
 
@@ -43,28 +43,30 @@
 |**Window Manager**|[i3-gaps](https://github.com/Airblader/i3)|
 |**Compositor**|[picom](https://github.com/yshui/picom)
 |**Terminal emullator**|[kitty](https://github.com/kovidgoyal/kitty)|
-|**Shell**|zsh (5.8)|
+|**Shell**|[zsh](https://www.zsh.org/)|
 |**Shell theme**|[oh my zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Bar**|[polybar](https://github.com/polybar/polybar)|
 |**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
 |**Music**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 |**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
-|**Vsc theme**|
+|**Vsc theme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
-|**GTK theme**||
-|**GTK icons**|[Papirus](shttps://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
-|**Discord Theme**||
+|**GTK theme**|[Nordic](https://github.com/EliverLara/Nordic)|
+|**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
+|**Discord Theme**|[My custom theme]()|
 
 ## Dependecies
 
-curl light
+### Packaged used
+wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify acpi polybar ffcast slop
 
 ### Fonts used
 * [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
 * [Isovaka Nerd Font](https://www.nerdfonts.com/)
 * [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* Source Code Pro
+* [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+
 ## Instalation
 
 ### Arch
@@ -134,13 +136,13 @@ Note: `Win` refers to the `Super/Mod` key.
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
-* [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
-* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
-* [Quethu](https://www.deviantart.com/quethu) for [wallpaper](https://www.deviantart.com/quethu/art/Sci-Fi-Landscape-879969633),
+* [Totoro](https://github.com/deerrorer) for [polybar frontend](https://github.com/deerrorer/dotfiles/tree/master/.config/polybar),
 * [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
-* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
+* [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot),
+* [Quethu](https://www.deviantart.com/quethu) for [wallpaper](https://www.deviantart.com/quethu/art/Sci-Fi-Landscape-879969633),
 * [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes).
+* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
 
 ## Troubleshooting
 
@@ -148,21 +150,7 @@ These dotfiles includes some files from others rices. Original sources:
 
 Distributed under the *link* License.
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+
 
 ## To do
 * dark theme to darker

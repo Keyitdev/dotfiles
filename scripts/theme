@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # rofi theme
-THEME="$HOME/.config/rofi/compact_without_icons.rasi"
+DIR="$HOME/.config/rofi/compact_without_icons.rasi"
 
 get_options_theme() {
   echo "dark"
@@ -17,7 +17,7 @@ get_options_theme_polybar() {
 main() {
 
   # Get THEME from rofi
-  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$THEME")
+  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$DIR")
 
   # If user has not picked anything, exit
   if [[ -z "${THEME// /}" ]]; then

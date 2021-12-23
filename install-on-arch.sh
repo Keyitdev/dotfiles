@@ -99,7 +99,6 @@ fi
 
 $HELPER -S acpi          \
 	   polybar           \
-	   playerctl         \
        ffcast            \
        slop
 
