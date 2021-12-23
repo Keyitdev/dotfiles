@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Screenshot directory
-screenshot_directory="$HOME/Pictures/screnshots/rofi"
+screenshot_directory="$HOME/Pictures/screenshots/rofi"
 videos_directory="$HOME/Videos/rofi"
 audio_directory="$HOME/Music/rofi"
 

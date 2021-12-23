@@ -103,10 +103,6 @@ bindsym $mod+c exec "rofi-screenshot"
 # take a screenshot
 bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
 
-# toggle touchpad
-bindsym F9 exec xinput set-prop 15 "Device Enabled" 0
-bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
-
 # brightness control
 exec_always --no-startup-id light -I
 bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness &
@@ -118,16 +114,20 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute &
 #bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
 
-# toggle microphone mute
-bindsym F4 exec amixer set Capture nocap 
-bindsym F3 exec amixer set Capture cap 
-
 # turn off screen
 bindsym XF86ScreenSaver  exec xset dpms force off
 
 # :)
 bindsym ctrl + F1 exec --no-startup-id kitty
 bindsym ctrl + F2 exec --no-startup-id dmenu_run
+
+# toggle microphone 
+bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic.svg
+bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+
+# toggle touchpad
+bindsym ctrl + F9 exec xinput set-prop 15 "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
+bindsym ctrl + F10 exec xinput set-prop 15 "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
 
 # workspaces names
 set $ws1 "1"

@@ -74,7 +74,7 @@ sudo cp -r ./scripts/* /usr/local/bin
 
 # create default folders
 mkdir -p ~/.srcs
-mkdir -p ~/Pictures/screnshots/rofi
+mkdir -p ~/Pictures/screenshots/rofi
 mkdir -p ~/Videos/rofi
 mkdir -p ~/Music/rofi
 
@@ -100,7 +100,8 @@ fi
 $HELPER -S acpi          \
 	   polybar           \
 	   playerctl         \
-       ffcast
+       ffcast            \
+       slop
 
 mkdir -p ~/.config/
     if [ -d ~/.config/dunst ]; then
@@ -191,7 +192,7 @@ mkdir -p ~/.config/
         echo "Installing kitty configs..."
         mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
     fi
-        if [ -d ~/.config/rofi ]; then
+    if [ -d ~/.config/rofi ]; then
         echo "Rofi configs detected, backing up..."
         mkdir -p ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
         cp -r ./config/rofi/* ~/.config/rofi;
@@ -199,7 +200,30 @@ mkdir -p ~/.config/
         echo "Installing rofi configs..."
         mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
     fi
-
+    if [ -d ~/.config/Code\ -\ OSS/User ]; then
+        echo "Visual Studio Code (OSS) configs detected, backing up..."
+        mkdir -p ~/.config/Code\ -\ OSS/User.old && mv ~/.config/Code\ -\ OSS/User/* ~/.config/Code\ -\ OSS/User.old/
+        cp -r ./vsc/* ~/.config/Code\ -\ OSS/User;
+    else
+        echo "Installing Visual Studio Code (OSS) configs..."
+        mkdir ~/.config/Code\ -\ OSS/User && cp -r ./vsc/* ~/.config/Code\ -\ OSS/User;
+    fi
+    if [ -d ~/.config/Code/User ]; then
+        echo "Visual Studio Code configs detected, backing up..."
+        mkdir -p ~/.config/Code/User.old && mv ~/.config/Code/User/* ~/.config/Code/User.old/
+        cp -r ./vsc/* ~/.config/Code/User;
+    else
+        echo "Installing Visual Studio Code configs..."
+        mkdir ~/.config/Code/User && cp -r ./vsc/* ~/.config/Code/User;
+    fi
+    if [ -f ~/.zshrc ]; then
+        echo "Visual Studio Code configs detected, backing up..."
+        cp ~/.zshrc ~/zshrc.old
+        cp ./.zshrc ~/;
+    else
+        echo "Installing Visual Studio Code configs..."
+        cp ./.zshrc ~/;
+    fi
 #MANUAL INSTALATION
 
 # #Install NvChad

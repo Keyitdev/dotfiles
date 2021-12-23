@@ -161,9 +161,7 @@ Distributed under the *link* License.
 [product-screenshot]: images/screenshot.png
 
 ## To do
-* copy vsc, firefox, zsh files in install
-* mute microphone script
-* screenshot depen
+* firefox ext
 * clear rofi config
 * dark theme to darker
 * polybar themes
