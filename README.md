@@ -99,6 +99,10 @@ Install GRUB2 theme
 git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes/install.sh -b -t tela -s 1080p
 ```
+Install Firefox theme
+
+[Blue theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+
 ## Uninstallation
 
 ## Keybinds
@@ -161,12 +165,9 @@ Distributed under the *link* License.
 [product-screenshot]: images/screenshot.png
 
 ## To do
-* firefox ext
-* clear rofi config
 * dark theme to darker
 * polybar themes
 * dunst themes
-* firefox
 * dark and light theme
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
