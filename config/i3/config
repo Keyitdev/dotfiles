@@ -26,7 +26,7 @@ exec_always --no-startup-id killall -q
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # run battery low warning
-exec_always --no-startup-id battery.sh&
+exec_always --no-startup-id battery&
 
 # start i3 components
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -109,13 +109,13 @@ bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
 
 # brightness control
 exec_always --no-startup-id light -I
-bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness.sh &
-bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness.sh &
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness &
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness &
 
 # audio control
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume.sh &
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute.sh &
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume &
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute &
 #bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
 
 # toggle microphone mute

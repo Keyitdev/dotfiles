@@ -1,4 +1,5 @@
 #!/bin/bash
+mkdir -p ~/.cache/rofi-bookmarks
 CACHEDIR="~/.cache/rofi-bookmarks"
 
 places_sqlite="$(find ~/.mozilla/firefox/*.default*/ -name "places.sqlite" -print -quit)"

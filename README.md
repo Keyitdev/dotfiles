@@ -161,8 +161,10 @@ Distributed under the *link* License.
 [product-screenshot]: images/screenshot.png
 
 ## To do
+* copy vsc, firefox, zsh files in install
+* mute microphone script
+* screenshot depen
 * clear rofi config
-* icon colors dunst
 * dark theme to darker
 * polybar themes
 * dunst themes
@@ -170,3 +172,4 @@ Distributed under the *link* License.
 * dark and light theme
 * patch
 * wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
+* https://feathericons.com/ 56px 1px

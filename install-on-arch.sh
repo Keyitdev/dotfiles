@@ -59,13 +59,11 @@ then
    sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
 fi
 
-# Make light executable
+# make light executable
 sudo chmod +s /usr/bin/light
 
 # install fonts
 mkdir -p ~/.local/share/fonts
-mkdir -p ~/.srcs
-
 cp -r ./fonts/* ~/.local/share/fonts/
 fc-cache -f
 clear 
@@ -73,6 +71,12 @@ clear
 # install scripts
 sudo mkdir -p /usr/local/bin
 sudo cp -r ./scripts/* /usr/local/bin
+
+# create default folders
+mkdir -p ~/.srcs
+mkdir -p ~/Pictures/screnshots/rofi
+mkdir -p ~/Videos/rofi
+mkdir -p ~/Music/rofi
 
 # copy wallpapers
 mkdir -p ~/Pictures/wallpapers
@@ -123,14 +127,6 @@ mkdir -p ~/.config/
         echo "Installing i3 configs..."
         mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
     fi
-    if [ -d ~/.config/kitty ]; then
-        echo "Kitty configs detected, backing up..."
-        mkdir -p ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
-        cp -r ./config/kitty/* ~/.config/kitty;
-    else
-        echo "Installing kitty configs..."
-        mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
-    fi
     if [ -d ~/.config/mpd ]; then
         echo "MPD configs detected, backing up..."
         mkdir -p ~/.config/mpd.old && mv ~/.config/mpd/* ~/.config/mpd.old/
@@ -170,6 +166,30 @@ mkdir -p ~/.config/
     else
         echo "Installing ranger configs..."
         mkdir ~/.config/ranger && cp -r ./config/ranger/* ~/.config/ranger;
+    fi
+    if [ -d ~/.config/btop ]; then
+        echo "Btop configs detected, backing up..."
+        mkdir -p ~/.config/btop.old && mv ~/.config/btop/* ~/.config/btop.old/
+        cp -r ./config/btop/* ~/.config/btop;
+    else
+        echo "Installing btop configs..."
+        mkdir ~/.config/btop && cp -r ./config/btop/* ~/.config/btop;
+    fi
+    if [ -d ~/.config/neofetch ]; then
+        echo "Neofetch configs detected, backing up..."
+        mkdir -p ~/.config/neofetch.old && mv ~/.config/neofetch/* ~/.config/neofetch.old/
+        cp -r ./config/neofetch/* ~/.config/neofetch;
+    else
+        echo "Installing neofetch configs..."
+        mkdir ~/.config/neofetch && cp -r ./config/neofetch/* ~/.config/neofetch;
+    fi
+    if [ -d ~/.config/kitty ]; then
+        echo "Kitty configs detected, backing up..."
+        mkdir -p ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
+        cp -r ./config/kitty/* ~/.config/kitty;
+    else
+        echo "Installing kitty configs..."
+        mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
     fi
         if [ -d ~/.config/rofi ]; then
         echo "Rofi configs detected, backing up..."

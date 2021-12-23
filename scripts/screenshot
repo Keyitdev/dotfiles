@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 # Screenshot directory
-screenshot_directory="$HOME/Pictures/Screenshots"
-videos_directory="$HOME/Videos"
-audio_directory="$HOME/Music/record"
+screenshot_directory="$HOME/Pictures/screnshots/rofi"
+videos_directory="$HOME/Videos/rofi"
+audio_directory="$HOME/Music/rofi"
 
 # set ffmpeg defaults
 ffmpeg() {

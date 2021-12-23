@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for pid in $(pidof -x battery.sh); do
+for pid in $(pidof -x battery); do
     if [ $pid != $$ ]; then
         kill -9 $pid
     fi

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # rofi theme
-THEME="$HOME/.config/rofi/compact.rasi"
+THEME="$HOME/.config/rofi/compact_without_icons.rasi"
 
 get_options() {
   # echo "  Capture Region  Clip"
