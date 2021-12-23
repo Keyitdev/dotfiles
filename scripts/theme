@@ -6,7 +6,6 @@ DIR="$HOME/.config/rofi/compact_without_icons.rasi"
 get_options_theme() {
   echo "dark"
   echo "blue"
-  echo "one_dark"
 }
 
 get_options_theme_polybar() {

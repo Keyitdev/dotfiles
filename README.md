@@ -179,3 +179,45 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * themes
 * patch
 * readme
+
+* vsc rofi dunst kitty polybar firefox gtk wallpaper
+* unistall oh my zsh script wallpaper credits
+
+[color]
+
+background = #21222C
+background2 = #282A36
+background3 = #343746
+foreground = #F8F8F2
+sep = #F8F8F2
+
+white = #FFFFFF
+black = #15121C
+red = #f07178
+green = #c3e88d
+yellow = #ffcb6b
+blue = #82aaff
+purple = #c792ea
+cyan = #89ddff
+pink = #ffa8c5
+orange = #dd864a
+
+
+[color]
+
+background = #181a20
+background2 = #1d2025
+background3 = #202328
+foreground = #F8F8F2
+sep = #F8F8F2
+
+white = #FFFFFF
+black = #15121C
+red = #f07178
+green = #c3e88d
+yellow = #ffcb6b
+blue = #82aaff
+purple = #c792ea
+cyan = #89ddff
+pink = #ffa8c5
+orange = #dd864a
