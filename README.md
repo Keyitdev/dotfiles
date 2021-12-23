@@ -207,8 +207,8 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * [color]
 * 
 * background = #181a20
-* background2 = #1d2025
-* background3 = #202328
+* background2 = #202328
+* background3 = #2d3138
 * foreground = #F8F8F2
 * sep = #F8F8F2
 * 

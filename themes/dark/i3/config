@@ -205,9 +205,9 @@ bindsym $mod+r mode "resize"
 default_border pixel 4
 
 #border colors
-client.focused #202328 #202328 #F8F8F2 #202328 #202328
-client.focused_inactive #202328 #202328 #F8F8F2 #181a20 #181a20
-client.unfocused #202328 #202328 #F8F8F2 #181a20 #181a20
+client.focused #2d3138 #2d3138 #F8F8F2 #2d3138 #2d3138
+client.focused_inactive #2d3138 #2d3138 #F8F8F2 #181a20 #181a20
+client.unfocused #2d3138 #2d3138 #F8F8F2 #181a20 #181a20
 
 ### SETTINGS FOR i3 BAR ###
 
