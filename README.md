@@ -1,5 +1,3 @@
-<!-- PROJECT LOGO -->
-<br />
 <div align="center">
   <!-- <a href="https://github.com/keyitdev/dotfiles">
     <img src="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/images/logo.png" alt="Logo" width="80" height="80">
@@ -7,7 +5,7 @@
   <h1 align="center">Key dotfiles</h1>
 
   <p align="center">
-    My personal build of dotfiles.
+    My first build of dotfiles. These dotfiles are based on modified One Dark color palette. Config include two themes (blue theme and dark).
     <br />
     <a href="https://github.com/deerrorer/dotfiles3#Showcase">Showcase</a>
     ·
@@ -18,7 +16,7 @@
     <a href="https://github.com/deerrorer/dotfiles3#Installation">Installation</a>
     ·
     <a href="https://github.com/deerrorer/dotfiles3#Keybinds">Keybinds</a>
-    .
+    ·
     <a href="https://github.com/deerrorer/dotfiles3#Troubleshooting">Troubleshooting</a>
   </p>
 </div>
@@ -59,7 +57,7 @@
 ## Dependecies
 
 ### Packaged used
-wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify acpi polybar ffcast slop
+wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm acpi polybar ffcast slop
 
 ### Fonts used
 * [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
@@ -96,10 +94,15 @@ Install gtk3 theme
 git clone https://github.com/EliverLara/Nordic.git
 sudo mv ./Nordic /usr/share/themes
 ```
-Install GRUB2 theme
+Install Grub2 theme
 ```sh
 git clone https://github.com/vinceliuice/grub2-themes.git
 sudo ./grub2-themes/install.sh -b -t tela -s 1080p
+```
+Install sddm astronaut
+```sh
+git clone https://github.com/totoro-ghost/sddm-astronaut.git ~/astronaut/
+sudo mv ~/astronaut/ /usr/share/sddm/themes/
 ```
 Install Firefox theme
 
@@ -136,13 +139,17 @@ Note: `Win` refers to the `Super/Mod` key.
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
-* [Totoro](https://github.com/deerrorer) for [polybar frontend](https://github.com/deerrorer/dotfiles/tree/master/.config/polybar),
+* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
 * [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
 * [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
-* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot),
-* [Quethu](https://www.deviantart.com/quethu) for [wallpaper](https://www.deviantart.com/quethu/art/Sci-Fi-Landscape-879969633),
-* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes).
+* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot).
+
+Not modified by me but used in these dotfiles
+* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad),
+* [EliverLara](https://github.com/EliverLara) for [gtk Nordic theme](https://github.com/EliverLara/Nordic),
+* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes),
 * [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
+[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut).
 
 ## Troubleshooting
 
@@ -150,13 +157,6 @@ These dotfiles includes some files from others rices. Original sources:
 
 Distributed under the *link* License.
 
-
-
 ## To do
-* dark theme to darker
-* polybar themes
-* dunst themes
-* dark and light theme
-* patch
-* wget -qO- https://git.io/papirus-icon-theme-uninstall | sh
-* https://feathericons.com/ 56px 1px
+* themes
+* uninstallation
