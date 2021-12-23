@@ -3,6 +3,7 @@
     "workbench.colorTheme": "One Dark Pro Darker",
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.tabs.enabled": true,
+    "oneDarkPro.markdownStyle": false,
     "workbench.colorCustomizations": {
             "[One Dark Pro Darker]": {
                 "sideBar.background": "#21222c",

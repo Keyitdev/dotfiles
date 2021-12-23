@@ -1,12 +1,9 @@
 /*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
+ * Documentation: https://github.com/davatorium/rofi/wiki
+ * Config created by Aditya Shakya https://github.com/adi1090x
+ * Config modified by Key https://www.github.com/keyitdev/dotfiles
  */
-
+ 
 configuration {
 	font:							"Open sans 11";
     show-icons:                     true;

@@ -52,6 +52,7 @@
 |**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
 |**Vsc theme**|
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
+|**GTK theme**||
 |**GTK icons**|[Papirus](shttps://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**||
 
@@ -102,31 +103,29 @@ sudo ./grub2-themes/install.sh -b -t tela -s 1080p
 
 ## Keybinds
 
-These are the basic keybinds. Read through the `xmonad/xmonad.hs` file for more keybinds like increasing gaps and restoring gaps.
+These are the basic keybinds. Read through the `i3` config for more keybinds.
 
 |        Keybind         |                 Function                 |
 | ---------------------- | ---------------------------------------- |
-| `Win + Shift + Enter`  | Launch terminal (alacritty)              |
-| `Win + Shift + C`      | Close window                             |
-| `Win + O`              | Open rofi menu                           |
-| `Win + Shift + Q`      | Open rofi powermenu                      |
-| `Win + S`              | Open sidebar                             |
-| `Win + Shift + S`      | Close sidebar                            |
-| `Win + P`              | Open dashboard                           |
-| `Win + Shift + P`      | Close dashboard                          |
-| `Win + B`              | Toggle the main bars                     |
-| `Win + Z`              | Activate inhibitor (Stops autolocking)   |
-| `Win + Shift + Z`      | Dectivate inhibitor (Enables autolocking)|
-| `Win + Ctrl + G`       | Toggle gaps (toggle to get screen space) |
-| `Win + J`              | Navigate through windows                 |
-| `Win + K`              | Navigate through windows                 |
-| `Win + Space`          | Switch through layouts                   |
-| `Win + T`              | Make a floating window tiled             |
+| `Win + Enter`          | Launch terminal (kitty)                  |
+| `Win + Shift + Q`      | Close window                             |
+| `Win + Q`              | Stacking layout                          |
+| `Win + W`              | Tabbed layout                            |
+| `Win + E`              | Default layout                           |
+| `Win + A`              | Rofi sidebar menu                        |
+| `Win + S`              | Rofi compact menu                        |
+| `Win + D`              | Rofi center menu                         |
+| `Win + Z`              | Rofi bookmarks                           |
+| `Win + X`              | Change theme                             |
+| `Win + C`              | Use screenshot script                    |
+| `Win + G`              | Gaps settings                            |
+| `Win + V`              | Set vertical orientation                 |
+| `Win + H`              | Set horizontal orientation               |
+| `Win + arrows (jkl;)`  | Resizing, moving windows                 |
+| `Win + Shift + E`      | Exit i3                                  |
+| `Win + Shift + R`      | Restart i3                               |
 
-Note: `Toggling` means to enable if inactive or to disable if active.
-
-
-Note: `Win` refers to the `Super` key.
+Note: `Win` refers to the `Super/Mod` key.
 
 ## Big thanks to
 
@@ -135,10 +134,8 @@ These dotfiles includes some files from others rices. Original sources:
 * [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
 * [Quethu](https://www.deviantart.com/quethu) for [wallpaper](https://www.deviantart.com/quethu/art/Sci-Fi-Landscape-879969633),
 * [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
-* [AryToNeX](https://github.com/AryToNeX) & [YottaGithub](https://github.com/YottaGitHub) for [discord theme](https://github.com/YottaGitHub/Nord-Glasscord),
 * [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot),
-* [Ant-arctica](https://github.com/ant-arctica) for [rofi bookmarks script](https://github.com/ant-arctica/rofi-bookmarks),
 * [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes).
 
 ## Troubleshooting
@@ -164,7 +161,8 @@ Distributed under the *link* License.
 [product-screenshot]: images/screenshot.png
 
 ## To do
-* markdown vsc 
+* clear rofi config
+* icon colors dunst
 * dark theme to darker
 * polybar themes
 * dunst themes

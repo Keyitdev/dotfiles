@@ -1,50 +1,46 @@
-# It will not be overwritten, so edit it as you like.
-#
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-#
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+# Documentation: https://i3wm.org/docs/userguide.html
+# Config created by Key https://www.github.com/keyitdev/dotfiles
 
+# set mod
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
+# set font
 font pango:Source Code Pro 10
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-# The combination of xss-lock, nm-applet and pactl is a popular choice, soz
-# they are included here as an example. Modify as you see fit.
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
+### Runnig apps in background ###
+
+# run picom
+exec_always --no-startup-id picom &
+
+# run mpd
+exec_always --no-startup-id mpd &
+
+#r un dunst
+exec_always --no-startup-id dunst &
+
+# set wallpaper with fed
+exec_always feh --bg-scale $HOME/Pictures/wallpapers/current.jpg
+
+# launch polybar
+exec_always --no-startup-id killall -q
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# run battery low warning
+exec_always --no-startup-id battery.sh&
+
+# start i3 components
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+### Shortcuts ###
+
 floating_modifier $mod
 
-### DEFAULT SHORTCUTS ###
-
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
@@ -80,7 +76,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+q layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -91,13 +87,49 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# run rofi programs
+bindsym $mod+a exec "rofi -show drun -no-default-config -config ~/.config/rofi/sidebar.rasi"
+bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/center.rasi"
+bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/compact.rasi"
+bindsym $mod+z exec "rofi -show bookmarks -modi 'bookmarks:~/test.sh' -no-default-config -config ~/.config/rofi/compact.rasi"
+bindsym $mod+x exec "theme"
+bindsym $mod+c exec "rofi-screenshot"
+
+# take a screenshot
+bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+
+# toggle touchpad
+bindsym F9 exec xinput set-prop 15 "Device Enabled" 0
+bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
+
+# brightness control
+exec_always --no-startup-id light -I
+bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness.sh &
+bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness.sh &
+
+# audio control
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume.sh &
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute.sh &
+#bindsym XF86AudioMicMute exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
+
+# toggle microphone mute
+bindsym F4 exec amixer set Capture nocap 
+bindsym F3 exec amixer set Capture cap 
+
+# turn off screen
+bindsym XF86ScreenSaver  exec xset dpms force off
+
+# :)
+bindsym ctrl + F1 exec --no-startup-id kitty
+bindsym ctrl + F2 exec --no-startup-id dmenu_run
+
+# workspaces names
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -127,7 +159,7 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
@@ -167,62 +199,21 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-### CUSTOM SHORTCUTS ###
-
-#Rofi launcher
-bindsym $mod+z exec "rofi -show drun -no-default-config -config ~/.config/rofi/sidebar.rasi"
-bindsym $mod+x exec "rofi -show drun -no-default-config -config ~/.config/rofi/center.rasi"
-bindsym $mod+q exec "rofi -show bookmarks -modi 'bookmarks: rofi-bookmarks.py' -no-default-config -config ~/.config/rofi/compact.rasi"
-bindsym $mod+g exec "rofi -show bookmarks -modi 'bookmarks:~/test.sh' -no-default-config -config ~/.config/rofi/compact.rasi"
-bindsym $mod+t exec "theme"
-bindsym $mod+y exec "rofi-screenshot"
-#Screenshots
-bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`' # All screens
-
-#Touchpad  toggle
-bindsym F9 exec xinput set-prop 15 "Device Enabled" 0
-bindsym F10 exec xinput set-prop 15 "Device Enabled" 1
-
-#Brightness control
-exec_always --no-startup-id light -I
-bindsym XF86MonBrightnessUp exec light -A 2 && light -O# increase screen brightness && brightness.sh &
-bindsym XF86MonBrightnessDown exec light -U 2 && light -O# decrease screen brightness && brightness.sh &
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-
-#Audio control
-#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && volume.sh &
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && volume.sh &
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && mute.sh &
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-
-#Turn off screen
-bindsym XF86ScreenSaver  exec xset dpms force off
-
-bindsym ctrl + F1 exec kitty
 ### BODERS ###
+
 #border width
 default_border pixel 4
 
 #border colors
-#<colorclass> <border> <background> <text> <indicator> <child_border>
 client.focused #343746 #343746 #F8F8F2 #343746 #343746
 client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
 client.unfocused #343746 #343746 #F8F8F2 #21222C #21222C
 
 ### SETTINGS FOR i3 BAR ###
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
-  mode invisible
-	status_command i3status
-	position top
-	tray_output none
+        mode invisible
+        tray_output none
 }
 
 ### SETTINGS FOR i3-gaps ###
@@ -231,11 +222,6 @@ bar {
 gaps inner 8
 gaps outer 0
 
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
-
 # Smart gaps (gaps used if only more than one container on the workspace)
 # smart_gaps on
 
@@ -243,11 +229,11 @@ gaps outer 0
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 #smart_borders on
 
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+# Press $mod+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+bindsym $mod+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -279,25 +265,3 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-### Runnig apps in background ###
-
-#Run picom
-exec_always --no-startup-id picom &
-
-#Run mpd
-exec_always --no-startup-id mpd &
-
-#Run dunst
-exec_always --no-startup-id dunst &
-
-#Wallpaper
-exec_always feh --bg-scale $HOME/Pictures/wallpapers/current.jpg
-
-#Polybar launcher
-exec_always --no-startup-id killall -q
-
-#Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-exec_always --no-startup-id battery.sh&
