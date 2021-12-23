@@ -111,7 +111,7 @@ Install Firefox theme
 
 ## Uninstallation
 
-1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependec)),
+1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies)),
 2. Remove AUR helper ( ~/.srcs)
 3. Change bask shell to bash 
 ```
@@ -152,8 +152,9 @@ Note: `Win` refers to the `Super/Mod` key.
 These dotfiles includes some files from others rices. Original sources:
 * [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
 * [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
-* [Alexander-Miller]() for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
+* [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot).
+* [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh).
 
 Not modified by me but used in these dotfiles
 * [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad),
