@@ -68,6 +68,7 @@ wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xcli
 ## Installation
 
 ### Arch
+I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script and commands bellow:
 
 Clone dotfiles
 ```
@@ -175,6 +176,5 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 
 ## To do
 * themes
-* uninstallation
 * patch
 * readme
