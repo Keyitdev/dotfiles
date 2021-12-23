@@ -57,7 +57,7 @@
 ## Dependecies
 
 ### Packaged used
-wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm acpi polybar ffcast slop
+wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop acpi polybar ffcast slop
 
 ### Fonts used
 * [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
@@ -65,7 +65,7 @@ wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xcli
 * [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
 * [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
 
-## Instalation
+## Installation
 
 ### Arch
 
@@ -110,6 +110,16 @@ Install Firefox theme
 
 ## Uninstallation
 
+1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependec)),
+2. Remove AUR helper ( ~/.srcs)
+3. Change bask shell to bash 
+```
+chsh -s /bin/zsh root: sudo chsh -s /bin/zsh
+```
+4. Remove installed fonts (~/.local/share/fonts/),
+5. Remove installed scripts (/usr/local/bin),
+6. Delete this repo
+
 ## Keybinds
 
 These are the basic keybinds. Read through the `i3` config for more keybinds.
@@ -153,10 +163,18 @@ Not modified by me but used in these dotfiles
 
 ## Troubleshooting
 
+1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
+2. Black flashing screen : Try changing picom config.
+3. Scripts not working : Edit them.
+4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
+
+
 ## License
 
-Distributed under the *link* License.
+Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
 
 ## To do
 * themes
 * uninstallation
+* patch
+* readme
