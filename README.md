@@ -109,19 +109,20 @@ Install Firefox theme
 
 [Blue theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 
-[Dark theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr23naIF864DqTISy5J31tQmo4zYnr3qoWRXy18FfYHv0j5dsS5Zn4VeZYHfEg0Mi5I09a8clJZYaw94hQkl9eHLzgyuQy8ueCQKoDVgn8FysNxflK_fFfPOiEydooCdnAI4SZrvjHrAWV7ap2g7rU6EQBz6eQkSheZ-OoKev4KWY32SFk0iVvqA1gBTGcvWGjotz54fr6yr3LnUk8Ls6XJUzalDr-NSsM0KYnKBBC6WZomzweHJrAhSH-jpflKZMY)
+[Dark theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr3mIJG8pMOJZrzw12iceKCk3f9y7xS8dK7VdwlKVIiKnt8eK0J1GpJZqQIU8oE5A4_yESSKDpV5ZtJvFCj2IsxGswSWbDkh9jYK2lE0V9RHJugA_ghbohSu0UU1S90WLb-LNoHwhyCwNQAsJgqCSQ5WQdurh_Vqa5BgLyf7ZT_Jw9B457EpttRRaPEDjqsJstSUPnJU6_vVsDBYpFeQsQtXk6lnamtwwdeGzOoxdtuI6gu2Ual3wcaFxeQh_xhecQ)
 
 ## Uninstallation
 
 1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies)),
 2. Remove AUR helper ( ~/.srcs)
-3. Change bask shell to bash 
+3. Unistall oh my zsh ` uninstall_oh_my_zsh`
+4. Change back shell to bash 
 ```
 chsh -s /bin/zsh root: sudo chsh -s /bin/zsh
 ```
-4. Remove installed fonts (~/.local/share/fonts/),
-5. Remove installed scripts (/usr/local/bin),
-6. Delete this repo
+5. Remove installed fonts (~/.local/share/fonts/),
+6. Remove installed scripts (/usr/local/bin),
+7. Delete this repo
 
 ## Keybinds
 
@@ -157,6 +158,7 @@ These dotfiles includes some files from others rices. Original sources:
 * [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot).
 * [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh).
+* [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
 
 Not modified by me but used in these dotfiles
 * [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad),
@@ -172,7 +174,6 @@ Not modified by me but used in these dotfiles
 3. Scripts not working : Edit them.
 4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
 
-
 ## License
 
 Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
@@ -181,8 +182,7 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * patch
 * readme
 
-* discord ncmcpp dark line rofi icons theme
-* unistall oh my zsh script wallpaper credits
+* discord ncmcpp dark line
 
 * [color]
 * 

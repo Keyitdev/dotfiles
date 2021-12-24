@@ -16,7 +16,7 @@ get_options_theme_polybar() {
 main() {
 
   # Get THEME from rofi
-  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "Choose theme" -theme "$DIR")
+  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR")
 
   # If user has not picked anything, exit
   if [[ -z "${THEME// /}" ]]; then
@@ -30,7 +30,7 @@ main() {
   cp -f $HOME/dotfiles3/themes/$THEME/polybar/* ~/.config/polybar
   cp -f $HOME/dotfiles3/themes/$THEME/i3/* ~/.config/i3
 
-  THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "Choose polybar theme" -theme "$DIR")
+  THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR")
 
     # If user has not picked anything, exit
   if [[ -z "${THEME_POLYBAR// /}" ]]; then
