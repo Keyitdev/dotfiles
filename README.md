@@ -23,16 +23,17 @@
 
 <div align="center">
 
-<img src="https://img.shields.io/github/stars/deerrorer/dotfiles3?color=dd864a&labelColor=555555&style=for-the-badge">
-<img src="https://img.shields.io/github/forks/deerrorer/dotfiles3?color=82aaff&labelColor=555555&style=for-the-badge">
-<img src="https://img.shields.io/github/issues/deerrorer/dotfiles3?color=bf616a&labelColor=555555&style=for-the-badge">
-<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=c792ea&labelColor=555555&style=for-the-badge">
+<img src="https://img.shields.io/github/stars/deerrorer/dotfiles3?color=dd864a&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/forks/deerrorer/dotfiles3?color=82aaff&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/issues/deerrorer/dotfiles3?color=bf616a&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=c792ea&labelColor=202328&style=for-the-badge">
 
 </div>
 
 ## Showcase
 
-![](./showcase.png)
+![](./showcase.mp4)
+
 
 ## Info
 
@@ -113,15 +114,15 @@ Install Firefox theme
 
 ## Uninstallation
 
-1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies)),
+1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies))
 2. Remove AUR helper ( ~/.srcs)
 3. Unistall oh my zsh ` uninstall_oh_my_zsh`
 4. Change back shell to bash 
 ```
 chsh -s /bin/zsh root: sudo chsh -s /bin/zsh
 ```
-5. Remove installed fonts (~/.local/share/fonts/),
-6. Remove installed scripts (/usr/local/bin),
+5. Remove installed fonts (~/.local/share/fonts/)
+6. Remove installed scripts (/usr/local/bin)
 7. Delete this repo
 
 ## Keybinds
@@ -153,19 +154,19 @@ Note: `Win` refers to the `Super/Mod` key.
 ## Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
-* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar),
-* [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi),
-* [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config),
-* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot).
-* [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh).
+* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar)
+* [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi)
+* [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config)
+* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
+* [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh)
 * [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
 
 Not modified by me but used in these dotfiles
-* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad),
-* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt),
-* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes),
+* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad)
+* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt)
+* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes)
 * [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
-[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut).
+[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut)
 
 ## Troubleshooting
 
@@ -179,9 +180,8 @@ Not modified by me but used in these dotfiles
 Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
 
 ## To do
-* patch
+* path
 * readme
-
 * discord ncmcpp dark line
 
 * [color]
