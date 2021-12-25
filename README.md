@@ -34,7 +34,7 @@
 ## Showcase
 
 ![](./screenshots/showcase.png)
-
+More screenshots [here](./screenshots/SCREENSHOTS.md)
 ## Info
 
 |Program|Name|
