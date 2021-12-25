@@ -26,15 +26,14 @@
 <img src="https://img.shields.io/github/stars/deerrorer/dotfiles3?color=dd864a&labelColor=202328&style=for-the-badge">
 <img src="https://img.shields.io/github/forks/deerrorer/dotfiles3?color=82aaff&labelColor=202328&style=for-the-badge">
 <img src="https://img.shields.io/github/issues/deerrorer/dotfiles3?color=bf616a&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=c792ea&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/issues-pr/deerrorer/dotfiles3?color=c792ea&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=15121C&labelColor=202328&style=for-the-badge">
 
 </div>
 
 ## Showcase
 
-![](./showcase.mp4)
-
-![](./showcase.mkv)
+![](./showcase.png)
 
 ## Info
 
@@ -185,41 +184,23 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * readme
 * discord ncmcpp dark line
 
-* [color]
-* 
-* background = #21222C
-* background2 = #282A36
-* background3 = #343746
-* foreground = #F8F8F2
-* sep = #F8F8F2
-* 
-* white = #FFFFFF
-* black = #15121C
-* red = #f07178
-* green = #c3e88d
-* yellow = #ffcb6b
-* blue = #82aaff
-* purple = #c792ea
-* cyan = #89ddff
-* pink = #ffa8c5
-* orange = #dd864a
-* 
-* 
-* [color]
-* 
-* background = #181a20
-* background2 = #202328
-* background3 = #2d3138
-* foreground = #F8F8F2
-* sep = #F8F8F2
-* 
-* white = #FFFFFF
-* black = #15121C
-* red = #f07178
-* green = #c3e88d
-* yellow = #ffcb6b
-* blue = #82aaff
-* purple = #c792ea
-* cyan = #89ddff
-* pink = #ffa8c5
-* orange = #dd864a
+
+|        Color           |                 Hex code                 |
+| ---------------------- | ---------------------------------------- |
+|  Blue background       | #21222C                                  |
+|  Blue background 2     | #282A36                                  |
+|  Blue background 3     | #343746                                  |
+|  Dark background       | #181a20                                  |
+|  Dark background 2     | #202328                                  |
+|  Dark background 3     | #2d3138                                  |
+|  foreground            | #F8F8F2                                  |
+|  white                 | #FFFFFF                                  |
+|  black                 | #15121C                                  |
+|  red                   | #f07178                                  |
+|  green                 | #c3e88d                                  |
+|  yellow                | #ffcb6b                                  |
+|  blue                  | #82aaff                                  |
+|  purple                | #c792ea                                  |
+|  cyan                  | #89ddff                                  |
+|  pink                  | #ffa8c5                                  |
+|  orange                | #dd864a                                  |
