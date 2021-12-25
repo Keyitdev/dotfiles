@@ -1,6 +1,6 @@
 <div align="center">
   <!-- <a href="https://github.com/keyitdev/dotfiles">
-    <img src="https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/images/logo.png" alt="Logo" width="80" height="80">
+    <img src="" alt="Logo" width="80" height="80">
   </a> -->
   <h1 align="center">Key dotfiles</h1>
 
@@ -33,7 +33,7 @@
 
 ## Showcase
 
-![](./showcase.png)
+![](./screenshots/showcase.png)
 
 ## Info
 
@@ -151,39 +151,7 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 
 Note: `Win` refers to the `Super/Mod` key.
 
-## Big thanks to
-
-These dotfiles includes some files from others rices. Original sources:
-* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar)
-* [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi)
-* [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config)
-* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
-* [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh)
-* [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
-
-Not modified by me but used in these dotfiles
-* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad)
-* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt)
-* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes)
-* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
-[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut)
-
-## Troubleshooting
-
-1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
-2. Black flashing screen : Try changing picom config.
-3. Scripts not working : Edit them.
-4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
-
-## License
-
-Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
-
-## To do
-* path
-* readme
-* discord ncmcpp dark line
-
+## Colors
 
 |        Color           |                 Hex code                 |
 | ---------------------- | ---------------------------------------- |
@@ -204,3 +172,36 @@ Distributed under the [GLPv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 |  cyan                  | #89ddff                                  |
 |  pink                  | #ffa8c5                                  |
 |  orange                | #dd864a                                  |
+
+## Troubleshooting
+
+1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
+2. Black flashing screen : Try changing picom config.
+3. Scripts not working : Edit them.
+4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
+
+## Big thanks to
+
+These dotfiles includes some files from others rices. Original sources:
+* [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar)
+* [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi)
+* [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config)
+* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
+* [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh)
+* [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
+
+Not modified by me but used in these dotfiles
+* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad)
+* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt)
+* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes)
+* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
+[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut)
+
+## License
+
+Distributed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
+
+## To do
+* path
+* readme
+* discord ss and
