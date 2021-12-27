@@ -7,9 +7,6 @@
 ![](./blue/firefox.png)
 ![](./blue/kitty.png)
 ![](./blue/nvim.png)
-![](./blue/rofi_sidebar.png)
-![](./blue/rofi_bookmarks.png)
-![](./blue/rofi_center.png)
-![](./blue/rofi_compact.png)
-
+![](./blue/rofi.gif)
+![](./blue/dunst.gif)
 ## Dark theme

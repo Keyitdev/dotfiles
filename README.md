@@ -205,3 +205,6 @@ Distributed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * path
 * readme
 * discord ss and
+* ss 
+* change mic icon
+* add install md in arch script

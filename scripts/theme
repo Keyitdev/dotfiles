@@ -29,7 +29,7 @@ main() {
   cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code/User
   cp -f $HOME/dotfiles3/themes/$THEME/polybar/* ~/.config/polybar
   cp -f $HOME/dotfiles3/themes/$THEME/i3/* ~/.config/i3
-
+  cp -f $HOME/dotfiles3/themes/$THEME/dunst/* ~/.config/dunst
   THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR")
 
     # If user has not picked anything, exit
