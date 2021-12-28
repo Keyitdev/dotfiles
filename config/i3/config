@@ -96,7 +96,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a exec "rofi -show drun -no-default-config -config ~/.config/rofi/sidebar.rasi"
 bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/center.rasi"
 bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/compact.rasi"
-bindsym $mod+z exec "rofi -show  -modi ':~/test.sh' -no-default-config -config ~/.config/rofi/compact.rasi"
+bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+x exec "theme"
 bindsym $mod+c exec "rofi-screenshot"
 
@@ -121,7 +121,7 @@ bindsym XF86ScreenSaver  exec xset dpms force off
 bindsym ctrl + F1 exec --no-startup-id kitty
 bindsym ctrl + F2 exec --no-startup-id dmenu_run
 
-# toggle microphone 
+# toggle microphone
 bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
 bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
 
