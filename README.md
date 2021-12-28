@@ -55,7 +55,7 @@
 |**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
 |**GTK theme**|[Dracula (ant)](https://github.com/EliverLara/ant)|
 |**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
-|**Discord Theme**|[My custom theme]()|
+|**Discord Theme**|[My custom theme](https://github.com/Keyitdev/BetterDiscord-themes)|
 
 ## Dependecies
 
@@ -191,6 +191,7 @@ These dotfiles includes some files from others rices. Original sources:
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
 * [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh)
 * [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
+* [Milosz](https://github.com/milosz) for [rofi-bookmarks](https://github.com/milosz/rofi-firefox-bookmarks)
 
 Not modified by me but used in these dotfiles
 * [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad)
@@ -204,10 +205,5 @@ Not modified by me but used in these dotfiles
 Distributed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
 
 ## To do
-* path
 * readme
-* discord ss and
-* ss 
-* change mic icon
-* add install md in arch script
-* dunst color border
+* ss

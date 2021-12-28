@@ -71,6 +71,7 @@ clear
 # install scripts
 sudo mkdir -p /usr/local/bin
 sudo cp -r ./scripts/* /usr/local/bin
+sudo cp -r ./themes/ /usr/local/bin/
 
 # create default folders
 mkdir -p ~/.srcs
@@ -223,4 +224,3 @@ mkdir -p ~/.config/
         echo "Installing Visual Studio Code configs..."
         cp ./.zshrc ~/;
     fi
-#MANUAL INSTALATION

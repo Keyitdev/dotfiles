@@ -122,8 +122,8 @@ bindsym ctrl + F1 exec --no-startup-id kitty
 bindsym ctrl + F2 exec --no-startup-id dmenu_run
 
 # toggle microphone 
-bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic.svg
-bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
+bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
 
 # toggle touchpad
 bindsym ctrl + F9 exec xinput set-prop 15 "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100

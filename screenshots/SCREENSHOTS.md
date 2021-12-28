@@ -2,14 +2,14 @@
 
 ## Blue theme
 
-![](./blue/1.png)
-![](./blue/2.png)
-![](./blue/3.png)
-![](./blue/4.png)
+![](./blue/1.png?raw=true)
+![](./blue/2.png?raw=true)
+![](./blue/3.png?raw=true)
+![](./blue/4.png?raw=true)
 
 ## Dark theme
 
-![](./dark/1.png)
-![](./dark/2.png)
-![](./dark/3.png)
-![](./dark/4.png)
+![](./dark/1.png?raw=true)
+![](./dark/2.png?raw=true)
+![](./dark/3.png?raw=true)
+![](./dark/4.png?raw=true)
