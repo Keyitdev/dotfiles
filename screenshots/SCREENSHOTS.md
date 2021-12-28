@@ -2,11 +2,14 @@
 
 ## Blue theme
 
-![](./blue/desktop.png)
-![](./blue/vsc.png)
-![](./blue/firefox.png)
-![](./blue/kitty.png)
-![](./blue/nvim.png)
-![](./blue/rofi.gif)
-![](./blue/dunst.gif)
+![](./blue/1.png)
+![](./blue/2.png)
+![](./blue/3.png)
+![](./blue/4.png)
+
 ## Dark theme
+
+![](./dark/1.png)
+![](./dark/2.png)
+![](./dark/3.png)
+![](./dark/4.png)

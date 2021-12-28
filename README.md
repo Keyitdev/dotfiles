@@ -2,39 +2,41 @@
   <!-- <a href="https://github.com/keyitdev/dotfiles">
     <img src="" alt="Logo" width="80" height="80">
   </a> -->
-  <h1 align="center">Key dotfiles</h1>
+  <h1 align="center">Keyitdev dotfiles</h1>
 
   <p align="center">
     My first build of dotfiles. These dotfiles are based on modified One Dark color palette. Config include two themes (blue theme and dark).
     <br />
-    <a href="https://github.com/deerrorer/dotfiles3#Showcase">Showcase</a>
+    <a href="https://github.com/keyitdev/dotfiles#Showcase">Showcase</a>
     ·
-    <a href="https://github.com/deerrorer/dotfiles3#Info">Info</a>
+    <a href="https://github.com/keyitdev/dotfiles#Info">Info</a>
     ·
-    <a href="https://github.com/deerrorer/dotfiles3#Dependecies">Dependecies</a>
+    <a href="https://github.com/keyitdev/dotfiles#Dependecies">Dependecies</a>
     ·
-    <a href="https://github.com/deerrorer/dotfiles3#Installation">Installation</a>
+    <a href="https://github.com/keyitdev/dotfiles#Installation">Installation</a>
     ·
-    <a href="https://github.com/deerrorer/dotfiles3#Keybinds">Keybinds</a>
+    <a href="https://github.com/keyitdev/dotfiles#Keybinds">Keybinds</a>
     ·
-    <a href="https://github.com/deerrorer/dotfiles3#Troubleshooting">Troubleshooting</a>
+    <a href="https://github.com/keyitdev/dotfiles#Troubleshooting">Troubleshooting</a>
   </p>
 </div>
 
 <div align="center">
 
-<img src="https://img.shields.io/github/stars/deerrorer/dotfiles3?color=dd864a&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/forks/deerrorer/dotfiles3?color=82aaff&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/issues/deerrorer/dotfiles3?color=bf616a&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/issues-pr/deerrorer/dotfiles3?color=c792ea&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/license/deerrorer/dotfiles3?color=15121C&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/forks/keyitdev/dotfiles?color=82aaff&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/issues/keyitdev/dotfiles?color=bf616a&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge">
+<img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
 
 </div>
 
 ## Showcase
 
-![](./screenshots/showcase.png)
-More screenshots [here](./screenshots/SCREENSHOTS.md)
+![](./screenshots/blue/1.png)
+
+### More screenshots [here](./screenshots/SCREENSHOTS.md)
+
 ## Info
 
 |Program|Name|
@@ -73,8 +75,8 @@ I recommend manually installing packages and coping files, but if you are lazy o
 
 Clone dotfiles
 ```
-git clone https://www.github.com/derrorer/dotfiles3.git
-cd dotfiles3
+git clone https://www.github.com/keyitdev/dotfiles.git
+cd dotfiles
 chmod +x install-on-arch.sh
 ./install-on-arch.sh
 ```
@@ -114,7 +116,7 @@ Install Firefox theme
 
 ## Uninstallation
 
-1. Remove installed packages (see [Dependecies](https://github.com/deerrorer/dotfiles3#Dependecies))
+1. Remove installed packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
 2. Remove AUR helper ( ~/.srcs)
 3. Unistall oh my zsh ` uninstall_oh_my_zsh`
 4. Change back shell to bash 
@@ -208,3 +210,4 @@ Distributed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) License
 * ss 
 * change mic icon
 * add install md in arch script
+* dunst color border

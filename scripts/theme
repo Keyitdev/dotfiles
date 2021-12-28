@@ -23,20 +23,20 @@ main() {
     exit 1
   fi
 
-  cp -f $HOME/dotfiles3/themes/$THEME/kitty/kitty.conf ~/.config/kitty/
-  cp -f $HOME/dotfiles3/themes/$THEME/rofi/* ~/.config/rofi/
-  cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
-  cp -f $HOME/dotfiles3/themes/$THEME/vsc/* ~/.config/Code/User
-  cp -f $HOME/dotfiles3/themes/$THEME/polybar/* ~/.config/polybar
-  cp -f $HOME/dotfiles3/themes/$THEME/i3/* ~/.config/i3
-  cp -f $HOME/dotfiles3/themes/$THEME/dunst/* ~/.config/dunst
+  cp -f $HOME/dotfiles/themes/$THEME/kitty/kitty.conf ~/.config/kitty/
+  cp -f $HOME/dotfiles/themes/$THEME/rofi/* ~/.config/rofi/
+  cp -f $HOME/dotfiles/themes/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
+  cp -f $HOME/dotfiles/themes/$THEME/vsc/* ~/.config/Code/User
+  cp -f $HOME/dotfiles/themes/$THEME/polybar/* ~/.config/polybar
+  cp -f $HOME/dotfiles/themes/$THEME/i3/* ~/.config/i3
+  cp -f $HOME/dotfiles/themes/$THEME/dunst/* ~/.config/dunst
   THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR")
 
     # If user has not picked anything, exit
   if [[ -z "${THEME_POLYBAR// /}" ]]; then
     exit 1
   fi
-  cp -f $HOME/dotfiles3/themes/$THEME_POLYBAR/launch.sh ~/.config/polybar
+  cp -f $HOME/dotfiles/themes/$THEME_POLYBAR/launch.sh ~/.config/polybar
 
   # done
   set -e
