@@ -35,6 +35,10 @@
 
 ![](./screenshots/blue/1.png)
 
+
+https://user-images.githubusercontent.com/70140437/147613962-b488c4d4-c8eb-49a8-82f9-2f0907d81b46.mp4
+
+
 ### More screenshots [here](./screenshots/SCREENSHOTS.md)
 
 ## Info
