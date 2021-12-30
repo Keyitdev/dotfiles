@@ -206,4 +206,4 @@ Not modified by me but used in these dotfiles
 
 ## License
 
-Distributed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.html) License.
+Distributed under the [GPLv3+](https://www.gnu.org/licenses/gpl-3.0.html) License.

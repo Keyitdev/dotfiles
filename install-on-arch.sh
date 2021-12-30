@@ -217,10 +217,10 @@ mkdir -p ~/.config/
         mkdir ~/.config/Code/User && cp -r ./vsc/* ~/.config/Code/User;
     fi
     if [ -f ~/.zshrc ]; then
-        echo "Visual Studio Code configs detected, backing up..."
+        echo "Zsh configs detected, backing up..."
         cp ~/.zshrc ~/zshrc.old
         cp ./.zshrc ~/;
     else
-        echo "Installing Visual Studio Code configs..."
+        echo "Installing zsh configs..."
         cp ./.zshrc ~/;
     fi
