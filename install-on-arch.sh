@@ -50,8 +50,7 @@ esac
 # install basics packages
 sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop pacman-contrib $DRI
 
-
-# install optinal programs
+# install optional programs
 echo "Install no required but usefull programs? (Code, iwd, libreoffice, firefox etc."
 read -r -p "1) Yes 2) Nope" INSTALL_PROGRAMS
 
@@ -224,18 +223,18 @@ mkdir -p ~/.config/
     if [ -d ~/.config/Code\ -\ OSS/User ]; then
         echo "Visual Studio Code (OSS) configs detected, backing up..."
         mkdir -p ~/.config/Code\ -\ OSS/User.old && mv ~/.config/Code\ -\ OSS/User/* ~/.config/Code\ -\ OSS/User.old/
-        cp -r ./vsc/* ~/.config/Code\ -\ OSS/User;
+        cp -r ./config/vsc/* ~/.config/Code\ -\ OSS/User;
     else
         echo "Installing Visual Studio Code (OSS) configs..."
-        mkdir ~/.config/Code\ -\ OSS/User && cp -r ./vsc/* ~/.config/Code\ -\ OSS/User;
+        mkdir ~/.config/Code\ -\ OSS/User && cp -r ./config/vsc/* ~/.config/Code\ -\ OSS/User;
     fi
     if [ -d ~/.config/Code/User ]; then
         echo "Visual Studio Code configs detected, backing up..."
         mkdir -p ~/.config/Code/User.old && mv ~/.config/Code/User/* ~/.config/Code/User.old/
-        cp -r ./vsc/* ~/.config/Code/User;
+        cp -r ./config/vsc/* ~/.config/Code/User;
     else
         echo "Installing Visual Studio Code configs..."
-        mkdir ~/.config/Code/User && cp -r ./vsc/* ~/.config/Code/User;
+        mkdir ~/.config/Code/User && cp -r ./config/vsc/* ~/.config/Code/User;
     fi
     if [ -f ~/.zshrc ]; then
         echo "Zsh configs detected, backing up..."

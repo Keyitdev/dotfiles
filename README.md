@@ -65,6 +65,7 @@ https://user-images.githubusercontent.com/70140437/147613962-b488c4d4-c8eb-49a8-
 
 ### Packaged used
 wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop acpi polybar ffcast slop
+pacman-contrib noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts used
 * [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
