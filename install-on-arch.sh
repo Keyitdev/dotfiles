@@ -48,7 +48,50 @@ case $vid in
 esac
 
 # install basics packages
-sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop $DRI
+sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop pacman-contrib $DRI
+
+sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+
+echo "Recommended system font: inconsolata regular (ttf-inconsolata or powerline-fonts)"
+
+# Add font config to /etc/fonts/conf.d/01-notosans.conf
+echo "<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+ <alias>
+   <family>sans-serif</family>
+   <prefer>
+     <family>Noto Sans</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Sans</family>
+   </prefer> 
+ </alias>
+
+ <alias>
+   <family>serif</family>
+   <prefer>
+     <family>Noto Serif</family>
+     <family>Noto Color Emoji</family>
+     <family>Noto Emoji</family>
+     <family>DejaVu Serif</family>
+   </prefer>
+ </alias>
+
+ <alias>
+  <family>monospace</family>
+  <prefer>
+    <family>Noto Mono</family>
+    <family>Noto Color Emoji</family>
+    <family>Noto Emoji</family>
+    <family>DejaVu Sans Mono</family>
+   </prefer>
+ </alias>
+</fontconfig>
+
+" > /etc/fonts/local.conf
+# 3 - update font cache via fc-cache
+fc-cache -f
 
 # choose video driver
 echo "Install no required but usefull programs? (Code, iwd, libreoffice, firefox etc."
