@@ -50,56 +50,34 @@ esac
 # install basics packages
 sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop pacman-contrib $DRI
 
-sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
-echo "Recommended system font: inconsolata regular (ttf-inconsolata or powerline-fonts)"
-
-# Add font config to /etc/fonts/conf.d/01-notosans.conf
-echo "<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<fontconfig>
- <alias>
-   <family>sans-serif</family>
-   <prefer>
-     <family>Noto Sans</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-     <family>DejaVu Sans</family>
-   </prefer> 
- </alias>
-
- <alias>
-   <family>serif</family>
-   <prefer>
-     <family>Noto Serif</family>
-     <family>Noto Color Emoji</family>
-     <family>Noto Emoji</family>
-     <family>DejaVu Serif</family>
-   </prefer>
- </alias>
-
- <alias>
-  <family>monospace</family>
-  <prefer>
-    <family>Noto Mono</family>
-    <family>Noto Color Emoji</family>
-    <family>Noto Emoji</family>
-    <family>DejaVu Sans Mono</family>
-   </prefer>
- </alias>
-</fontconfig>
-
-" > /etc/fonts/local.conf
-# 3 - update font cache via fc-cache
-fc-cache -f
-
-# choose video driver
+# install optinal programs
 echo "Install no required but usefull programs? (Code, iwd, libreoffice, firefox etc."
-read -r -p "1) Yes 2) Nope" upro
+read -r -p "1) Yes 2) Nope" INSTALL_PROGRAMS
 
-if [ $upro -eq 1 ]
+if [ $INSTALL_PROGRAMS -eq 1 ]
 then
    sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
+fi
+
+# install emoji fonts
+echo "Install emoji fonts?"
+read -r -p "1) Yes 2) Nope" INSTALL_FONTS
+
+if [ $INSTALL_FONTS -eq 1 ]
+then
+   sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+   
+    if [ -f /etc/fonts/local.conf ]; then
+        echo "Fonts configs detected, backing up..."
+        sudo cp /etc/fonts/local.conf /etc/fonts/local.conf.old
+        sudo cp ./config/local.conf /etc/fonts/;
+    else
+        echo "Installing fonts configs..."
+        sudo cp ./config/local.conf /etc/fonts/;
+    fi
+
+   fc-cache -f
 fi
 
 # make light executable
@@ -262,8 +240,8 @@ mkdir -p ~/.config/
     if [ -f ~/.zshrc ]; then
         echo "Zsh configs detected, backing up..."
         cp ~/.zshrc ~/zshrc.old
-        cp ./.zshrc ~/;
+        cp ./config/.zshrc ~/;
     else
         echo "Installing zsh configs..."
-        cp ./.zshrc ~/;
+        cp ./config/.zshrc ~/;
     fi
