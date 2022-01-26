@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-# Take all the cache and remove useless packages
-
+# take all the cache and remove useless packages
 sudo pacman -Sc
 sudo pacman -Scc
 paccache -r
 sudo pacman -Rns $(pacman -Qtdq)
+
 # list cache 
 sudo du -sh ~/.cache/
 rm -rf ~/.cache/*

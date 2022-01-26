@@ -1,9 +1,9 @@
 #!/bin/bash
 
-DIR="/usr/local/bin/icons"
+DIR_ICONS="/usr/local/bin/icons"
 
-MAX_BRI=$(cat /sys/class/backlight/amdgpu_bl0/max_brightness)
-CUR_BRI=$(cat /sys/class/backlight/amdgpu_bl0/brightness)
+MAX_BRI=$(cat /sys/class/backlight/*/max_brightness)
+CUR_BRI=$(cat /sys/class/backlight/*/brightness)
 
 # calculating current percentage
 ((CUR_PER = CUR_BRI * 100 / MAX_BRI))
@@ -13,11 +13,11 @@ if [ $CUR_PER -ge 50 ]; then
         "Brightness" \
         "Current brightness is $CUR_PER%" \
         -r 100 \
-        -i $DIR/sun.svg
+        -i $DIR_ICONS/sun.svg
 else
         dunstify -a "Brightness" \
         "Brightness" \
         "Current brightness is $CUR_PER%" \
         -r 100 \
-        -i $DIR/moon.svg
+        -i $DIR_ICONS/moon.svg
 fi
