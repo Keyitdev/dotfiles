@@ -64,3 +64,4 @@ selected_item_prefix                  = $(white)$b
 selected_item_suffix                  = $/b$(end)
 browser_playlist_prefix               = "$2Playlist$9 "
 modified_item_prefix                  = ">> "
+execute_on_song_change = notify-send "Now Playing" "$(mpc current)"

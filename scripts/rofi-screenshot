@@ -4,19 +4,19 @@
 THEME="$HOME/.config/rofi/compact_without_icons.rasi"
 
 get_options() {
-  # echo "  Capture Region  Clip"
-  # echo "  Capture Region  File"
-  # echo "  Capture Screen  Clip"
-  # echo "  Capture Screen  File"
-  echo "  Record Region (GIF)"
-  echo "  Record Screen (GIF)"
-  echo "  Record Region (MP4)"
-  echo "  Record Screen (MP4)"
-  echo "  Record Region (MP4+audio_virt)"
-  echo "  Record Region (MP4+audio_mic)"
-  echo "  Record Audio virt"
-  echo "  Record Audio mic"
-  echo "  Stop Recording"
+  echo "    Capture Region"
+  echo "    Capture Region (without saving)"
+  echo "    Capture Screen"
+  echo "    Capture Screen (without saving)"
+  echo "    Record Region (GIF)"
+  echo "    Record Screen (GIF)"
+  echo "    Record Region (MP4)"
+  echo "    Record Screen (MP4)"
+  #echo "    Record Region (MP4+audio_virt)"
+  #echo "    Record Region (MP4+audio_mic)"
+  #echo "    Record Audio virt"
+  #echo "    Record Audio mic"
+  echo "    Stop Recording"
 }
 
 main() {
@@ -31,43 +31,43 @@ main() {
 
   # run the selected command
   case $choice in
-  '  Capture Region  Clip')
+  '    Capture Region (without saving)')
     screenshot -crtc
     ;;
-  '  Capture Region  File')
+  '    Capture Region')
     screenshot -crtf
     ;;
-  '  Capture Screen  Clip')
+  '    Capture Screen (without saving)')
     screenshot -cstc
     ;;
-  '  Capture Screen  File')
+  '    Capture Screen')
     screenshot -cstf
     ;;
-  '  Record Region (GIF)')
+  '    Record Region (GIF)')
     screenshot -rrg
     ;;
-  '  Record Screen (GIF)')
+  '    Record Screen (GIF)')
     screenshot -rsg
     ;;
-  '  Record Region (MP4)')
+  '    Record Region (MP4)')
     screenshot -rrv
     ;;
-  '  Record Screen (MP4)')
+  '    Record Screen (MP4)')
     screenshot -rsv
     ;;
-  '  Record Region (MP4+audio_virt)')
+  '    Record Region (MP4+audio_virt)')
     screenshot -rrav
     ;;
-  '  Record Region (MP4+audio_mic)')
+  '    Record Region (MP4+audio_mic)')
     screenshot -rrmv
     ;;
-  '  Record Audio virt')
+  '    Record Audio virt')
     screenshot -rav
     ;;
-  '  Record Audio mic')
+  '    Record Audio mic')
     screenshot -ram
     ;;
-  '  Stop Recording')
+  '    Stop Recording')
     screenshot -s
     ;;
   esac
