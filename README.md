@@ -162,12 +162,9 @@ Note: `Win` refers to the `Super/Mod` key.
 
 |        Color           |                 Hex code                 |
 | ---------------------- | ---------------------------------------- |
-|  Blue background       | #21222C                                  |
-|  Blue background 2     | #282A36                                  |
-|  Blue background 3     | #343746                                  |
-|  Dark background       | #181a20                                  |
-|  Dark background 2     | #202328                                  |
-|  Dark background 3     | #2d3138                                  |
+|  background            | #21222C                                  |
+|  background 2          | #282A36                                  |
+|  background 3          | #343746                                  |
 |  foreground            | #F8F8F2                                  |
 |  white                 | #FFFFFF                                  |
 |  black                 | #15121C                                  |

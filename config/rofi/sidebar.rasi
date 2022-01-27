@@ -1,11 +1,11 @@
 /*
  * Documentation: https://github.com/davatorium/rofi/wiki
  * Config created by Aditya Shakya https://github.com/adi1090x
- * Config modified by Key https://www.github.com/keyitdev/dotfiles
+ * Config modified by Keyitdev https://www.github.com/keyitdev/dotfiles
  */
 
 configuration {
-	font:							"Open sans 11";
+	font:							"Roboto mono 11";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
     display-drun: 					"";
@@ -16,7 +16,7 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-@import "~/.config/rofi/colors_sidebar.rasi"
+@import "~/.config/rofi/colors.rasi"
 
 window {
     transparency:                   "real";
@@ -37,7 +37,7 @@ prompt {
 	padding: 						0.30% 1% 0% -0.5%;
 	background-color: 				@al;
 	text-color: 					@fg;
-    font:							"Open sans 11";
+    font:							"Roboto mono 11";
 }
 
 entry {
@@ -115,11 +115,13 @@ element selected {
     border-radius:                  0;
     border-color:                  	@bg;
 }
+
 element-icon selected {
     size:                           49px;
     border:                         0px;
     background-color:               @se;
 }
+
 element-text selected {
     background-color:               @se;
     text-color:                     @fg;
