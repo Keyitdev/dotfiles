@@ -96,6 +96,7 @@ bindsym $mod+o exec betterlockscreen -l
 bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
 bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
 
+# move workspaces between monitors
 bindsym $mod+b move workspace to output right
 
 # focus the parent container
@@ -110,9 +111,10 @@ bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/c
 bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+x exec "theme"
-bindsym Pause exec "rofi-screenshot"
+bindsym $mod+c exec "rofi-screenshot"
 
 # take a screenshot
+bindsym Pause exec screenshot -crtf
 bindsym Print exec screenshot -cstf
 
 # brightness control

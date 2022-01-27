@@ -22,15 +22,15 @@ get_options() {
 main() {
 
   # Get choice from rofi
-  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$THEME")
+  CHOICE=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$THEME")
 
   # If user has not picked anything, exit
-  if [[ -z "${choice// /}" ]]; then
+  if [[ -z "${CHOICE// /}" ]]; then
     exit 1
   fi
 
   # run the selected command
-  case $choice in
+  case $CHOICE in
   '    Capture Region (without saving)')
     screenshot -crtc
     ;;

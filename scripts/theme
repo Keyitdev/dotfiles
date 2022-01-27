@@ -5,11 +5,6 @@ DIR_THEME="$HOME/.config/rofi/compact_without_icons.rasi"
 
 DIR="/usr/local/bin/themes"
 
-get_options_theme() {
-  echo "blue"
-  echo "dark"
-}
-
 get_options_theme_polybar() {
   echo "polybar-square"
   echo "polybar-rounded"
@@ -17,21 +12,7 @@ get_options_theme_polybar() {
 
 main() {
 
-  # Get THEME from rofi
-  THEME=$( (get_options_theme) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR_THEME")
-
-  # If user has not picked anything, exit
-  if [[ -z "${THEME// /}" ]]; then
-    exit 1
-  fi
-
-  cp -f $DIR/$THEME/kitty/kitty.conf ~/.config/kitty/
-  cp -f $DIR/$THEME/rofi/* ~/.config/rofi/
-  cp -f $DIR/$THEME/vsc/* ~/.config/Code\ -\ OSS/User
-  cp -f $DIR/$THEME/vsc/* ~/.config/Code/User
-  cp -f $DIR/$THEME/polybar/* ~/.config/polybar
-  cp -f $DIR/$THEME/i3/* ~/.config/i3
-  cp -f $DIR/$THEME/dunst/* ~/.config/dunst
+  # Get THEME_POLYBAR from rofi
   THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR_THEME")
 
     # If user has not picked anything, exit

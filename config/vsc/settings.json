@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Source Code Pro",
+    "editor.fontFamily": "Roboto mono",
     "workbench.colorTheme": "One Dark Pro Darker",
     "window.menuBarVisibility": "toggle",
     "terminal.integrated.tabs.enabled": true,
