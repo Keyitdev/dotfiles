@@ -33,11 +33,12 @@ crtc() {
     notify-send "Screenshot" "Region copied to Clipboard"
 }
 
-# capture region to file
+# capture region to file and clipboard
 crtf() {
     notify-send "Screenshot" "Select a region to capture"
     dt=$(date '+%d-%m-%Y %H:%M:%S')
     ffcast -q $(slop -n -f '-g %g ') png "$screenshot_directory/$dt.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$dt.png"
     notify-send "Screenshot" "Region saved to $screenshot_directory"
 }
 
@@ -49,10 +50,11 @@ cstc() {
     notify-send "Screenshot" "Screenshot copied to Clipboard"
 }
 
-# capture screenshot to file
+# capture screenshot to file and clipboard
 cstf() {
     dt=$(date '+%d-%m-%Y %H:%M:%S')
     ffcast -q png "$screenshot_directory/$dt.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$dt.png"
     notify-send "Screenshot" "Screenshot saved to $screenshot_directory"
 }
 
@@ -154,11 +156,11 @@ usage() {
     echo -crtc
     echo "    Capture region to clipboard."
     echo -crtf
-    echo "    Capture screen to file"
+    echo "    Capture screen to file and clipboard"
     echo -cstc
     echo "    Capture screen to clipboard."
     echo -cstf
-    echo "    Capture screen to file"
+    echo "    Capture screen to file and clipboard"
     echo -rrg
     echo "    Record (GIF) region."
     echo -rsg

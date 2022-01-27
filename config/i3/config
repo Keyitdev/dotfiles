@@ -5,17 +5,20 @@
 set $mod Mod4
 
 # set font
-font pango:Source Code Pro 10
+font pango:Roboto mono 11
 
 ### Runnig apps in background ###
 
 # run picom
 exec_always --no-startup-id picom &
 
+# render wallpaper for lockscreen
+exec_always betterlockscreen -u ~/Pictures/wallpapers/lockscreen.png --display 1 --span &
+
 # run mpd
 exec_always --no-startup-id mpd &
 
-#r un dunst
+# run dunst
 exec_always --no-startup-id dunst &
 
 # set wallpaper with fed
@@ -86,6 +89,15 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# run lockscreen
+bindsym $mod+o exec betterlockscreen -l
+
+# monitor settings
+bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
+bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
+
+bindsym $mod+b move workspace to output right
+
 # focus the parent container
 #bindsym $mod+a focus parent
 
@@ -98,10 +110,10 @@ bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/c
 bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/compact.rasi"
 bindsym $mod+x exec "theme"
-bindsym $mod+c exec "rofi-screenshot"
+bindsym Pause exec "rofi-screenshot"
 
 # take a screenshot
-bindsym --release Print exec scrot 'screenshot_%Y%m%d_%H%M%S.png' -e 'mkdir -p ~/Pictures/screenshots && mv $f ~/Pictures/screenshots && xclip -selection clipboard -t image/png -i ~/Pictures/screenshots/`ls -1 -t ~/Pictures/screenshots | head -1`'
+bindsym Print exec screenshot -cstf
 
 # brightness control
 exec_always --no-startup-id light -I
@@ -121,7 +133,7 @@ bindsym XF86ScreenSaver  exec xset dpms force off
 bindsym ctrl + F1 exec --no-startup-id kitty
 bindsym ctrl + F2 exec --no-startup-id dmenu_run
 
-# toggle microphone
+# toggle microphone 
 bindsym ctrl + F3 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone is now unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
 bindsym ctrl + F4 exec amixer set Capture nocap && dunstify -a "Microphone" "Microphone is now muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
 
