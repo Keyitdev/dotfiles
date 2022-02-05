@@ -5,7 +5,7 @@
 set $mod Mod4
 
 # set font
-font pango:Roboto mono 11
+font pango:Open sans 11
 
 ### Runnig apps in background ###
 

@@ -1,79 +1,63 @@
-<div align="center">
-  <!-- <a href="https://github.com/keyitdev/dotfiles">
-    <img src="" alt="Logo" width="80" height="80">
-  </a> -->
-  <h1 align="center">Keyitdev dotfiles</h1>
+ # Keyitdev dotfiles
 
-  <p align="center">
-    My first build of dotfiles. These dotfiles are based on modified One Dark color palette. Config include two themes (blue theme and dark).
-    <br />
-    <a href="https://github.com/keyitdev/dotfiles#Showcase">Showcase</a>
-    ·
-    <a href="https://github.com/keyitdev/dotfiles#Info">Info</a>
-    ·
-    <a href="https://github.com/keyitdev/dotfiles#Dependecies">Dependecies</a>
-    ·
-    <a href="https://github.com/keyitdev/dotfiles#Installation">Installation</a>
-    ·
-    <a href="https://github.com/keyitdev/dotfiles#Keybinds">Keybinds</a>
-    ·
-    <a href="https://github.com/keyitdev/dotfiles#Troubleshooting">Troubleshooting</a>
-  </p>
-</div>
+My personal build of dotfiles using i3. Color palette is based on OneDark color scheme. This configuration works also on dual monitors.
+ 
+[Showcase](https://github.com/keyitdev/dotfiles#Showcase) ·
+[Info](https://github.com/keyitdev/dotfiles#Info) ·
+[Dependecies](https://github.com/keyitdev/dotfiles#Dependecies) ·
+[Installation](https://github.com/keyitdev/dotfiles#Installation) ·
+[Keybinds](https://github.com/keyitdev/dotfiles#Keybinds) ·
+[Troubleshooting](https://github.com/keyitdev/dotfiles#Troubleshooting)
 
-<div align="center">
+![](https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge)
+![](https://img.shields.io/github/forks/keyitdev/dotfiles?color=82aaff&labelColor=202328&style=for-the-badge)
+![](https://img.shields.io/github/issues/keyitdev/dotfiles?color=bf616a&labelColor=202328&style=for-the-badge)
+![](https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge)
+![](https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge)
 
-<img src="https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/forks/keyitdev/dotfiles?color=82aaff&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/issues/keyitdev/dotfiles?color=bf616a&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge">
-<img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
-
-</div>
-
-## Showcase
-
-![](./screenshots/blue/1.png)
-
-
-https://user-images.githubusercontent.com/70140437/147613962-b488c4d4-c8eb-49a8-82f9-2f0907d81b46.mp4
-
+## 🌟 Showcase
 
 ### More screenshots [here](./screenshots/SCREENSHOTS.md)
 
-## Info
+## 🗒️ Info
 
 |Program|Name|
 |-|-|
 |**Window Manager**|[i3-gaps](https://github.com/Airblader/i3)|
-|**Compositor**|[picom](https://github.com/yshui/picom)
 |**Terminal emullator**|[kitty](https://github.com/kovidgoyal/kitty)|
-|**Shell**|[zsh](https://www.zsh.org/)|
-|**Shell theme**|[oh my zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Bar**|[polybar](https://github.com/polybar/polybar)|
 |**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
+|**Login manger**|[sddm](https://github.com/sddm/sddm)|
+|**Lock screen**|[betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)|
+|**Compositor**|[picom](https://github.com/yshui/picom)
+|**Shell**|[zsh](https://www.zsh.org/)|
+|**Shell theme**|[oh my zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Music**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 |**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
 |**Vsc theme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
-|**Neovim theme**|[NvChad](https://github.com/NvChad/NvChad)
+|**Neovim theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
 |**GTK theme**|[Dracula (ant)](https://github.com/EliverLara/ant)|
 |**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**|[My custom theme](https://github.com/Keyitdev/BetterDiscord-themes)|
 
-## Dependecies
+## ⚡ Dependecies
 
 ### Packaged used
-wget git i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop acpi polybar ffcast slop
-pacman-contrib noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+* base: base-devel wget git acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib
+* wm and X11: i3-gaps i3blocks i3lock xorg xorg-xinit xorg-server
+* lockscreen: i3lock betterlockscreen feh imagemagick
+* programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
+* screenshot script: xclip scrot ffcast slop
+pulsemixer         
+* emoji fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts used
-* [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
-* [Isovaka Nerd Font](https://www.nerdfonts.com/)
-* [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro)
+* Icons: [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
+* Main font: [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
+* Main monospace font: [Roboto mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
 
-## Installation
+## 🛠️ Installation
 
 ### Arch
 I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script and commands bellow:
@@ -94,32 +78,29 @@ Set zsh as default shell
 chsh -s /bin/zsh
 sudo chsh -s /bin/zsh
 ```
-Install NvChad
+Install AstroVim
 ```sh
-git clone https://github.com/NvChad/NvChad.git ~/.config/nvim --depth 10 && nvim +PackerSync
+git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
+nvim +PackerSync
 ```
 Install gtk3 theme
 ```sh
-git clone https://github.com/EliverLara/Nordic.git
-sudo mv ./Nordic /usr/share/themes
+git clone https://github.com/EliverLara/ant.git
+sudo mv ./Ant /usr/share/themes
 ```
-Install Grub2 theme
+Install sddm astronaut theme
 ```sh
-git clone https://github.com/vinceliuice/grub2-themes.git
-sudo ./grub2-themes/install.sh -b -t tela -s 1080p
+sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/
+sddm/themes/
 ```
-Install sddm astronaut
-```sh
-git clone https://github.com/totoro-ghost/sddm-astronaut.git ~/astronaut/
-sudo mv ~/astronaut/ /usr/share/sddm/themes/
+Edit `/etc/sddm.conf`
 ```
-Install Firefox theme
+[Theme]
+Current=sddm-astronaut-theme
+```
+[Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 
-[Blue theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
-
-[Dark theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr3mIJG8pMOJZrzw12iceKCk3f9y7xS8dK7VdwlKVIiKnt8eK0J1GpJZqQIU8oE5A4_yESSKDpV5ZtJvFCj2IsxGswSWbDkh9jYK2lE0V9RHJugA_ghbohSu0UU1S90WLb-LNoHwhyCwNQAsJgqCSQ5WQdurh_Vqa5BgLyf7ZT_Jw9B457EpttRRaPEDjqsJstSUPnJU6_vVsDBYpFeQsQtXk6lnamtwwdeGzOoxdtuI6gu2Ual3wcaFxeQh_xhecQ)
-
-## Uninstallation
+## 🛠️ Uninstallation
 
 1. Remove installed packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
 2. Remove AUR helper ( ~/.srcs)
@@ -132,7 +113,7 @@ chsh -s /bin/zsh root: sudo chsh -s /bin/zsh
 6. Remove installed scripts (/usr/local/bin)
 7. Delete this repo
 
-## Keybinds
+## 🔑 Keybinds
 
 These are the basic keybinds. Read through the `i3` config for more keybinds.
 
@@ -158,7 +139,7 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 
 Note: `Win` refers to the `Super/Mod` key.
 
-## Colors
+## 🌈 Colors
 
 |        Color           |                 Hex code                 |
 | ---------------------- | ---------------------------------------- |
@@ -177,14 +158,14 @@ Note: `Win` refers to the `Super/Mod` key.
 |  pink                  | #ffa8c5                                  |
 |  orange                | #dd864a                                  |
 
-## Troubleshooting
+## ⚙️ Troubleshooting
 
 1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
 2. Black flashing screen : Try changing picom config.
 3. Scripts not working : Edit them.
 4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
 
-## Big thanks to
+## ✨ Big thanks to
 
 These dotfiles includes some files from others rices. Original sources:
 * [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar)
@@ -202,6 +183,6 @@ Not modified by me but used in these dotfiles
 * [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
 [Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut)
 
-## License
+## 🪪 License
 
 Distributed under the [GPLv3+](https://www.gnu.org/licenses/gpl-3.0.html) License.
