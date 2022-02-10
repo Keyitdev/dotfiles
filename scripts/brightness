@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/bin/sh
 
-DIR_ICONS="/usr/local/bin/icons"
+dir_icons="/usr/local/bin/icons"
 
-MAX_BRI=$(cat /sys/class/backlight/*/max_brightness)
-CUR_BRI=$(cat /sys/class/backlight/*/brightness)
+max_bri=$(cat /sys/class/backlight/*/max_brightness)
+cur_bri=$(cat /sys/class/backlight/*/brightness)
 
 # calculating current percentage
-((CUR_PER = CUR_BRI * 100 / MAX_BRI))
+cur_per=$((cur_bri * 100 / max_bri))
 
-if [ $CUR_PER -ge 50 ]; then
+if [ "$cur_per" -ge 50 ]; then
         dunstify -a "Brightness" \
         "Brightness" \
-        "Current brightness is $CUR_PER%" \
+        "Current brightness is $cur_per%" \
         -r 100 \
-        -i $DIR_ICONS/sun.svg
+        -i "$dir_icons"/sun.svg
 else
         dunstify -a "Brightness" \
         "Brightness" \
-        "Current brightness is $CUR_PER%" \
+        "Current brightness is $cur_per%" \
         -r 100 \
-        -i $DIR_ICONS/moon.svg
+        -i "$dir_icons"/moon.svg
 fi

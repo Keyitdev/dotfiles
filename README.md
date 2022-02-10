@@ -7,6 +7,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies) ·
 [Installation](https://github.com/keyitdev/dotfiles#Installation) ·
 [Keybinds](https://github.com/keyitdev/dotfiles#Keybinds) ·
+[Colors](https://github.com/keyitdev/dotfiles#Colors) ·
 [Troubleshooting](https://github.com/keyitdev/dotfiles#Troubleshooting)
 
 ![](https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge)
@@ -48,8 +49,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 * wm and X11: i3-gaps i3blocks i3lock xorg xorg-xinit xorg-server
 * lockscreen: i3lock betterlockscreen feh imagemagick
 * programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
-* screenshot script: xclip scrot ffcast slop
-pulsemixer         
+* screenshot script: xclip scrot ffcast slop         
 * emoji fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts used
@@ -59,8 +59,58 @@ pulsemixer
 
 ## 🛠️ Installation
 
-### Arch
 I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script and commands bellow:
+
+### Arch manually
+
+1. Clone this dotfiles
+    ```sh
+    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git 
+    ```
+1. Install AUR helper (for example yay in ~/.srcs)
+    ```sh
+    mkdir -p ~/.srcs
+    git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
+	(cd ~/.srcs/$HELPER/ && makepkg -si )
+    ```
+1. Install packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
+1. Make light executable
+    ```sh
+    sudo chmod +s /usr/bin/light
+    ```
+1. Copy files (config folder to `$HOME/.config`, fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
+1. Install oh my zsh
+    ```sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+1. Set zsh as default shell
+    ```sh
+    chsh -s /bin/zsh
+    sudo chsh -s /bin/zsh
+    ```
+1. Install AstroVim
+    ```sh
+    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
+    nvim +PackerSync
+    ```
+1. Install gtk3 theme
+    ```sh
+    git clone https://github.com/EliverLara/ant.git
+    sudo mv ./Ant /usr/share/themes
+    ```
+1. Install sddm astronaut theme
+    ```sh
+    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/
+    sddm/themes/
+    ```
+1. Edit `/etc/sddm.conf`
+    ```
+    [Theme]
+    Current=sddm-astronaut-theme
+    ```
+1. [Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+
+### Arch with script
 
 Clone dotfiles
 ```
@@ -105,11 +155,12 @@ Current=sddm-astronaut-theme
 1. Remove installed packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
 2. Remove AUR helper ( ~/.srcs)
 3. Unistall oh my zsh ` uninstall_oh_my_zsh`
-4. Change back shell to bash 
+4. Change shell back to bash 
 ```
-chsh -s /bin/zsh root: sudo chsh -s /bin/zsh
+chsh -s /bin/bash
+sudo chsh -s /bin/bash
 ```
-5. Remove installed fonts (~/.local/share/fonts/)
+5. Remove installed fonts (~/.local/share/fonts/ or /usr/share/fonts/)
 6. Remove installed scripts (/usr/local/bin)
 7. Delete this repo
 
@@ -162,8 +213,8 @@ Note: `Win` refers to the `Super/Mod` key.
 
 1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
 2. Black flashing screen : Try changing picom config.
-3. Scripts not working : Edit them.
-4. Mpd not working : Check if any other app isn't using port 6600 (http://127.0.0.1:6600/)
+3. Scripts not working : Maybe try to edit bang.
+4. Mpd not working : Check if any other program isn't using port 6600 (http://127.0.0.1:6600/).
 
 ## ✨ Big thanks to
 
@@ -171,17 +222,10 @@ These dotfiles includes some files from others rices. Original sources:
 * [Totoro](https://github.com/totoro-ghost) for [polybar frontend](https://github.com/totoro-ghost/dotfiles/tree/master/.config/polybar)
 * [Adi1090x](https://github.com/adi1090x) for [rofi backend](https://github.com/adi1090x/rofi)
 * [Alexander-Miller](https://github.com/Alexander-Miller) for [ncmpcpp config](https://github.com/Alexander-Miller/dotfiles/blob/master/.config/ncmpcpp/config)
-* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
 * [Axarva](https://github.com/Axarva/) for [arch install script](https://github.com/Axarva/dotfiles-2.0/blob/main/install-on-arch.sh)
-* [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
+* [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
 * [Milosz](https://github.com/milosz) for [rofi-bookmarks](https://github.com/milosz/rofi-firefox-bookmarks)
-
-Not modified by me but used in these dotfiles
-* [Nvchad team](https://github.com/NvChad/NvChad#chadributors) for [Nvchad](https://github.com/NvChad/NvChad)
-* [EliverLara](https://github.com/EliverLara) for [gtk Dracula (ant) theme](https://github.com/EliverLara/alt)
-* [Vinceliuice](https://github.com/vinceliuice) for [grub2 theme](https://github.com/vinceliuice/grub2-themes)
-* [MarianArlt](https://github.com/MarianArlt) for [sddm theme](https://github.com/MarianArlt/sddm-sugar-dark),
-[Totoro](https://github.com/totoro-ghost) for [sddm theme astronaut](https://github.com/totoro-ghost/sddm-astronaut)
+* [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
 
 ## 🪪 License
 
