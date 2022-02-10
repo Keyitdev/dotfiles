@@ -1,31 +1,31 @@
-#!/bin/bash
+#!/bin/sh
 
-DIR_ICONS="/usr/local/bin/icons"
+dir_icons="/usr/local/bin/icons"
 
-CUR_VOL=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
-    head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+cur_vol=$(pactl list sinks | grep '^[[:space:]]Volume:' | \
+    head -n $(( "$SINK" + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
-VOL_QUIET=33
-VOL_LOUD=66
+vol_quiet=33
+vol_loud=66
 
-if [ $CUR_VOL -le $VOL_QUIET ]; then
+if [ "$cur_vol" -le "$vol_quiet" ]; then
     dunstify -a "Volume" \
     "Volume" \
-    "Current volume is $CUR_VOL%" \
+    "Current volume is $cur_vol%" \
     -r 100 \
-    -i $DIR_ICONS/volume.svg
+    -i $dir_icons/volume.svg
     fi
-if [ $CUR_VOL -gt $VOL_QUIET ] && [ $CUR_VOL -le $VOL_LOUD ]; then
+if [ "$cur_vol" -gt "$vol_quiet" ] && [ "$cur_vol" -le "$vol_loud" ]; then
     dunstify -a "Volume" \
     "Volume" \
-    "Current volume is $CUR_VOL%" \
+    "Current volume is $cur_vol%" \
     -r 100 \
-    -i $DIR_ICONS/volume-1.svg
+    -i $dir_icons/volume-1.svg
     fi
-if [ $CUR_VOL -gt $VOL_LOUD ]; then
+if [ "$cur_vol" -gt "$vol_loud" ]; then
     dunstify -a "Volume" \
     "Volume" \
-    "Current volume is $CUR_VOL%" \
+    "Current volume is $cur_vol%" \
     -r 100 \
-    -i $DIR_ICONS/volume-2.svg
+    -i $dir_icons/volume-2.svg
 fi

@@ -1,9 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-# Screenshot directory
-SCREENSHOT_DIRECTORY="$HOME/Pictures/screenshots"
-VIDEOS_DIRECTORY="$HOME/Videos"
-AUDIO_DIRECTORY="$HOME/Music"
+# screenshot directory
+screenshot_directory="$HOME/Pictures/screenshots"
+videos_directory="$HOME/Videos"
+audio_directory="$HOME/Music"
 
 # set ffmpeg defaults
 ffmpeg() {
@@ -27,7 +27,7 @@ countdown() {
 # capture region to clipboard
 crtc() {
     notify-send "Screenshot" "Select a region to capture"
-    ffcast -q $(slop -n -f '-g %g ') png /tmp/screenshot_clip.png
+    ffcast -q "$(slop -n -f '-g %g ')" png /tmp/screenshot_clip.png
     xclip -selection clipboard -t image/png /tmp/screenshot_clip.png
     rm /tmp/screenshot_clip.png
     notify-send "Screenshot" "Region copied to Clipboard"
@@ -36,10 +36,10 @@ crtc() {
 # capture region to file and clipboard
 crtf() {
     notify-send "Screenshot" "Select a region to capture"
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q $(slop -n -f '-g %g ') png "$SCREENSHOT_DIRECTORY/$DT.png"
-    xclip -selection clipboard -t image/png "$SCREENSHOT_DIRECTORY/$DT.png"
-    notify-send "Screenshot" "Region saved to $SCREENSHOT_DIRECTORY"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q "$(slop -n -f '-g %g ')" png "$screenshot_directory/$dt.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$dt.png"
+    notify-send "Screenshot" "Region saved to $screenshot_directory"
 }
 
 # capture screenshot to clipboard
@@ -52,96 +52,96 @@ cstc() {
 
 # capture screenshot to file and clipboard
 cstf() {
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q png "$SCREENSHOT_DIRECTORY/$DT.png"
-    xclip -selection clipboard -t image/png "$SCREENSHOT_DIRECTORY/$DT.png"
-    notify-send "Screenshot" "Screenshot saved to $SCREENSHOT_DIRECTORY"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q png "$screenshot_directory/$dt.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$dt.png"
+    notify-send "Screenshot" "Screenshot saved to $screenshot_directory"
 }
 
 # record region (GIF)
 rrg() {
     notify-send "Screenshot" "Select a region to record"
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q $(slop -n -f '-g %g ' && countdown) rec /tmp/screenshot_gif.mp4
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec /tmp/screenshot_gif.mp4
     notify-send "Screenshot" "Converting to gif... (this can take a while)"
-    video_to_gif /tmp/screenshot_gif.mp4 "$SCREENSHOT_DIRECTORY/$DT.gif"
+    video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
     rm /tmp/screenshot_gif.mp4
-    notify-send "Screenshot" "Recording saved to $SCREENSHOT_DIRECTORY"
+    notify-send "Screenshot" "Recording saved to $screenshot_directory"
 }
 
 # record screen (GIF)
 rsg() {
     countdown
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
     ffcast -q rec /tmp/screenshot_gif.mp4
     notify-send "Screenshot" "Converting to gif... (this can take a while)"
-    video_to_gif /tmp/screenshot_gif.mp4 "$SCREENSHOT_DIRECTORY/$DT.gif"
+    video_to_gif /tmp/screenshot_gif.mp4 "$screenshot_directory/$dt.gif"
     rm /tmp/screenshot_gif.mp4
-    notify-send "Screenshot" "Recording saved to $SCREENSHOT_DIRECTORY"
+    notify-send "Screenshot" "Recording saved to $screenshot_directory"
 }
 
 # record region (mp4)
 rrv() {
     notify-send "Screenshot" "Select a region to record"
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q $(slop -n -f '-g %g ' && countdown) rec "$VIDEOS_DIRECTORY/$DT.mp4"
-    notify-send "Screenshot" "Recording saved to $VIDEOS_DIRECTORY"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" rec "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
 }
 
 # record screen (mp4)
 rsv() {
     countdown
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q rec "$VIDEOS_DIRECTORY/$DT.mp4"
-    notify-send "Screenshot" "Recording saved to $VIDEOS_DIRECTORY"
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q rec "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
 }
 
 # record screen (mp4) with audio virt
 rrav() {
     notify-send "Screenshot" "Select a region to record"
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q $(slop -n -f '-g %g ' && countdown) ffmpeg \
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" ffmpeg \
         -hide_banner \
         -loglevel error \
         -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
-        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$VIDEOS_DIRECTORY/$DT.mp4"
-    notify-send "Screenshot" "Recording saved to $VIDEOS_DIRECTORY"
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
 }
 
 # record screen (mp4) with mic audio
 rrmv() {
     notify-send "Screenshot" "Select a region to record"
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
-    ffcast -q $(slop -n -f '-g %g ' && countdown) ffmpeg \
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
+    ffcast -q "$(slop -n -f '-g %g ' && countdown)" ffmpeg \
         -hide_banner \
         -loglevel error \
         -f x11grab -show_region 1 -framerate 30 -video_size %wx%h -i :0.0+%x,%y \
-        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$VIDEOS_DIRECTORY/$DT.mp4"
-    notify-send "Screenshot" "Recording saved to $VIDEOS_DIRECTORY"
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$videos_directory/$dt.mp4"
+    notify-send "Screenshot" "Recording saved to $videos_directory"
 }
 
 # record audio virt
 rav() {
     notify-send "Screenshot" "Starting audio recording." -i sound-recorder
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
     'ffmpeg' \
         -loglevel error \
-        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$AUDIO_DIRECTORY/$DT.mp3"
-    notify-send "Screenshot" "Audio saved to $AUDIO_DIRECTORY" -i sound-recorder
+        -f pulse -i alsa_output.pci-0000_00_1f.3.analog-stereo.monitor -ac 1 "$audio_directory/$dt.mp3"
+    notify-send "Screenshot" "Audio saved to $audio_directory" -i sound-recorder
 }
 
 # record audio mic
 ram() {
     notify-send "Screenshot" "Starting audio recording." -i sound-recorder
-    DT=$(date '+%d-%m-%Y %H:%M:%S')
+    dt=$(date '+%d-%m-%Y %H:%M:%S')
     'ffmpeg' \
         -loglevel error \
-        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$AUDIO_DIRECTORY/$DT.mp3"
-    notify-send "Screenshot" "Audio saved to $AUDIO_DIRECTORY" -i sound-recorder
+        -f pulse -i alsa_input.pci-0000_00_1f.3.analog-stereo -ac 1 "$audio_directory/$dt.mp3"
+    notify-send "Screenshot" "Audio saved to $audio_directory" -i sound-recorder
 }
 
 check_deps() {
-    if ! hash $1 2>/dev/null; then
+    if ! hash "$1" 2>/dev/null; then
         echo "Error: This script requires $1"
         exit 1
     fi
@@ -249,5 +249,5 @@ main() {
 }
 
 # running the program
-main $1 &
+main "$1" &
 exit 0

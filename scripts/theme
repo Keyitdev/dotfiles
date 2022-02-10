@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # rofi theme
-DIR_THEME="$HOME/.config/rofi/compact_without_icons.rasi"
+dir_theme="$HOME/.config/rofi/compact_without_icons.rasi"
 
 DIR="/usr/local/bin/themes"
 
@@ -12,14 +12,14 @@ get_options_theme_polybar() {
 
 main() {
 
-  # Get THEME_POLYBAR from rofi
-  THEME_POLYBAR=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$DIR_THEME")
+  # Get theme_polybar from rofi
+  theme_polybar=$( (get_options_theme_polybar) | rofi -dmenu -i -fuzzy -p "" -theme "$dir_theme")
 
     # If user has not picked anything, exit
-  if [[ -z "${THEME_POLYBAR// /}" ]]; then
+  if [[ -z "${theme_polybar// /}" ]]; then
     exit 1
   fi
-  cp -f $DIR/$THEME_POLYBAR/launch.sh ~/.config/polybar
+  cp -f $DIR/$theme_polybar/launch.sh ~/.config/polybar
 
   # done
   set -e

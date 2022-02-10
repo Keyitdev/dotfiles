@@ -6,6 +6,7 @@
     "oneDarkPro.markdownStyle": false,
     "workbench.colorCustomizations": {
             "[One Dark Pro Darker]": {
+                "terminal.background": "#21222c",
                 "sideBar.background": "#21222c",
                 "focusBorder": "#343746",
                 "activityBar.background": "#282A36",
