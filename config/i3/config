@@ -90,11 +90,15 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # run lockscreen
-bindsym $mod+o exec betterlockscreen -l
+bindsym $mod+i exec betterlockscreen -l
 
 # monitor settings
 bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
 bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
+
+# toggle polybar
+bindsym $mod+o exec $HOME/.config/polybar/launch.sh
+bindsym $mod+p exec killall -q polybar
 
 # move workspaces between monitors
 bindsym $mod+b move workspace to output right

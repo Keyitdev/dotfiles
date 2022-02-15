@@ -45,9 +45,9 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 ## ⚡ Dependecies
 
 ### Packaged used
-* base: base-devel wget git acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib
-* wm and X11: i3-gaps i3blocks i3lock xorg xorg-xinit xorg-server
-* lockscreen: i3lock betterlockscreen feh imagemagick
+* base: base-devel wget git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib
+* wm and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+* lockscreen: i3lock-color betterlockscreen feh imagemagick
 * programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
 * screenshot script: xclip scrot ffcast slop         
 * emoji fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
@@ -59,26 +59,26 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 
 ## 🛠️ Installation
 
-I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script and commands bellow:
+I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script.
 
 ### Arch manually
 
 1. Clone this dotfiles
     ```sh
-    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git 
+    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
     ```
 1. Install AUR helper (for example yay in ~/.srcs)
     ```sh
     mkdir -p ~/.srcs
-    git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
-	(cd ~/.srcs/$HELPER/ && makepkg -si )
+    git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
+	(cd ~/.srcs/yay/ && makepkg -si )
     ```
 1. Install packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
 1. Make light executable
     ```sh
     sudo chmod +s /usr/bin/light
     ```
-1. Copy files (config folder to `$HOME/.config`, fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
+1. Copy files (config folder to `$HOME/.config`, scripts folder to `/usr/local/bin` fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
 1. Install oh my zsh
     ```sh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -100,8 +100,9 @@ I recommend manually installing packages and coping files, but if you are lazy o
     ```
 1. Install sddm astronaut theme
     ```sh
-    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/
-    sddm/themes/
+    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
+    sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
+    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
     ```
 1. Edit `/etc/sddm.conf`
     ```
@@ -112,43 +113,44 @@ I recommend manually installing packages and coping files, but if you are lazy o
 
 ### Arch with script
 
-Clone dotfiles
-```
-git clone https://www.github.com/keyitdev/dotfiles.git
-cd dotfiles
-chmod +x install-on-arch.sh
-./install-on-arch.sh
-```
-Install oh my zsh
-```sh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-```
-Set zsh as default shell
-```sh
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-```
-Install AstroVim
-```sh
-git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
-nvim +PackerSync
-```
-Install gtk3 theme
-```sh
-git clone https://github.com/EliverLara/ant.git
-sudo mv ./Ant /usr/share/themes
-```
-Install sddm astronaut theme
-```sh
-sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git /usr/share/
-sddm/themes/
-```
-Edit `/etc/sddm.conf`
-```
-[Theme]
-Current=sddm-astronaut-theme
-```
-[Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+1.  Clone dotfiles
+    ```
+    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
+    cd dotfiles
+    chmod +x install-on-arch.sh
+    ./install-on-arch.sh
+    ```
+1. Install oh my zsh
+    ```sh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+1. Set zsh as default shell
+    ```sh
+    chsh -s /bin/zsh
+    sudo chsh -s /bin/zsh
+    ```
+1. Install AstroVim
+    ```sh
+    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
+    nvim +PackerSync
+    ```
+1. Install gtk3 theme
+    ```sh
+    git clone https://github.com/EliverLara/ant.git
+    sudo mv ./Ant /usr/share/themes
+    ```
+1. Install sddm astronaut theme
+    ```sh
+    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
+    sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
+    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+    ```
+1. Edit `/etc/sddm.conf`
+    ```
+    [Theme]
+    Current=sddm-astronaut-theme
+    ```
+1. [Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 
 ## 🛠️ Uninstallation
 
@@ -184,6 +186,12 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 | `Win + G`              | Gaps settings                            |
 | `Win + V`              | Set vertical orientation                 |
 | `Win + H`              | Set horizontal orientation               |
+| `Win + I`              | Lock screen                              |
+| `Win + O`              | Show polybar                             |
+| `Win + P`              | Hide polybar                             |
+| `Win + B`              | Move workspace to another monitor        |
+| `Win + N`              | Dual monitor mode                        |
+| `Win + M`              | Single monitor mode                      |
 | `Win + arrows (jkl;)`  | Resizing, moving windows                 |
 | `Win + Shift + E`      | Exit i3                                  |
 | `Win + Shift + R`      | Restart i3                               |
