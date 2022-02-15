@@ -1,246 +1,233 @@
 #!/bin/env bash
-set -e
 
-echo "Welcome!" && sleep 2
+echo "Welcome!"
+DATE=$(date +%s)
 
-#Default vars
-HELPER="paru"
+system_update(){
+    echo -e "[*1*] Doing a system update, cause stuff may break if it's not the latest version..."
+    sudo pacman --noconfirm -Syu
+    sudo pacman -S --noconfirm --needed base-devel wget git curl gcc make
+}
 
-# does full system update
-echo "Doing a system update, cause stuff may break if it's not the latest version..."
-sudo pacman --noconfirm -Syu
+aur_helper(){
+    cat <<- EOF
+		[*2*] We need an AUR helper. It is essential.
+		
+		[*] Choose your AUR helper.
+		[1] yay
+		[2] paru
+	
+	EOF
 
-echo "###########################################################################"
-echo "Will do stuff, get ready"
-echo "###########################################################################"
-
-# install base-devel if not installed
-sudo pacman -S --noconfirm --needed base-devel wget git
-
-# choose video driver
-echo "1) xf86-video-intel 2) xf86-video-amdgpu 3) nvidia 4) xf86-video-amdgpu and nvidia 5) xf86-video-amdgpu and xf86-video-intel 6) skip"
-read -r -p "Choose you video card driver(default 1)(will not re-install): " vid
-
-case $vid in 
-[1])
-	DRI='xf86-video-intel'
-	;;
-[2])
-	DRI='xf86-video-amdgpu'
-	;;
-
-[3])
-    DRI='nvidia nvidia-settings nvidia-utils'
-    ;;
-
-[4])
-	DRI="xf86-video-amdgpu nvidia nvidia-settings nvidia-utils"
-	;;
-[5])
-	DRI="xf86-video-amdgpu xf86-video-intel"
-	;;
-[6])
-	DRI=""
-	;;
-[*])
-	DRI='xf86-video-intel'
-	;;
-esac
-
-# install basics packages
-sudo pacman -S --noconfirm --needed i3-gaps i3blocks i3lock kitty zsh rofi dunst feh mpd ncmpcpp light xclip scrot picom imagemagick curl neovim ranger papirus-icon-theme pulseaudio pulseaudio-alsa pulsemixer alsa-utils xorg xorg-xinit xorg-server libnotify sddm btop pacman-contrib $DRI
-
-# install optional programs
-echo "Install no required but usefull programs? (Code, iwd, libreoffice, firefox etc."
-read -r -p "1) Yes 2) Nope" INSTALL_PROGRAMS
-
-if [ $INSTALL_PROGRAMS -eq 1 ]
-then
-   sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
-fi
-
-# install emoji fonts
-echo "Install emoji fonts?"
-read -r -p "1) Yes 2) Nope" INSTALL_FONTS
-
-if [ $INSTALL_FONTS -eq 1 ]
-then
-   sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
-   
-    if [ -f /etc/fonts/local.conf ]; then
-        echo "Fonts configs detected, backing up..."
-        sudo cp /etc/fonts/local.conf /etc/fonts/local.conf.old
-        sudo cp ./config/local.conf /etc/fonts/;
+    read -p "[?] Select option: "
+    if [[ $REPLY == "1" ]]; then
+        HELPER="yay"
+        if ! command -v $HELPER &> /dev/null
+        then
+        echo -e "\n[*] It seems that you don't have $HELPER installed, I'll install that for you before continuing."
+	    git clone https://aur.archlinux.org/$HELPER.git $HOME/.srcs/$HELPER
+	    (cd $HOME/.srcs/$HELPER/ && makepkg -si )
+        else
+        echo -e "\n[*] It seems that you already have $HELPER installed, skipping."
+        fi
+    elif [[ $REPLY == "2" ]]; then
+        HELPER="paru"
+        if ! command -v $HELPER &> /dev/null
+        then
+        echo -e "\n[*] It seems that you don't have $HELPER installed, I'll install that for you before continuing."
+	    git clone https://aur.archlinux.org/$HELPER.git $HOME/.srcs/$HELPER
+	    (cd $HOME/.srcs/$HELPER/ && makepkg -si )
+        else
+        echo -e "\n[*] It seems that you already have $HELPER installed, skipping."
+        fi
     else
-        echo "Installing fonts configs..."
-        sudo cp ./config/local.conf /etc/fonts/;
-    fi
+		echo -e "\n[!] Invalid option, exiting...\n"
+		exit 1
+	fi
+}
 
-   fc-cache -f
-fi
-
-# make light executable
-sudo chmod +s /usr/bin/light
-
-# install fonts
-mkdir -p ~/.local/share/fonts
-cp -r ./fonts/* ~/.local/share/fonts/
-fc-cache -f
-clear 
-
-# install scripts
-sudo mkdir -p /usr/local/bin
-sudo cp -r ./scripts/* /usr/local/bin
-sudo cp -r ./themes/ /usr/local/bin/
-
-# create default folders
-mkdir -p ~/.srcs
-mkdir -p ~/Pictures/screenshots/rofi
-mkdir -p ~/Videos/rofi
-mkdir -p ~/Music/rofi
-
-# copy wallpapers
-mkdir -p ~/Pictures/wallpapers
-cp -r ./wallpapers/* ~/Pictures/wallpapers
-
-echo "We need an AUR helper. It is essential. 1) paru       2) yay"
-read -r -p "What is the AUR helper of your choice? (Default is paru): " num
-
-if [ $num -eq 2 ]
-then
-    HELPER="yay"
-fi
-
-if ! command -v $HELPER &> /dev/null
-then
-    echo "It seems that you don't have $HELPER installed, I'll install that for you before continuing."
-	git clone https://aur.archlinux.org/$HELPER.git ~/.srcs/$HELPER
-	(cd ~/.srcs/$HELPER/ && makepkg -si )
-fi
-
-$HELPER -S acpi          \
+install_packages(){
+    echo -e "[*3*] Instaling packages with pacman."
+    sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot
+    
+    echo -e "\n[*] Instaling packages with $HELPER."
+    $HELPER -S acpi      \
 	   polybar           \
        ffcast            \
+       betterlockscreen  \
+       i3lock-color      \
+       cava              \
        slop
+    echo -e "\n[*] Chmoding light."
+    sudo chmod +s /usr/bin/light
+    echo -e "\n[*] Setting zsh to default shell."
+    chsh -s /bin/zsh
+    sudo chsh -s /bin/zsh
+    
+    cat <<- EOF
+		[*3*] Still installing packages.
+		
+		[*] Do you want to install no required but usefull programs? (Code, iwd, libreoffice, firefox etc.)
 
-mkdir -p ~/.config/
-    if [ -d ~/.config/dunst ]; then
-        echo "Dunst configs detected, backing up..."
-        mkdir -p ~/.config/dunst.old && mv ~/.config/dunst/* ~/.config/dunst.old/
-        cp -r ./config/dunst/* ~/.config/dunst;
-    else
-        echo "Installing dunst configs..."
-        mkdir ~/.config/dunst && cp -r ./config/dunst/* ~/.config/dunst;
+		[1] yes
+		[2] nope
+	
+	EOF
+
+	read -p "[?] Select option: "
+
+	if [[ $REPLY == "1" ]]; then
+		sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
+	elif [[ $REPLY == "2" ]]; then
+		 echo -e "\n[*] Skipping."
+	else
+		echo -e "\n[!] Invalid option, exiting...\n"
+		exit 1
+	fi
+
+    cat <<- EOF
+		[*3*] Still installing packages.
+		
+		[*] Do you want to install emoji fonts?
+
+		[1] yes
+		[2] nope
+	
+	EOF
+
+	read -p "[?] Select option: "
+
+	if [[ $REPLY == "1" ]]; then
+		sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+        DATE=$(date +%s)
+        if [ -f /etc/fonts/local.conf ]; then
+        echo "[*] Fonts configs detected, backing up..."
+        sudo mv /etc/fonts/local.conf /etc/fonts/local.conf$DATE
+        fi
+        sudo cp -f ./config/local.conf /etc/fonts;
+
+	elif [[ $REPLY == "2" ]]; then
+		 echo -e "\n[*] Skipping."
+	else
+		echo -e "\n[!] Invalid option, exiting...\n"
+		exit 1
+	fi
+
+}
+
+copy_flies(){
+    DATE=$(date +%s)
+    echo -e "[*4*] Coping files."
+    if [ -d $HOME/.config/btop ]; then
+        echo "[*] btop configs detected, backing up..."
+        mv $HOME/.config/btop $HOME/.config/btop$DATE
     fi
-    if [ -d ~/.config/gtk-3.0 ]; then
-        echo "Gtk-3.0 configs detected, backing up..."
-        mkdir -p ~/.config/gtk-3.0.old && mv ~/.config/gtk-3.0/* ~/.config/gtk-3.0.old/
-        cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
-    else
-        echo "Installing gtk-3.0 configs..."
-        mkdir ~/.config/gtk-3.0 && cp -r ./config/gtk-3.0/* ~/.config/gtk-3.0;
+    mkdir -p $HOME/.config/btop && cp -r ./config/btop/* $HOME/.config/btop;
+    if [ -d $HOME/.config/cava ]; then
+        echo "[*] cava configs detected, backing up..."
+        mv $HOME/.config/cava $HOME/.config/cava$DATE
     fi
-    if [ -d ~/.config/i3 ]; then
-        echo "I3 configs detected, backing up..."
-        mkdir -p ~/.config/i3.old && mv ~/.config/i3/* ~/.config/i3.old/
-        cp -r ./config/i3/* ~/.config/i3;
-    else
-        echo "Installing i3 configs..."
-        mkdir ~/.config/i3 && cp -r ./config/i3/* ~/.config/i3;
+    mkdir -p $HOME/.config/cava && cp -r ./config/cava/* $HOME/.config/cava;
+    if [ -d $HOME/.config/dunst ]; then
+        echo "[*] dunst configs detected, backing up..."
+        mv $HOME/.config/dunst $HOME/.config/dunst$DATE
     fi
-    if [ -d ~/.config/mpd ]; then
-        echo "MPD configs detected, backing up..."
-        mkdir -p ~/.config/mpd.old && mv ~/.config/mpd/* ~/.config/mpd.old/
-        cp -r ./config/mpd/* ~/.config/mpd;
-    else
-        echo "Installing mpd configs..."
-        mkdir ~/.config/mpd && cp -r ./config/mpd/* ~/.config/mpd;
+    mkdir -p $HOME/.config/dunst && cp -r ./config/dunst/* $HOME/.config/dunst;
+    if [ -d $HOME/.config/gtk-3.0 ]; then
+        echo "[*] gtk-3.0 configs detected, backing up..."
+        mv $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0$DATE
     fi
-        if [ -d ~/.config/ncmpcpp ]; then
-        echo "Ncmpcpp configs detected, backing up..."
-        mkdir -p ~/.config/ncmpcpp.old && mv ~/.config/ncmpcpp/* ~/.config/ncmpcpp.old/
-        cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
-    else
-        echo "Installing ncmpcpp configs..."
-        mkdir ~/.config/ncmpcpp && cp -r ./config/ncmpcpp/* ~/.config/ncmpcpp;
+    mkdir -p $HOME/.config/gtk-3.0 && cp -r ./config/gtk-3.0/* $HOME/.config/gtk-3.0;
+    if [ -d $HOME/.config/i3 ]; then
+        echo "[*] i3 configs detected, backing up..."
+        mv $HOME/.config/i3 $HOME/.config/i3$DATE
     fi
-        if [ -d ~/.config/picom ]; then
-        echo "Picom configs detected, backing up..."
-        mkdir -p ~/.config/picom.old && mv ~/.config/picom/* ~/.config/picom.old/
-        cp -r ./config/picom/* ~/.config/picom;
-    else
-        echo "Installing picom configs..."
-        mkdir ~/.config/picom && cp -r ./config/picom/* ~/.config/picom;
+    mkdir -p $HOME/.config/i3 && cp -r ./config/i3/* $HOME/.config/i3;
+    if [ -d $HOME/.config/kitty ]; then
+        echo "[*] kitty configs detected, backing up..."
+        mv $HOME/.config/kitty $HOME/.config/kitty$DATE
     fi
-        if [ -d ~/.config/polybar ]; then
-        echo "Polybar configs detected, backing up..."
-        mkdir -p ~/.config/polybar.old && mv ~/.config/polybar/* ~/.config/polybar.old/
-        cp -r ./config/polybar/* ~/.config/polybar;
-    else
-        echo "Installing polybar configs..."
-        mkdir ~/.config/polybar && cp -r ./config/polybar/* ~/.config/polybar;
+    mkdir -p $HOME/.config/kitty && cp -r ./config/kitty/* $HOME/.config/kitty;
+    if [ -d $HOME/.config/mpd ]; then
+        echo "[*] mpd configs detected, backing up..."
+        mv $HOME/.config/mpd $HOME/.config/mpd$DATE
     fi
-        if [ -d ~/.config/ranger ]; then
-        echo "Ranger configs detected, backing up..."
-        mkdir -p ~/.config/ranger.old && mv ~/.config/ranger/* ~/.config/ranger.old/
-        cp -r ./config/ranger/* ~/.config/ranger;
-    else
-        echo "Installing ranger configs..."
-        mkdir ~/.config/ranger && cp -r ./config/ranger/* ~/.config/ranger;
+    mkdir -p $HOME/.config/mpd && cp -r ./config/mpd/* $HOME/.config/mpd;
+    if [ -d $HOME/.config/ncmpcpp ]; then
+        echo "[*] ncmpcpp configs detected, backing up..."
+        mv $HOME/.config/ncmpcpp $HOME/.config/ncmpcpp$DATE
     fi
-    if [ -d ~/.config/btop ]; then
-        echo "Btop configs detected, backing up..."
-        mkdir -p ~/.config/btop.old && mv ~/.config/btop/* ~/.config/btop.old/
-        cp -r ./config/btop/* ~/.config/btop;
-    else
-        echo "Installing btop configs..."
-        mkdir ~/.config/btop && cp -r ./config/btop/* ~/.config/btop;
+    mkdir -p $HOME/.config/ncmpcpp && cp -r ./config/ncmpcpp/* $HOME/.config/ncmpcpp;
+    if [ -d $HOME/.config/neofetch ]; then
+        echo "[*] neofetch configs detected, backing up..."
+        mv $HOME/.config/neofetch $HOME/.config/neofetch$DATE
     fi
-    if [ -d ~/.config/neofetch ]; then
-        echo "Neofetch configs detected, backing up..."
-        mkdir -p ~/.config/neofetch.old && mv ~/.config/neofetch/* ~/.config/neofetch.old/
-        cp -r ./config/neofetch/* ~/.config/neofetch;
-    else
-        echo "Installing neofetch configs..."
-        mkdir ~/.config/neofetch && cp -r ./config/neofetch/* ~/.config/neofetch;
+    mkdir -p $HOME/.config/neofetch && cp -r ./config/neofetch/* $HOME/.config/neofetch;
+    if [ -d $HOME/.config/picom ]; then
+        echo "[*] picom configs detected, backing up..."
+        mv $HOME/.config/picom $HOME/.config/picom$DATE
     fi
-    if [ -d ~/.config/kitty ]; then
-        echo "Kitty configs detected, backing up..."
-        mkdir -p ~/.config/kitty.old && mv ~/.config/kitty/* ~/.config/kitty.old/
-        cp -r ./config/kitty/* ~/.config/kitty;
-    else
-        echo "Installing kitty configs..."
-        mkdir ~/.config/kitty && cp -r ./config/kitty/* ~/.config/kitty;
+    mkdir -p $HOME/.config/picom && cp -r ./config/picom/* $HOME/.config/picom;
+    if [ -d $HOME/.config/polybar ]; then
+        echo "[*] polybar configs detected, backing up..."
+        mv $HOME/.config/polybar $HOME/.config/polybar$DATE
     fi
-    if [ -d ~/.config/rofi ]; then
-        echo "Rofi configs detected, backing up..."
-        mkdir -p ~/.config/rofi.old && mv ~/.config/rofi/* ~/.config/rofi.old/
-        cp -r ./config/rofi/* ~/.config/rofi;
-    else
-        echo "Installing rofi configs..."
-        mkdir ~/.config/rofi && cp -r ./config/rofi/* ~/.config/rofi;
+    mkdir -p $HOME/.config/polybar && cp -r ./config/polybar/* $HOME/.config/polybar;
+    if [ -d $HOME/.config/ranger ]; then
+        echo "[*] ranger configs detected, backing up..."
+        mv $HOME/.config/ranger $HOME/.config/ranger$DATE
     fi
-    if [ -d ~/.config/Code\ -\ OSS/User ]; then
-        echo "Visual Studio Code (OSS) configs detected, backing up..."
-        mkdir -p ~/.config/Code\ -\ OSS/User.old && mv ~/.config/Code\ -\ OSS/User/* ~/.config/Code\ -\ OSS/User.old/
-        cp -r ./config/vsc/* ~/.config/Code\ -\ OSS/User;
-    else
-        echo "Installing Visual Studio Code (OSS) configs..."
-        mkdir ~/.config/Code\ -\ OSS/User && cp -r ./config/vsc/* ~/.config/Code\ -\ OSS/User;
+    mkdir -p $HOME/.config/ranger && cp -r ./config/ranger/* $HOME/.config/ranger;
+    if [ -d $HOME/.config/rofi ]; then
+        echo "[*] rofi configs detected, backing up..."
+        mv $HOME/.config/rofi $HOME/.config/rofi$DATE
     fi
-    if [ -d ~/.config/Code/User ]; then
-        echo "Visual Studio Code configs detected, backing up..."
-        mkdir -p ~/.config/Code/User.old && mv ~/.config/Code/User/* ~/.config/Code/User.old/
-        cp -r ./config/vsc/* ~/.config/Code/User;
-    else
-        echo "Installing Visual Studio Code configs..."
-        mkdir ~/.config/Code/User && cp -r ./config/vsc/* ~/.config/Code/User;
+    mkdir -p $HOME/.config/rofi && cp -r ./config/rofi/* $HOME/.config/rofi;
+    # files
+    if [ -f $HOME/.config/Code\ -\ OSS/User/settings.json ]; then
+        echo "[*] Code - OSS configs detected, backing up..."
+        mv $HOME/.config/Code\ -\ OSS/User/settings.json $HOME/.config/Code\ -\ OSS/User/settings.json$DATE
     fi
-    if [ -f ~/.zshrc ]; then
-        echo "Zsh configs detected, backing up..."
-        cp ~/.zshrc ~/zshrc.old
-        cp ./config/.zshrc ~/;
-    else
-        echo "Installing zsh configs..."
-        cp ./config/.zshrc ~/;
+    cp -f ./config/vsc/* $HOME/.config/Code\ -\ OSS/User;
+    if [ -f $HOME/.zshrc ]; then
+        echo "[*] ZSH configs detected, backing up..."
+        mv $HOME/.zshrc $HOME/.zshrc$DATE
     fi
+    cp -f ./config/.zshrc $HOME/.zshrc;
+    if [ -f $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme ]; then
+        echo "[*] Oh my zsh keyitdev theme detected, backing up..."
+        mv $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme$DATE
+    fi
+    cp -f ./config/keyitdev.zsh-theme $HOME/.oh-my-zsh/custom/themes/;
+    echo -e "\n[*4*] Files copied."
+}
+
+copy_scripts(){
+    echo -e "[*5*] Coping scripts."
+    DATE=$(date +%s)
+    if [ -d /usr/local/bin ]; then
+        echo "[*] /usr/local/bin configs detected, backing up..."
+        sudo mv /usr/local/bin/* /usr/local/bin$DATE
+    fi
+    sudo mkdir -p /usr/local/bin
+    sudo cp -frd ./scripts/* /usr/local/bin
+     echo -e "\n[*5*] Scripts copied."
+}
+
+make_default_directories(){
+    echo -e "[*6*] Making default directories."
+    mkdir -p $HOME/Pictures/wallpapers
+    mkdir -p $HOME/Pictures/screenshots
+    mkdir -p $HOME/Videos
+    mkdir -p $HOME/Music
+    mkdir -p $HOME/Projects
+}
+
+system_update
+aur_helper
+install_packages
+copy_flies
+copy_scripts
+make_default_directories
+
+echo -e "[*7*] Everything is ready, enjoy :D."
