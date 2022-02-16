@@ -18,7 +18,11 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 
 ## 🌟 Showcase
 
-### More screenshots [here](./screenshots/SCREENSHOTS.md)
+![](https://github.com/Keyitdev/dotfiles/blob/screenshots/screenshots/main.png?raw=true)
+
+### More screenshots [here](https://github.com/Keyitdev/dotfiles/blob/screenshots/README.md)
+
+### Watch the demo video [here](https://www.youtube.com/watch?v=_dMkmf2ugPE)
 
 ## 🗒️ Info
 
@@ -30,6 +34,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 |**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
 |**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
 |**Login manger**|[sddm](https://github.com/sddm/sddm)|
+|**Login manger theme**|[sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)|
 |**Lock screen**|[betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)|
 |**Compositor**|[picom](https://github.com/yshui/picom)
 |**Shell**|[zsh](https://www.zsh.org/)|
@@ -45,7 +50,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 ## ⚡ Dependecies
 
 ### Packaged used
-* base: base-devel wget git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib
+* base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
 * wm and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
 * lockscreen: i3lock-color betterlockscreen feh imagemagick
 * programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
@@ -56,6 +61,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 * Icons: [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
 * Main font: [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
 * Main monospace font: [Roboto mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
+* Polybar: [Iosevka-Nerd-Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
 
 ## 🛠️ Installation
 
@@ -96,7 +102,7 @@ I recommend manually installing packages and coping files, but if you are lazy o
 1. Install gtk3 theme
     ```sh
     git clone https://github.com/EliverLara/ant.git
-    sudo mv ./Ant /usr/share/themes
+    sudo mv ./ant /usr/share/themes
     ```
 1. Install sddm astronaut theme
     ```sh
@@ -137,7 +143,7 @@ I recommend manually installing packages and coping files, but if you are lazy o
 1. Install gtk3 theme
     ```sh
     git clone https://github.com/EliverLara/ant.git
-    sudo mv ./Ant /usr/share/themes
+    sudo mv ./ant /usr/share/themes
     ```
 1. Install sddm astronaut theme
     ```sh
