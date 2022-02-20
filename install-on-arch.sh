@@ -47,10 +47,20 @@ aur_helper(){
 }
 
 install_packages(){
-    echo -e "[*3*] Instaling packages with pacman."
+    echo -e "[*3*] Installing packages with Pacman."
     sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot mpc
-    
-    echo -e "\n[*] Instaling packages with $HELPER."
+    echo -e "\nInstalling other dependencies"
+    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
+    nvim +PackerSync
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    git clone https://github.com/EliverLara/ant.git ~/ant
+    sudo mv ~/ant /usr/share/themes
+    git clone https://github.com/keyitdev/sddm-astronaut-theme.git ~/sddm-astronaut-theme
+    sudo cp -fdr ~/sddm-astronaut-theme /usr/share/sddm/themes/
+    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+    sudo echo "[Theme]
+Current=sddm-astronaut-theme" >> /etc/sddm.conf
+    echo -e "\n[*] Installing packages with $HELPER."
     $HELPER -S acpi      \
 	   polybar           \
        ffcast            \
@@ -60,24 +70,23 @@ install_packages(){
        slop
     echo -e "\n[*] Chmoding light."
     sudo chmod +s /usr/bin/light
-    echo -e "\n[*] Setting zsh to default shell."
+    echo -e "\n[*] Setting Zsh as default shell."
     chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
     
     cat <<- EOF
 		[*3*] Still installing packages.
 		
-		[*] Do you want to install no required but usefull programs? (Code, iwd, libreoffice, firefox etc.)
+		[*] Do you want to install optional, but useful programs? (VSCode, iwd, Oh-My-Zsh, LibreOffice, Firefox, etc)
 
 		[1] yes
-		[2] nope
+		[2] no
 	
 	EOF
 
 	read -p "[?] Select option: "
 
 	if [[ $REPLY == "1" ]]; then
-		sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp
+		sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp 
 	elif [[ $REPLY == "2" ]]; then
 		 echo -e "\n[*] Skipping."
 	else

@@ -1,19 +1,12 @@
  <h1 align=center>Keyitdev Dotfiles</h1>
 
-<p align="center">My personal build of dotfiles using i3. Color palette is based on OneDark color scheme. This configuration works also on dual monitors.</p>
+<p align="center">My personal Dotfiles I use in i3. Color palette is based on the Atom One Dark colorscheme. This configuration also works on dual monitors.</p>
 
 <div align="center">
-<a href="Showcase">Showcase</a> · <a href="#Info">Info</a> · <a href="#linux">Linux</a> · <a href="#scripts">Scripts</a>
+<a href="#-showcase">Showcase</a> · <a href="#%EF%B8%8F-info">Info</a> · <a href="#-dependencies">Dependencies</a> · <a href="#%EF%B8%8F-installation">Installation</a> · <a href="#-keybinds">Keybinds</a> · <a href="#-colors">Colors</a> · <a href="#%EF%B8%8F-troubleshooting">Troubleshooting</a>
 </div>
 
- [Showcase](https://github.com/keyitdev/dotfiles#Showcase) ·
- [Info](https://github.com/keyitdev/dotfiles#Info) ·
- [Dependencies](https://github.com/keyitdev/dotfiles#Dependencies) ·
- [Installation](https://github.com/keyitdev/dotfiles#Installation) ·
- [Keybinds](https://github.com/keyitdev/dotfiles#Keybinds) ·
- [Colors](https://github.com/keyitdev/dotfiles#Colors) ·
- [Troubleshooting](https://github.com/keyitdev/dotfiles#Troubleshooting)
-
+<br />
 
 <p align=center>	  
   <img src="https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge">
@@ -22,162 +15,168 @@
   <img src="https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge">
   <img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
 </p>
-	
+
+<br />
+
 ## 🌟 Showcase
 
 ![](https://github.com/Keyitdev/dotfiles/blob/screenshots/screenshots/main.png?raw=true)
 
-### More screenshots [here](https://github.com/Keyitdev/dotfiles/blob/screenshots/README.md)
+<br />
 
-### Watch the demo video [here](https://www.youtube.com/watch?v=_dMkmf2ugPE)
+### [More screenshots here](https://github.com/Keyitdev/dotfiles/blob/screenshots/README.md)
+
+### [Watch the demo video here](https://www.youtube.com/watch?v=_dMkmf2ugPE)
+
+<br />
 
 ## 🗒️ Info
 
 |Program|Name|
 |-|-|
 |**Window Manager**|[i3-gaps](https://github.com/Airblader/i3)|
-|**Terminal emullator**|[kitty](https://github.com/kovidgoyal/kitty)|
-|**Bar**|[polybar](https://github.com/polybar/polybar)|
-|**Application launcher**|[rofi](https://github.com/davatorium/rofi)|
-|**Notifications**|[dunst](https://github.com/dunst-project/dunst)|
-|**Login manger**|[sddm](https://github.com/sddm/sddm)|
-|**Login manger theme**|[sddm-astronaut-theme](https://github.com/Keyitdev/sddm-astronaut-theme)|
-|**Lock screen**|[betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)|
-|**Compositor**|[picom](https://github.com/yshui/picom)
-|**Shell**|[zsh](https://www.zsh.org/)|
-|**Shell theme**|[oh my zsh](https://github.com/ohmyzsh/ohmyzsh)|
-|**Music**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
-|**Text editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [neovim](https://github.com/neovim/neovim)|
-|**Vsc theme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
-|**Neovim theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
-|**GTK theme**|[Dracula (ant)](https://github.com/EliverLara/ant)|
-|**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
-|**Discord Theme**|[My custom theme](https://github.com/Keyitdev/BetterDiscord-themes)|
+|**Terminal Emulator**|[Kitty](https://github.com/kovidgoyal/kitty)|
+|**Bar**|[Polybar](https://github.com/polybar/polybar)|
+|**Application Launcher**|[Rofi](https://github.com/davatorium/rofi)|
+|**Notification Daemon**|[Dunst](https://github.com/dunst-project/dunst)|
+|**Display Manager**|[SDDM](https://github.com/sddm/sddm)|
+|**Display Manager Theme**|[SDDM-Astronaut-Theme](https://github.com/Keyitdev/sddm-astronaut-theme)|
+|**Lockscreen**|[BetterLockscreen](https://github.com/betterlockscreen/betterlockscreen)|
+|**Compositor**|[Picom](https://github.com/yshui/picom)
+|**Shell**|[Zsh](https://www.zsh.org/)|
+|**Shell Framework**|[Oh-My-Zsh](https://github.com/ohmyzsh/ohmyzsh)|
+|**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
+|**Text Editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [Neovim](https://github.com/neovim/neovim)|
+|**Visual Studio Code Colorscheme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
+|**Neovim Theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
+|**GTK Theme**|[Ant (Dracula)](https://github.com/EliverLara/ant)|
+|**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
+|**Discord Theme**|[Custom](https://github.com/Keyitdev/BetterDiscord-themes)|
+
+<br />
 
 ## ⚡ Dependencies
 
-### Packaged used
-* base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
-* wm and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
-* lockscreen: i3lock-color betterlockscreen feh imagemagick
-* programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
-* screenshot script: xclip scrot ffcast slop         
-* emoji fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+### Packages 
+* <b>Base:</b> base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
+* <b>WM/X11:</b> i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+* <b>Lockscreen:</b> i3lock-color betterlockscreen feh imagemagick
+* <b>Programs:</b> kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
+* <b>Screenshots:</b> xclip scrot ffcast slop         
+* <b>Emoji Fonts:</b> noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
-### Fonts used
-* Icons: [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
-* Main font: [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* Main monospace font: [Roboto mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
-* Polybar: [Iosevka-Nerd-Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
+### Fonts 
+* <b>Icons:</b> [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
+* <b>Interface Font:</b> [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
+* <b>Monospace Font:</b> [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
+* <b>Polybar Font:</b> [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
+
+<br />
 
 ## 🛠️ Installation
 
-I recommend manually installing packages and coping files, but if you are lazy or are a productive person who don't want to waste your time, you can try  to use arch install script.
+It's recommended to install the dependencies manually, but if you have any issues with the manual installation, or just want to save time, use the installation script.
 
-### Arch manually
+### Manual Installation
 
-1. Clone this dotfiles
+1. Clone this repository
     ```sh
     git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
     ```
-1. Install AUR helper (for example yay in ~/.srcs)
+<br />
+
+2. Install an AUR helper (for example, yay in ~/.srcs)
     ```sh
     mkdir -p ~/.srcs
     git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
 	(cd ~/.srcs/yay/ && makepkg -si )
     ```
-1. Install packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
-1. Make light executable
+<br />
+
+3. Install packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
+<br />
+
+4. Make Light executable
     ```sh
     sudo chmod +s /usr/bin/light
     ```
-1. Copy files (config folder to `$HOME/.config`, scripts folder to `/usr/local/bin` fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
-1. Install oh my zsh
+<br />
+
+5. Copy the files (Config folder to `$HOME/.config`, scripts folder to `/usr/local/bin` fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
+<br />
+
+6. Install Oh-My-Zsh
     ```sh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```
-1. Set zsh as default shell
+<br />
+
+7. Set Zsh as the default shell
     ```sh
     chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
     ```
-1. Install AstroVim
+<br />
+
+8. Install AstroVim
     ```sh
     git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
     nvim +PackerSync
     ```
-1. Install gtk3 theme
+<br />
+
+9. Install GTK Theme
     ```sh
     git clone https://github.com/EliverLara/ant.git
     sudo mv ./ant /usr/share/themes
     ```
-1. Install sddm astronaut theme
+<br />
+
+10. Install SDDM Astronaut Theme
     ```sh
     sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
     sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
     sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
     ```
-1. Edit `/etc/sddm.conf`
+<br />
+
+11. Edit `/etc/sddm.conf`
     ```
     [Theme]
     Current=sddm-astronaut-theme
     ```
-1. [Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+<br />
 
-### Arch with script
+12. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+<br />
 
-1.  Clone dotfiles
+### Automated Install
+
+1.  Clone the repository
     ```
     git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
     cd dotfiles
     chmod +x install-on-arch.sh
     ./install-on-arch.sh
     ```
-1. Install oh my zsh
-    ```sh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```
-1. Set zsh as default shell
-    ```sh
-    chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
-    ```
-1. Install AstroVim
-    ```sh
-    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
-    nvim +PackerSync
-    ```
-1. Install gtk3 theme
-    ```sh
-    git clone https://github.com/EliverLara/ant.git
-    sudo mv ./ant /usr/share/themes
-    ```
-1. Install sddm astronaut theme
-    ```sh
-    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
-    sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
-    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
-    ```
-1. Edit `/etc/sddm.conf`
-    ```
-    [Theme]
-    Current=sddm-astronaut-theme
-    ```
-1. [Install Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+<br />
 
-## 🛠️ Uninstallation
+2. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+<br />
 
-1. Remove installed packages (see [Dependecies](https://github.com/keyitdev/dotfiles#Dependecies))
-2. Remove AUR helper ( ~/.srcs)
-3. Unistall oh my zsh ` uninstall_oh_my_zsh`
-4. Change shell back to bash 
+## 🛠️ Uninstall
+
+1. Remove installed packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
+2. Remove the AUR helper ( ~/.srcs)
+3. Uninstall Oh-My-Zsh ` uninstall_oh_my_zsh`
+4. Change the default shell back to bash 
 ```
 chsh -s /bin/bash
 sudo chsh -s /bin/bash
 ```
 5. Remove installed fonts (~/.local/share/fonts/ or /usr/share/fonts/)
 6. Remove installed scripts (/usr/local/bin)
-7. Delete this repo
+7. Remove this repository
+<br />
 
 ## 🔑 Keybinds
 
@@ -210,6 +209,8 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 | `Win + Shift + R`      | Restart i3                               |
 
 Note: `Win` refers to the `Super/Mod` key.
+<br />
+<br />
 
 ## 🌈 Colors
 
@@ -229,13 +230,15 @@ Note: `Win` refers to the `Super/Mod` key.
 |  cyan                  | #89ddff                                  |
 |  pink                  | #ffa8c5                                  |
 |  orange                | #dd864a                                  |
+<br />
 
 ## ⚙️ Troubleshooting
 
-1. Polybar modules not working : Try changing variables (For example in battery module from BAT1 to BAT0).
-2. Black flashing screen : Try changing picom config.
-3. Scripts not working : Maybe try to edit bang.
-4. Mpd not working : Check if any other program isn't using port 6600 (http://127.0.0.1:6600/).
+1. Polybar modules not working? : Try changing variables (For example in battery module from BAT1 to BAT0).
+3. Screen flashing black : Try changing picom config.
+4. Scripts not working : Maybe try to edit shebang.
+5. MPD not working : Check if any other program is using port 6600 (http://127.0.0.1:6600/).
+<br />
 
 ## ✨ Big thanks to
 
@@ -247,6 +250,7 @@ These dotfiles includes some files from others rices. Original sources:
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
 * [Milosz](https://github.com/milosz) for [rofi-bookmarks](https://github.com/milosz/rofi-firefox-bookmarks)
 * [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
+<br />
 
 ## 🪪 License
 
