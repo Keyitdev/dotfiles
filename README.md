@@ -3,7 +3,7 @@
 <p align="center">My personal Dotfiles I use in i3. Color palette is based on the Atom One Dark colorscheme. This configuration also works on dual monitors.</p>
 
 <div align="center">
-<a href="#-showcase">Showcase</a> · <a href="#%EF%B8%8F-info">Info</a> · <a href="#-dependencies">Dependencies</a> · <a href="#%EF%B8%8F-installation">Installation</a> · <a href="#-keybinds">Keybinds</a> · <a href="#-colors">Colors</a>   <a href="#%EF%B8%8F-troubleshooting">Troubleshooting</a>
+<a href="#-showcase">Showcase</a> · <a href="#%EF%B8%8F-info">Info</a> · <a href="#-dependencies">Dependencies</a> · <a href="#%EF%B8%8F-installation">Installation</a> · <a href="#-keybinds">Keybinds</a> · <a href="#-colors">Colors</a> · <a href="#%EF%B8%8F-troubleshooting">Troubleshooting</a>
 </div>
 
 <br />
@@ -251,6 +251,7 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 | `Win + Shift + R`      | Restart i3                               |
 
 Note: `Win` refers to the `Super/Mod` key.
+<br />
 <br />
 
 ## 🌈 Colors
