@@ -2,8 +2,8 @@
 
 <p align="center">My personal build of dotfiles using i3. Color palette is based on OneDark color scheme. This configuration works also on dual monitors.</p>
 
-<div align="center">
-<a href="Showcase">Showcase</a> · <a href="#Info">Info</a> · <a href="#linux">Linux</a> · <a href="#scripts">Scripts</a>
+<div align="right">
+<a href="#🌟 Showcase">Showcase</a> · <a href="#windows">Windows</a> · <a href="#linux">Linux</a> · <a href="#scripts">Scripts</a>
 </div>
 
  [Showcase](https://github.com/keyitdev/dotfiles#Showcase) ·
