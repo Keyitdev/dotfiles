@@ -47,7 +47,7 @@ aur_helper(){
 }
 
 install_packages(){
-    echo -e "[*3*] Installng packages with Pacman."
+    echo -e "[*3*] Installing packages with Pacman."
     sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot mpc
     echo -e "\nInstalling other dependencies"
     git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
