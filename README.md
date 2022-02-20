@@ -37,8 +37,8 @@
 |**Window Manager**|[i3-gaps](https://github.com/Airblader/i3)|
 |**Terminal Emulator**|[Kitty](https://github.com/kovidgoyal/kitty)|
 |**Bar**|[Polybar](https://github.com/polybar/polybar)|
-|**Application launcher**|[Rofi](https://github.com/davatorium/rofi)|
-|**Notifications**|[Dunst](https://github.com/dunst-project/dunst)|
+|**Application Launcher**|[Rofi](https://github.com/davatorium/rofi)|
+|**Notification Daemon**|[Dunst](https://github.com/dunst-project/dunst)|
 |**Display Manager**|[SDDM](https://github.com/sddm/sddm)|
 |**Display Manager Theme**|[SDDM-Astronaut-Theme](https://github.com/Keyitdev/sddm-astronaut-theme)|
 |**Lockscreen**|[BetterLockscreen](https://github.com/betterlockscreen/betterlockscreen)|
@@ -47,10 +47,10 @@
 |**Shell Framework**|[Oh-My-Zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 |**Text Editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [Neovim](https://github.com/neovim/neovim)|
-|**Vsc theme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
-|**Neovim theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
-|**GTK theme**|[Ant (Dracula)](https://github.com/EliverLara/ant)|
-|**GTK icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
+|**Visual Studio Code Colorscheme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
+|**Neovim Theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
+|**GTK Theme**|[Ant (Dracula)](https://github.com/EliverLara/ant)|
+|**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**|[Custom](https://github.com/Keyitdev/BetterDiscord-themes)|
 
 <br />
@@ -58,18 +58,18 @@
 ## ⚡ Dependencies
 
 ### Packages 
-* Base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
-* WM and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
-* Lockscreen: i3lock-color betterlockscreen feh imagemagick
-* Programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
-* Screenshots: xclip scrot ffcast slop         
-* Emoji Fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+* <b>Base:</b> base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
+* <b>WM/X11:</b> i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+* <b>Lockscreen:</b> i3lock-color betterlockscreen feh imagemagick
+* <b>Programs:</b> kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
+* <b>Screenshots:</b> xclip scrot ffcast slop         
+* <b>Emoji Fonts:</b> noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts 
-* Icons: [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
-* Main font: [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* Main monospace font: [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
-* Polybar: [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
+* <b>Icons:</b> [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
+* <b>Interface Font:</b> [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
+* <b>Monospace Font:</b> [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
+* <b>Polybar Font:</b> [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
 
 <br />
 
