@@ -1,21 +1,28 @@
- # Keyitdev dotfiles
+ <h1 align=center>Keyitdev Dotfiles</h1>
 
-My personal build of dotfiles using i3. Color palette is based on OneDark color scheme. This configuration works also on dual monitors.
- 
-[Showcase](https://github.com/keyitdev/dotfiles#Showcase) ·
-[Info](https://github.com/keyitdev/dotfiles#Info) ·
-[Dependecies](https://github.com/keyitdev/dotfiles#Dependecies) ·
-[Installation](https://github.com/keyitdev/dotfiles#Installation) ·
-[Keybinds](https://github.com/keyitdev/dotfiles#Keybinds) ·
-[Colors](https://github.com/keyitdev/dotfiles#Colors) ·
-[Troubleshooting](https://github.com/keyitdev/dotfiles#Troubleshooting)
+<p align="center">My personal build of dotfiles using i3. Color palette is based on OneDark color scheme. This configuration works also on dual monitors.</p>
 
-![](https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge)
-![](https://img.shields.io/github/forks/keyitdev/dotfiles?color=82aaff&labelColor=202328&style=for-the-badge)
-![](https://img.shields.io/github/issues/keyitdev/dotfiles?color=bf616a&labelColor=202328&style=for-the-badge)
-![](https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge)
-![](https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge)
+<div align="center">
+<a href="Showcase">Showcase</a> · <a href="#Info">Info</a> · <a href="#linux">Linux</a> · <a href="#scripts">Scripts</a>
+</div>
 
+ [Showcase](https://github.com/keyitdev/dotfiles#Showcase) ·
+ [Info](https://github.com/keyitdev/dotfiles#Info) ·
+ [Dependencies](https://github.com/keyitdev/dotfiles#Dependencies) ·
+ [Installation](https://github.com/keyitdev/dotfiles#Installation) ·
+ [Keybinds](https://github.com/keyitdev/dotfiles#Keybinds) ·
+ [Colors](https://github.com/keyitdev/dotfiles#Colors) ·
+ [Troubleshooting](https://github.com/keyitdev/dotfiles#Troubleshooting)
+
+
+<p align=center>	  
+  <img src="https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/keyitdev/dotfiles?color=82aaff&labelColor=202328&style=for-the-badge">
+  <img src="https://img.shields.io/github/issues/keyitdev/dotfiles?color=bf616a&labelColor=202328&style=for-the-badge">
+  <img src="https://img.shields.io/github/issues-pr/keyitdev/dotfiles?color=c792ea&labelColor=202328&style=for-the-badge">
+  <img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
+</p>
+	
 ## 🌟 Showcase
 
 ![](https://github.com/Keyitdev/dotfiles/blob/screenshots/screenshots/main.png?raw=true)
@@ -47,7 +54,7 @@ My personal build of dotfiles using i3. Color palette is based on OneDark color 
 |**GTK icons**|[Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**|[My custom theme](https://github.com/Keyitdev/BetterDiscord-themes)|
 
-## ⚡ Dependecies
+## ⚡ Dependencies
 
 ### Packaged used
 * base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
