@@ -160,42 +160,7 @@ It's recommended to install the dependencies manually, but if you have any issue
     ```
 <br />
 
-2. Install Oh-My-Zsh
-    ```sh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```
-<br />
-
-3. Install AstroVim
-    ```sh
-    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
-    nvim +PackerSync
-    ```
-<br />    
-
-4. Install GTK Theme
-    ```sh
-    git clone https://github.com/EliverLara/ant.git
-    sudo mv ./ant /usr/share/themes
-    ```
-<br />
-    
-5. Install SDDM Astronaut Theme
-    ```sh
-    sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
-    sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
-    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
-    ```
-<br />
-  
-6. Edit `/etc/sddm.conf`
-    ```
-    [Theme]
-    Current=sddm-astronaut-theme
-    ``` 
-<br />
-
-7. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+2. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 <br />
 
 ## 🛠️ Uninstall
