@@ -58,18 +58,18 @@
 ## ⚡ Dependencies
 
 ### Packages 
-* base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
-* wm and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
-* lockscreen: i3lock-color betterlockscreen feh imagemagick
-* programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
-* screenshot script: xclip scrot ffcast slop         
-* emoji fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+* Base: base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
+* WM and X11: i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+* Lockscreen: i3lock-color betterlockscreen feh imagemagick
+* Programs: kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
+* Screenshots: xclip scrot ffcast slop         
+* Emoji Fonts: noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts 
 * Icons: [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
-* Main font: [Open sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* Main monospace font: [Roboto mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
-* Polybar: [Iosevka-Nerd-Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
+* Main font: [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
+* Main monospace font: [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
+* Polybar: [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
 
 <br />
 
@@ -166,28 +166,21 @@ It's recommended to install the dependencies manually, but if you have any issue
     ```
 <br />
 
-3. Set Zsh as default shell
-    ```sh
-    chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
-    ```
-<br />
-
-1. Install AstroVim
+3. Install AstroVim
     ```sh
     git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
     nvim +PackerSync
     ```
 <br />    
 
-1. Install GTK Theme
+4. Install GTK Theme
     ```sh
     git clone https://github.com/EliverLara/ant.git
     sudo mv ./ant /usr/share/themes
     ```
 <br />
     
-1. Install SDDM Astronaut Theme
+5. Install SDDM Astronaut Theme
     ```sh
     sudo git clone https://github.com/keyitdev/sddm-astronaut-theme.git
     sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
@@ -195,14 +188,14 @@ It's recommended to install the dependencies manually, but if you have any issue
     ```
 <br />
   
-1. Edit `/etc/sddm.conf`
+6. Edit `/etc/sddm.conf`
     ```
     [Theme]
     Current=sddm-astronaut-theme
     ``` 
 <br />
 
-1. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
+7. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
 <br />
 
 ## 🛠️ Uninstall
