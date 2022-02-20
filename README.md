@@ -93,7 +93,7 @@ It's recommended to install the dependencies manually, but if you have any issue
     ```
 <br />
 
-3. Install packages (see [Dependencies](https://github.com/keyitdev/dotfiles#Dependencies))
+3. Install packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
 <br />
 
 4. Make Light executable
@@ -165,7 +165,7 @@ It's recommended to install the dependencies manually, but if you have any issue
 
 ## 🛠️ Uninstall
 
-1. Remove installed packages (see [Dependencies](https://github.com/keyitdev/dotfiles#Dependencies))
+1. Remove installed packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
 2. Remove the AUR helper ( ~/.srcs)
 3. Uninstall Oh-My-Zsh ` uninstall_oh_my_zsh`
 4. Change the default shell back to bash 
