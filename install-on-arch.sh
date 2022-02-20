@@ -47,10 +47,10 @@ aur_helper(){
 }
 
 install_packages(){
-    echo -e "[*3*] Instaling packages with pacman."
+    echo -e "[*3*] Installng packages with Pacman."
     sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot mpc
     
-    echo -e "\n[*] Instaling packages with $HELPER."
+    echo -e "\n[*] Installing packages with $HELPER."
     $HELPER -S acpi      \
 	   polybar           \
        ffcast            \
@@ -60,14 +60,13 @@ install_packages(){
        slop
     echo -e "\n[*] Chmoding light."
     sudo chmod +s /usr/bin/light
-    echo -e "\n[*] Setting zsh to default shell."
+    echo -e "\n[*] Setting Zsh as default shell."
     chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
     
     cat <<- EOF
 		[*3*] Still installing packages.
 		
-		[*] Do you want to install no required but usefull programs? (Code, iwd, libreoffice, firefox etc.)
+		[*] Do you want to install optional, but useful programs? (VSCode, iwd, LibreOffice, Firefox, etc)
 
 		[1] yes
 		[2] nope
