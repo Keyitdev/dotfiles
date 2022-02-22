@@ -6,7 +6,7 @@
 <a href="#-showcase">Showcase</a> · <a href="#%EF%B8%8F-info">Info</a> · <a href="#-dependencies">Dependencies</a> · <a href="#%EF%B8%8F-installation">Installation</a> · <a href="#-keybinds">Keybinds</a> · <a href="#-colors">Colors</a> · <a href="#%EF%B8%8F-troubleshooting">Troubleshooting</a>
 </div>
 
-<br />
+</br>
 
 <p align=center>	  
   <img src="https://img.shields.io/github/stars/keyitdev/dotfiles?color=dd864a&labelColor=202328&style=for-the-badge">
@@ -16,19 +16,13 @@
   <img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
 </p>
 
-<br />
-
 ## 🌟 Showcase
 
 ![](https://github.com/Keyitdev/dotfiles/blob/screenshots/screenshots/main.png?raw=true)
 
-<br />
-
 ### [More screenshots here](https://github.com/Keyitdev/dotfiles/blob/screenshots/README.md)
 
 ### [Watch the demo video here](https://www.youtube.com/watch?v=_dMkmf2ugPE)
-
-<br />
 
 ## 🗒️ Info
 
@@ -47,31 +41,27 @@
 |**Shell Framework**|[Oh-My-Zsh](https://github.com/ohmyzsh/ohmyzsh)|
 |**Music Player**|[mpd](https://github.com/MusicPlayerDaemon/MPD), [ncmpcpp](https://github.com/ncmpcpp/ncmpcpp)
 |**Text Editor**|[Visual Studio Code](https://github.com/Microsoft/vscode), [Neovim](https://github.com/neovim/neovim)|
-|**Visual Studio Code Colorscheme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
+|**VSC Colorscheme**|[One Dark Pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)|
 |**Neovim Theme**|[AstroVim](https://github.com/kabinspace/AstroVim)
 |**GTK Theme**|[Ant (Dracula)](https://github.com/EliverLara/ant)|
 |**Icons**|[Papirus Dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)|
 |**Discord Theme**|[Custom](https://github.com/Keyitdev/BetterDiscord-themes)|
 
-<br />
-
 ## ⚡ Dependencies
 
 ### Packages 
-* <b>Base:</b> base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
-* <b>WM/X11:</b> i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
-* <b>Lockscreen:</b> i3lock-color betterlockscreen feh imagemagick
-* <b>Programs:</b> kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm zsh (with oh-my-zsh) picom cava code neovim
-* <b>Screenshots:</b> xclip scrot ffcast slop         
-* <b>Emoji Fonts:</b> noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
+* **Base:** base-devel wget curl git gcc make acpi light pulseaudio pulseaudio-alsa alsa-utils pacman-contrib mpc
+* **WM/X11:** i3-gaps i3blocks i3lock-color xorg xorg-xinit xorg-server
+* **Lockscreen:** i3lock-color betterlockscreen feh imagemagick
+* **Programs:** kitty rofi dunst (with libnotify) ranger ncmpcpp mpd polybar papirus-icon-theme btop sddm (with qt5 qt5-quickcontrols2 qt5-svg) zsh (with oh-my-zsh) picom cava code neovim
+* **Screenshots:** xclip scrot ffcast slop         
+* **Emoji Fonts:** noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
 
 ### Fonts 
-* <b>Icons:</b> [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
-* <b>Interface Font:</b> [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
-* <b>Monospace Font:</b> [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
-* <b>Polybar Font:</b> [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
-
-<br />
+* **Icons:** [Feather](https://github.com/AT-UI/feather-font/blob/master/src/fonts/feather.ttf)
+* **Interface Font:** [Open Sans](https://fonts.google.com/specimen/Open+Sans#standard-styles)
+* **Monospace Font:** [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono#standard-styles)
+* **Polybar Font:** [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Iosevka)
 
 ## 🛠️ Installation
 
@@ -83,53 +73,45 @@ It's recommended to install the dependencies manually, but if you have any issue
     ```sh
     git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
     ```
-<br />
 
-2. Install an AUR helper (for example, yay in ~/.srcs)
+2. Install an AUR helper (for example, yay in $HOME/.srcs)
     ```sh
-    mkdir -p ~/.srcs
-    git clone https://aur.archlinux.org/yay.git ~/.srcs/yay
-	(cd ~/.srcs/yay/ && makepkg -si )
+    mkdir -p $HOME/.srcs
+    git clone https://aur.archlinux.org/yay.git $HOME/.srcs/yay
+	(cd $HOME/.srcs/yay/ && makepkg -si )
     ```
-<br />
 
 3. Install packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
-<br />
 
 4. Make Light executable
     ```sh
     sudo chmod +s /usr/bin/light
     ```
-<br />
 
 5. Copy the files (Config folder to `$HOME/.config`, scripts folder to `/usr/local/bin` fonts to `/usr/share/fonts/`, wallpaper to `$HOME/Pictures/wallpapers` etc.)
-<br />
 
 6. Install Oh-My-Zsh
     ```sh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```
-<br />
 
 7. Set Zsh as the default shell
     ```sh
-    chsh -s /bin/zsh
+    chsh -s /bin/zsh    #user
+    sudo chsh -s /bin/zsh   #root
     ```
-<br />
 
 8. Install AstroVim
     ```sh
-    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
+    git clone --depth 10 https://github.com/kabinspace/AstroVim.git $HOME/.config/nvim
     nvim +PackerSync
     ```
-<br />
 
 9. Install GTK Theme
     ```sh
     git clone https://github.com/EliverLara/ant.git
     sudo mv ./ant /usr/share/themes
     ```
-<br />
 
 10. Install SDDM Astronaut Theme
     ```sh
@@ -137,17 +119,14 @@ It's recommended to install the dependencies manually, but if you have any issue
     sudo cp -fdr sddm-astronaut-theme /usr/share/sddm/themes/
     sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
     ```
-<br />
 
 11. Edit `/etc/sddm.conf`
     ```
-    [Theme]
-    Current=sddm-astronaut-theme
+    echo "[Theme]
+    Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
     ```
-<br />
 
 12. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
-<br />
 
 ### Automated Install
 
@@ -158,25 +137,22 @@ It's recommended to install the dependencies manually, but if you have any issue
     chmod +x install-on-arch.sh
     ./install-on-arch.sh
     ```
-<br />
 
 2. [Install the Firefox theme](https://color.firefox.com/?theme=XQAAAAKGAQAAAAAAAABBqYhm849SCia73laEGccwS-xMDPr5iE6kjVUHIsGRvs0-q94VqJzDmLds0B4GdTFd2KORmhozpED9fKKY97YpmeSVCJcSVB9rwzacQGHhaYG0HJIDBXLbAYUnjpkVXo5LFBoIgdJ4P7MSUoS9tEpFY9l-n8P03V91Kq7BmmKKrjKq9Hi2Jvfl7wBEWz3nWVxnwd4XKskPQ2G_JFlEZFH-xMtfBJ5OSQmfzox2bvycbCOGiDW99yOqfX2u-cPiqZwcshaSPxDSqShJ5_7OhZzPbP5x-BM)
-<br />
 
 ## 🛠️ Uninstall
 
 1. Remove installed packages (see [Dependencies](https://github.com/keyitdev/dotfiles#-dependencies))
-2. Remove the AUR helper ( ~/.srcs)
+2. Remove the AUR helper ( $HOME/.srcs)
 3. Uninstall Oh-My-Zsh ` uninstall_oh_my_zsh`
 4. Change the default shell back to bash 
 ```
 chsh -s /bin/bash
 sudo chsh -s /bin/bash
 ```
-5. Remove installed fonts (~/.local/share/fonts/ or /usr/share/fonts/)
+5. Remove installed fonts ($HOME/.local/share/fonts/ or /usr/share/fonts/)
 6. Remove installed scripts (/usr/local/bin)
 7. Remove this repository
-<br />
 
 ## 🔑 Keybinds
 
@@ -209,8 +185,6 @@ These are the basic keybinds. Read through the `i3` config for more keybinds.
 | `Win + Shift + R`      | Restart i3                               |
 
 Note: `Win` refers to the `Super/Mod` key.
-<br />
-<br />
 
 ## 🌈 Colors
 
@@ -230,7 +204,6 @@ Note: `Win` refers to the `Super/Mod` key.
 |  cyan                  | #89ddff                                  |
 |  pink                  | #ffa8c5                                  |
 |  orange                | #dd864a                                  |
-<br />
 
 ## ⚙️ Troubleshooting
 
@@ -238,7 +211,6 @@ Note: `Win` refers to the `Super/Mod` key.
 3. Screen flashing black : Try changing picom config.
 4. Scripts not working : Maybe try to edit shebang.
 5. MPD not working : Check if any other program is using port 6600 (http://127.0.0.1:6600/).
-<br />
 
 ## ✨ Big thanks to
 
@@ -250,7 +222,6 @@ These dotfiles includes some files from others rices. Original sources:
 * [Ceuk](https://github.com/ceuk/) for [rofi screenshot script](https://github.com/ceuk/rofi-screenshot)
 * [Milosz](https://github.com/milosz) for [rofi-bookmarks](https://github.com/milosz/rofi-firefox-bookmarks)
 * [Unnat](https://github.com/UnnatShaneshwar) for [wallpaper](https://github.com/UnnatShaneshwar/OneDarkWallpapers/blob/main/11.png)
-<br />
 
 ## 🪪 License
 

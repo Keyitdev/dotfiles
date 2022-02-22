@@ -49,17 +49,6 @@ aur_helper(){
 install_packages(){
     echo -e "[*3*] Installing packages with Pacman."
     sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot mpc
-    echo -e "\nInstalling other dependencies"
-    git clone --depth 10 https://github.com/kabinspace/AstroVim.git ~/.config/nvim
-    nvim +PackerSync
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone https://github.com/EliverLara/ant.git ~/ant
-    sudo mv ~/ant /usr/share/themes
-    git clone https://github.com/keyitdev/sddm-astronaut-theme.git ~/sddm-astronaut-theme
-    sudo cp -fdr ~/sddm-astronaut-theme /usr/share/sddm/themes/
-    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
-    sudo echo "[Theme]
-Current=sddm-astronaut-theme" >> /etc/sddm.conf
     echo -e "\n[*] Installing packages with $HELPER."
     $HELPER -S acpi      \
 	   polybar           \
@@ -67,16 +56,19 @@ Current=sddm-astronaut-theme" >> /etc/sddm.conf
        betterlockscreen  \
        i3lock-color      \
        cava              \
-       slop
+       slop              \
+       qt5               \
+       qt5-quickcontrols2\
+       qt5-svg
     echo -e "\n[*] Chmoding light."
     sudo chmod +s /usr/bin/light
     echo -e "\n[*] Setting Zsh as default shell."
     chsh -s /bin/zsh
-    
+    sudo chsh -s /bin/zsh
     cat <<- EOF
 		[*3*] Still installing packages.
 		
-		[*] Do you want to install optional, but useful programs? (VSCode, iwd, Oh-My-Zsh, LibreOffice, Firefox, etc)
+		[*] Do you want to install optional, but useful programs? (VSCode, iwd, LibreOffice, Firefox, etc)
 
 		[1] yes
 		[2] no
@@ -220,7 +212,7 @@ copy_scripts(){
     fi
     sudo mkdir -p /usr/local/bin
     sudo cp -frd ./scripts/* /usr/local/bin
-     echo -e "\n[*5*] Scripts copied."
+    echo -e "\n[*5*] Scripts copied."
 }
 
 make_default_directories(){
@@ -232,11 +224,47 @@ make_default_directories(){
     mkdir -p $HOME/Projects
 }
 
+other_dependencies(){
+    DATE=$(date +%s)
+    
+    echo -e "[*7*] Installing other dependencies"
+    if [ -d /usr/share/themes/ant ]; then
+        echo "[*] gtk theme detected, backing up..."
+        sudo mv /usr/share/themes/ant /usr/share/themes/ant$DATE
+    fi
+    echo -e "\n[*] Installing gtk theme"
+    git clone https://github.com/EliverLara/ant.git $HOME/ant
+    sudo mv $HOME/ant /usr/share/themes
+
+    if [ -d /usr/share/sddm/themes/sddm-astronaut-theme ]; then
+        echo "[*] sddm theme detected, backing up..."
+        sudo mv /usr/share/sddm/themes/sddm-astronaut-theme /usr/share/sddm/themes/sddm-astronaut-theme$DATE
+    fi
+    echo -e "\n[*] Installing sddm theme"
+    git clone https://github.com/keyitdev/sddm-astronaut-theme.git $HOME/sddm-astronaut-theme
+    sudo cp -fdr $HOME/sddm-astronaut-theme /usr/share/sddm/themes/
+    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+    echo "[Theme]
+    Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+
+    if [ -d $HOME/.config/nvim ]; then
+        echo "[*] nvim theme detected, backing up..."
+        sudo mv $HOME/.config/nvim $HOME/.config/nvim$DATE
+    fi
+    echo -e "\n[*] Installing nvim theme"
+    git clone --depth 10 https://github.com/kabinspace/AstroVim.git $HOME/.config/nvim
+    nvim +PackerSync
+
+    echo -e "\n[*] Installing ohmyzsh"
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+}
+
 system_update
 aur_helper
 install_packages
 copy_flies
 copy_scripts
 make_default_directories
+other_dependencies
 
-echo -e "[*7*] Everything is ready, enjoy :D."
+echo -e "[*8*] Everything is ready, enjoy :D."
