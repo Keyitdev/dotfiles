@@ -203,16 +203,21 @@ copy_flies(){
     echo -e "\n[*4*] Files copied."
 }
 
-copy_scripts(){
-    echo -e "[*5*] Coping scripts."
+copy_other_files(){
+    echo -e "[*5*] Coping scripts, fonts and wallpapers."
     DATE=$(date +%s)
     if [ -d /usr/local/bin ]; then
         echo "[*] /usr/local/bin configs detected, backing up..."
+        sudo mkdir /usr/local/bin$DATE
         sudo mv /usr/local/bin/* /usr/local/bin$DATE
     fi
     sudo mkdir -p /usr/local/bin
     sudo cp -frd ./scripts/* /usr/local/bin
-    echo -e "\n[*5*] Scripts copied."
+    echo -e "\n[*] Scripts copied."
+    sudo cp ./fonts/* /usr/share/fonts/
+    echo -e "\n[*] Fonts copied."
+    cp ./wallpapers/* $HOME/Pictures/wallpapers/
+    echo -e "\n[*] Wallpapers copied."
 }
 
 make_default_directories(){
@@ -246,24 +251,24 @@ other_dependencies(){
     sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
     echo "[Theme]
     Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
+    
+    echo -e "\n[*] Installing ohmyzsh (in background)"
+    kitty sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &
 
     if [ -d $HOME/.config/nvim ]; then
         echo "[*] nvim theme detected, backing up..."
         sudo mv $HOME/.config/nvim $HOME/.config/nvim$DATE
     fi
     echo -e "\n[*] Installing nvim theme"
-    git clone --depth 10 https://github.com/kabinspace/AstroVim.git $HOME/.config/nvim
-    nvim +PackerSync
-
-    echo -e "\n[*] Installing ohmyzsh"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    kitty git clone --depth 10 https://github.com/kabinspace/AstroVim.git $HOME/.config/nvim
+    kitty nvim +PackerSync
 }
 
 system_update
 aur_helper
 install_packages
 copy_flies
-copy_scripts
+copy_other_files
 make_default_directories
 other_dependencies
 
