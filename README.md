@@ -1,6 +1,6 @@
  <h1 align=center>Keyitdev Dotfiles</h1>
 
-<p align="center">My personal Dotfiles I use in i3. Color palette is based on the Atom One Dark colorscheme. This configuration also works on dual monitors.</p>
+<p align="center">My personal build of dotfiles using i3.  Color palette is based on the Atom One Dark colorscheme. This configuration also works on dual monitors.</p>
 
 <div align="center">
 <a href="#-showcase">Showcase</a> · <a href="#%EF%B8%8F-info">Info</a> · <a href="#-dependencies">Dependencies</a> · <a href="#%EF%B8%8F-installation">Installation</a> · <a href="#-keybinds">Keybinds</a> · <a href="#-colors">Colors</a> · <a href="#%EF%B8%8F-troubleshooting">Troubleshooting</a>

@@ -4,7 +4,7 @@
 sudo pacman -Sc
 sudo pacman -Scc
 paccache -r
-sudo pacman -Rns "$(pacman -Qtdq)"
+sudo pacman -Qtdq | sudo pacman -Rns -
 
 # list cache 
 sudo du -sh ~/.cache/
