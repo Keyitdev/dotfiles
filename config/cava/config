@@ -1,6 +1,5 @@
 ## Configuration file for CAVA. Default values are commented out. Use either ';' or '#' for commenting.
 
-
 [general]
 
 # Smoothing mode. Can be 'normal', 'scientific' or 'waves'. DEPRECATED as of 0.6.0

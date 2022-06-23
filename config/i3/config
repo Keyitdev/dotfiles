@@ -1,5 +1,6 @@
 # Documentation: https://i3wm.org/docs/userguide.html
-# Config created by Key https://www.github.com/keyitdev/dotfiles
+# Config created by Keyitdev https://www.github.com/keyitdev/dotfiles
+# Copyright (C) 2022 Keyitdev
 
 # set mod
 set $mod Mod4
