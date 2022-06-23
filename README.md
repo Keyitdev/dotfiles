@@ -18,9 +18,9 @@
 
 ## 🌟 Showcase
 
-![](https://github.com/Keyitdev/dotfiles/blob/screenshots/screenshots/main.png?raw=true)
+![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v2/screenshots/main.png?raw=true)
 
-### [More screenshots here](https://github.com/Keyitdev/dotfiles/blob/screenshots/README.md)
+### [More screenshots here](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v2/README.md)
 
 ### [Watch the demo video here](https://www.youtube.com/watch?v=_dMkmf2ugPE)
 
