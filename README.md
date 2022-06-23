@@ -71,7 +71,7 @@ It's recommended to install the dependencies manually, but if you have any issue
 
 1. Clone this repository
     ```sh
-    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
+    git clone -b v2 --depth 1 https://www.github.com/keyitdev/dotfiles.git
     ```
 
 2. Install an AUR helper (for example, yay in $HOME/.srcs)
@@ -132,7 +132,7 @@ It's recommended to install the dependencies manually, but if you have any issue
 
 1.  Clone the repository
     ```
-    git clone -b master --depth 1 https://www.github.com/keyitdev/dotfiles.git
+    git clone -b v2 --depth 1 https://www.github.com/keyitdev/dotfiles.git
     cd dotfiles
     chmod +x install-on-arch.sh
     ./install-on-arch.sh
