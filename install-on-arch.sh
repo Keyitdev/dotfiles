@@ -1,278 +1,170 @@
-#!/bin/env bash
+#!/bin/bash
 
 # Config created by Keyitdev https://www.github.com/keyitdev/dotfiles
 # Copyright (C) 2022 Keyitdev
 
-echo "Welcome!"
-DATE=$(date +%s)
+config_directory="$HOME/.config"
+fonts_directory="/usr/share/fonts"
+scripts_directory="/usr/local/bin"
+gtk_theme_directory="/usr/share/themes"
+
+green='\033[0;32m'
+no_color='\033[0m'
+date=$(date +%s)
+
+sudo pacman --noconfirm --needed -Sy dialog
 
 system_update(){
-    echo -e "[*1*] Doing a system update, cause stuff may break if it's not the latest version..."
+    echo -e "${green}[*] Doing a system update, cause stuff may break if it's not the latest version...${no_color}"
     sudo pacman --noconfirm -Syu
-    sudo pacman -S --noconfirm --needed base-devel wget git curl gcc make
+    sudo pacman -S --noconfirm --needed base-devel wget git curl
 }
-
-aur_helper(){
-    cat <<- EOF
-		[*2*] We need an AUR helper. It is essential.
-		
-		[*] Choose your AUR helper.
-		[1] yay
-		[2] paru
-	
-	EOF
-
-    read -p "[?] Select option: "
-    if [[ $REPLY == "1" ]]; then
-        HELPER="yay"
-        if ! command -v $HELPER &> /dev/null
-        then
-        echo -e "\n[*] It seems that you don't have $HELPER installed, I'll install that for you before continuing."
-	    git clone https://aur.archlinux.org/$HELPER.git $HOME/.srcs/$HELPER
-	    (cd $HOME/.srcs/$HELPER/ && makepkg -si )
-        else
-        echo -e "\n[*] It seems that you already have $HELPER installed, skipping."
-        fi
-    elif [[ $REPLY == "2" ]]; then
-        HELPER="paru"
-        if ! command -v $HELPER &> /dev/null
-        then
-        echo -e "\n[*] It seems that you don't have $HELPER installed, I'll install that for you before continuing."
-	    git clone https://aur.archlinux.org/$HELPER.git $HOME/.srcs/$HELPER
-	    (cd $HOME/.srcs/$HELPER/ && makepkg -si )
-        else
-        echo -e "\n[*] It seems that you already have $HELPER installed, skipping."
-        fi
+install_aur_helper(){ 
+    if ! command -v "$aurhelper" &> /dev/null
+    then
+    echo -e "${green}[*] It seems that you don't have $aurhelper installed, I'll install that for you before continuing.${no_color}"
+    git clone https://aur.archlinux.org/"$aurhelper".git $HOME/.srcs/"$aurhelper"
+    (cd $HOME/.srcs/"$aurhelper"/ && makepkg -si)
     else
-		echo -e "\n[!] Invalid option, exiting...\n"
-		exit 1
-	fi
+    echo -e "${green}[*] It seems that you already have $aurhelper installed, skipping.${no_color}"
+    fi
 }
+install_pkgs(){
+    echo -e "${green}[*] Installing packages with pacman.${no_color}"
+    sudo pacman -S --noconfirm --needed acpi alsa-utils base-devel curl git pulseaudio pulseaudio-alsa xorg xorg-xinit alacritty btop code dunst feh firefox i3-gaps libnotify light mpc mpd ncmpcpp nemo neofetch neovim pacman-contrib papirus-icon-theme picom polybar ranger rofi scrot slop xclip zathura zathura-pdf-mupdf zsh
+}
+install_aur_pkgs(){
+    echo -e "${green}[*] Installing packages with $aurhelper.${no_color}"
+    "$aurhelper" -S --noconfirm --needed i3lock-color i3-resurrect ffcast oh-my-zsh-git
+}
+create_default_directories(){
+    echo -e "${green}[*] Copying configs to $config_directory.${no_color}"
+    mkdir -p "$HOME"/.config
+    mkdir -p  /usr/local/bin
+    mkdir -p  /usr/share/themes
+    mkdir -p "$HOME"/Pictures/wallpapers
+}
+create_backup(){
+    echo -e "${green}[*] Creating backup of existing configs.${no_color}"
+    [ -d "$config_directory"/alacritty ] && mv "$config_directory"/alacritty "$config_directory"/alacritty_$date && echo "alacritty configs detected, backing up."
+    [ -d "$config_directory"/btop ] && mv "$config_directory"/btop "$config_directory"/btop_$date && echo "btop configs detected, backing up."
+    [ -d "$config_directory"/dunst ] && mv "$config_directory"/dunst "$config_directory"/dunst_$date && echo "dunst configs detected, backing up."
+    [ -d "$config_directory"/gtk-3.0 ] && mv "$config_directory"/gtk-3.0 "$config_directory"/gtk-3.0_$date && echo "gtk-3.0 configs detected, backing up."
+    [ -d "$config_directory"/i3 ] && mv "$config_directory"/i3 "$config_directory"/i3_$date && echo "i3 configs detected, backing up."
+    [ -d "$config_directory"/mpd ] && mv "$config_directory"/mpd "$config_directory"/mpd_$date && echo "mpd configs detected, backing up."
+    [ -d "$config_directory"/ncmpcpp ] && mv "$config_directory"/ncmpcpp "$config_directory"/ncmpcpp_$date && echo "ncmpcpp configs detected, backing up."
+    [ -d "$config_directory"/neofetch ] && mv "$config_directory"/neofetch "$config_directory"/neofetch_$date && echo "neofetch configs detected, backing up."
+    [ -d "$config_directory"/nvim ] && mv "$config_directory"/nvim "$config_directory"/nvim_$date && echo "nvim configs detected, backing up."
+    [ -d "$config_directory"/picom ] && mv "$config_directory"/picom "$config_directory"/picom_$date && echo "picom configs detected, backing up."
+    [ -d "$config_directory"/polybar ] && mv "$config_directory"/polybar "$config_directory"/polybar_$date && echo "polybar configs detected, backing up."
+    [ -d "$config_directory"/ranger ] && mv "$config_directory"/ranger "$config_directory"/ranger_$date && echo "ranger configs detected, backing up."
+    [ -d "$config_directory"/rofi ] && mv "$config_directory"/rofi "$config_directory"/rofi_$date && echo "rofi configs detected, backing up."
+    [ -d "$config_directory"/zathura ] && mv "$config_directory"/zathura "$config_directory"/zathura_$date && echo "zathura configs detected, backing up."
 
-install_packages(){
-    echo -e "[*3*] Installing packages with Pacman."
-    sudo pacman -S --noconfirm --needed light pulseaudio pulseaudio-alsa pulsemixer alsa-utils pacman-contrib i3-gaps i3blocks xorg xorg-xinit xorg-server feh imagemagick kitty rofi dunst libnotify ranger ncmpcpp mpd papirus-icon-theme btop sddm zsh picom code neovim xclip scrot mpc
-    echo -e "\n[*] Installing packages with $HELPER."
-    $HELPER -S acpi      \
-	   polybar           \
-       ffcast            \
-       betterlockscreen  \
-       i3lock-color      \
-       cava              \
-       slop              \
-       qt5               \
-       qt5-quickcontrols2\
-       qt5-svg
-    echo -e "\n[*] Chmoding light."
+    [ -d "$scripts_directory" ] && mv "$scripts_directory" "$scripts_directory"_$date && echo "scripts ($scripts_directory) detected, backing up."
+
+    [ -f "$config_directory"/Code\ -\ OSS/User/settings.json ] && mv "$config_directory"/Code\ -\ OSS/User/settings.json "$config_directory"/Code\ -\ OSS/User/settings.json_$date && echo "Vsc configs detected, backing up."
+
+    [ -f /etc/fonts/local.conf ] && sudo mv /etc/fonts/local.conf /etc/fonts/local.conf_$date && echo "Fonts configs detected, backing up."
+}
+copy_configs(){
+    echo -e "${green}[*] Copying configs to $config_directory.${no_color}"
+    cp -r ./config/* "$config_directory"
+}
+copy_scripts(){
+    echo -e "${green}[*] Copying scripts to $scripts_directory.${no_color}"
+    sudo cp -r ./scripts/* "$scripts_directory"
+}
+copy_fonts(){
+    echo -e "${green}[*] Copying fonts to $fonts_directory.${no_color}"
+    sudo cp -r ./fonts/* "$fonts_directory"
+    fc-cache -fv
+}
+copy_other_configs(){
+    echo -e "${green}[*] Copying gtk theme to /usr/share/themes.${no_color}"
+    sudo cp -r ./tokyonight_gtk /usr/share/themes
+    echo -e "${green}[*] Copying wallpapers to "$HOME"/Pictures/wallpapers.${no_color}"
+    cp -r ./wallpapers/* "$HOME"/Pictures/wallpapers
+    echo -e "${green}[*] Copying vsc configs.${no_color}"
+    cp -r ./vsc/* "$HOME"/.vscode-oss/extensions
+    cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
+    echo -e "${green}[*] Copying zsh configs.${no_color}"
+    sudo cp ./keyitdev.zsh-theme /usr/share/oh-my-zsh/custom/themes
+    cp ./.zshrc "$HOME"
+}
+finishing(){
+    echo -e "${green}[*] Chmoding light.${no_color}"
     sudo chmod +s /usr/bin/light
-    echo -e "\n[*] Setting Zsh as default shell."
+    echo -e "${green}[*] Setting Zsh as default shell.${no_color}"
     chsh -s /bin/zsh
     sudo chsh -s /bin/zsh
-    cat <<- EOF
-		[*3*] Still installing packages.
-		
-		[*] Do you want to install optional, but useful programs? (VSCode, iwd, LibreOffice, Firefox, etc)
-
-		[1] yes
-		[2] no
-	
-	EOF
-
-	read -p "[?] Select option: "
-
-	if [[ $REPLY == "1" ]]; then
-		sudo pacman -S --noconfirm --needed code iwd dhcpcd ntfs-3g libreoffice firefox nautilus gimp 
-	elif [[ $REPLY == "2" ]]; then
-		 echo -e "\n[*] Skipping."
-	else
-		echo -e "\n[!] Invalid option, exiting...\n"
-		exit 1
-	fi
-
-    cat <<- EOF
-		[*3*] Still installing packages.
-		
-		[*] Do you want to install emoji fonts?
-
-		[1] yes
-		[2] nope
-	
-	EOF
-
-	read -p "[?] Select option: "
-
-	if [[ $REPLY == "1" ]]; then
-		sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji noto-fonts-extra noto-fonts-cjk
-        DATE=$(date +%s)
-        if [ -f /etc/fonts/local.conf ]; then
-        echo "[*] Fonts configs detected, backing up..."
-        sudo mv /etc/fonts/local.conf /etc/fonts/local.conf$DATE
-        fi
-        sudo cp -f ./config/local.conf /etc/fonts;
-
-	elif [[ $REPLY == "2" ]]; then
-		 echo -e "\n[*] Skipping."
-	else
-		echo -e "\n[!] Invalid option, exiting...\n"
-		exit 1
-	fi
-
+    echo -e "${green}[*] Updating nvim extensions.${no_color}"
+    nvim +PackerSync
 }
-
-copy_files(){
-    DATE=$(date +%s)
-    echo -e "[*4*] Coping files."
-    if [ -d $HOME/.config/btop ]; then
-        echo "[*] btop configs detected, backing up..."
-        mv $HOME/.config/btop $HOME/.config/btop$DATE
-    fi
-    mkdir -p $HOME/.config/btop && cp -r ./config/btop/* $HOME/.config/btop;
-    if [ -d $HOME/.config/cava ]; then
-        echo "[*] cava configs detected, backing up..."
-        mv $HOME/.config/cava $HOME/.config/cava$DATE
-    fi
-    mkdir -p $HOME/.config/cava && cp -r ./config/cava/* $HOME/.config/cava;
-    if [ -d $HOME/.config/dunst ]; then
-        echo "[*] dunst configs detected, backing up..."
-        mv $HOME/.config/dunst $HOME/.config/dunst$DATE
-    fi
-    mkdir -p $HOME/.config/dunst && cp -r ./config/dunst/* $HOME/.config/dunst;
-    if [ -d $HOME/.config/gtk-3.0 ]; then
-        echo "[*] gtk-3.0 configs detected, backing up..."
-        mv $HOME/.config/gtk-3.0 $HOME/.config/gtk-3.0$DATE
-    fi
-    mkdir -p $HOME/.config/gtk-3.0 && cp -r ./config/gtk-3.0/* $HOME/.config/gtk-3.0;
-    if [ -d $HOME/.config/i3 ]; then
-        echo "[*] i3 configs detected, backing up..."
-        mv $HOME/.config/i3 $HOME/.config/i3$DATE
-    fi
-    mkdir -p $HOME/.config/i3 && cp -r ./config/i3/* $HOME/.config/i3;
-    if [ -d $HOME/.config/kitty ]; then
-        echo "[*] kitty configs detected, backing up..."
-        mv $HOME/.config/kitty $HOME/.config/kitty$DATE
-    fi
-    mkdir -p $HOME/.config/kitty && cp -r ./config/kitty/* $HOME/.config/kitty;
-    if [ -d $HOME/.config/mpd ]; then
-        echo "[*] mpd configs detected, backing up..."
-        mv $HOME/.config/mpd $HOME/.config/mpd$DATE
-    fi
-    mkdir -p $HOME/.config/mpd && cp -r ./config/mpd/* $HOME/.config/mpd;
-    if [ -d $HOME/.config/ncmpcpp ]; then
-        echo "[*] ncmpcpp configs detected, backing up..."
-        mv $HOME/.config/ncmpcpp $HOME/.config/ncmpcpp$DATE
-    fi
-    mkdir -p $HOME/.config/ncmpcpp && cp -r ./config/ncmpcpp/* $HOME/.config/ncmpcpp;
-    if [ -d $HOME/.config/neofetch ]; then
-        echo "[*] neofetch configs detected, backing up..."
-        mv $HOME/.config/neofetch $HOME/.config/neofetch$DATE
-    fi
-    mkdir -p $HOME/.config/neofetch && cp -r ./config/neofetch/* $HOME/.config/neofetch;
-    if [ -d $HOME/.config/picom ]; then
-        echo "[*] picom configs detected, backing up..."
-        mv $HOME/.config/picom $HOME/.config/picom$DATE
-    fi
-    mkdir -p $HOME/.config/picom && cp -r ./config/picom/* $HOME/.config/picom;
-    if [ -d $HOME/.config/polybar ]; then
-        echo "[*] polybar configs detected, backing up..."
-        mv $HOME/.config/polybar $HOME/.config/polybar$DATE
-    fi
-    mkdir -p $HOME/.config/polybar && cp -r ./config/polybar/* $HOME/.config/polybar;
-    if [ -d $HOME/.config/ranger ]; then
-        echo "[*] ranger configs detected, backing up..."
-        mv $HOME/.config/ranger $HOME/.config/ranger$DATE
-    fi
-    mkdir -p $HOME/.config/ranger && cp -r ./config/ranger/* $HOME/.config/ranger;
-    if [ -d $HOME/.config/rofi ]; then
-        echo "[*] rofi configs detected, backing up..."
-        mv $HOME/.config/rofi $HOME/.config/rofi$DATE
-    fi
-    mkdir -p $HOME/.config/rofi && cp -r ./config/rofi/* $HOME/.config/rofi;
-    # files
-    if [ -f $HOME/.config/Code\ -\ OSS/User/settings.json ]; then
-        echo "[*] Code - OSS configs detected, backing up..."
-        mv $HOME/.config/Code\ -\ OSS/User/settings.json $HOME/.config/Code\ -\ OSS/User/settings.json$DATE
-    fi
-    cp -f ./config/vsc/* $HOME/.config/Code\ -\ OSS/User;
-    if [ -f $HOME/.zshrc ]; then
-        echo "[*] ZSH configs detected, backing up..."
-        mv $HOME/.zshrc $HOME/.zshrc$DATE
-    fi
-    cp -f ./config/.zshrc $HOME/.zshrc;
-    if [ -f $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme ]; then
-        echo "[*] Oh my zsh keyitdev theme detected, backing up..."
-        mv $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme $HOME/.oh-my-zsh/custom/themes/keyitdev.zsh-theme$DATE
-    fi
-    cp -f ./config/keyitdev.zsh-theme $HOME/.oh-my-zsh/custom/themes/;
-    echo -e "\n[*4*] Files copied."
+install_additional_pkgs(){
+    echo -e "${green}[*] Installing additional packages with $aurhelper.${no_color}"
+    "$aurhelper" -S --noconfirm --needed dhcpcd gimp iwd libreoffice ntfs-3g ntp pulsemixer vnstat
 }
-
-copy_other_files(){
-    echo -e "[*5*] Coping scripts, fonts and wallpapers."
-    DATE=$(date +%s)
-    if [ -d /usr/local/bin ]; then
-        echo "[*] /usr/local/bin configs detected, backing up..."
-        sudo mkdir /usr/local/bin$DATE
-        sudo mv /usr/local/bin/* /usr/local/bin$DATE
-    fi
-    sudo mkdir -p /usr/local/bin
-    sudo cp -frd ./scripts/* /usr/local/bin
-    echo -e "\n[*] Scripts copied."
-    sudo cp ./fonts/* /usr/share/fonts/
-    echo -e "\n[*] Fonts copied."
-    cp ./wallpapers/* $HOME/Pictures/wallpapers/
-    echo -e "\n[*] Wallpapers copied."
+install_emoji_fonts(){
+    echo -e "${green}[*] Installing emoji fonts with $aurhelper.${no_color}"
+    "$aurhelper" -S --noconfirm --needed noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+    sudo cp -f ./local.conf /etc/fonts
+    fc-cache -fv
 }
-
-make_default_directories(){
-    echo -e "[*6*] Making default directories."
-    mkdir -p $HOME/Pictures/wallpapers
-    mkdir -p $HOME/Pictures/screenshots
-    mkdir -p $HOME/Videos
-    mkdir -p $HOME/Music
-    mkdir -p $HOME/Projects
-}
-
-other_dependencies(){
-    DATE=$(date +%s)
-    
-    echo -e "[*7*] Installing other dependencies"
-    if [ -d /usr/share/themes/ant ]; then
-        echo "[*] gtk theme detected, backing up..."
-        sudo mv /usr/share/themes/ant /usr/share/themes/ant$DATE
-    fi
-    echo -e "\n[*] Installing gtk theme"
-    git clone https://github.com/EliverLara/ant.git $HOME/ant
-    sudo mv $HOME/ant /usr/share/themes
-
-    if [ -d /usr/share/sddm/themes/sddm-astronaut-theme ]; then
-        echo "[*] sddm theme detected, backing up..."
-        sudo mv /usr/share/sddm/themes/sddm-astronaut-theme /usr/share/sddm/themes/sddm-astronaut-theme$DATE
-    fi
-    echo -e "\n[*] Installing sddm theme"
-    git clone https://github.com/keyitdev/sddm-astronaut-theme.git $HOME/sddm-astronaut-theme
-    sudo cp -fdr $HOME/sddm-astronaut-theme /usr/share/sddm/themes/
-    sudo cp /usr/share/sddm/themes/sddm-astronaut-theme/Fonts/* /usr/share/fonts/
+install_sddm(){
+    echo -e "${green}[*] Installing sddm theme.${no_color}"
+    "$aurhelper" -S --noconfirm --needed qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm
+    sudo systemctl enable sddm.service
+    sudo git clone https://github.com/keyitdev/sddm-flower-theme.git /usr/share/sddm/themes/sddm-flower-theme
+    sudo cp /usr/share/sddm/themes/sddm-flower-theme/Fonts/* /usr/share/fonts/
     echo "[Theme]
-    Current=sddm-astronaut-theme" | sudo tee /etc/sddm.conf
-    
-    echo -e "\n[*] Installing ohmyzsh (in background)"
-    kitty sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &
-
-    if [ -d $HOME/.config/nvim ]; then
-        echo "[*] nvim theme detected, backing up..."
-        sudo mv $HOME/.config/nvim $HOME/.config/nvim$DATE
-    fi
-    echo -e "\n[*] Installing nvim theme"
-    kitty git clone --depth 10 https://github.com/kabinspace/AstroVim.git $HOME/.config/nvim
-    kitty nvim +PackerSync
+    Current=sddm-flower-theme" | sudo tee /etc/sddm.conf
 }
 
-system_update
-aur_helper
-install_packages
-copy_files
-copy_other_files
-make_default_directories
-other_dependencies
+cmd=(dialog --clear --title "Aur helper" --menu "Firstly, select the aur helper you want to install (or have already installed)." 10 50 16)
+options=(1 "yay" 2 "paru")
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
-echo -e "[*8*] Everything is ready, enjoy :D."
+case $choices in
+    1) aurhelper="yay" ;;
+    2) aurhelper="paru" ;;
+esac
+
+cmd=(dialog --clear --separate-output --checklist "Select (with space) what script should do.\\nThe first 11 options are required for proper installation, do not uncheck them if you do not know what you are doing." 22 76 16)
+options=(1 "System update" on
+         2 "Install aur helper" on
+         3 "Install basic packages" on
+         4 "Install basic packages (aur)" on
+         5 "Create default directories" on
+         6 "Create backup of existing configs (to prevent overwritting)" on
+         7 "Copy configs" on
+         8 "Copy scripts" on
+         9 "Copy fonts" on
+         10 "Copy other configs (gtk theme, wallpaper, vsc configs, zsh configs)" on
+         11 "Make Light executable, set zsh as default shell, update nvim extensions." on
+         12 "Install additional packages" off
+         13 "Install emoji fonts" off
+         14 "Install sddm with flower theme" off)
+choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
+
+clear
+
+for choice in $choices
+do
+    case $choice in
+        1) system_update;;
+        2) install_aur_helper;;
+        3) install_pkgs;;
+        4) install_aur_pkgs;;
+        5) create_default_directories;;
+        6) create_backup;;
+        7) copy_configs;;
+        8) copy_scripts;;
+        9) copy_fonts;;
+        10) copy_other_configs;;
+        11) finishing;;
+        12) install_additional_pkgs;;
+        13) install_emoji_fonts;;
+        14) install_sddm;;
+    esac
+done

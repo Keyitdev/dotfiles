@@ -1,38 +1,34 @@
-#!/bin/bash
+#!/bin/zsh
 
+screen="HDMI-1"
 dir_icons="/usr/local/bin/icons"
-MON="HDMI-1"    # Discover monitor name with: xrandr | grep " connected"
-STEP=10          # Step Up/Down brightnes by: 5 = ".05", 10 = ".10", etc.
 
-CurrBright=$( xrandr --verbose --current | grep ^"$MON" -A5 | tail -n1 )
-CurrBright="${CurrBright##* }"  # Get brightness level with decimal place
+current_bright_float=$(xrandr --verbose | grep "$screen" -A10000 | grep 'Brightness:' | sed 's/[^0-9,.]//g')
+current_bright_int=$(echo $((current_bright_float*100 + 0.5)) | sed "s/\..*//" ) # cast to int
 
-Left=${CurrBright%%"."*}        # Extract left of decimal point
-Right=${CurrBright#*"."}        # Extract right of decimal point
-
-MathBright="0"
-[[ "$Left" != 0 && "$STEP" -lt 10 ]] && STEP=10     # > 1.0, only .1 works
-[[ "$Left" != 0 ]] && MathBright="$Left"00          # 1.0 becomes "100"
-[[ "${#Right}" -eq 1 ]] && Right="$Right"0          # 0.5 becomes "50"
-MathBright=$(( MathBright + Right ))
-
-dunstify -a "Brightness" \
-    "Brightness" \
-    "Current brightness is $MathBright%" \
-    -r 100 \
-    -i "$dir_icons"/sun.svg
-
-[[ "$1" == "up" || "$1" == "+" ]] && MathBright=$(( MathBright + STEP ))
-[[ "$1" == "down" || "$1" == "-" ]] && MathBright=$(( MathBright - STEP ))
-[[ "${MathBright:0:1}" == "-" ]] && MathBright=0    # Negative not allowed
-[[ "$MathBright" -gt 150  ]] && MathBright=150      # Can't go over 1.50
-
-if [[ "${#MathBright}" -eq 3 ]] ; then
-    MathBright="$MathBright"000         # Pad with lots of zeros
-    CurrBright="${MathBright:0:1}.${MathBright:1:2}"
-else
-    MathBright="$MathBright"000         # Pad with lots of zeros
-    CurrBright=".${MathBright:0:2}"
+if [[ "$1" == "up" || "$1" == "+" ]]; then
+new_bright_int=$(($current_bright_int + 1))
+fi
+if [[ "$1" == "down" || "$1" == "-" ]]; then
+new_bright_int=$(($current_bright_int - 1))
 fi
 
-xrandr --output "$MON" --brightness "$CurrBright"   # Set new brightness
+if [[ "${#new_bright_int}" -eq 2 ]]; then # cast to float, two-digit number 
+new_bright_float=$((0.$new_bright_int))
+fi
+if [[ "${#new_bright_int}" -eq 1 ]]; then # cast to float, one-digit number 
+new_bright_float=$((0.0$new_bright_int))
+fi
+
+if [[ "$new_bright_float" -lt "0" ]]; then # brightness must be positive
+exit
+fi
+
+xrandr --output $screen --brightness $new_bright_float
+
+# send notification
+dunstify -a "Screen" \
+    "Screen ($screen)" \
+    "Brightness: $new_bright_int%" \
+    -r 100 \
+    -i "$dir_icons"/sun.svg

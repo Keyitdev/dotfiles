@@ -1,0 +1,34 @@
+# Documentation: See man `man zathurarc'
+# Config created by Keyitdev https://www.github.com/keyitdev/dotfiles
+# Copyright (C) 2022 Keyitdev
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+#stop at page boundries
+set scroll-page-aware "true"
+set scroll-full-overlap 0.01
+set scroll-step 100
+
+set zoom-min 10
+set guioptions ""
+
+# set font "Roboto mono 15"
+set default-bg "#1b1b25"
+set default-fg "#dedede"
+
+set recolor "true"
+set recolor-lightcolor "#16161e"
+set recolor-darkcolor "#dedede"
+set recolor-reverse-video "true"
+set recolor-keephue "true"
+
+
+set render-loading "false"
+set scroll-step 200
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen

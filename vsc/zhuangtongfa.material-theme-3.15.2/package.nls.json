@@ -1,0 +1,14 @@
+{
+  "description.oneDarkPro.editorTheme": "Switch to different editor theme",
+  "description.oneDarkPro.italic": "Toggle italics on some scopes",
+  "description.oneDarkPro.vivid": "Toggle vivid colors",
+  "description.oneDarkPro.bold": "Toggle bold on some scopes",
+  "description.oneDarkPro.showChangelog": "Show changelog",
+  "description.oneDarkPro.setVivid": "Turn on vivid colors",
+  "description.oneDarkPro.cancelVivid": "Turn off vivid colors",
+  "description.oneDarkPro.setBold": "Turn on bold code on some scopes",
+  "description.oneDarkPro.cancelBold": "Turn off bold code on some scopes",
+  "description.oneDarkPro.setItalic": "Turn on italic code on some scopes",
+  "description.oneDarkPro.cancelItalic": "Turn off italic code on some scopes",
+  "description.oneDarkPro.markdownStyle": "Toggle Markdown style"
+}

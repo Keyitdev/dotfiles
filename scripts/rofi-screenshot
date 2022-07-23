@@ -1,73 +1,52 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # rofi theme
-theme="$HOME/.config/rofi/compact_without_icons.rasi"
+theme="$HOME/.config/rofi/main_without_icons.rasi"
 
 get_options() {
-  echo "  Capture Region"
-  echo "  Capture Region (without saving)"
-  echo "  Capture Screen"
-  echo "  Capture Screen (without saving)"
-  echo "  Record Region (GIF)"
-  echo "  Record Screen (GIF)"
-  echo "  Record Region (MP4)"
-  echo "  Record Screen (MP4)"
-  #echo "  Record Region (MP4+audio_virt)"
-  #echo "  Record Region (MP4+audio_mic)"
-  #echo "  Record Audio virt"
-  #echo "  Record Audio mic"
-  echo "  Stop Recording"
+  echo "  Selected area screenshot"
+  echo "  Full screen screenshot"
+  echo "  Selected area video"
+  echo "  Full screen video"
+  echo "  Record audio (microphone)"
+  echo "  Record audio (desktop)"
+  echo "  Selected area video with audio (microphone)"
+  echo "  Full screen video with audio (microphone)"
+  echo "  Stop Recording"
 }
 
 main() {
 
   # get choice from rofi
-  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$theme")
-
-  # if user has not picked anything, exit
-  if [[ -z "${choice// /}" ]]; then
-    exit 1
-  fi
+  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$theme")
 
   # run the selected command
   case $choice in
-  '  Capture Region (without saving)')
-    screenshot -crtc
+  '  Selected area screenshot')
+    screenshot -sa
     ;;
-  '  Capture Region')
-    screenshot -crtf
+  '  Full screen screenshot')
+    screenshot -sf
     ;;
-  '  Capture Screen (without saving)')
-    screenshot -cstc
+  '  Selected area video')
+    screenshot -va
     ;;
-  '  Capture Screen')
-    screenshot -cstf
+  '  Full screen video')
+    screenshot -vf
     ;;
-  '  Record Region (GIF)')
-    screenshot -rrg
+  '  Record audio (microphone)')
+    screenshot -am
     ;;
-  '  Record Screen (GIF)')
-    screenshot -rsg
+  '  Record audio (desktop)')
+    screenshot -ad
     ;;
-  '  Record Region (MP4)')
-    screenshot -rrv
+  '  Selected area video with audio (microphone)')
+    screenshot -vaam
     ;;
-  '  Record Screen (MP4)')
-    screenshot -rsv
+  '  Full screen video with audio (microphone)')
+    screenshot -vfam
     ;;
-  '  Record Region (MP4+audio_virt)')
-    screenshot -rrav
-    ;;
-  '  Record Region (MP4+audio_mic)')
-    screenshot -rrmv
-    ;;
-  '  Record Audio virt')
-    screenshot -rav
-    ;;
-  '  Record Audio mic')
-    screenshot -ram
-    ;;
-  '  Stop Recording')
+  '  Stop Recording')
     screenshot -s
     ;;
   esac
