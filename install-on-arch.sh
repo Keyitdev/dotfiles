@@ -1,5 +1,8 @@
 #!/bin/env bash
 
+# Config created by Keyitdev https://www.github.com/keyitdev/dotfiles
+# Copyright (C) 2022 Keyitdev
+
 echo "Welcome!"
 DATE=$(date +%s)
 
@@ -116,7 +119,7 @@ install_packages(){
 
 }
 
-copy_flies(){
+copy_files(){
     DATE=$(date +%s)
     echo -e "[*4*] Coping files."
     if [ -d $HOME/.config/btop ]; then
@@ -267,7 +270,7 @@ other_dependencies(){
 system_update
 aur_helper
 install_packages
-copy_flies
+copy_files
 copy_other_files
 make_default_directories
 other_dependencies

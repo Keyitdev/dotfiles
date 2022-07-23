@@ -16,6 +16,12 @@
   <img src="https://img.shields.io/github/license/keyitdev/dotfiles?color=15121C&labelColor=202328&style=for-the-badge">
 </p>
 
+<div align="center">
+
+**Check newer version here [v3 branch](https://github.com/Keyitdev/dotfiles/tree/v3).**
+
+</div>
+
 ## 🌟 Showcase
 
 ![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v2/screenshots/main.png?raw=true)
