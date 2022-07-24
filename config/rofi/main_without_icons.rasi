@@ -26,7 +26,7 @@ window {
 	border:							2px;
 	border-color:					@br;
     border-radius:                  20px;
-	height:						    32%;
+	height:						    28%;
 	width:							25%;
     location:                       center;
     x-offset:                       0;

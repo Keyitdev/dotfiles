@@ -61,7 +61,7 @@ create_backup(){
     [ -d "$config_directory"/rofi ] && mv "$config_directory"/rofi "$config_directory"/rofi_$date && echo "rofi configs detected, backing up."
     [ -d "$config_directory"/zathura ] && mv "$config_directory"/zathura "$config_directory"/zathura_$date && echo "zathura configs detected, backing up."
 
-    [ -d "$scripts_directory" ] && mv "$scripts_directory" "$scripts_directory"_$date && echo "scripts ($scripts_directory) detected, backing up."
+    [ -d "$scripts_directory" ] && sudo mv "$scripts_directory" "$scripts_directory"_$date && echo "scripts ($scripts_directory) detected, backing up."
 
     [ -f "$config_directory"/Code\ -\ OSS/User/settings.json ] && mv "$config_directory"/Code\ -\ OSS/User/settings.json "$config_directory"/Code\ -\ OSS/User/settings.json_$date && echo "Vsc configs detected, backing up."
 

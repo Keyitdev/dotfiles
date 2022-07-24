@@ -116,6 +116,7 @@ bindsym $mod+a exec "rofi -show window -no-default-config -config ~/.config/rofi
 bindsym $mod+d exec "rofi -show drun -no-default-config -config ~/.config/rofi/main.rasi"
 bindsym $mod+s exec "rofi -show drun -no-default-config -config ~/.config/rofi/full_screen.rasi"
 bindsym $mod+z exec "rofi -show  -modi ':rofi-bookmarks' -no-default-config -config ~/.config/rofi/main.rasi"
+bindsym $mod+x exec "rofi-powermenu"
 bindsym $mod+c exec "rofi-screenshot"
 
 # take a screenshot

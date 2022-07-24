@@ -4,7 +4,7 @@ font="dedede"
 green="9ece6a"
 red="db4b4b"
 
-i3lock -n --force-clock -F -i ~/Pictures/wallpapers/lockscreen2.png -e \
+i3lock -n --force-clock -F -i ~/Pictures/wallpapers/lockscreen.png -e \
 --refresh-rate=1 --line-uses-inside --pointer=default --pass-media-keys --pass-volume-keys --pass-screen-keys \
 --inside-color="$green" --ring-color="$green" --insidever-color="$green" --ringver-color="$green" --insidewrong-color="$red" --ringwrong-color="$red" \
 --keyhl-color="$green" --separator-color="$green" --bshl-color="$green" --color=000000 \

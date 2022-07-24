@@ -77,13 +77,13 @@ Detailed information and dependencies
 
 ## Showcase
 
-|vsc & ncmpcpp & cava|rofi & dunst|
+|neofetch|vsc & ncmpcpp & cava|
 |-|-|
-|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v23/screenshots/1.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|
-|nemo & nvim & ranger|-|
-|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|
-|-|i3lock-color|
-|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|
+|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/1.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/2.png)|
+|rofi & dunst|nemo & nvim & ranger|
+|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/3.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/4.png)|
+|i3lock-color|sddm|
+|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/5.png)|![](https://github.com/Keyitdev/screenshots/blob/master/dotfiles/v3/screenshots/6.png)|
 
 ## Installation
 
