@@ -17,6 +17,7 @@ sudo pacman --noconfirm --needed -Sy dialog
 system_update(){
     echo -e "${green}[*] Doing a system update, cause stuff may break if it's not the latest version...${no_color}"
     sudo pacman --noconfirm -Syu
+    sudo pacman -Sy --noconfirm archlinux-keyring
     sudo pacman -S --noconfirm --needed base-devel wget git curl
 }
 install_aur_helper(){ 
@@ -152,19 +153,19 @@ clear
 for choice in $choices
 do
     case $choice in
-        1) system_update;;
-        2) install_aur_helper;;
-        3) install_pkgs;;
-        4) install_aur_pkgs;;
-        5) create_default_directories;;
-        6) create_backup;;
-        7) copy_configs;;
-        8) copy_scripts;;
-        9) copy_fonts;;
-        10) copy_other_configs;;
-        11) finishing;;
-        12) install_additional_pkgs;;
-        13) install_emoji_fonts;;
-        14) install_sddm;;
+        1) system_update 2>&1 | tee -a log.txt;;
+        2) install_aur_helper 2>&1 | tee -a log.txt;;
+        3) install_pkgs 2>&1 | tee -a log.txt;;
+        4) install_aur_pkgs 2>&1 | tee -a log.txt;;
+        5) create_default_directories 2>&1 | tee -a log.txt;;
+        6) create_backup 2>&1 | tee -a log.txt;;
+        7) copy_configs 2>&1 | tee -a log.txt;;
+        8) copy_scripts 2>&1 | tee -a log.txt;;
+        9) copy_fonts 2>&1 | tee -a log.txt;;
+        10) copy_other_configs 2>&1 | tee -a log.txt;;
+        11) finishing 2>&1 | tee -a log.txt;;
+        12) install_additional_pkgs 2>&1 | tee -a log.txt;;
+        13) install_emoji_fonts 2>&1 | tee -a log.txt;;
+        14) install_sddm 2>&1 | tee -a log.txt;;
     esac
 done
