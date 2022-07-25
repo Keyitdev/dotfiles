@@ -16,8 +16,8 @@ sudo pacman --noconfirm --needed -Sy dialog
 
 system_update(){
     echo -e "${green}[*] Doing a system update, cause stuff may break if it's not the latest version...${no_color}"
-    sudo pacman --noconfirm -Syu
     sudo pacman -Sy --noconfirm archlinux-keyring
+    sudo pacman --noconfirm -Syu
     sudo pacman -S --noconfirm --needed base-devel wget git curl
 }
 install_aur_helper(){ 
