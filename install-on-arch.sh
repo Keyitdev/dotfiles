@@ -93,15 +93,6 @@ copy_other_configs(){
     sudo cp ./keyitdev.zsh-theme /usr/share/oh-my-zsh/custom/themes
     cp ./.zshrc "$HOME"
 }
-finishing(){
-    echo -e "${green}[*] Chmoding light.${no_color}"
-    sudo chmod +s /usr/bin/light
-    echo -e "${green}[*] Setting Zsh as default shell.${no_color}"
-    chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
-    echo -e "${green}[*] Updating nvim extensions.${no_color}"
-    nvim +PackerSync
-}
 install_additional_pkgs(){
     echo -e "${green}[*] Installing additional packages with $aurhelper.${no_color}"
     "$aurhelper" -S --noconfirm --needed dhcpcd gimp iwd libreoffice ntfs-3g ntp pulsemixer vnstat
@@ -121,17 +112,26 @@ install_sddm(){
     echo "[Theme]
     Current=sddm-flower-theme" | sudo tee /etc/sddm.conf
 }
+finishing(){
+    echo -e "${green}[*] Chmoding light.${no_color}"
+    sudo chmod +s /usr/bin/light
+    echo -e "${green}[*] Setting Zsh as default shell.${no_color}"
+    chsh -s /bin/zsh
+    sudo chsh -s /bin/zsh
+    echo -e "${green}[*] Updating nvim extensions.${no_color}"
+    nvim +PackerSync
+}
 
 cmd=(dialog --clear --title "Aur helper" --menu "Firstly, select the aur helper you want to install (or have already installed)." 10 50 16)
 options=(1 "yay" 2 "paru")
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
 case $choices in
-    1) aurhelper="yay" ;;
-    2) aurhelper="paru" ;;
+    1) aurhelper="yay";;
+    2) aurhelper="paru";;
 esac
 
-cmd=(dialog --clear --separate-output --checklist "Select (with space) what script should do.\\nThe first 11 options are required for proper installation, do not uncheck them if you do not know what you are doing." 22 76 16)
+cmd=(dialog --clear --separate-output --checklist "Select (with space) what script should do.\\nChecked options are required for proper installation, do not uncheck them if you do not know what you are doing." 26 86 16)
 options=(1 "System update" on
          2 "Install aur helper" on
          3 "Install basic packages" on
@@ -142,10 +142,10 @@ options=(1 "System update" on
          8 "Copy scripts" on
          9 "Copy fonts" on
          10 "Copy other configs (gtk theme, wallpaper, vsc configs, zsh configs)" on
-         11 "Make Light executable, set zsh as default shell, update nvim extensions." on
-         12 "Install additional packages" off
-         13 "Install emoji fonts" off
-         14 "Install sddm with flower theme" off)
+         11 "Install additional packages" off
+         12 "Install emoji fonts" off
+         13 "Install sddm with flower theme" off
+         14 "Make Light executable, set zsh as default shell, update nvim extensions." on)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
 clear
@@ -153,19 +153,19 @@ clear
 for choice in $choices
 do
     case $choice in
-        1) system_update 2>&1 | tee -a log.txt;;
-        2) install_aur_helper 2>&1 | tee -a log.txt;;
-        3) install_pkgs 2>&1 | tee -a log.txt;;
-        4) install_aur_pkgs 2>&1 | tee -a log.txt;;
-        5) create_default_directories 2>&1 | tee -a log.txt;;
-        6) create_backup 2>&1 | tee -a log.txt;;
-        7) copy_configs 2>&1 | tee -a log.txt;;
-        8) copy_scripts 2>&1 | tee -a log.txt;;
-        9) copy_fonts 2>&1 | tee -a log.txt;;
-        10) copy_other_configs 2>&1 | tee -a log.txt;;
-        11) finishing 2>&1 | tee -a log.txt;;
-        12) install_additional_pkgs 2>&1 | tee -a log.txt;;
-        13) install_emoji_fonts 2>&1 | tee -a log.txt;;
-        14) install_sddm 2>&1 | tee -a log.txt;;
+        1) system_update;;
+        2) install_aur_helper;;
+        3) install_pkgs;;
+        4) install_aur_pkgs;;
+        5) create_default_directories;;
+        6) create_backup;;
+        7) copy_configs;;
+        8) copy_scripts;;
+        9) copy_fonts;;
+        10) copy_other_configs;;
+        11) install_additional_pkgs;;
+        12) install_emoji_fonts;;
+        13) install_sddm;;
+        14) finishing;;
     esac
 done
