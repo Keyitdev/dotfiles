@@ -41,8 +41,8 @@ install_aur_pkgs(){
 create_default_directories(){
     echo -e "${green}[*] Copying configs to $config_directory.${no_color}"
     mkdir -p "$HOME"/.config
-    mkdir -p  /usr/local/bin
-    mkdir -p  /usr/share/themes
+    sudo mkdir -p  /usr/local/bin
+    sudo mkdir -p  /usr/share/themes
     mkdir -p "$HOME"/Pictures/wallpapers
 }
 create_backup(){
