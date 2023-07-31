@@ -86,8 +86,9 @@ copy_other_configs(){
     sudo cp -r ./tokyonight_gtk /usr/share/themes
     echo -e "${green}[*] Copying wallpapers to "$HOME"/Pictures/wallpapers.${no_color}"
     cp -r ./wallpapers/* "$HOME"/Pictures/wallpapers
+    echo -e "${green}[*] Installing vsc extensions.${no_color}"
+    code --install-extension zhuangtongfa.Material-theme
     echo -e "${green}[*] Copying vsc configs.${no_color}"
-    cp -r ./vsc/* "$HOME"/.vscode-oss/extensions
     cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
     echo -e "${green}[*] Copying zsh configs.${no_color}"
     sudo cp ./keyitdev.zsh-theme /usr/share/oh-my-zsh/custom/themes
