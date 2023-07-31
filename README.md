@@ -92,15 +92,12 @@ chmod +x install-on-arch.sh
     mkdir -p "$HOME"/Pictures/wallpapers
     ```
 
-5. Copy configs, scripts, fonts, gtk theme, wallpaper, vsc configs, zsh config.
+5. Copy configs, scripts, fonts, wallpaper, vsc configs, zsh config.
     ```sh
     cp -r ./config/* "$HOME"/.config
     sudo cp -r ./scripts/* /usr/local/bin
     sudo cp -r ./fonts/* /usr/share/fonts
-    sudo cp -r ./tokyonight_gtk /usr/share/themes
     cp -r ./wallpapers/* "$HOME"/Pictures/wallpapers
-    code --install-extension zhuangtongfa.Material-theme
-    cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
     sudo cp ./keyitdev.zsh-theme /usr/share/oh-my-zsh/custom/themes
     cp ./.zshrc "$HOME"
     ```
@@ -113,14 +110,24 @@ chmod +x install-on-arch.sh
     nvim +PackerSync
     fc-cache -fv
     ```
-    
-7. Install sddm.
+
+7. Install vsc theme.
     ```sh
-    yay -S --needed qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm
+    code --install-extension zhuangtongfa.Material-theme
+    cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
+    ```
+
+8. Install gtk theme.
+    ```sh
+    mkdir -p "$HOME"/.config/gtk-4.0
+    git clone https://github.com/Fausto-Korpsvart/Rose-Pine-GTK-Theme
+    sudo cp -r ./Rose-Pine-GTK-Theme/themes/RosePine-Main-BL  /usr/share/themes/RosePine-Main
+    sudo cp -r ./Rose-Pine-GTK-Theme/themes/RosePine-Main-BL/gtk-4.0/* "$HOME"/.config/gtk-4.0
     ```
     
-8. Install sddm flower theme.
+9. Install sddm and sddm flower theme.
     ```sh
+    yay -S --needed qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm
     sudo git clone https://github.com/keyitdev/sddm-flower-theme.git /usr/share/sddm/themes/sddm-flower-theme
     sudo cp /usr/share/sddm/themes/sddm-flower-theme/Fonts/* /usr/share/fonts/
     echo "[Theme]
@@ -156,7 +163,7 @@ chmod +x install-on-arch.sh
 - **Vscode Theme:** [One dark pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme)
 - **Neovim Theme:** [AstroNvim](https://github.com/kabinspace/AstroVim)
 - **Icons:** [Papirus dark](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-- **GTK Theme:** [Tokyo night](https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme)
+- **GTK Theme:** [Rose Pine](https://github.com/Fausto-Korpsvart/Rose-Pine-GTK-Theme)
 - **Display Manager Theme:** [Sddm-flower-theme](https://github.com/Keyitdev/sddm-flower-theme)
 	
 ### Fonts

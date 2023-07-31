@@ -82,14 +82,9 @@ copy_fonts(){
     fc-cache -fv
 }
 copy_other_configs(){
-    echo -e "${green}[*] Copying gtk theme to /usr/share/themes.${no_color}"
-    sudo cp -r ./tokyonight_gtk /usr/share/themes
+
     echo -e "${green}[*] Copying wallpapers to "$HOME"/Pictures/wallpapers.${no_color}"
     cp -r ./wallpapers/* "$HOME"/Pictures/wallpapers
-    echo -e "${green}[*] Installing vsc extensions.${no_color}"
-    code --install-extension zhuangtongfa.Material-theme
-    echo -e "${green}[*] Copying vsc configs.${no_color}"
-    cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
     echo -e "${green}[*] Copying zsh configs.${no_color}"
     sudo cp ./keyitdev.zsh-theme /usr/share/oh-my-zsh/custom/themes
     cp ./.zshrc "$HOME"
@@ -104,6 +99,20 @@ install_emoji_fonts(){
     sudo cp -f ./local.conf /etc/fonts
     fc-cache -fv
 }
+install_vsc(){
+    echo -e "${green}[*] Installing vsc extensions.${no_color}"
+    code --install-extension zhuangtongfa.Material-theme
+    echo -e "${green}[*] Copying vsc configs.${no_color}"
+    cp ./vsc/settings.json "$HOME"/.config/Code\ -\ OSS/User
+}
+install_gtk_theme(){
+    echo -e "${green}[*] Installing gtk theme.${no_color}"
+    git clone --depth 1 https://github.com/Fausto-Korpsvart/Rose-Pine-GTK-Theme
+    echo -e "${green}[*] Copying gtk theme to /usr/share/themes.${no_color}"
+    sudo cp -r ./Rose-Pine-GTK-Theme/themes/RosePine-Main-BL  /usr/share/themes/RosePine-Main
+    mkdir -p "$HOME"/.config/gtk-4.0
+    sudo cp -r ./Rose-Pine-GTK-Theme/themes/RosePine-Main-BL/gtk-4.0/* "$HOME"/.config/gtk-4.0
+}   
 install_sddm(){
     echo -e "${green}[*] Installing sddm theme.${no_color}"
     "$aurhelper" -S --noconfirm --needed qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm
@@ -145,8 +154,10 @@ options=(1 "System update" on
          10 "Copy other configs (gtk theme, wallpaper, vsc configs, zsh configs)" on
          11 "Install additional packages" off
          12 "Install emoji fonts" off
-         13 "Install sddm with flower theme" off
-         14 "Make Light executable, set zsh as default shell, update nvim extensions." on)
+         13 "Install vsc theme" on
+         14 "Install gtk theme" on
+         15 "Install sddm with flower theme" off
+         16 "Make Light executable, set zsh as default shell, update nvim extensions." on)
 choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
 
 clear
@@ -166,7 +177,9 @@ do
         10) copy_other_configs;;
         11) install_additional_pkgs;;
         12) install_emoji_fonts;;
-        13) install_sddm;;
-        14) finishing;;
+        13) install_vsc;;
+        14) install_gtk_theme;;
+        15) install_sddm;;
+        16) finishing;;
     esac
 done
