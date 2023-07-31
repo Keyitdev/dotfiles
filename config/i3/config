@@ -151,8 +151,8 @@ bindsym ctrl + F3 exec amixer set Capture nocap && dunstify -a "Microphone" "Mic
 bindsym ctrl + F4 exec amixer set Capture cap && dunstify -a "Microphone" "Microphone" "Microphone is unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
 
 # toggle touchpad
-bindsym ctrl + F9 exec xinput set-prop 15 "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
-bindsym ctrl + F10 exec xinput set-prop 15 "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
+bindsym ctrl + F9 exec xinput set-prop $(xinput list | grep -oP 'Touchpad.*id=\K\d+') "Device Enabled" 0 && dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100
+bindsym ctrl + F10 exec xinput set-prop $(xinput list | grep -oP 'Touchpad.*id=\K\d+') "Device Enabled" 1 && dunstify -a "Touchpad" "Touchpad" "Touchpad is enabled" -r 100
 
 # workspaces names
 set $ws1 "1"
