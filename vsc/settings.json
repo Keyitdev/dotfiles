@@ -13,7 +13,7 @@
                 "editor.background": "#1b1b25",
                 "button.background": "#16161e",
                 "widget.shadow": "#16161e",
-                "selection.background": "#16161e",
+                "selection.background": "#343746",
                 "descriptionForeground": "#F8F8F2",
                 "errorForeground": "#F8F8F2",
                 "icon.foreground": "#F8F8F2",
