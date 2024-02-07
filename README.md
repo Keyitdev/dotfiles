@@ -145,7 +145,7 @@ chmod +x install-on-arch.sh
 
 **Sddm:** qt5-graphicaleffects qt5-quickcontrols2 qt5-svg sddm
 
-**Emoji:** fonts: noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+**Emoji fonts::** noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
 
 ### Used programs
 
@@ -241,9 +241,9 @@ Note: `Win` refers to the `Super/Mod` key.
     - (Blindly) click `Win+Enter`.
     - (Blindly) type `killall picom`.
     - (Blindly) press `Enter`.
-    - (Blindly) click `Win+Shift+R`.
     - Open picom configuration `"$HOME"/.config/picom/picom.conf`. 
     - Change picom backend from `backend = "glx";` to `backend = "xrender";`.
+    - Click `Win+Shift+R`.
 
 ## Support and Thankies
 
