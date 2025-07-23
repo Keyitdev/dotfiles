@@ -1,0 +1,14 @@
+#!/bin/sh
+
+dir_icons="/usr/local/bin/icons"
+
+max_bri=$(cat /sys/class/backlight/*/max_brightness)
+cur_bri=$(cat /sys/class/backlight/*/brightness)
+
+cur_per=$((cur_bri * 100 / max_bri))
+
+if [ "$cur_per" -ge 50 ]; then
+    dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/sun.svg
+else
+    dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/moon.svg
+fi

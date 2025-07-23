@@ -1,0 +1,11 @@
+#!/bin/sh
+
+dir_icons="/usr/local/bin/icons"
+
+mute=$(pactl get-source-mute @DEFAULT_SOURCE@ | sed -n 's/^Mute: //p')
+
+if [ "$mute" = "yes" ]; then
+    dunstify -a "Microphone" "Microphone" "Microphone is muted" -r 100 -i /usr/local/bin/icons/mic-off.svg
+elif [ "$mute" = "no" ]; then
+    dunstify -a "Microphone" "Microphone" "Microphone is unmuted" -r 100 -i /usr/local/bin/icons/mic.svg
+fi

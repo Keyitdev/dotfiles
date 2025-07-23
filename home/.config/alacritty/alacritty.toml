@@ -1,0 +1,17 @@
+[general]
+import = [
+    "~/.config/alacritty/colors.toml"
+]
+
+[window.padding]
+x = 8
+y = 8
+
+[window]
+opacity = 0.9
+
+[font]
+size = 7.5
+
+[font.normal]
+family = "Roboto mono"
