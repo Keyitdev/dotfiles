@@ -1,0 +1,47 @@
+#!/bin/sh
+
+# inotify-tools
+
+# specify the path to the fan_boost_mode file
+fan_boost_mode_file="/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+
+# variable to store the previous fan boost mode
+previous_mode=""
+
+# kill previous instances
+for pid in $(pidof -x asus_fan_listener); do
+    if [ "$pid" != $$ ]; then
+        kill -9 "$pid"
+    fi
+done
+
+# function to get the label for a given mode
+get_mode_label() {
+    case $1 in
+        0) echo "Performance" ;;
+        1) echo "Turbo" ;;
+        2) echo "Silent" ;;
+        *) echo "Unknown Mode" ;;
+    esac
+}
+
+# function to check and send a notification if the mode has changed
+check_and_send_notification() {
+    current_mode=$(cat "$fan_boost_mode_file")
+    current_label=$(get_mode_label "$current_mode")
+
+    if [ "$current_mode" != "$previous_mode" ]; then
+        dunstify -a "Fan Mode" "Fan Mode" "$current_label" -r 100
+        previous_mode="$current_mode"
+    fi
+}
+
+# monitor for changes in the fan_boost_mode file
+while inotifywait -e modify "$fan_boost_mode_file"; do
+    check_and_send_notification
+done
+
+# or run always
+# while true; do
+#     check_and_send_notification
+# done

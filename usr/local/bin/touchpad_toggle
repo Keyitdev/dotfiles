@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 touchad_id=$(xinput list | grep -i 'touchpad' | grep -oP 'id=\K\d+')
 
@@ -9,7 +9,6 @@ fi
 
 state=$(xinput list-props "$touchad_id" | grep "Device Enabled" | grep -o "[01]$")
 
-# Przełącz stan touchpada
 if [ "$state" -eq 1 ]; then
   xinput disable "$touchad_id"
   dunstify -a "Touchpad" "Touchpad" "Touchpad is disabled" -r 100

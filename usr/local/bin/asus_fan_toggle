@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# 0 Performance
+# 1 Turbo
+# 2 Silent
+
+fan_boost_mode_file="/sys/devices/platform/asus-nb-wmi/throttle_thermal_policy"
+current_mode=$(cat "$fan_boost_mode_file")
+
+if [ "$current_mode" -eq 0 ]; then
+    echo 1 | pkexec tee /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+elif [ "$current_mode" -eq 1 ]; then
+    echo 2 | pkexec tee /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+elif [ "$current_mode" -eq 2 ]; then
+    echo 0 | pkexec tee /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+else
+    echo 0 | pkexec tee /sys/devices/platform/asus-nb-wmi/throttle_thermal_policy
+fi

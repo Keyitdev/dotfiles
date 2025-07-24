@@ -8,24 +8,27 @@ tiling_drag modifier titlebar
 font pango:Open sans 11
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
+
 exec_always --no-startup-id xrandr --dpi 96
 exec_always --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/wallpapers/background.png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
 exec_always --no-startup-id dunst &
-exec_always --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 &
+exec_always --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+exec_always --no-startup-id asus_fan_listener  &
+exec_always --no-startup-id battery_listener &
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id volume_control -s +5 -m 125 && volume_level
 bindsym XF86AudioLowerVolume exec --no-startup-id volume_control -s -5 -m 125 && volume_level
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && volume_mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && microphone_mute
+bindsym Ctrl+F5 exec --no-startup-id asus_fan_toggle
 bindsym XF86ScreenSaver exec --no-startup-id xset dpms force off
 bindsym XF86MonBrightnessDown exec --no-startup-id brightness_control -s -2 && brightness_level
 bindsym XF86MonBrightnessUp exec --no-startup-id brightness_control -s +2 && brightness_level
-bindsym XF86SplitScreen exec --no-startup-id touchpad_toggle
 bindsym XF86TouchpadToggle exec --no-startup-id touchpad_toggle
 # bindsym XF86RFKill
 # bindsym XF86Calculator exec --no-startup-id nemo
-bindsym Ctrl+F5 exec --no-startup-id rofi -show drun
 
 bindsym $mod+Return exec i3-sensible-terminal
 
