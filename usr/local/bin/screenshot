@@ -1,0 +1,152 @@
+#!/bin/sh
+
+# screenshot directory
+screenshot_directory="$HOME/Pictures/screenshots"
+videos_directory="$HOME/Videos"
+audio_directory="$HOME/Music"
+
+mkdir -p "$screenshot_directory"
+mkdir -p "$videos_directory"
+mkdir -p "$audio_directory"
+
+date=$(date '+%d-%m-%Y-%H-%M-%S')
+screen_resolution="$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')"
+microphone="$(pacmd list-sources | grep -E '^\s+name: .*alsa_input' | cut -c 8- | sed 's/[<,>]//g')"
+desktop="$(pacmd list-sources | grep -E '^\s+name: .*alsa_output' | cut -c 8- | sed 's/[<,>]//g')"
+
+get_area(){
+    slop="$(slop -n -f '%w,%h,%x,%y')"
+    w=$(echo "$slop" | cut -d ',' -f1)
+    h=$(echo "$slop" | cut -d ',' -f2)
+    x=$(echo "$slop" | cut -d ',' -f3)
+    y=$(echo "$slop" | cut -d ',' -f4)
+    [ $((w%2)) -eq 1 ] && w=$(( w + 1 ))
+    [ $((h%2)) -eq 1 ] && h=$(( h + 1 ))
+    [ $((x%2)) -eq 1 ] && x=$(( x + 1 ))
+    [ $((y%2)) -eq 1 ] && y=$(( y + 1 ))
+    wh="${w}x${h}"
+}
+screenshot_selected_area(){
+    ffcast -q -g "$(slop)" png "$screenshot_directory/$date.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$date.png"
+    notify-send -i "$screenshot_directory/$date.png" "Screenshot" "Area screenshot taken"
+}
+screenshot_full_screen(){
+    ffcast -q png "$screenshot_directory/$date.png"
+    xclip -selection clipboard -t image/png "$screenshot_directory/$date.png"
+    notify-send -i "$screenshot_directory/$date.png" "Screenshot" "Full screen screenshot taken"
+}
+video_selected_area(){
+    get_area
+    ffmpeg -hide_banner -loglevel error -show_region 1 \
+    -f x11grab -video_size "$wh" -framerate 30 -i :0.0+"$x","$y" -pix_fmt yuv420p "$videos_directory/$date.mp4"
+    ffmpeg -i "$videos_directory/$date.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$date.png"
+    notify-send -i "/tmp/$date.png" "Video" "Area video taken"
+}
+video_full_screen(){
+    ffmpeg -hide_banner -loglevel error -show_region 1 \
+    -f x11grab -video_size "$screen_resolution" -framerate 30 -i :0.0 -pix_fmt yuv420p "$videos_directory/$date.mp4"
+    ffmpeg -i "$videos_directory/$date.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$date.png"
+    notify-send -i "/tmp/$date.png" "Video" "Full screen video taken"
+}
+video_full_screen_rgba(){
+    ffmpeg -hide_banner -loglevel error -show_region 1 \
+    -f x11grab -video_size "$screen_resolution" -framerate 30 -i :0.0 -pix_fmt rgba "$videos_directory/$date.mp4"
+    ffmpeg -i "$videos_directory/$date.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$date.png"
+    notify-send -i "/tmp/$date.png" "Video" "Full screen video taken (rgba)"
+}
+audio_microphone(){
+    ffmpeg -f pulse -i "$microphone" -metadata title="$date" "$audio_directory/$date.mp3"
+    notify-send "Audio" "Microphone audio recorded"
+}
+audio_desktop(){
+    ffmpeg -f pulse -i "$desktop" -metadata title="$date" "$audio_directory/$date.mp3"
+    notify-send "Audio" "Desktop audio recorded"
+}
+video_selected_area_audio_microphone(){
+    get_area
+    ffmpeg -hide_banner -loglevel error -show_region 1 \
+    -f x11grab -video_size "$wh" -framerate 30 -i :0.0+"$x","$y" \
+    -f alsa -i default -pix_fmt yuv420p "$videos_directory/$date.mp4"
+    ffmpeg -i "$videos_directory/$date.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$date.png"
+    notify-send -i "/tmp/$date.png" "Video" "Area video with audio taken"
+}
+video_full_screen_audio_microphone(){
+    ffmpeg -hide_banner -loglevel error -show_region 1 \
+    -f x11grab -video_size "$screen_resolution" -framerate 30 -i :0.0 \
+    -f alsa -i default -pix_fmt yuv420p "$videos_directory/$date.mp4"
+    ffmpeg -i "$videos_directory/$date.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$date.png"
+    notify-send -i "/tmp/$date.png" "Video" "Full screen video with audio taken"
+}
+stop(){
+    pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
+    pkill -fxn '(/\S+)*ffmpeg\s.*\spulse\s.*'
+    exit 1
+}
+help(){
+cat << EOF 
+-h | -help | --help
+-s | -stop
+-sa | -screenshot_selected_area
+-sf | -screenshot_full_screen
+-va | -video_selected_area
+-vf | -video_full_screen
+-am | -audio_microphone
+-ad | -audio_desktop
+-vaam | -video_selected_area_audio_microphone
+-vfam | -video_full_screen_audio_microphone
+EOF
+}
+main(){
+while [ "$1" != "" ]; do
+    PARAM="$1"
+    case $PARAM in
+    -h | -help | --help)
+        help
+        exit 1
+        ;;
+    -s | -stop)
+        stop
+        exit 1
+        ;;
+    -sa | -screenshot_selected_area)
+        screenshot_selected_area
+        ;;
+    -sf | -screenshot_full_screen)
+        screenshot_full_screen
+        ;;
+    -va | -video_selected_area)
+        video_selected_area
+        ;;
+    -vf | -video_full_screen)
+        video_full_screen
+        ;;
+    -vf_rgba | -video_full_screen_rgba)
+        video_full_screen_rgba
+        ;;
+    -am | -audio_microphone)
+        audio_microphone
+        ;;
+    -ad | -audio_desktop)
+    audio_desktop
+        ;;
+    -vaam | -video_selected_area_audio_microphone)
+        video_selected_area_audio_microphone
+        ;;
+    -vfam | -video_full_screen_audio_microphone)
+        video_full_screen_audio_microphone
+        ;;
+    *)
+        echo "ERROR: unknown parameter \"$PARAM\""
+        help
+        exit 1
+        ;;
+    esac
+    shift
+done
+# done
+set -e
+}
+
+main "$1" &
+exit 0

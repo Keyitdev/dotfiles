@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # rofi theme
-theme="$HOME/.config/rofi/main_without_icons.rasi"
+theme="$HOME/.config/rofi/1.rasi"
 
 get_options() {
   echo " Poweroff"
@@ -16,8 +16,8 @@ get_options() {
 main() {
 
   # get choice from rofi
-  # choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$theme")
-  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "")
+  choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "" -theme "$theme")
+  # choice=$( (get_options) | rofi -dmenu -i -fuzzy -p "")
 
   # run the selected command
   case $choice in
