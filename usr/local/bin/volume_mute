@@ -3,6 +3,7 @@
 dir_icons="/usr/local/bin/icons"
 vol_quiet=33
 vol_loud=66
+vol_very_loud=101
 
 cur_vol_left=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]\+%' | sed -n '1p'| sed 's/%//g')
 cur_vol_right=$(pactl get-sink-volume @DEFAULT_SINK@ | grep -o '[0-9]\+%' | sed -n '2p' | sed 's/%//g')
@@ -16,7 +17,9 @@ elif [ "$mute" = "no" ]; then
             dunstify "Speakers" "Speakers are unmuted" -r 100 -i "$dir_icons"/volume.svg
         elif [ "$cur_vol_average" -gt "$vol_quiet" ] && [ "$cur_vol_average" -le "$vol_loud" ]; then
             dunstify "Speakers" "Speakers are unmuted" -r 100 -i "$dir_icons"/volume-1.svg
-        elif [ "$cur_vol_average" -gt "$vol_loud" ]; then
+        elif [ "$cur_vol_average" -gt "$vol_loud" ] && [ "$cur_vol_average" -le "$vol_very_loud" ]; then
             dunstify "Speakers" "Speakers are unmuted" -r 100 -i "$dir_icons"/volume-2.svg
+        elif [ "$cur_vol_average" -gt "$vol_very_loud" ]; then
+            dunstify "Speakers" "Speakers are unmuted" -r 100 -i "$dir_icons"/volume-3.svg
         fi
 fi

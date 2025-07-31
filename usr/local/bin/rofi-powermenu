@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # rofi theme
-theme="$HOME/.config/rofi/1.rasi"
+theme="$HOME/.config/rofi/main_without_icons.rasi"
 
 get_options() {
-  echo " Poweroff"
-  echo " Reboot"
-  echo " Reboot to Windows"
-  echo " Hibernate"
-  echo " Lock"
-  echo " Suspend"
-  echo " Log out"
+  echo "  Poweroff"
+  echo "  Reboot"
+  echo "  Reboot to Windows"
+  echo "  Hibernate"
+  echo "  Lock"
+  echo "  Suspend"
+  echo "  Log out"
 }
 
 main() {
@@ -21,25 +21,25 @@ main() {
 
   # run the selected command
   case $choice in
-  ' Poweroff')
+  '  Poweroff')
     systemctl poweroff
     ;;
-  ' Reboot')
+  '  Reboot')
     systemctl reboot
     ;;
-  ' Reboot to Windows')
+  '  Reboot to Windows')
     pkexec grub-reboot 3 && systemctl reboot
     ;;
-  ' Hibernate')
+  '  Hibernate')
     systemctl hibernate
     ;;
-  ' Lock')
+  '  Lock')
     lock
     ;;
-  ' Suspend')
+  '  Suspend')
     systemctl suspend
     ;;
-  ' Log out')
+  '  Log out')
     i3-msg exit
     ;;
     

@@ -1,10 +1,24 @@
+[urgency_low]
+    background = "#1b1b25"
+    foreground = "#dedede"
+    timeout = 5
+[urgency_normal]
+    background = "#1b1b25"
+    foreground = "#dedede"
+    timeout = 5
+[urgency_critical]
+    background = "#1b1b25"
+    foreground = "#dedede"
+    frame_color = "#f07178"
+    timeout = 0 
+    default_icon = dialog-warning
 [global]
     monitor = 0
     follow = none
-    width = 300
+    width = (300,500)
     height = (0, 300)
     origin = top-right
-    offset = (10, 50)
+    offset = (8, 47)
     scale = 0
     notification_limit = 20
     progress_bar = true
@@ -19,15 +33,16 @@
     indicate_hidden = yes
     transparency = 0
     separator_height = 2
-    padding = 8
-    horizontal_padding = 8
+    padding = 12
+    horizontal_padding = 12
     text_icon_padding = 0
-    frame_width = 3
-    frame_color = "#aaaaaa"
+    frame_width = 2
+    frame_color = "#343746"
     gap_size = 0
     separator_color = frame
     sort = yes
-    font = Monospace 8
+    idle_threshold = 120
+    font = Roboto mono 12
     line_height = 0
     markup = full
     format = "<b>%s</b>\n%b"
@@ -42,17 +57,18 @@
     enable_recursive_icon_lookup = true
     icon_theme = Adwaita
     icon_position = left
-    min_icon_size = 32
-    max_icon_size = 128
+    min_icon_size = 48
+    max_icon_size = 256
+    icon_path = /usr/share/icons/Papirus/16x16/
     # icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    sticky_history = yes
-    history_length = 20
+    sticky_history = no
+    history_length = 50
     dmenu = /usr/bin/dmenu -p dunst:
     browser = /usr/bin/xdg-open
     always_run_script = true
     title = Dunst
     class = Dunst
-    corner_radius = 0
+    corner_radius = 20
     corners = all
     ignore_dbusclose = false
     force_xwayland = false
@@ -62,23 +78,3 @@
     mouse_right_click = close_all
 [experimental]
     per_monitor_dpi = false
-[urgency_low]
-    background = "#222222"
-    foreground = "#888888"
-    timeout = 10
-    default_icon = dialog-information
-
-[urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
-    timeout = 10
-    override_pause_level = 30
-    default_icon = dialog-information
-
-[urgency_critical]
-    background = "#900000"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
-    timeout = 0
-    override_pause_level = 60
-    default_icon = dialog-warning

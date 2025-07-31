@@ -39,8 +39,9 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-bindsym $mod+a exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/1.rasi
-bindsym $mod+d exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/2.rasi
+bindsym $mod+a exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/dmenu.rasi
+bindsym $mod+s exec --no-startup-id code
+bindsym $mod+d exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/main.rasi
 
 bindsym $mod+w exec --no-startup-id nemo ~/Pictures/screenshots/
 bindsym $mod+e exec --no-startup-id nemo
