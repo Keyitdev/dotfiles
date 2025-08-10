@@ -81,6 +81,7 @@ alias nemo="nemo ."
 alias files="nemo ."
 alias c="clear" # I know about ctrl l etc.
 alias g="git"
+alias py="python3"
 alias nv="nvim"
 alias h="history|grep"
 

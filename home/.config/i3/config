@@ -10,7 +10,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
 exec --no-startup-id xrandr --dpi 96
 
-exec_always --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/wallpapers/rick.png
+exec_always --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/wallpapers/background.png
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec_always --no-startup-id mpd &
