@@ -9,7 +9,8 @@ mkdir -p "$screenshot_directory"
 mkdir -p "$videos_directory"
 mkdir -p "$audio_directory"
 
-date=$(date '+%d-%m-%Y-%H-%M-%S')
+# date=$(date '+%d-%m-%Y-%H-%M-%S') #10-08-2025-18-53-58
+date=$(date '+%Y-%m-%d_%H-%M-%S') #2025-08-10_18-53-58
 screen_resolution="$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')"
 microphone="$(pacmd list-sources | grep -E '^\s+name: .*alsa_input' | cut -c 8- | sed 's/[<,>]//g')"
 desktop="$(pacmd list-sources | grep -E '^\s+name: .*alsa_output' | cut -c 8- | sed 's/[<,>]//g')"

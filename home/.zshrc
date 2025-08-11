@@ -83,6 +83,7 @@ alias c="clear" # I know about ctrl l etc.
 alias g="git"
 alias py="python3"
 alias nv="nvim"
+alias ff="fastfetch"
 alias h="history|grep"
 
 alias help="cat ~/.zshrc | less"
@@ -94,3 +95,4 @@ alias logout="killall -KILL -u $USER"
 alias nemo.="nemo ."
 alias files.="files ."
 alias code.="code ."
+alias kilall="killall"

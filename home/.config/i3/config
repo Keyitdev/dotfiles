@@ -52,9 +52,16 @@ bindsym $mod+z exec --no-startup-id alacritty -e ncmpcpp
 bindsym $mod+x exec --no-startup-id rofi-powermenu
 bindsym $mod+c exec --no-startup-id rofi-screenshot
 
+bindsym $mod+i exec lock
+
+bindsym $mod+b move workspace to output right
+bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
+bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
+
 bindsym ctrl + F1 exec --no-startup-id i3-sensible-terminal
 bindsym ctrl + F2 exec --no-startup-id kitty
 bindsym ctrl + F3 exec --no-startup-id dmenu_run
+bindsym ctrl + F4 exec --no-startup-id killall picom
 
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
