@@ -28,7 +28,7 @@ git clone https://aur.archlinux.org/yay-bin.git "$HOME"/.srcs/yay && cd "$HOME"/
 ```
 Install dependencies.
 ```sh
-yay -S --needed btop code dunst fastfetch feh i3-wm i3lock-color kitty mate-polkit mpd ncmpcpp papirus-icon-theme picom polybar rofi xss-lock zsh zed ttf-roboto-mono ttf-opensans ttf-iosevka-nerd ffcast inotify-tools jq libnotify scrot slop upower xclip
+yay -S --needed btop code dunst fastfetch feh i3-wm i3lock-color kitty mate-polkit mpd ncmpcpp papirus-icon-theme picom polybar rofi xss-lock zsh zed ttf-roboto-mono ttf-opensans ttf-iosevka-nerd ffcast inotify-tools jq libnotify rofi-vscode-mode scrot slop upower xclip
 ```
 
 Clone this repository and copy files.
@@ -55,7 +55,7 @@ Install optional dependencies.
 yay -S --needed bc dmenu downgrade fzf mpc nano vim net-tools ntp tree vi wget
 ```
 ```sh
-yay -S --needed 7zip czkawka-gui firefox firefox-beta-bin firefox-developer-edition gimp inkscape gparted libreoffice-fresh mpv vlc nemo nemo-fileroller obs-studio obsidian rsync vnstat yt-dlp
+yay -S --needed 7zip czkawka-gui firefox firefox-beta-bin firefox-developer-edition gimp inkscape gparted libreoffice-fresh mpv vlc nemo nemo-fileroller obs-studio obsidian qalculate-gtk rsync vnstat yt-dlp
 ```
 ```sh
 yay -S --needed cpupower-gui ntfs-3g nvidia cuda nvtop vulkan-radeon
@@ -91,4 +91,114 @@ If you need any help, you can ask questions here on **[discussions](https://gith
 Thanks to all contributors! :D
 
 ## Detailed information
-## WIP
+
+```sh
+tree WIP
+```
+
+### Dependencies
+
+#### Base (~190 Mib)
+- `archlinux-keyring base base-devel linux linux-firmware`  - base
+- `dhcpcd` - DHCP client *(optional)*  
+- `git` - version control system
+- `iwd`- wireless network daemon *(optional)*  
+- `pulseaudio` - sound server for handling audio
+- `xorg` - display server
+- `xorg-xinit` - script to manually start the X server without a display manager *(optional)*  
+
+#### Programs (~607 Mib)
+- `btop` - resource monitor
+- `code` - code editor
+- `dunst` - notification deamon
+- `fastfetch` - system information fetcher
+- `feh` - wallpaper setter  
+- `i3-wm` - dynamic tiling window manager  
+- `kitty` - terminal emulator
+- `i3lock-color` - lock screen *(AUR)*
+- `mate-polkit` - controlling system-wide privileges
+- `mpd` - music playback service
+- `ncmpcpp` - MPD client
+- `papirus-icon-theme` - modern icon pack
+- `picom` - compositor for X11
+- `polybar` - status bar
+- `rofi` - application launcher
+- `xss-lock` - hooks into XScreenSaver events to lock the screen when idle
+- `zsh` - shell
+- `zed` - code editor
+
+#### Fonts (~1040 Mib)
+- `ttf-roboto-mono ttf-opensans ttf-iosevka-nerd`
+
+#### Scripts (~3 Mib)
+- `ffcast` - script for recording your screen *(AUR)* 
+- `inotify-tools` - command-line utilities for monitoring filesystem events
+- `jq` - JSON processor  
+- `libnotify` - library for sending desktop notifications  
+- `rofi-vscode-mode` - lauch recently used vsc workspace
+- `scrot` - screenshot utility  
+- `slop` - select a region on screen
+- `upower` - power management daemon
+- `xclip` - clipboard manager for X
+
+### Additional dependencies
+All of these packages are optional, but without them, some things may not work correctly.
+I recommend atleast installing basic utilities.
+To install all packages, you need approximately 8.4 GiB of free disk space (5 GiB takes cuda package).
+
+#### Basic utilities (optional) (~21 Mib)
+`yay -S bc dmenu downgrade fzf mpc nano vim net-tools ntp tree vi wget`
+- `bc` - command-line calculator  
+- `dmenu` - app launcher  
+- `downgrade` - pkg downgrader  
+- `fzf` - fuzzy finder  
+- `mpc` - comand-line MPD client  
+- `nano vim` - text editors  
+- `net-tools` - network tools  
+- `ntp` - time sync  
+- `tree` - directory tree viewer  
+- `vi` - basic text editor  
+- `wget` - command-line downloader  
+
+#### Basic programs (optional) (~1700Mib)
+`yay -S 7zip czkawka-gui firefox firefox-beta-bin firefox-developer-edition gimp inkscape gparted libreoffice-fresh mpv vlc nemo nemo-fileroller obs-studio obsidian rsync vnstat yt-dlp`
+- `7zip` - archiver  
+- `czkawka-gui` - duplicate finder  
+- `firefox firefox-beta-bin firefox-developer-edition`  - web browsers
+- `gimp inkscape` - image editors
+- `gparted` - partition tool
+- `libreoffice-fresh` - office suite  
+- `mpv vlc` - media players 
+- `nemo nemo-fileroller` - file manager  
+- `obs-studio` - screen recorder  
+- `obsidian` - notes app  
+- `qalculate-gtk` - calculator with advanced functions
+- `rsync` - file sync and backup  
+- `vnstat` - network monitor 
+- `yt-dlp` - video downloader  
+
+#### Drivers (optional) (~4900 Mib)
+`yay -S cpupower-gui ntfs-3g nvidia cuda nvtop vulkan-radeon`
+- `cpupower-gui` - CPU settings 
+- `ntfs-3g` - NTFS filesystem support  
+- `nvidia cuda nvtop` - NVIDIA drivers
+- `vulkan-radeon` - AMD Vulkan 
+
+#### Programming (optional) (~1000Mib)
+`yay -S cloc cronie docker gcc clang make npm python pypy python-numpy python-pandas python-scipy python-matplotlib python-requests tmux`
+- `cloc` - counts lines of code  
+- `cronie` - task scheduler  
+- `docker` - container platform  
+- `gcc clang make` - compilers and build tools  
+- `npm` - Node.js package manager  
+- `python pypy python-numpy python-pandas python-scipy python-matplotlib python-requests` - Python interpreters and libraries  
+- `tmux` - terminal multiplexer  
+
+####  Emoji fonts (~750 MiB)
+`yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra`
+- `noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra`
+
+## License
+  
+Distributed under the **[GPLv3+](https://www.gnu.org/licenses/gpl-3.0.html) License**.    
+Copyright (C) 2022-2025 Keyitdev.
