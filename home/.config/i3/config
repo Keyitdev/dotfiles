@@ -41,14 +41,15 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 bindsym $mod+q exec --no-startup-id firefox-developer-edition
-bindsym $mod+w exec --no-startup-id code
+# bindsym $mod+w exec --no-startup-id code
+bindsym $mod+w exec --no-startup-id "rofi -show vscode-recent -modi vscode-recent -no-default-config -config ~/.config/rofi/main.rasi -theme-str 'prompt { enabled: false; }'"
 bindsym $mod+e exec --no-startup-id nemo
 
 bindsym $mod+a exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/dmenu.rasi
 bindsym $mod+s exec --no-startup-id nemo ~/Pictures/screenshots/
 bindsym $mod+d exec --no-startup-id rofi -show drun -no-default-config -config ~/.config/rofi/main.rasi
 
-bindsym $mod+z exec --no-startup-id alacritty -e ncmpcpp 
+bindsym $mod+z exec --no-startup-id kitty -e ncmpcpp 
 bindsym $mod+x exec --no-startup-id rofi-powermenu
 bindsym $mod+c exec --no-startup-id rofi-screenshot
 
@@ -113,7 +114,7 @@ bindsym $mod+space focus mode_toggle
 # bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -205,7 +206,6 @@ client.focused #343746 #343746 #F8F8F2 #343746 #343746
 client.focused_inactive #343746 #343746 #F8F8F2 #21222C #21222C
 client.unfocused #343746 #343746 #F8F8F2 #21222C #21222C
 
-
 ### GAPS ###
 
 # Set inner/outer gaps
@@ -251,3 +251,12 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+### Windows ###
+
+#for_window [class="Qalculate-gtk"] floating enable, move position center, resize set 400 600
+for_window [class="Qalculate-gtk"] floating enable, sticky enable
+
+for_window [class="Firefox Beta" title="Picture-in-Picture"] floating enable, sticky enable
+for_window [class="firefox-developer-edition" title="Picture-in-Picture"] floating enable, sticky enable
+for_window [class="Firefox" title="Picture-in-Picture"] floating enable, sticky enable
