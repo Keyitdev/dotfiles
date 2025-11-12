@@ -1,0 +1,100 @@
+{
+    "workbench.colorTheme": "One Dark Pro Darker",
+    "editor.fontFamily": "Roboto mono, Iosevka Nerd Font, Feather",
+    "editor.fontSize": 18,
+    "terminal.integrated.fontSize": 14,
+    "explorer.sortOrder": "type",
+
+    "workbench.navigationControl.enabled": false, // hide top bar (title bar)
+    "workbench.layoutControl.enabled": false,
+    "window.commandCenter": false,
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle":"native",
+
+    "editor.linkedEditing":true, // edit both tags in html at once
+    "terminal.integrated.stickyScroll.enabled": false,
+    "search.showLineNumbers": true,
+    "security.workspace.trust.enabled": false,
+
+    "editor.minimap.enabled": false,
+    "editor.guides.indentation": false,
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+
+    
+    "workbench.colorCustomizations": {
+        "[One Dark Pro Darker]": {
+            "terminal.background": "#1b1b25",
+            "sideBar.background": "#16161e",
+            "sideBar.border": "#282A36",
+            "sideBarSectionHeader.background": "#1b1b25",
+            "activityBar.background": "#16161e",
+            "activityBar.border": "#282a36",
+            "editor.background": "#1b1b25",
+            
+            "statusBar.background": "#16161e",
+            "statusBar.noFolderBackground": "#16161e",
+            "statusBar.debuggingBackground": "#16161e",
+            "statusBarItem.remoteBackground": "#16161e",
+            "statusBarItem.remoteForeground": "#dedede",
+
+            "editorGroupHeader.tabsBackground": "#16161e",
+            "editorGroupHeader.tabsBorder": "#282a36",
+            "editorGroupHeader.border": "#282a36",
+            "editorGroup.emptyBackground": "#1b1b25",
+            "editorGroup.focusedEmptyBorder": "#282a36",
+            "editorGroup.border": "#282a36",
+            
+            "tab.activeBackground": "#1b1b25",
+            "tab.activeBorder":"#282a36",
+            "tab.unfocusedActiveBackground": "#1b1b25",
+            "tab.inactiveBackground": "#16161e",
+            "tab.unfocusedInactiveBackground": "#16161e",
+            "tab.hoverBackground":"#282a36",
+            
+            "titleBar.activeBackground": "#16161e",
+            "titleBar.inactiveBackground": "#16161e",
+            "titleBar.border":"#282A36",
+
+            "editorPane.background": "#16161e", // zen mode
+            "editorWidget.background": "#16161e",
+
+            "editorSuggestWidget.background": "#1b1b25",
+            "editorSuggestWidget.border": "#282a36",
+            "editorSuggestWidget.selectedBackground": "#282A36",
+
+            "button.background": "#282A36",
+            "selection.background": "#343746",
+            "input.background": "#1b1b25",
+            "input.border": "#282A36",
+            "focusBorder": "#282a36",
+            "editor.lineHighlightBackground": "#282a36",
+            
+            "dropdown.background": "#1b1b25",
+            "dropdown.border": "#282a36",
+            "menu.background": "#1b1b25",
+            "list.hoverBackground": "#282a36",
+            "list.focusBackground": "#282a36",
+            "list.activeSelectionBackground": "#282a36",
+            "list.inactiveSelectionBackground": "#1b1b25",
+
+            "editorHoverWidget.background": "#1b1b25",
+            "editorHoverWidget.border": "#282a36",
+            "editorHoverWidget.statusBarBackground": "#16161e"
+        }
+    },
+
+    // "lldb.library": "/usr/lib/swift/lib/liblldb.so",
+    // "lldb.launch.expressions": "native",
+    // "code-runner.runInTerminal": true,
+    // "code-runner.enableAppInsights": false,
+    // "code-runner.saveAllFilesBeforeRun": true,
+    // "code-runner.ignoreSelection": true,
+    // "code-runner.executorMap": {
+    //     "c": "cd $dir && gcc *.c -o coderunner.out && $dircoderunner.out && rm -fr $dircoderunner.out",
+    //     "cpp": "cd $dir && g++ *.cpp -o coderunner.out && $dircoderunner.out && rm -fr $dircoderunner.out",
+    // },
+    
+    // "files.exclude": {
+    //     "**/*.pdf": true
+    // },
+}

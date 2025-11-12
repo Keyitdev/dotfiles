@@ -1,0 +1,325 @@
+/*Fonts*/
+:root {
+  /*
+    If the font isn't installed in the system, 
+    it will go down the list until it finds on that is.
+    */
+
+
+  --default-font: '"JetBrains Mono", monospace, "Inter", sans-serif';
+  --font-monospace: '"JetBrains Mono", monospace, "Source Code Pro", monospace'; Code block text
+
+  /*
+    var(--variableName); is a variable,
+    so you can use what you set over and over without having
+    to rewrite it multiple times.
+    */
+}
+
+.theme-dark {
+  /* hsla(95, 38%, 62%, 1) */
+  --accent-h: 95; /* green */
+  --accent-s: 38%;
+  --accent-l: 62%;
+
+  --bg_dark2: #111;
+  --bg_dark: #16161e;
+  --bg: #1b1b25;
+  --bg_highlight: #282A36;
+  --bg_highlight_dark: #282A36;
+  --terminal_black: #15121c;
+  --fg: #dedede;
+  --fg_dark: #dedede;
+  --comment: #727480;
+  --border: #343746;
+  --blue0: #6c90a8;
+  --blue: #6c90a8;
+  --cyan: #528a9b;
+  --magenta: #cb5760;
+  --purple: #776690;
+  --orange: #c87c3e;
+  --yellow:  	#d4a067;
+  --green: #98c379;
+  --teal: 26, 188, 156;
+  --teal: #528a9b;
+  --red: #cb5760;
+  --red1: #cb5760;
+  --unknown: #ffffff;
+
+  --external-link-filter: invert(35%) sepia(28%) saturate(681%)
+    hue-rotate(192deg) brightness(94%) contrast(85%);
+  --link-external-filter: invert(35%) sepia(28%) saturate(681%)
+    hue-rotate(192deg) brightness(94%) contrast(85%);
+}
+
+.theme-light {
+  /* hsla(95, 38%, 62%, 1) */
+  --accent-h: 95; /* green */
+  --accent-s: 38%;
+  --accent-l: 62%;
+
+  --bg_dark2: #111;
+  --bg_dark: #16161e;
+  --bg: #1b1b25;
+  --bg_highlight: #282A36;
+  --bg_highlight_dark: #282A36;
+  --terminal_black: #15121c;
+  --fg: #dedede;
+  --fg_dark: #dedede;
+  --comment: #727480;
+  --border: #343746;
+  --blue0: #6c90a8;
+  --blue: #6c90a8;
+  --cyan: #528a9b;
+  --magenta: #cb5760;
+  --purple: #776690;
+  --orange: #c87c3e;
+  --yellow:  	#d4a067;
+  --green: #98c379;
+  --teal: 26, 188, 156;
+  --teal: #528a9b;
+  --red: #cb5760;
+  --red1: #cb5760;
+  --unknown: #ffffff;
+
+  --external-link-filter: invert(62%) sepia(9%) saturate(266%)
+    hue-rotate(189deg) brightness(97%) contrast(88%);
+  --link-external-filter: invert(62%) sepia(9%) saturate(266%)
+    hue-rotate(189deg) brightness(97%) contrast(88%);
+}
+
+.theme-dark,
+.theme-light {
+  --color_red_rgb: var(--red);
+  --color-red: var(--red);
+  --color_purple_rgb: var(--purple);
+  --color-purple: var(--purple);
+  --color_green_rgb: var(--green);
+  --color-green: var(--green);
+  --color_cyan_rgb: var(--cyan);
+  --color-cyan: var(--cyan);
+  --color_blue_rgb: var(--blue);
+  --color-blue: var(--blue);
+  --color_yellow_rgb: var(--yellow);
+  --color-yellow: var(--yellow);
+  --color_orange_rgb: var(--orange);
+  --color-orange: var(--orange);
+  --color_pink_rgb: var(--magenta);
+  --color-pink: var(--magenta);
+
+  --background-primary: var(--bg);
+  --background-primary-alt: var(--bg);
+  --background-secondary: var(--bg_dark);
+  --background-secondary-alt: var(--bg_dark);
+
+  --background-modifier-border: var(--bg_highlight);
+  --background-modifier-border-focus: var(--bg_highlight);
+  --background-modifier-border-hover: var(--bg_highlight);
+  --background-modifier-form-field: var(--bg_dark);
+  --background-modifier-form-field-highlighted: var(--bg_dark);
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
+  --background-modifier-success: var(--green);
+  --background-modifier-error: var(--red1);
+  --background-modifier-error-hover: var(--red);
+  --background-modifier-cover: rgba(var(--bg_dark), 0.8);
+  --background-modifier-hover: var(--bg_highlight);
+  --background-modifier-message: rgba(var(--bg_highlight), 0.9);
+  --background-modifier-active-hover: var(--bg_highlight);
+
+  --text-normal: var(--fg);
+  --text-faint: var(--comment);
+  --text-muted: var(--fg_dark);
+  --text-error: var(--red);
+  --text-accent: var(--fg_dark); /*important*/
+  --text-accent-hover: var(--green);
+  --text-error: var(--red1);
+  --text-error-hover: var(--red);
+  --text-selection: var(--unknown);
+  --text-on-accent: var(--bg);
+  --text-highlight-bg: rgba(var(--orange), 0.4);
+  --text-selection: var(--border);
+  --bold-color: var(--cyan);
+  --italic-color: var(--cyan);
+
+  --interactive-normal: var(--bg_dark);
+  --interactive-hover: var(--bg);
+  --interactive-success: var(--green);
+  --interactive-accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --interactive-accent-hover: var(--blue);
+
+  --scrollbar-bg: var(--bg_dark2);
+  --scrollbar-thumb-bg: var(--bg_highlight_dark);
+  --scrollbar-active-thumb-bg: var(--comment);
+  --scrollbar-width: 0px;
+
+  --h1-color: var(--red);
+  --h2-color: var(--yellow);
+  --h3-color: var(--green);
+  --h4-color: var(--cyan);
+  --h5-color: var(--blue);
+  --h6-color: var(--magenta);
+
+  --border-width: 2px;
+
+  --tag-color: var(--green); /*important*/
+  --tag-background: rgba(var(--green), 0.15);
+  --tag-color-hover: var(--cyan);
+  --tag-background-hover: rgba(var(--cyan), 0.15);
+
+  --link-color: var(--green);
+  --link-color-hover: var(--cyan);
+  --link-external-color: var(--green);
+  --link-external-color-hover: var(--cyan);
+
+  --checkbox-radius: 4px;
+  --checkbox-color: var(--comment);
+  --checkbox-color-hover: var(--comment);
+  --checkbox-marker-color: var(--green);
+  --checkbox-border-color: var(--comment);
+  --checkbox-border-color-hover: var(--comment);
+  --checklist-done-color: rgba(var(--green), 0.5);
+
+  --table-header-background: var(--bg);
+  --table-header-background-hover: var(--bg_dark2);
+  --table-row-alt-background: var(--bg_dark);
+  --table-row-background-hover: var(--bg_dark2);
+
+  --flashing-background: rgba(var(--blue0), 0.3);
+
+  --code-normal: var(--fg);
+  --code-background: var(--bg_highlight_dark);
+
+  --mermaid-note: var(--blue0);
+  --mermaid-actor: var(--fg_dark);
+  --mermaid-loopline: var(--blue);
+
+  --icon-color-hover: var(--blue);
+  --icon-color-focused: var(--green);
+  --icon-color-active: var(--green);
+
+  --nav-item-color-hover: var(--fg);
+  --nav-item-background-hover: var(--bg_highlight);
+  --nav-item-color-active: var(--green); /*important*/
+  --nav-item-background-active: var(--bg_highlight);
+  --nav-file-tag: rgba(var(--yellow), 0.9);
+  --nav-indentation-guide-color: var(--bg_highlight);
+
+  --indentation-guide-color: var(--comment);
+  --indentation-guide-color-active: var(--comment);
+
+  --graph-line: var(--comment);
+  --graph-node: var(--fg);
+  --graph-node-tag: var(--orange);
+  --graph-node-attachment: var(--blue);
+
+  --tab-text-color-focused-active: var(--green); 
+  --tab-text-color-focused-active-current: var(--green);/*important*/
+
+  --modal-border-color: var(--bg_highlight);
+  --prompt-border-color: var(--bg_highlight);
+  --slider-track-background: var(--bg_highlight);
+
+  --blockquote-background-color: var(--bg_dark);
+  --callout-quote: var(--fg_dark);
+
+  --embed-background: var(--bg_dark);
+  --embed-padding: 1.5rem 1.5rem 0.5rem;
+
+  --canvas-color: var(--bg_highlight);
+
+  --toggle-thumb-color: var(--bg);
+}
+
+/* mobile */
+.is-mobile .suggestion-item.is-selected {
+  background-color: var(--bg_highlight);
+}
+
+/* scrollbars */
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar:horizontal {
+  height: var(--scrollbar-width);
+}
+
+/* tooltip */
+.tooltip {
+  color: var(--fg);
+}
+
+/* links */
+
+.cm-url {
+  filter: none !important;
+}
+
+.cm-string.cm-url.external-link {
+  filter: var(--external-link-filter) !important;
+}
+
+a.external-link {
+  filter: none;
+  background-image: none;
+  padding-right: 0;
+}
+
+/* notice */
+.notice {
+  background-color: var(--bg_dark);
+  border: 2px solid var(--bg_highlight);
+}
+
+/* callouts */
+.callout[data-callout="quote"],
+.callout[data-callout="cite"] {
+  background-color: rgba(var(--bg_highlight_dark), 0.5);
+}
+
+/* for vim */
+.ͼ2 .cm-panels-bottom {
+  border-top: var(--border-width) solid var(--bg_highlight);
+}
+
+.cm-vim-message {
+  color: var(--red);
+}
+
+/* kanban */
+.kanban-plugin__lane-action-add {
+  color: var(--fg);
+}
+
+.kanban-plugin__lane-action-add:hover {
+  color: var(--bg);
+}
+
+.kanban-plugin__autocomplete-item:hover,
+.kanban-plugin__autocomplete-item-active {
+  color: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  background-color: var(--bg_highlight);
+}
+
+/* various-complement */
+.various-complements__suggestion-item::before {
+  filter: var(--external-link-filter);
+}
+
+.various-complements__footer::before {
+  filter: var(--external-link-filter);
+}
+
+/* Math Jax */
+mjx-math {
+  font-size: 110% !important;
+}
+
+/* metadata */
+.cm-atom {
+  color: var(--blue);
+}
+span.cm-hmd-frontmatter.cm-meta {
+  color: rgba(var(--blue0), 0.9);
+}
+

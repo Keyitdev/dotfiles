@@ -198,7 +198,7 @@ To install all packages, you need approximately 8.4 GiB of free disk space (5 Gi
 `yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra`
 - `noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra`
 
-## Keybindings Overview
+### Keybindings Overview
 
 | Keybinding | Action | Keybinding | Action |
 |---|---|---|---|
