@@ -143,7 +143,7 @@ tree WIP
 
 ### Additional dependencies
 All of these packages are optional, but without them, some things may not work correctly.
-I recommend atleast installing basic utilities.
+I recommend at least installing basic utilities.
 To install all packages, you need approximately 8.4 GiB of free disk space (5 GiB takes cuda package).
 
 #### Basic utilities (optional) (~21 Mib)
