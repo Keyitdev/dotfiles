@@ -93,7 +93,93 @@ Thanks to all contributors! :D
 ## Detailed information
 
 ```sh
-tree WIP
+.
+├── home
+│   ├── .config
+│   │   ├── alacritty
+│   │   │   ├── alacritty.toml
+│   │   │   └── colors.toml
+│   │   ├── btop
+│   │   │   └── btop.conf
+│   │   ├── Code - OSS
+│   │   │   └── User
+│   │   │       └── settings.json
+│   │   ├── dunst
+│   │   │   └── dunstrc
+│   │   ├── fastfetch
+│   │   │   └── config.jsonc
+│   │   ├── gtk-3.0
+│   │   │   └── settings.ini
+│   │   ├── gtk-4.0
+│   │   │   ├── colors.css
+│   │   │   ├── gtk.css
+│   │   │   └── settings.ini
+│   │   ├── i3
+│   │   │   └── config
+│   │   ├── kitty
+│   │   │   └── kitty.conf
+│   │   ├── mpd
+│   │   │   └── mpd.conf
+│   │   ├── ncmpcpp
+│   │   │   └── config
+│   │   ├── .obsidian
+│   │   │   └── themes
+│   │   │       └── Keyitdev
+│   │   ├── picom
+│   │   │   └── picom.conf
+│   │   ├── polybar
+│   │   │   ├── colors.ini
+│   │   │   ├── config.ini
+│   │   │   └── launch.sh
+│   │   ├── rofi
+│   │   │   ├── colors.rasi
+│   │   │   ├── dmenu.rasi
+│   │   │   ├── main.rasi
+│   │   │   └── main_without_icons.rasi
+│   │   └── zed
+│   │       └── settings.json
+│   ├── Pictures
+│   │   └── wallpapers
+│   │       └── background.png
+│   ├── .xinitrc
+│   └── .zshrc
+└── usr
+    ├── lib
+    │   └── udev
+    │       └── rules.d
+    │           └── 90-light-backlight.rules
+    ├── local
+    │   └── bin
+    │       ├── asus_fan_listener
+    │       ├── asus_fan_toggle
+    │       ├── battery_listener
+    │       ├── brightness_control
+    │       ├── brightness_level
+    │       ├── icons
+    │       │   ├── battery.svg
+    │       │   ├── mic-off.svg
+    │       │   ├── mic.svg
+    │       │   ├── moon.svg
+    │       │   ├── sun.svg
+    │       │   ├── volume-1.svg
+    │       │   ├── volume-2.svg
+    │       │   ├── volume-3.svg
+    │       │   ├── volume.svg
+    │       │   └── volume-x.svg
+    │       ├── lock
+    │       ├── microphone_mute
+    │       ├── rofi-powermenu
+    │       ├── rofi-screenshot
+    │       ├── screenshot
+    │       ├── touchpad_toggle
+    │       ├── volume_control
+    │       ├── volume_level
+    │       └── volume_mute
+    └── share
+        ├── fonts
+        │   └── Feather.ttf
+        └── themes
+            └── gtk-dark-keyitdev
 ```
 
 ### Dependencies
@@ -232,4 +318,4 @@ To install all packages, you need approximately 8.4 GiB of free disk space (5 Gi
 ## License
   
 Distributed under the **[GPLv3+](https://www.gnu.org/licenses/gpl-3.0.html) License**.    
-Copyright (C) 2022-2025 Keyitdev.
+Copyright (C) 2022-2026 Keyitdev.

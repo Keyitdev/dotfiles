@@ -3,7 +3,7 @@
 font="dedede"
 green="9ece6a"
 red="db4b4b"
-wallpaper="$HOME/Pictures/wallpapers/lockscreen.png"
+wallpaper="$HOME/Pictures/wallpapers/background.png"
 
 i3lock -n --force-clock -F -i $wallpaper -e \
 --refresh-rate=1 --line-uses-inside --pointer=default --pass-media-keys --pass-volume-keys --pass-screen-keys \
