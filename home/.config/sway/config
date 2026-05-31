@@ -1,41 +1,70 @@
-# i3 config file (v4)
-# https://i3wm.org/docs/userguide.html
+# sway config file (v5)
+
+output DP-4 mode 2560x1440@200Hz 
+output * bg ~/Pictures/wallpapers/background.png fill
+
+input type:keyboard {
+      xkb_layout "pl"
+}
 
 set $mod Mod4
 floating_modifier $mod
-tiling_drag modifier titlebar
 
 font pango:Open sans 11
-exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- lock --nofork
-exec --no-startup-id xrandr --dpi 96
 
-exec_always --no-startup-id feh --no-fehbg --bg-fill $HOME/Pictures/wallpapers/background.png
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# kinda overkill, just to make sure every app respect dark theme
+exec_always {
+    #systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_RUNTIME_DIR
+    #dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    
+    systemctl --user import-environment WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_RUNTIME_DIR XDG_SESSION_TYPE XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP DBUS_SESSION_BUS_ADDRESS
+    export GTK_THEME="gtk-dark-keyitdev:dark"
+    #exec --no-startup-id dbus-update-activation-environment --all
+    dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK XDG_RUNTIME_DIR XDG_SESSION_TYPE XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP DBUS_SESSION_BUS_ADDRESS
+    gsettings set org.gnome.desktop.interface gtk-theme 'gtk-dark-keyitdev:dark'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+}
 
-exec_always --no-startup-id mpd &
-exec_always --no-startup-id picom &
-exec_always --no-startup-id dunst &
+exec_always --no-startup-id sh -c 'pkill -x waybar; waybar'
+exec_always --no-startup-id ~/system_monitor.sh &
 exec_always --no-startup-id /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
-exec_always --no-startup-id asus_fan_listener  &
-exec_always --no-startup-id battery_listener &
+exec_always --no-startup-id dunst &
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id volume_control -s +5 -m 125 && volume_level
-bindsym XF86AudioLowerVolume exec --no-startup-id volume_control -s -5 -m 125 && volume_level
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && volume_mute
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && microphone_mute
-bindsym Ctrl+F5 exec --no-startup-id asus_fan_toggle
-bindsym XF86ScreenSaver exec --no-startup-id xset dpms force off
-bindsym XF86MonBrightnessDown exec --no-startup-id brightness_control -s -2 && brightness_level
-bindsym XF86MonBrightnessUp exec --no-startup-id brightness_control -s +2 && brightness_level
-bindsym XF86TouchpadToggle exec --no-startup-id touchpad_toggle
+# 1st - lock
+# 2nd - turn off screen
+# 3rd - sleep
+exec_always --no-startup-id killall swayidle; swayidle -w \
+    timeout 300 'swaymsg "output * power off"' \
+        resume 'swaymsg "output * power on"' \
+    timeout 1200 'lock' \
+    timeout 3600 'systemctl suspend'
+#     before-sleep 'lock'
+
+# exec_always --no-startup-id asus_fan_listener  &
+# exec_always --no-startup-id battery_listener &
+# bindsym Ctrl+F5 exec --no-startup-id asus_fan_toggle
+
+bindsym --locked XF86AudioRaiseVolume exec --no-startup-id volume_control -s +5 -m 125 && volume_level
+bindsym --locked XF86AudioLowerVolume exec --no-startup-id volume_control -s -5 -m 125 && volume_level
+bindsym --locked XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && volume_mute
+bindsym --locked XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && microphone_mute
+bindsym --locked XF86MonBrightnessUp exec --no-startup-id brightness_control -s +2 && brightness_level
+bindsym --locked XF86MonBrightnessDown exec --no-startup-id brightness_control -s -2 && brightness_level
+bindsym --locked XF86ScreenSaver exec --no-startup-id swaymsg "output * dpms off"
+bindsym --locked XF86TouchpadToggle exec --no-startup-id touchpad_toggle
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioPause exec playerctl play-pause
+bindsym --locked XF86AudioPrev exec playerctl previous
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioStop exec playerctl stop
+bindsym XF86Calculator exec --no-startup-id qalculate-gtk
 # bindsym XF86RFKill
-# bindsym XF86Calculator exec --no-startup-id nemo
-
+    
 bindsym Pause exec screenshot -sa
 bindsym Print exec screenshot -sf
 
-bindsym $mod+Return exec i3-sensible-terminal
+# Run terminal (i3-sensible-terminal wannabe) 
+bindsym $mod+Return exec sh -c 'for terminal in "$TERMINAL" x-terminal-emulator kitty alacritty mate-terminal gnome-terminal terminator xfce4-terminal urxvt rxvt termit Eterm aterm uxterm xterm roxterm termite lxterminal terminology st qterminal lilyterm tilix terminix konsole guake tilda hyper wezterm rio; do if command -v "$terminal" > /dev/null 2>&1; then exec "$terminal" "$@"; fi; done'
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -56,13 +85,13 @@ bindsym $mod+c exec --no-startup-id rofi-screenshot
 bindsym $mod+i exec lock
 
 bindsym $mod+b move workspace to output right
-bindsym $mod+n exec xrandr --auto --output eDP-1 --mode 1920x1080 --right-of HDMI-1 && i3-msg restart &
-bindsym $mod+m exec xrandr --auto --output HDMI-1 --off && i3-msg restart &
+bindsym $mod+n exec "swaymsg output HDMI-A-1 enable; swaymsg output HDMI-A-1 pos 1920 0"
+bindsym $mod+m exec "swaymsg output HDMI-A-1 disable"
 
-bindsym ctrl + F1 exec --no-startup-id i3-sensible-terminal
-bindsym ctrl + F2 exec --no-startup-id kitty
-bindsym ctrl + F3 exec --no-startup-id dmenu_run
-bindsym ctrl + F4 exec --no-startup-id killall picom
+bindsym ctrl+F1 exec --no-startup-id swaymsg "output * dpms off"
+bindsym ctrl+F2 exec --no-startup-id swaymsg "output * dpms on"
+bindsym ctrl+F4 exec --no-startup-id kitty
+bindsym ctrl+F3 exec --no-startup-id dmenu_run
 
 # bindsym $mod+d exec --no-startup-id dmenu_run
 
@@ -155,10 +184,12 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+
+# exit sway
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -187,16 +218,18 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        mode invisible
-        tray_output none
-}
+# Move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+
 
 ### BODERS ###
 
-hide_edge_borders smart
+hide_edge_borders none
 
 #border width
 default_border pixel 2
@@ -254,9 +287,9 @@ mode "$mode_gaps_outer" {
 
 ### Windows ###
 
-#for_window [class="Qalculate-gtk"] floating enable, move position center, resize set 400 600
-for_window [class="Qalculate-gtk"] floating enable, sticky enable
+#for_window [app_id="qalculate-gtk"] floating enable, move position center, resize set 400 600
+for_window [app_id="qalculate-gtk"] floating enable, sticky enable
 
-for_window [class="Firefox Beta" title="Picture-in-Picture"] floating enable, sticky enable
-for_window [class="firefox-developer-edition" title="Picture-in-Picture"] floating enable, sticky enable
-for_window [class="Firefox" title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="Firefox Beta" title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="firefox-developer-edition" title="Picture-in-Picture"] floating enable, sticky enable
+for_window [app_id="firefox" title="Picture-in-Picture"] floating enable, sticky enable
