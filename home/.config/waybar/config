@@ -1,0 +1,245 @@
+{
+    "layer": "top",
+    "position": "top",
+    "exclusive": true,
+    "height": 36,
+    "spacing": 1,
+    "margin-top": 5,
+    "margin-left":10,
+    "margin-right": 10,
+
+    // big screens/pc
+    "modules-left": ["custom/menu", "sway/workspaces", "sway/mode", "network", "custom/screen_time", "custom/weather", "custom/playerctl" ],
+    "modules-center": ["clock"],
+    "modules-right": ["custom/advanced_cpu", "custom/nvidia", "memory", "disk", "custom/brightness", "pulseaudio", "battery", "custom/microphone", "idle_inhibitor", "tray"],
+
+    // small screens/laptops
+    //"modules-left": ["custom/menu", "sway/workspaces", "sway/mode", "network", "custom/screen_time", "custom/weather", "custom/playerctl" ],
+    //"modules-center": ["clock"],
+    //"modules-right": ["memory", "disk", "backlight", "pulseaudio", "battery", "idle_inhibitor", "tray"],
+
+    "custom/advanced_cpu": {
+        "format": " CPU <span color='#dedede'>{}</span>",
+        "interval": 1,
+        "return-type": "json",
+        "exec": "s-tui -j | jq -c '{text: \"\\((.Util.Avg|tonumber|floor))% \\((.Temp[\"Tctl,0\"]|tonumber|floor))°C \\((.Frequency.Avg|tonumber/1000)|tostring|tonumber|(. * 10 | floor / 10)) GHz\"}'"
+    },
+
+    "custom/brightness": {
+        "format": " <span color='#dedede'>{}%</span>",
+        "exec": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 getvcp 10 | awk -F'= *|,' '/current value/ {print $2}'",
+        "interval": 1,
+        "on-scroll-up": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 + 10",
+        "on-scroll-down": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 - 10",
+        "on-click": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 0",
+        "on-click-middle": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 40",
+        "on-click-right": "ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 100"
+    },
+
+    "custom/menu": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "rofi -show drun -no-default-config -config ~/.config/rofi/main.rasi",
+        "on-click-middle": "swaymsg workspace $(comm -23 <(seq 1 100) <(swaymsg -t get_workspaces | jq '.[].num' | sort -n) | head -n 1)",
+        "on-click-right": "rofi-powermenu"
+    },
+
+    "custom/microphone": {
+        "format": "{text}",
+        "tooltip": false,
+        "interval": 1,
+        "on-click": "~/.config/waybar/microphone.sh toggle",
+        "return-type": "json",
+        "exec": "~/.config/waybar/microphone.sh"
+    },
+
+    "custom/nvidia": {
+        "format": " GPU <span color='#dedede'>{}</span>",
+        "interval": 2,
+        "exec": "nvidia-smi --query-gpu=utilization.gpu,temperature.gpu,memory.used --format=csv,noheader,nounits | awk -F', ' '{print $1\"% \"$2\"°C \"$3\" MiB\"}'"
+    },
+
+    "custom/playerctl": {
+        "format": "{icon}<span color='#dedede'>{text}</span>",
+        "format-icons": {
+            "Playing": " ",
+            "Paused": " "
+        },
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "return-type": "json",
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F"
+    },
+
+    "custom/screen_time": {
+        "format": "󰍹  <span color='#dedede'>{}</span>",
+        "interval": 1,
+        "exec": "~/.config/waybar/screen_time.sh"
+    },
+
+    "custom/weather": {
+        "format": "{}",
+        "tooltip": true,
+        "interval": 300,
+        "exec": "~/.config/waybar/weather.sh"
+    },
+
+    "backlight": {
+        "format": "{icon} <span color='#dedede'>{percent}%</span>",
+        "format-icons": ["", ""],
+        "tooltip-format": "{icon} {percent}%",
+        "on-scroll-up": "brightness_control -s +2",
+        "on-scroll-down": "brightness_control -s -2",
+        "smooth-scrolling-threshold": 1.0
+    },
+
+    "battery": {
+        "format": "{icon} <span color='#dedede'>{capacity}% {power:.1f}W</span>",
+        "format-charging": " <span color='#dedede'>{capacity}%</span>",
+        "format-plugged": " <span color='#dedede'>{capacity}%</span>",
+        "format-alt": "{icon} <span color='#dedede'>{time}</span>",
+        "format-icons": [""],
+        "states": {
+            "good": 95,
+            "warning": 40,
+            "critical": 20
+        },
+        "interval": 2
+    },
+
+    "bluetooth": {
+        "format": " <span color='#dedede'>{status}</span>",
+        "format-disabled": "",
+        "format-connected": " <span color='#dedede'>{num_connections} connected</span>",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+
+    "clock": {
+        "format": " <span color='#dedede'>{:%a %d %b %H:%M}</span>",
+        "format-alt": " <span color='#dedede'>{:%A %d %B %Y %H:%M:%S}</span>",
+        "tooltip-format": "<span size='20000'><tt>{calendar}</tt></span>",
+        "interval": 1,
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "",
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "iso8601": true,
+            "format": {
+                "months": "<span color='#6c90a8'><b>{}</b></span>",
+                "days": "<span color='#dedede'>{}</span>",
+                "weeks": "<span color='#d4a067'><b>W{}</b></span>",
+                "weekdays": "<span color='#999f63'><b>{}</b></span>",
+                "today": "<span color='#cb5760'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "cpu": {
+        "format": " CPU <span color='#dedede'>{usage}% {avg_frequency} Ghz</span>",
+        "format-alt": " <span color='#dedede'>{avg_frequency} Ghz</span>",
+        "tooltip": true,
+        "interval": 1
+    },
+
+    "disk": {
+        "format": " ROM <span color='#dedede'>{percentage_used}%</span>",
+        "format-alt": " ROM <span color='#dedede'>{used}/{total}</span>",
+        "path": "/",
+        "interval": 30
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": " RAM <span color='#dedede'>{used:.1f} GiB</span>",
+        "format-alt": " RAM <span color='#dedede'>{percentage}%</span>",
+        "interval": 1
+    },
+
+    "network": {
+        "format-wifi": " <span color='#dedede'>{essid}</span>",
+        "format-ethernet": " <span color='#dedede'>{ifname}</span>",
+        "format-linked": " {ifname} <span color='#dedede'>(No IP)</span>",
+        "format-disconnected": " <span color='#dedede'>Offline</span>",
+        "format-alt": " <span color='#dedede'>{ifname}</span>  <span color='#dedede'>{bandwidthDownBits}</span>  <span color='#dedede'>{bandwidthUpBits}</span>",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
+        "interval": 1
+    },
+
+    "pulseaudio": {
+        "format": "{icon} <span color='#dedede'>{volume}%</span>",
+        "format-bluetooth": " <span color='#dedede'>{volume}%</span>",
+        "format-bluetooth-muted": " <span color='#dedede'>{icon}</span>",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰥰",
+            "headset": "",
+            "phone": "",
+            "portable": "󰄝",
+            "car": "󰄋",
+            "default": ["", "", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle ",
+        "on-scroll-up": "volume_control -s +5 -m 125",
+        "on-scroll-down": "volume_control -s -5 -m 125",
+        "smooth-scrolling-threshold": 1.0
+    },
+
+    "sway/mode": {
+        "format": " <span color='#dedede'>{}</span>"
+    },
+
+    "sway/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "9": "",
+            "10": ""
+        },
+        "smooth-scrolling-threshold": 1.0,
+    },
+
+    "temperature": {
+        "format": "{icon} <span color='#dedede'>{temperatureC}°C</span>",
+        "format-icons": [""],
+        "interval": 1,
+        "warning-threshold": 70,
+        "critical-threshold": 90
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 5
+    }
+}

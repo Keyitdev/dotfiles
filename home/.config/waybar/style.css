@@ -1,0 +1,367 @@
+/* Everforest Dark Colors */
+@define-color background #2b3339;
+@define-color background-light #323c41;
+@define-color foreground #d3c6aa;
+@define-color black #3c474d;
+@define-color red #e67e80;
+@define-color green #a7c080;
+@define-color yellow #dbbc7f;
+@define-color blue #7fbbb3;
+@define-color magenta #d699b6;
+@define-color cyan #83c092;
+@define-color white #d3c6aa;
+@define-color orange #e69875;
+
+/* Pastel TTY Colors */
+@define-color background #212121;
+@define-color background-light #3a3a3a;
+@define-color foreground #e0e0e0;
+@define-color black #5a5a5a;
+@define-color red #ff9a9e;
+@define-color green #b5e8a9;
+@define-color yellow #ffe6a7;
+@define-color blue #63a4ff;
+@define-color magenta #dda0dd;
+@define-color cyan #a3e8e8;
+@define-color white #ffffff;
+@define-color orange #ff8952;
+
+/* Gruvbox Dark Colors */
+@define-color background #282828;
+@define-color background-light #3c3836;
+@define-color foreground #ebdbb2;
+@define-color black #32302f;
+@define-color red #cc241d;
+@define-color green #98971a;
+@define-color yellow #d79921;
+@define-color blue #458588;
+@define-color magenta #b16286;
+@define-color cyan #689d6a;
+@define-color white #ebdbb2;
+@define-color orange #d65d0e;
+
+/* Tokyo Night */
+@define-color background #1a1b26;
+@define-color background-light #24283b;
+@define-color foreground #c0caf5;
+@define-color black #15161e;
+@define-color red #f7768e;
+@define-color green #9ece6a;
+@define-color yellow #e0af68;
+@define-color blue #7aa2f7;
+@define-color magenta #bb9af7;
+@define-color cyan #7dcfff;
+@define-color white #a9b1d6;
+@define-color orange #ff9e64;
+
+/* Keyitdev's onedark */
+@define-color background #1b1b25;
+@define-color background-light #282A36;
+@define-color foreground #dedede;
+@define-color black #15161e;
+@define-color red #cb5760;
+@define-color green #999f63;
+@define-color yellow #d4a067;
+@define-color blue #6c90a8;
+@define-color magenta #776690;
+@define-color cyan #528a9b;
+@define-color white #dedede;
+@define-color orange #c87c3e;
+
+/* Module-specific colors */
+@define-color workspaces-color @foreground;
+@define-color workspaces-focused-bg @green;
+@define-color workspaces-focused-fg @green;
+@define-color workspaces-urgent-bg @background;
+@define-color workspaces-urgent-fg @red;
+
+/* Text and border colors for modules */
+@define-color backlight-color @yellow;
+@define-color battery-charging-color @orange;
+@define-color battery-color @orange;
+@define-color battery-critical-color @red;
+@define-color battery-warning-color @yellow;
+@define-color bluetooth-color @yellow;
+@define-color clock-color @red;
+@define-color cpu-color @cyan;
+@define-color disk-color @orange;
+@define-color idle-inhibitor-active-color @red;
+@define-color idle-inhibitor-color @green;
+@define-color memory-color @red;
+@define-color menu-color @yellow;
+@define-color mode-color @orange;
+@define-color network-color @blue;
+@define-color network-ethernet-color @magenta;
+@define-color network-disconnected-color @red;
+@define-color nvidia-color @green;
+@define-color playerctl-color @green;
+@define-color playerctl-paused-color @orange;
+@define-color pulseaudio-color @blue;
+@define-color pulseaudio-muted-color @red;
+@define-color screen_time-color @orange;
+@define-color temperature-color @cyan;
+@define-color temperature-critical-color @red;
+@define-color temperature-warning-color @yellow;
+@define-color tray-color @magenta;
+@define-color weather-color @cyan;
+
+/* Base styling for all modules */
+*{
+    border: none;
+    border-radius: 0;
+    font-family: "Iosevka Nerd Font";
+    font-size: 18px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: transparent;
+}
+
+/* Common module styling with border-bottom */
+#backlight,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#custom-advanced_cpu,
+#custom-brightness,
+#custom-nvidia,
+#custom-menu,
+#custom-microphone,
+#custom-playerctl,
+#custom-screen_time,
+#custom-weather,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray
+{
+    padding: 6px 12px 4px 12px;
+    margin: 0 2px;
+    color: @foreground;
+    border-bottom: 2px solid;
+    background-color: @background;
+    border-radius: 20px;
+}
+
+/* Workspaces styling */
+#workspaces{
+    /* padding: 2px 12px 0px 12px; */
+    padding: 2px 8px 0px 8px;
+    margin: 0 2px;
+    background-color: @background;
+    border-radius: 20px;
+    border-bottom: 2px solid @green;
+}
+
+#workspaces button {
+    /* padding: 0 8px; */
+    padding: 0px;
+    background-color: transparent;
+    color: @workspaces-color;
+    /* margin: 0; */
+    margin: 0 -4px;
+    border-radius: 20px;
+}
+
+#workspaces button:hover {
+    background: @background-light;
+    box-shadow: inherit;
+    
+}
+
+#workspaces button.focused {
+    /* box-shadow: inset 0 -2px @workspaces-focused-fg; */
+    /* border-bottom: 2px solid @workspaces-focused-fg; */
+    color: @workspaces-focused-fg;
+    /* font-weight: 900; */
+}
+
+#workspaces button.urgent {
+    background-color: @workspaces-urgent-bg;
+    color: @workspaces-urgent-fg;
+}
+
+/* Module-specific styling */
+#backlight, #custom-brightness{
+    color: @backlight-color;
+    border-bottom-color: @backlight-color;
+}
+
+#battery {
+    color: @battery-color;
+    border-bottom-color: @battery-color;
+}
+
+#battery.charging, #battery.plugged {
+    color: @battery-charging-color;
+    border-bottom-color: @battery-charging-color;
+}
+
+#battery.critical:not(.charging) {
+    color: @battery-critical-color;
+    border-bottom-color: @battery-critical-color;
+}
+
+#battery.warning:not(.charging) {
+    color: @battery-warning-color;
+    border-bottom-color: @battery-warning-color;
+}
+
+#bluetooth{
+    color: @bluetooth-color;
+    border-bottom-color: @bluetooth-color;
+}
+
+#clock {
+    color: @clock-color;
+    border-bottom-color: @clock-color;
+}
+
+#cpu, #custom-advanced_cpu {
+    color: @cpu-color;
+    border-bottom-color: @cpu-color;
+}
+
+#custom-menu{
+    color: @menu-color;
+    border-bottom-color: @menu-color;
+}
+
+#custom-microphone.mic-muted{
+    color: @red;
+    border-bottom-color: @red;
+}
+
+#custom-microphone.mic-unmuted{
+    color: @green;
+    border-bottom-color: @green;
+}
+
+#custom-nvidia {
+    color: @nvidia-color;
+    border-bottom-color: @nvidia-color;
+}
+
+#custom-playerctl {
+    color: @playerctl-color;
+    border-bottom-color: @playerctl-color;
+}
+
+#custom-playerctl.Paused {
+    color: @playerctl-paused-color;
+    border-bottom-color: @playerctl-paused-color;
+}
+
+#custom-playerctl.Playing {
+    color: @playerctl-color;
+    border-bottom-color: @playerctl-color;
+}
+
+#custom-screen_time{
+    color: @screen_time-color;
+    border-bottom-color: @screen_time-color;
+}
+
+#custom-weather {
+    color: @weather-color;
+    border-bottom-color: @weather-color;
+}
+
+#disk {
+    color: @disk-color;
+    border-bottom-color: @disk-color;
+}
+
+#idle_inhibitor {
+    color: @idle-inhibitor-color;
+    border-bottom-color: @idle-inhibitor-color;
+}
+
+#idle_inhibitor.activated {
+    color: @idle-inhibitor-active-color;
+    border-bottom-color: @idle-inhibitor-active-color;
+}
+
+#memory {
+    color: @memory-color;
+    border-bottom-color: @memory-color;
+}
+
+#mode {
+    color: @mode-color;
+    border-bottom-color: @mode-color;
+}
+
+#mpd {
+    color: @mpd-color;
+    border-bottom-color: @mpd-color;
+}
+
+#network {
+    color: @network-color;
+    border-bottom-color: @network-color;
+}
+
+#network.wifi {
+    color: @network-color;
+    border-bottom-color: @network-color;
+}
+
+#network.ethernet{
+    color: @network-ethernet-color;
+    border-bottom-color: @network-ethernet-color;
+}
+
+#network.disconnected {
+    color: @network-disconnected-color;
+    border-bottom-color: @network-disconnected-color;
+}
+
+#pulseaudio {
+    color: @pulseaudio-color;
+    border-bottom-color: @pulseaudio-color;
+}
+
+#pulseaudio.muted {
+    color: @pulseaudio-muted-color;
+    border-bottom-color: @pulseaudio-muted-color;
+}
+
+#temperature {
+    color: @temperature-color;
+    border-bottom-color: @temperature-color;
+}
+
+#temperature.warning {
+    color: @temperature-warning-color;
+    border-bottom-color: @temperature-warning-color;
+}
+
+#temperature.critical {
+    color: @temperature-critical-color;
+    border-bottom-color: @temperature-critical-color;
+}
+
+#tray {
+    background-color: @background;
+    border-bottom-color: @tray-color;
+    padding: 0 10px;
+    margin: 0 2px;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    color: @red;
+    border-bottom-color: @red;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
