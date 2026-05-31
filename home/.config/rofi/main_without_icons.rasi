@@ -2,13 +2,13 @@
  * Documentation: https://github.com/davatorium/rofi/wiki
  * Config created by Aditya Shakya https://github.com/adi1090x
  * Config modified by Keyitdev https://www.github.com/keyitdev/dotfiles
- * Copyright (C) 2022 Keyitdev, Aditya Shakya
+ * Copyright (C) 2022-2026 Keyitdev, Aditya Shakya
 */
 
 @import "colors.rasi" 
 
 configuration {
-  font: "Roboto mono 11";
+  font: "Roboto mono 14";
   show-icons: false;
   icon-theme: "Papirus";
   display-drun: "";
@@ -26,7 +26,7 @@ window {
   border: 2px;
   border-color: @br;
   border-radius: 20px;
-  height: 36.54%;
+  //height: 36.54%;
   width: 25%;
   location: center;
   x-offset: 0;
@@ -39,7 +39,7 @@ prompt {
   padding: 1.7% 0% 1.5% 1%;
   background-color: @al;
   text-color: @fg;
-  font: "Iosevka Nerd Font 12";
+  font: "Iosevka Nerd Font 15";
 }
 
 entry {
@@ -68,7 +68,7 @@ listview {
   background-color: @al;
   padding: 0px;
   columns: 1;
-  lines: 5;
+  lines: 7;
   spacing: 0%;
   cycle: false;
   dynamic: true;

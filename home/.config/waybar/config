@@ -1,3 +1,5 @@
+// https://www.github.com/keyitdev/dotfiles
+// Copyright (C) 2022-2026 Keyitdev
 {
     "layer": "top",
     "position": "top",
@@ -81,6 +83,7 @@
 
     "custom/weather": {
         "format": "{}",
+        "max-length": 25,
         "tooltip": true,
         "interval": 300,
         "exec": "~/.config/waybar/weather.sh"

@@ -11,7 +11,7 @@ y = 8
 opacity = 0.9
 
 [font]
-size = 7.5
+size = 11.5
 
 [font.normal]
-family = "Roboto mono"
+family = "Roboto Mono"

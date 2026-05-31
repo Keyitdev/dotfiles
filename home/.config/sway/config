@@ -1,4 +1,8 @@
 # sway config file (v5)
+# https://www.github.com/keyitdev/dotfiles
+# Copyright (C) 2022-2026 Keyitdev
+# https://github.com/swaywm/sway/wiki
+# https://i3wm.org/docs/userguide.html
 
 output DP-4 mode 2560x1440@200Hz 
 output * bg ~/Pictures/wallpapers/background.png fill

@@ -13,9 +13,37 @@ git_info() {
 # enable command output inside prompt
 setopt PROMPT_SUBST
 
+zmodload zsh/datetime
+preexec() {
+  TIMER_START=$EPOCHREALTIME
+}
+
+precmd() {
+  if [[ -n $TIMER_START ]]; then
+    local elapsed=$(printf "%.4f" "$(echo "$EPOCHREALTIME - $TIMER_START" | bc)")
+
+    if (( $(echo "$elapsed > 0.0001" | bc -l) )); then
+      if (( $(echo "$elapsed < 1" | bc -l) )); then
+        CMD_TIME="$(printf '%.2f' "$(echo "$elapsed * 1000" | bc)")ms"
+      else
+        CMD_TIME="$(printf '%.2f' "$elapsed")s"
+      fi
+    else
+      CMD_TIME=""
+    fi
+
+    unset TIMER_START
+  fi
+}
+
 # prompt
-PROMPT='%F{blue}%B%~%b%f$(git_info) [%*]
+# PROMPT='%F{blue}%B%~%b%f$(git_info) [%*]
+# %B%(!.#.$)%b '
+
+PROMPT='%F{green}%B%n@%m%f%b %F{blue}%B%~%b%f$(git_info) [%*]
 %B%(!.#.$)%b '
+
+RPROMPT='%F{yellow}${CMD_TIME}%f'
 
 # completion
 autoload -Uz compinit
@@ -47,6 +75,8 @@ bindkey '^[[B' down-line-or-beginning-search
 
 # aliases
 export GPG_TTY=$(tty)
+export TERM=xterm-256color # helps with ssh connections
+export TERMINAL=kitty
 
 # yay
 alias yeet="yay -Rn"
@@ -85,6 +115,7 @@ alias py="python3"
 alias nv="nvim"
 alias ff="fastfetch"
 alias h="history|grep"
+alias sudoo="sudo DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR GTK_THEME=gtk-dark-keyitdev:dark"
 
 alias help="cat ~/.zshrc | less"
 alias battery="upower -i $(upower -e | grep BAT)"
@@ -92,6 +123,7 @@ alias disk_usage="du -sh ./* | sort -hr"
 alias logout="killall -KILL -u $USER"
 
 # common mistakes
+bindkey "^[[3~" delete-char
 alias nemo.="nemo ."
 alias files.="files ."
 alias code.="code ."
