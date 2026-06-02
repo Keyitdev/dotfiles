@@ -4,8 +4,6 @@
 step=+5
 
 video_card=$(ls -1 /sys/class/backlight/)
-cur_brightness=$(cat /sys/class/backlight/"$video_card"/brightness)
-max_brightness=$(cat /sys/class/backlight/"$video_card"/max_brightness)
 
 while getopts s: flag
 do
@@ -13,18 +11,28 @@ do
         s) step=${OPTARG};;
         *) echo "Usage: -s <-value/+value>";;
     esac
-
 done
 
-step=$(echo "$step" | sed 's/+//g')
-step_c=$(( (step*max_brightness)/100 ))
-# step_c=$(echo "scale=2; $step*($max_brightness/100)" | bc -l | sed 's/\..*$//')
-new_brightness=$((cur_brightness + step_c))
+if [ -n "$video_card" ] && [ -d "/sys/class/backlight/$video_card" ]; then
+    step=$(echo "$step" | sed 's/+//g')
+    cur_brightness=$(cat /sys/class/backlight/"$video_card"/brightness)
+    max_brightness=$(cat /sys/class/backlight/"$video_card"/max_brightness)
 
-if [ "$new_brightness" -le "0" ]; then
-    echo "0" > /sys/class/backlight/"$video_card"/brightness
-elif [ "$new_brightness" -ge "$max_brightness" ] ; then
-    echo "$max_brightness" > /sys/class/backlight/"$video_card"/brightness
+    step_c=$(( (step*max_brightness)/100 ))
+    # step_c=$(echo "scale=2; $step*($max_brightness/100)" | bc -l | sed 's/\..*$//')
+    new_brightness=$((cur_brightness + step_c))
+
+    if [ "$new_brightness" -le "0" ]; then
+        echo "0" > /sys/class/backlight/"$video_card"/brightness
+    elif [ "$new_brightness" -ge "$max_brightness" ] ; then
+        echo "$max_brightness" > /sys/class/backlight/"$video_card"/brightness
+    else
+        echo "$new_brightness" > /sys/class/backlight/"$video_card"/brightness
+    fi
+
 else
-    echo "$new_brightness" > /sys/class/backlight/"$video_card"/brightness
+    sign=$(printf "%s" "$step" | cut -c1)
+    value=$(printf "%s" "$step" | sed 's/^[-+]//')
+
+    ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 setvcp 10 "$sign" "$value"
 fi

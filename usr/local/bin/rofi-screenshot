@@ -8,10 +8,8 @@ get_options() {
   echo "  Full screen screenshot"
   echo "  Selected area video"
   echo "  Full screen video"
-  echo "  Record audio (microphone)"
-  echo "  Record audio (desktop)"
-  echo "  Selected area video with audio (microphone)"
-  echo "  Full screen video with audio (microphone)"
+  echo "  Selected area video with audio"
+  echo "  Full screen video with audio"
   echo "  Stop Recording"
 }
 
@@ -34,17 +32,11 @@ main() {
   '  Full screen video')
     screenshot -vf
     ;;
-  '  Record audio (microphone)')
-    screenshot -am
+  '  Selected area video with audio')
+    screenshot -vaad
     ;;
-  '  Record audio (desktop)')
-    screenshot -ad
-    ;;
-  '  Selected area video with audio (microphone)')
-    screenshot -vaam
-    ;;
-  '  Full screen video with audio (microphone)')
-    screenshot -vfam
+  '  Full screen video with audio')
+    screenshot -vfad
     ;;
   '  Stop Recording')
     screenshot -s

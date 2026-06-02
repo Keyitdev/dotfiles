@@ -1,14 +1,20 @@
 #!/bin/sh
 
 dir_icons="/usr/local/bin/icons"
+video_card=$(ls -1 /sys/class/backlight/ 2>/dev/null | head -n 1)
 
-max_bri=$(cat /sys/class/backlight/*/max_brightness)
-cur_bri=$(cat /sys/class/backlight/*/brightness)
-
-cur_per=$((cur_bri * 100 / max_bri))
-
-if [ "$cur_per" -ge 50 ]; then
-    dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/sun.svg
+if [ -n "$video_card" ]; then
+    max_bri=$(cat /sys/class/backlight/"$video_card"/max_brightness)
+    cur_bri=$(cat /sys/class/backlight/"$video_card"/brightness)
+    cur_per=$((cur_bri * 100 / max_bri))
 else
-    dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/moon.svg
+    cur_per=$(ddcutil --disable-dynamic-sleep --noverify --skip-ddc-checks --sleep-multiplier 0.1 --bus 12 getvcp 10 2>/dev/null | sed -n 's/.*current value = *\([0-9]*\).*/\1/p')
+fi
+
+if [ -n "$cur_per" ]; then
+    if [ "$cur_per" -ge 50 ]; then
+        dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/sun.svg
+    else
+        dunstify "Screen" "Brightness: $cur_per%" -r 100 -i "$dir_icons"/moon.svg
+    fi
 fi
