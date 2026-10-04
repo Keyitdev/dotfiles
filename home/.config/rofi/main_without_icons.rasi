@@ -5,7 +5,7 @@
  * Copyright (C) 2022-2026 Keyitdev, Aditya Shakya
 */
 
-@import "colors.rasi" 
+@import "colors.rasi"
 
 configuration {
   font: "Roboto mono 14";
@@ -18,20 +18,6 @@ configuration {
   sidebar-mode: false;
 }
 
-
-window {
-  transparency: "real";
-  background-color: @bg;
-  text-color: @fg;
-  border: 2px;
-  border-color: @br;
-  border-radius: 20px;
-  //height: 36.54%;
-  width: 25%;
-  location: center;
-  x-offset: 0;
-  y-offset: 0;
-}
 
 prompt {
   enabled: true;
@@ -76,10 +62,12 @@ listview {
 }
 
 mainbox {
-  background-color: @al;
-  border: 0% 0% 0% 0%;
-  border-radius: 0% 0% 0% 0%;
-  border-color: @ac;
+  background-color: @bg;
+  text-color: @fg;
+  border: 2px;
+  border-color: @br;
+  border-radius: 20px;
+  width: 25%;
   children: [ inputbar, listview];
   spacing: 0%;
   padding: 0%;
@@ -119,3 +107,5 @@ element selected {
   border-radius: 0px;
   border-color: @bg;
 }
+
+@import "click-outside.rasi"

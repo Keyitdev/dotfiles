@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# sudo pacman -S --needed sway grim slurp wf-recorder wl-clipboard jq ffmpeg libnotify libpulse procps-ng python-gobject gtk3 gtk-layer-shell
+
+[ -z "$WAYLAND_DISPLAY" ] && echo "ERROR: Wayland session required" && exit 1
+
 # screenshot directory
 screenshot_directory="$HOME/Pictures/screenshots"
 videos_directory="$HOME/Videos"
@@ -9,131 +13,406 @@ mkdir -p "$screenshot_directory"
 mkdir -p "$videos_directory"
 mkdir -p "$audio_directory"
 
-# date=$(date '+%d-%m-%Y-%H-%M-%S_pc') #10-08-2025-18-53-58
 filename=$(date '+%Y-%m-%d_%H-%M-%S_pc') #2025-08-10_18-53-58
 
-# Detect display server
-if [ -n "$WAYLAND_DISPLAY" ]; then
-    DISPLAY_SERVER="wayland"\
-    # h264_nvenc libx264rgb
-    VIDEO_CODEC="libx264rgb"
-    FRAMERATE=60
-    # microphone="$(pactl list sources | grep -A2 'Name:.*input' | grep 'Name:' | head -1 | awk '{print $2}')"
-    desktop="$(pactl list sources | grep -A2 'Name:.*output' | grep 'Name:' | head -1 | awk '{print $2}')"
-else
-    DISPLAY_SERVER="x11"
-    # yuv420p yuv444p rgba
-    VIDEO_CODEC="yuv444p"
-    FRAMERATE=60
-    screen_resolution="$(xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/')"
-fi
+# h264_nvenc libx264rgb
+VIDEO_CODEC="libx264rgb"
+FRAMERATE=60
+BORDER_WIDTH=2
+BORDER_COLOR="#7F8C8D"
 
-get_area(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        slurp_output="$(slurp)"
-        x=$(echo "$slurp_output" | cut -d' ' -f1 | cut -d',' -f1)
-        y=$(echo "$slurp_output" | cut -d' ' -f1 | cut -d',' -f2)
-        w=$(echo "$slurp_output" | cut -d' ' -f2 | cut -d'x' -f1)
-        h=$(echo "$slurp_output" | cut -d' ' -f2 | cut -d'x' -f2)
-    else
-        slop="$(slop -n -f '%w,%h,%x,%y')"
-        w=$(echo "$slop" | cut -d ',' -f1)
-        h=$(echo "$slop" | cut -d ',' -f2)
-        x=$(echo "$slop" | cut -d ',' -f3)
-        y=$(echo "$slop" | cut -d ',' -f4)
-    fi
-    
-    [ $((w%2)) -eq 1 ] && w=$(( w + 1 ))
-    [ $((h%2)) -eq 1 ] && h=$(( h + 1 ))
-    [ $((x%2)) -eq 1 ] && x=$(( x + 1 ))
-    [ $((y%2)) -eq 1 ] && y=$(( y + 1 ))
-    wh="${w}x${h}"
-    geometry="${x},${y} ${w}x${h}"
+desktop="$(pactl get-default-sink).monitor"
+output="$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')"
+
+window_boxes(){
+    swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | "\(.rect.x + .window_rect.x),\(.rect.y + .window_rect.y) \(.window_rect.width)x\(.window_rect.height)"'
 }
 
-# audio devices (Wayland / PulseAudio)
-microphone="$(pactl list short sources | grep input | head -1 | awk '{print $1}')"
-desktop="$(pactl list short sources | grep output | head -1 | awk '{print $1}')"
+slurp(){
+    window_boxes | command slurp -c "#FFFFFFFF" -d "$@"
+}
+
+select_area(){
+    python3 - "$BORDER_WIDTH" "$BORDER_COLOR" "$(window_boxes)" << 'EOF'
+import subprocess
+import sys
+import threading
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version("GtkLayerShell", "0.1")
+gi.require_foreign("cairo")
+import cairo
+from gi.repository import Gtk, Gdk, GLib, GtkLayerShell
+
+width = int(sys.argv[1])
+color = Gdk.RGBA()
+color.parse(sys.argv[2])
+
+boxes = []
+for line in sys.argv[3].splitlines():
+    try:
+        position, size = line.split(" ")
+        box_x, box_y = map(int, position.split(","))
+        box_w, box_h = map(int, size.split("x"))
+        boxes.append((box_x, box_y, box_w, box_h))
+    except ValueError:
+        pass
+
+state = {"start": None, "dragged": False, "selection": None, "size": None, "pending": None, "result": None}
+condition = threading.Condition()
+windows = []
+
+def redraw():
+    for window in windows:
+        window.queue_draw()
+
+def box_at(px, py):
+    found = [b for b in boxes if b[0] <= px < b[0] + b[2] and b[1] <= py < b[1] + b[3]]
+    return min(found, key=lambda b: b[2] * b[3]) if found else None
+
+def set_selection(selection):
+    if selection == state["selection"]:
+        return
+    state["selection"] = selection
+    state["size"] = None
+    if selection:
+        with condition:
+            state["pending"] = selection
+            condition.notify()
+    redraw()
+
+def apply_size(selection, size):
+    if selection == state["selection"]:
+        state["size"] = size
+        redraw()
+    return False
+
+def measure():
+    while True:
+        with condition:
+            while state["pending"] is None:
+                condition.wait()
+            selection = state["pending"]
+            state["pending"] = None
+        x, y, w, h = selection
+        size = 0
+        if w > 0 and h > 0:
+            try:
+                size = len(subprocess.run(["grim", "-g", f"{x},{y} {w}x{h}", "-"], capture_output=True, check=True).stdout)
+            except (subprocess.CalledProcessError, OSError):
+                size = None
+        GLib.idle_add(apply_size, selection, size)
+
+def format_size(size):
+    if size is None:
+        return "..."
+    if size >= 1000000000:
+        decimal = f"{size / 1000000000:.2f} GB"
+    elif size >= 1000000:
+        decimal = f"{size / 1000000:.1f} MB"
+    else:
+        decimal = f"{size / 1000:.1f} KB"
+    if size >= 1073741824:
+        binary = f"{size / 1073741824:.2f} GiB"
+    elif size >= 1048576:
+        binary = f"{size / 1048576:.1f} MiB"
+    else:
+        binary = f"{size / 1024:.1f} KiB"
+    return f"{decimal} ({binary})"
+
+def draw(widget, cr, geometry):
+    cr.set_operator(cairo.OPERATOR_SOURCE)
+    cr.set_source_rgba(0, 0, 0, 0)
+    cr.paint()
+    cr.set_operator(cairo.OPERATOR_OVER)
+
+    selection = state["selection"]
+    cr.set_fill_rule(cairo.FILL_RULE_EVEN_ODD)
+    cr.set_source_rgba(0, 0, 0, 0.25)
+    cr.rectangle(0, 0, geometry.width, geometry.height)
+    if selection:
+        cr.rectangle(selection[0] - geometry.x, selection[1] - geometry.y, selection[2], selection[3])
+    cr.fill()
+
+    if not selection:
+        return True
+
+    x, y, w, h = selection
+    x -= geometry.x
+    y -= geometry.y
+
+    Gdk.cairo_set_source_rgba(cr, color)
+    cr.set_line_width(width)
+    cr.rectangle(x - width / 2, y - width / 2, w + width, h + width)
+    cr.stroke()
+
+    if not (0 <= x + w - 1 < geometry.width and 0 <= y + h - 1 < geometry.height):
+        return True
+
+    text = f"{w}x{h}  {format_size(state['size'])}"
+    cr.select_font_face("monospace", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    cr.set_font_size(14)
+    ascent, descent = cr.font_extents()[:2]
+    padding = 6
+    box_width = cr.text_extents(text).x_advance + padding * 2
+    box_height = ascent + descent + padding * 2
+
+    box_x = min(max(x + w + width - box_width, 0), geometry.width - box_width)
+    box_y = y + h + width + 4
+    if box_y + box_height > geometry.height:
+        box_y = max(y - width - 4 - box_height, 0)
+
+    cr.set_source_rgba(0, 0, 0, 0.6)
+    cr.rectangle(box_x, box_y, box_width, box_height)
+    cr.fill()
+    cr.set_source_rgba(1, 1, 1, 1)
+    cr.move_to(box_x + padding, box_y + padding + ascent)
+    cr.show_text(text)
+    return True
+
+def finish():
+    selection = state["selection"]
+    state["start"] = None
+    if not selection or selection[2] <= 0 or selection[3] <= 0:
+        return
+    state["result"] = selection
+    Gtk.main_quit()
+
+def press(widget, event, geometry):
+    if event.button == 3:
+        Gtk.main_quit()
+        return True
+    if event.button != 1:
+        return True
+    state["start"] = (int(event.x) + geometry.x, int(event.y) + geometry.y)
+    state["dragged"] = False
+    return True
+
+def motion(widget, event, geometry):
+    px = int(event.x) + geometry.x
+    py = int(event.y) + geometry.y
+    if state["start"]:
+        sx, sy = state["start"]
+        if state["dragged"] or abs(px - sx) > 2 or abs(py - sy) > 2:
+            state["dragged"] = True
+            set_selection((min(sx, px), min(sy, py), abs(px - sx), abs(py - sy)))
+    else:
+        set_selection(box_at(px, py))
+    return True
+
+def release(widget, event, geometry):
+    if event.button != 1 or not state["start"]:
+        return True
+    if not state["dragged"]:
+        set_selection(box_at(int(event.x) + geometry.x, int(event.y) + geometry.y))
+    finish()
+    return True
+
+def key(widget, event):
+    if event.keyval == Gdk.KEY_Escape:
+        Gtk.main_quit()
+    return True
+
+threading.Thread(target=measure, daemon=True).start()
+
+display = Gdk.Display.get_default()
+for index in range(display.get_n_monitors()):
+    monitor = display.get_monitor(index)
+    geometry = monitor.get_geometry()
+
+    window = Gtk.Window()
+    GtkLayerShell.init_for_window(window)
+    GtkLayerShell.set_namespace(window, "region-select")
+    GtkLayerShell.set_layer(window, GtkLayerShell.Layer.OVERLAY)
+    GtkLayerShell.set_monitor(window, monitor)
+    GtkLayerShell.set_exclusive_zone(window, -1)
+    for edge in (GtkLayerShell.Edge.TOP, GtkLayerShell.Edge.BOTTOM, GtkLayerShell.Edge.LEFT, GtkLayerShell.Edge.RIGHT):
+        GtkLayerShell.set_anchor(window, edge, True)
+    try:
+        GtkLayerShell.set_keyboard_mode(window, GtkLayerShell.KeyboardMode.EXCLUSIVE)
+    except AttributeError:
+        GtkLayerShell.set_keyboard_interactivity(window, True)
+
+    window.set_app_paintable(True)
+    window.set_visual(window.get_screen().get_rgba_visual())
+    window.add_events(Gdk.EventMask.BUTTON_PRESS_MASK | Gdk.EventMask.BUTTON_RELEASE_MASK | Gdk.EventMask.POINTER_MOTION_MASK | Gdk.EventMask.KEY_PRESS_MASK)
+
+    window.connect("draw", draw, geometry)
+    window.connect("button-press-event", press, geometry)
+    window.connect("motion-notify-event", motion, geometry)
+    window.connect("button-release-event", release, geometry)
+    window.connect("key-press-event", key)
+    window.connect("destroy", Gtk.main_quit)
+    window.show_all()
+    window.get_window().set_cursor(Gdk.Cursor.new_from_name(display, "crosshair"))
+    windows.append(window)
+
+Gtk.main()
+
+for window in windows:
+    window.destroy()
+display.flush()
+
+if not state["result"]:
+    sys.exit(1)
+
+x, y, w, h = state["result"]
+print(f"{x},{y} {w}x{h}")
+EOF
+}
+
+show_border(){
+    python3 - "$1" "$BORDER_WIDTH" "$BORDER_COLOR" "$2" << 'EOF' &
+import os
+import sys
+import time
+import gi
+gi.require_version("Gtk", "3.0")
+gi.require_version("GtkLayerShell", "0.1")
+gi.require_foreign("cairo")
+import cairo
+from gi.repository import Gtk, Gdk, GLib, GtkLayerShell
+
+position, size = sys.argv[1].split(" ")
+x, y = map(int, position.split(","))
+w, h = map(int, size.split("x"))
+width = int(sys.argv[2])
+color = Gdk.RGBA()
+color.parse(sys.argv[3])
+path = sys.argv[4]
+start = time.monotonic()
+
+monitor = Gdk.Display.get_default().get_monitor_at_point(x, y)
+geometry = monitor.get_geometry()
+x -= geometry.x
+y -= geometry.y
+
+window = Gtk.Window()
+GtkLayerShell.init_for_window(window)
+GtkLayerShell.set_namespace(window, "region-border")
+GtkLayerShell.set_layer(window, GtkLayerShell.Layer.OVERLAY)
+GtkLayerShell.set_monitor(window, monitor)
+GtkLayerShell.set_exclusive_zone(window, -1)
+for edge in (GtkLayerShell.Edge.TOP, GtkLayerShell.Edge.BOTTOM, GtkLayerShell.Edge.LEFT, GtkLayerShell.Edge.RIGHT):
+    GtkLayerShell.set_anchor(window, edge, True)
+
+window.set_app_paintable(True)
+window.set_visual(window.get_screen().get_rgba_visual())
+
+def draw(widget, cr):
+    cr.set_operator(cairo.OPERATOR_SOURCE)
+    cr.set_source_rgba(0, 0, 0, 0)
+    cr.paint()
+    cr.set_operator(cairo.OPERATOR_OVER)
+    Gdk.cairo_set_source_rgba(cr, color)
+    cr.set_line_width(width)
+    cr.rectangle(x - width / 2, y - width / 2, w + width, h + width)
+    cr.stroke()
+
+    try:
+        size_bytes = os.path.getsize(path)
+    except OSError:
+        size_bytes = 0
+
+    if size_bytes >= 1000000000:
+        decimal = f"{size_bytes / 1000000000:.2f} GB"
+    elif size_bytes >= 1000000:
+        decimal = f"{size_bytes / 1000000:.1f} MB"
+    else:
+        decimal = f"{size_bytes / 1000:.1f} KB"
+
+    if size_bytes >= 1073741824:
+        binary = f"{size_bytes / 1073741824:.2f} GiB"
+    elif size_bytes >= 1048576:
+        binary = f"{size_bytes / 1048576:.1f} MiB"
+    else:
+        binary = f"{size_bytes / 1024:.1f} KiB"
+
+    elapsed = int(time.monotonic() - start)
+    hours, rest = divmod(elapsed, 3600)
+    minutes, seconds = divmod(rest, 60)
+    timer = f"{hours}:{minutes:02}:{seconds:02}" if hours else f"{minutes:02}:{seconds:02}"
+
+    text = f"{w}x{h}  {decimal} ({binary})  {timer}"
+
+    cr.select_font_face("monospace", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+    cr.set_font_size(14)
+    ascent, descent = cr.font_extents()[:2]
+    padding = 6
+    box_width = cr.text_extents(text).x_advance + padding * 2
+    box_height = ascent + descent + padding * 2
+
+    box_x = min(max(x + w + width - box_width, 0), geometry.width - box_width)
+    box_y = y + h + width + 4
+    if box_y + box_height > geometry.height:
+        box_y = max(y - width - 4 - box_height, 0)
+
+    cr.set_source_rgba(0, 0, 0, 0.6)
+    cr.rectangle(box_x, box_y, box_width, box_height)
+    cr.fill()
+    cr.set_source_rgba(1, 1, 1, 1)
+    cr.move_to(box_x + padding, box_y + padding + ascent)
+    cr.show_text(text)
+    return True
+
+def tick():
+    window.queue_draw()
+    return True
+
+window.connect("draw", draw)
+window.connect("destroy", Gtk.main_quit)
+window.show_all()
+window.input_shape_combine_region(cairo.Region())
+GLib.timeout_add(500, tick)
+Gtk.main()
+EOF
+    border_pid=$!
+}
 
 screenshot_selected_area(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        geometry="$(slurp)"
-        grim -g "$geometry" "$screenshot_directory/$filename.png"
-        wl-copy < "$screenshot_directory/$filename.png"
-    else
-        ffcast -q -g "$(slop)" png "$screenshot_directory/$filename.png"
-        xclip -selection clipboard -t image/png "$screenshot_directory/$filename.png"
-    fi
-        notify-send -i "$screenshot_directory/$filename.png" "Screenshot" "Area screenshot taken"
+    geometry="$(select_area)" || exit 1
+    grim -g "$geometry" "$screenshot_directory/$filename.png"
+    wl-copy < "$screenshot_directory/$filename.png"
+    notify-send -i "$screenshot_directory/$filename.png" "Screenshot" "Area screenshot taken"
 }
 
 screenshot_full_screen(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        grim "$screenshot_directory/$filename.png"
-        wl-copy < "$screenshot_directory/$filename.png"
-    else
-        ffcast -q png "$screenshot_directory/$filename.png"
-        xclip -selection clipboard -t image/png "$screenshot_directory/$filename.png"
-    fi
+    grim "$screenshot_directory/$filename.png"
+    wl-copy < "$screenshot_directory/$filename.png"
     notify-send -i "$screenshot_directory/$filename.png" "Screenshot" "Full screen screenshot taken"
 }
 
 video_selected_area(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        geometry="$(slurp)"
-        wf-recorder -g "$geometry" -c "$VIDEO_CODEC" -r "$FRAMERATE" -f "$videos_directory/$filename.mp4"
-        grim -g "$geometry" -t png "/tmp/$filename.png"
-    else
-        get_area
-        ffmpeg -hide_banner -loglevel error -show_region 1 \
-        -f x11grab -video_size "$wh" -framerate "$FRAMERATE" -i :0.0+"$x","$y" -pix_fmt "$VIDEO_CODEC" "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png"
-    fi
-        notify-send -i "/tmp/$filename.png" "Video" "Area video taken"
+    geometry="$(slurp)" || exit 1
+    show_border "$geometry" "$videos_directory/$filename.mp4"
+    wf-recorder -g "$geometry" -c "$VIDEO_CODEC" -r "$FRAMERATE" -f "$videos_directory/$filename.mp4"
+    kill "$border_pid"
+    grim -g "$geometry" -t png "/tmp/$filename.png"
+    notify-send -i "/tmp/$filename.png" "Video" "Area video taken"
 }
 
 video_full_screen(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        wf-recorder -c "$VIDEO_CODEC" -r "$FRAMERATE" -f "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png" 2>/dev/null
-    else
-        ffmpeg -hide_banner -loglevel error -show_region 1 \
-        -f x11grab -video_size "$screen_resolution" -framerate "$FRAMERATE" -i :0.0 -pix_fmt "$VIDEO_CODEC" "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png"
-    fi
-        notify-send -i "/tmp/$filename.png" "Video" "Full screen video taken"
+    wf-recorder -o "$output" -c "$VIDEO_CODEC" -r "$FRAMERATE" -f "$videos_directory/$filename.mp4"
+    ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png" 2>/dev/null
+    notify-send -i "/tmp/$filename.png" "Video" "Full screen video taken"
 }
 
 video_selected_area_audio(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        geometry="$(slurp)"
-        wf-recorder -g "$geometry" -c "$VIDEO_CODEC" -r "$FRAMERATE" --audio --audio-device "$desktop" -f "$videos_directory/$filename.mp4"
-        grim -g "$geometry" -t png "/tmp/$filename.png"
-    else
-        get_area
-        ffmpeg -hide_banner -loglevel error -show_region 1 \
-        -f x11grab -video_size "$wh" -framerate "$FRAMERATE" -i :0.0+"$x","$y" \
-        -f alsa -i default -pix_fmt "$VIDEO_CODEC" "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png"
-    fi
-        notify-send -i "/tmp/$filename.png" "Video" "Area video with desktop audio taken"
+    geometry="$(slurp)" || exit 1
+    show_border "$geometry" "$videos_directory/$filename.mp4"
+    wf-recorder -g "$geometry" -c "$VIDEO_CODEC" -r "$FRAMERATE" --audio="$desktop" -f "$videos_directory/$filename.mp4"
+    kill "$border_pid"
+    grim -g "$geometry" -t png "/tmp/$filename.png"
+    notify-send -i "/tmp/$filename.png" "Video" "Area video with desktop audio taken"
 }
 
 video_full_screen_audio(){
-    if [ "$DISPLAY_SERVER" = "wayland" ]; then
-        wf-recorder -c "$VIDEO_CODEC" -r "$FRAMERATE" --audio --audio-device "$desktop" -f "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png" 2>/dev/null
-    else
-        ffmpeg -hide_banner -loglevel error -show_region 1 \
-        -f x11grab -video_size "$screen_resolution" -framerate "$FRAMERATE" -i :0.0 \
-        -f alsa -i default -pix_fmt "$VIDEO_CODEC" "$videos_directory/$filename.mp4"
-        ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png"
-    fi
-        notify-send -i "/tmp/$filename.png" "Video" "Full screen video with desktop audio taken"
+    wf-recorder -o "$output" -c "$VIDEO_CODEC" -r "$FRAMERATE" --audio="$desktop" -f "$videos_directory/$filename.mp4"
+    ffmpeg -i "$videos_directory/$filename.mp4" -ss 00:00:01.000 -vframes 1 "/tmp/$filename.png" 2>/dev/null
+    notify-send -i "/tmp/$filename.png" "Video" "Full screen video with desktop audio taken"
 }
 
 stop(){
-    pkill -fxn '(/\S+)*ffmpeg\s.*\sx11grab\s.*'
     pkill -fxn '(/\S+)*ffmpeg\s.*\spulse\s.*'
     pkill -fxn '(/\S+)*wf-recorder\s.*'
     pkill -fxn '(/\S+)*pw-record\s.*'
@@ -142,7 +421,6 @@ stop(){
 
 help(){
 cat << EOF
-Display server: $DISPLAY_SERVER
 -h | -help | --help
 -s | -stop
 -sa | -screenshot_selected_area
@@ -193,3 +471,5 @@ done
 }
 
 main "$@"
+
+

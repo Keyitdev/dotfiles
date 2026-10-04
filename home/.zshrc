@@ -36,6 +36,18 @@ precmd() {
   fi
 }
 
+vim() {
+  local f
+  for f in "$@"; do
+    [[ $f == -* || $f == +* ]] && continue
+    if [[ -e $f && ! -w $f ]] || [[ ! -e $f && ! -w ${f:h} ]]; then
+      sudoedit "$@"
+      return
+    fi
+  done
+  command vim "$@"
+}
+
 # prompt
 # PROMPT='%F{blue}%B%~%b%f$(git_info) [%*]
 # %B%(!.#.$)%b '
@@ -107,8 +119,8 @@ alias ......="cd ../../.."
 alias ........="cd ../../../.."
 
 # lazy
-alias nemo="nemo ."
-alias files="nemo ."
+nemo() { command nemo "${@:-.}" &>/dev/null &! }
+files() { command nemo "${@:-.}" &>/dev/null &! }
 alias c="clear" # I know about ctrl l etc.
 alias g="git"
 alias py="python3"
@@ -120,6 +132,8 @@ alias sudoo="sudo DISPLAY=$DISPLAY WAYLAND_DISPLAY=$WAYLAND_DISPLAY XDG_RUNTIME_
 alias help="cat ~/.zshrc | less"
 alias battery="upower -i $(upower -e | grep BAT)"
 alias disk_usage="du -sh ./* | sort -hr"
+alias disk_usage_btrfs="sudo compsize -x \$(findmnt -l -t btrfs -no TARGET)"
+alias disk_usage_btrfs_all="sudo sh -c 'compsize -x \$(findmnt -l -t btrfs -no TARGET) /var/lib/portables /var/lib/machines /.snapshots/*/snapshot'"
 alias logout="killall -KILL -u $USER"
 
 # common mistakes

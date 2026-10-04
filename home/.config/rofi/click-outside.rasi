@@ -1,0 +1,26 @@
+window {
+    fullscreen: true;
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    orientation: vertical;
+    children: [ button-top, middle, button-bottom ];
+}
+
+middle {
+    orientation: horizontal;
+    expand: false;
+    background-color: transparent;
+    children: [ button-left, mainbox, button-right ];
+}
+
+button-top, button-bottom, button-left, button-right {
+    expand: true;
+    background-color: transparent;
+    action: "kb-cancel";
+}
+
+mainbox {
+    expand: false;
+}

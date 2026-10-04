@@ -37,26 +37,32 @@
 
 window {
   transparency: "real";
-  location: north;
-  anchor: north;
-  fullscreen: false;
-  width: 100%;
-  x-offset: 0px;
-  y-offset: 0px;
-  children: [ horibox];
+  fullscreen: true;
+  orientation: vertical;
+  children: [ horibox, button-bottom];
   enabled: true;
   margin: 0px;
   padding: 0px;
-  border: 0px 0px 3px 0px solid;
+  border: 0px;
   border-radius: 0px;
-  border-color: @border-colour;
+  background-color: transparent;
   cursor: "default";
 }
 
+button-bottom {
+  expand: true;
+  padding: 0px;
+  background-color: transparent;
+  action: "kb-cancel";
+}
+
 horibox {
+  expand: false;
   spacing: 0px;
   background-color: @background-colour;
   text-color: @foreground-colour;
+  border: 0px 0px 3px 0px solid;
+  border-color: @border-colour;
   orientation: horizontal;
   children: [ "prompt", "textbox-prompt-colon", "entry", "listview"];
 }
